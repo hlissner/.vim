@@ -1,12 +1,12 @@
-" VIMRC (OF DOOM?) 2.0 {
-"               _                          _   _ 
-"   __  ___   _| |__   ___ _ __ __ _ _ __ | |_| |
-"   \ \/ / | | | '_ \ / _ \ '__/ _` | '_ \| __| |
-"    >  <| |_| | |_) |  __/ | | (_| | | | | |_|_|
-"   /_/\_\\__,_|_.__/ \___|_|  \__,_|_| |_|\__(_)
-"                                              
+" My Little Vim {
+"    __  __ _  __     _____ __  __ 
+"   |  \/  | | \ \   / /_ _|  \/  |
+"   | |\/| | |  \ \ / / | || |\/| |
+"   | |  | | |___\ V /  | || |  | |
+"   |_|  |_|_____|\_/  |___|_|  |_|
+"                                                       
 "   Author: Henrik Lissner
-"   Url: http://github.com/hlissner/dotfiles
+"   Url: http://github.com/hlissner/mlvim
 "
 "   A vimrc for any web designer, developer or masochist. We all know they're
 "   all the same thing. Many of these settings, if not by me, were inspired 
