@@ -1,0 +1,65 @@
+# Generic tags
+
+snippet %%
+	{% ${1} %}${2}
+snippet %/
+	{% ${1:tag_name}${2} %}
+	${3}
+	{% end$1 %
+snippet %!
+	{{ ${1} }}${2}
+
+# Template Tags
+snippet autoescape
+	{% autoescape ${1:off} %}${2}{% endautoescape %}
+snippet block
+	{% block ${1} %}${2}{% endblock %}
+snippet ##
+	{# ${1:comment} #
+snippet cycle
+	{% cycle ${1:val1} ${2:val2} ${3:as ${4}} %}
+snippet debug
+	{% debug %}
+snippet extends
+	{% extends "${1:base.html}" %}
+snippet filter
+	{% filter ${1} %}${2}{% endfilter %}
+snippet for
+	{% for ${1} in ${2} %}
+	${3}
+	{% endfor %}
+snippet empty
+	{% empty %}
+	${1}
+snippet if
+	{% if ${1} %}${2}{% endif %}
+snippet else
+	{% else %}${1}
+snippet include
+	{% include "${1}" %}
+snippet load
+	{% load ${1} %}
+snippet now
+	{% now "${1:jS F Y H:i}" %}
+snippet regroup
+	{% regroup ${1} by ${2} as ${3} %}
+snippet spaceless
+	{% spaceless %}${1}{% endspaceless %}
+snippet ssi
+	{% ssi ${1} %}
+snippet trans
+	{% trans "${1:string}" %}
+snippet url
+	{% url ${1} as ${2} %}
+snippet widthratio
+	{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}
+snippet with
+	{% with ${1} as ${2} %}
+snippet endif
+	{% endif %}${1}
+snippet endfor
+	{% endfor %}${1}
+snippet elseif
+	{% elseif %{1} %}${2}
+snippet endblock
+	{% endblock %}${1}
