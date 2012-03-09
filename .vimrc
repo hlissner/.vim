@@ -37,7 +37,7 @@
         endfunction
     " }}
 " }}
-    
+
 " Bundles {{
     Bundle 'gmarik/vundle'
 
@@ -69,6 +69,7 @@
     Bundle 'tpope/vim-unimpaired'
 
     " Programming {{
+        Bundle 'xolox/vim-easytags'
         Bundle 'Raimondi/delimitMate'
         Bundle 'garbas/vim-snipmate.git'
         Bundle 'godlygeek/tabular'
@@ -103,7 +104,7 @@
         Bundle 'spf13/vim-markdown'
         Bundle 'spf13/vim-preview'
     " }}
-
+    
     filetype plugin indent on
 " }}
 
@@ -126,63 +127,56 @@
     set vb
 
     " Backups, swapfiles, persistence {{
+        " No backup (that's what git is for!) and swapfiles are just annoying
         set noswapfile
         set nobackup
 
         set viewdir=~/.vim/tmp/views
         set undodir=~/.vim/tmp/undo
         if !isdirectory("~/.vim/tmp")
+            " Set up temp folders
             silent execute '!mkdir -p ~/.vim/tmp/views'
             silent execute '!mkdir -p ~/.vim/tmp/undo'
         endif
-
-        set history=1000
 
         " Persistent undo
         set undofile
         set undolevels=1000
         set undoreload=1000
+        set history=1000
 
+        " Buffer persistence
         set viewoptions=cursor,folds,unix,slash
-
-         "Buffer persistence
-        au BufWinLeave *.* silent! mkview
-        au BufWinEnter *.* silent! loadview
+        au BufWinLeave * if expand("%") != "" | mkview | endif
+        au BufWinEnter * if expand("%") != "" | loadview | endif
     " }}
     
-    " Editing {{
+    " Editor {{
         syntax on
         color wombat256
-        set nu
 
-        " Search
-        set showmatch
-        set incsearch
-        set hlsearch
-        set ignorecase
-        set smartcase
-        " Regex magic
-        set magic
-        set gdefault
+        set number                          " Show line numbers
+        set cursorline                      " Highlight line
+        set nolist                          " Don't show tabs (indent-guides does it nicer)
 
-        set wildmenu
-        set wildmode=list:longest,full
-        set whichwrap=b,s,h,l,<,>,[,]
-    " }}
+        set wildmenu                        " Show menu instead of auto-complete
+        set wildmode=list:longest,full      " command <Tab> completion: list matches -> longest common -> then all
+        set whichwrap=b,s,h,l,<,>,[,]       " Backspace and cursor keys to wrap
+        set tabpagemax=15                   " Only show 15 tabs
+        set showmode                        " Display current mode
+        set backspace=indent,eol,start      
+        set linespace=0                     " Number of pixels between lines
 
-    " UI {{
-        set nolist
-        set tabpagemax=15
-        set showmode
-        set cursorline
-        set backspace=indent,eol,start
-        set linespace=0
-        set scrolljump=10
-        set scrolloff=5
+        set scrolljump=10 scrolloff=5       
+        set splitbelow splitright           " Default split buffer positioning
 
-        " Default split buffer positioning
-        set splitbelow
-        set splitright
+        " Search                            
+        set showmatch                       " Show matching delimiters
+        set incsearch                       " find as you type
+        set hlsearch                        " Highlight search terms
+        set ignorecase                      " case insensitive search
+        set smartcase                       " case sensitive when uc present
+        set gdefault                        " global flag for substitute by default
 
         if has('cmdline_info')
             set ruler
@@ -206,13 +200,13 @@
     " Formatting {{
         set nowrap
         set autoindent
+        set shiftround
+        set expandtab
         set shiftwidth=4
         set tabstop=4
         set softtabstop=4
-        set shiftround
-        set expandtab
 
-        set pastetoggle=<F2>
+        set pastetoggle=<F2>        " Trigger to preserve indentation on pastes
 
         " Folding {{
             set foldenable
@@ -232,7 +226,7 @@
                 endif
             endfunction
 
-            " Turn off folding while in insert mode (for snappiness)
+            " Turn off folding while in insert mode (helps snappiness)
             au InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
             au InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
             
@@ -264,23 +258,20 @@
         " Turn off highlighting (when you're done)
         noremap <silent> <leader>? :nohlsearch<CR>
 
-        " Command Shortcuts {{
-            " Annoying command mistakes
-            com! W w
-            com! Q q
-            com! WQ wq
-            " Forget to sudo? (Thanks spf13)
-            cmap w!! w !sudo tree % >/dev/null
+        " Navigation {{
+            nnoremap j gj
+            nnoremap k gk
+            map <C-j> 5j
+            map <C-k> 5k
             
-            " Shortcuts
-            cnoremap %% <C-R>=expand('%:h').'/'<cr>
-            cnoremap %r <C-R>=expand('%').'/'<cr>
-
-            com! StripTags :%s/<\_.\{-1,\}>//g<CR>
-            " Strip whitespace
-            com! Trim :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+            " Obey! You will get used to hjkl! (You can still use 'em in
+            " insert mode though)
+            nnoremap <Left> <Nop>
+            nnoremap <Right> <Nop>
+            nnoremap <Down> <Nop>
+            nnoremap <Up> <Nop>
         " }}
-
+        
         " Editing {{
             " EOL-yank, consistent with C and D
             nnoremap Y y$
@@ -303,22 +294,21 @@
 
             " Toggle commenting of current line
             map <silent> <leader>/ <leader>c<space>
+
+            " Folding {{
+                nmap <leader>f0 :set foldlevel=0<CR>
+                nmap <leader>f1 :set foldlevel=1<CR>
+                nmap <leader>f2 :set foldlevel=2<CR>
+                nmap <leader>f3 :set foldlevel=3<CR>
+                nmap <leader>f4 :set foldlevel=4<CR>
+                nmap <leader>f5 :set foldlevel=5<CR>
+                nmap <leader>f6 :set foldlevel=6<CR>
+                nmap <leader>f7 :set foldlevel=7<CR>
+                nmap <leader>f8 :set foldlevel=8<CR>
+                nmap <leader>f9 :set foldlevel=9<CR> 
+            " }}
         " }}
 
-        " Navigation {{
-            nnoremap j gj
-            nnoremap k gk
-            map <C-j> 5j
-            map <C-k> 5k
-            
-            " Obey! You will get used to hjkl! (You can still use 'em in
-            " insert mode though)
-            nnoremap <Left> <Nop>
-            nnoremap <Right> <Nop>
-            nnoremap <Down> <Nop>
-            nnoremap <Up> <Nop>
-        " }}
-        
         " Buffers {{
             nnoremap <leader>ev :e ~/.vimrc<CR>
             nnoremap <leader>eg :e ~/.gvimrc<CR>
@@ -346,6 +336,23 @@
                 noremap <silent> <leader>ou :!open -a Transmit %<CR>
             endif
         " }}
+        
+        " Command Shortcuts {{
+            " Annoying command mistakes
+            com! W w
+            com! Q q
+            com! WQ wq
+            " Forget to sudo? (Thanks spf13)
+            cmap w!! w !sudo tree % >/dev/null
+            
+            " Shortcuts
+            cnoremap %% <C-R>=expand('%:h').'/'<cr>
+            cnoremap %r <C-R>=expand('%').'/'<cr>
+
+            com! StripTags :%s/<\_.\{-1,\}>//g<CR>
+            " Strip whitespace
+            com! Trim :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+        " }}
     " }}
 
     " Filetypes {{
@@ -353,7 +360,7 @@
     " }}
 " }}
 
-" Plugins Options {{
+" Plugins {{
     let b:match_ignorecase = 1
 
     " Colorizer {{
@@ -368,7 +375,7 @@
     " Ctrip {{
         let g:ctrlp_map = '<leader>t'
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix']
-        let g:ctrlp_max_height = 14
+        let g:ctrlp_max_height = 10
         let g:ctrlp_cache_dir = "~/.vim/tmp/ctrip"
         let g:ctrlp_working_path_mode = 0
         let g:ctrlp_custom_ignore = {
@@ -383,6 +390,21 @@
     " delimitMate {{
         let g:delimitMate_expand_cr = 1
         let g:delimitMate_expand_space = 1
+    " }}
+
+    " EasyTags {{
+        let g:easytags_cmd = 'ctags'
+        let g:easytags_file = '~/.vim/tmp/tags'
+        let g:easytags_dynamic_files = 1
+    " }}
+    
+    " Fugitive {{
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR> 
     " }}
 
     " NERDCommenter {{
@@ -400,11 +422,12 @@
         nnoremap <leader>n/ :NERDTreeToggle<CR>
         nnoremap <leader>n. :NERDTreeFind<CR>
         
-        let NERDTreeShowBookmarks=0
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
         let NERDTreeChDirMode=0
-        let NERDTreeShowHidden=1
+        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
         let NERDTreeKeepTreeInNewTab=0
+        let NERDTreeQuitOnOpen=1
+        let NERDTreeShowBookmarks=0
+        let NERDTreeShowHidden=1
     " }}
 
     " OmniComplete {{
@@ -414,6 +437,19 @@
                 \setlocal omnifunc=syntaxcomplete#Complete |
                 \endif
         endif
+
+        " Some convenient mappings (thanks spf13)
+        inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
+        inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+        inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+        inoremap <expr> <C-d>      pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<C-d>"
+        inoremap <expr> <C-u>      pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<C-u>"
+        
+        " Enable omni completion.
+        autocmd FileType css,scss,less setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown,htmljinja,xml setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 
         au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif 
         set completeopt=menu,preview,longest
@@ -426,10 +462,13 @@
     " }}
     
     " PIV {{
+        " Just my coding preference
         let g:PIVPearStyle = 0
         let g:PHP_autoformatcomment = 1
-        let g:phpunit_key_map = 1
+
+        " Disable PIV's auto folding (preserves my nice foldtext function)
         let g:DisableAutoPHPFolding = 1
+        " DelimitMate handles autoclosing delimiters for us, so disable PIV's
         let g:PIVAutoClose = 0
     " }}
     
@@ -474,6 +513,10 @@
         vmap <Leader>a, :Tabularize /,<CR>
         nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
         vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+    " }}
+    
+    " TagBar {{
+        nnoremap <silent> <leader>T :TagbarToggle<CR>
     " }}
 
     " Vim-indent-guides {{
