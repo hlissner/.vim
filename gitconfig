@@ -1,0 +1,22 @@
+[user]
+	name = Henrik Lissner
+	email = henrik@lissner.net
+[merge]
+	tool = vimdiff
+[core]
+	excludesfile = /Users/Henrik/.gitignore
+	quotepath = false
+[alias]
+    a = add
+    r = rm
+	s = status
+	c = commit
+	l = log --pretty=oneline --abbrev-commit
+	d = difftool
+	co = checkout
+[diff]
+	tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false

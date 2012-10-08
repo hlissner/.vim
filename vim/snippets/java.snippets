@@ -1,0 +1,371 @@
+###########################################################################
+#                            TEXTMATE SNIPPETS                            #
+###########################################################################
+
+# Many of the snippets here use a global option called
+# "g:ultisnips_java_brace_style" which, if set to "nl" will put a newline
+# before '{' braces.
+
+global !p
+def nl(snip):
+    if snip.opt("g:ultisnips_java_brace_style", "") == "nl":
+        snip += ""
+    else:
+        snip.rv += " "
+endglobal
+
+snippet cln "file classname"
+${1:`!p snip.rv = snip.basename or "untitled"`}
+endsnippet
+
+snippet ab "abstract" b
+abstract 
+endsnippet
+
+snippet as "assert" b
+assert ${1:test}${2/(.+)/(?1: \: ")/}${2:Failure message}${2/(.+)/(?1:")/};$0
+endsnippet
+
+snippet br "break"
+break;
+
+endsnippet
+
+snippet cs "case" b
+case $1:
+	$2
+$0
+endsnippet
+
+snippet ca "catch" b
+catch (${1:Exception} ${2:e})`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet cl "class" b
+class ${1:`!p
+snip.rv = snip.basename or "untitled"`} ${2:extends ${3:Parent} }${4:implements ${5:Interface} }{
+
+	$0
+
+}
+endsnippet
+
+snippet try "try-catch block"
+try {
+    ${VISUAL}$1
+} catch (${2:Exception}) {
+    $3
+} 
+endsnippet
+
+snippet catch "catch block"
+catch (${1:Exception} e) {
+    ${VISUAL}$3
+}
+endsnippet
+
+snippet fin "finally block (try-catch)"
+finally {
+    ${VISUAL}$3
+}
+endsnippet
+
+snippet de "default" b
+default:
+	${VISUAL}$0
+endsnippet
+
+snippet elif "else if" b
+else if ($1)`!p nl(snip)`{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet /el(se)?/ "else" br
+else`!p nl(snip)`{
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fi "final" b
+final 
+endsnippet
+
+snippet fore "for (each)" b
+for ($1 : $2)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet for "for" b
+for ($1; $2; $3)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet if "if" b
+if ($1)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+# Imports
+snippet im "import"  b
+import $1;
+endsnippet
+
+snippet imt "import junit_framework_TestCase;"  b
+import junit.framework.TestCase;
+$0
+endsnippet
+
+# Import package names
+snippet j.b "java_beans_" i
+java.beans.
+endsnippet
+
+snippet j.i "java_io" i
+java.io.
+endsnippet
+
+snippet j.m "java_math" i
+java.math.
+endsnippet
+
+snippet j.n "java_net_" i
+java.net.
+endsnippet
+
+snippet j.u "java_util_"  i
+java.util.
+endsnippet
+
+snippet lw. "lwjgl" i
+org.lwjgl.
+endsnippet
+
+snippet sl. "slick2d" i
+org.newdawn.slick.
+endsnippet
+
+snippet in "interface" b
+interface ${1:`!p snip.rv = snip.basename or "untitled"`} ${2:extends ${3:Parent} }{
+	$0
+}
+endsnippet
+
+snippet fu "method" b
+${1:void} ${2:method}($3) {
+	$0
+}
+
+endsnippet
+
+snippet pa "package" b
+package $1;
+endsnippet
+
+snippet p "print" b
+System.out.print($1);$0
+endsnippet
+
+snippet pl "println"  b
+System.out.println($1);$0
+endsnippet
+
+snippet pr "private" b
+private 
+endsnippet
+
+snippet po "protected" b
+protected 
+endsnippet
+
+snippet pu "public" b
+public 
+endsnippet
+
+snippet re "return" b
+return 
+endsnippet
+
+snippet st "static"
+static 
+endsnippet
+
+snippet sw "switch" b
+switch ($1)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet sy "synchronized"
+synchronized 
+endsnippet
+
+snippet tc "test case"
+public class ${1:`!p snip.rv = snip.basename or "untitled"`} extends ${2:TestCase}`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet t "test" b
+public void test${1:Name}() throws Exception`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet th "throw" b
+throw $0
+endsnippet
+
+snippet wh "while" b
+while ($1)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet e.p "exception printStackTrace" 
+e.printStackTrace();
+endsnippet
+
+###
+# LWJGL
+
+# OpenGL
+snippet glinit "initialize OpenGL"
+glMatrixMode(GL_PROJECTION);
+glLoadIdentity();
+glOrtho(0, ${1:640}, ${2:480}, 0, 1, -1);
+glMatrixMode(GL_MODELVIEW);
+endsnippet
+
+snippet glloop "display loop"
+try {
+    Display.setDisplayMode(new DisplayMode(${1:640}, ${2:480}));
+    Display.setTitle("${3:Window Title}");
+    Display.create();
+} catch (LWJGLException e) {
+    e.printStackTrace();
+}
+
+while (!Display.isCloseRequested()) {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // CODE HERE
+
+    Display.update();
+    Display.sync(${1:60});
+}
+
+Display.destroy();
+endsnippet
+
+###
+# datatypes/variable
+snippet =i "int" i
+int
+endsnippet
+
+snippet =b "boolean" i
+boolean
+endsnippet
+
+snippet =d "double" i
+double
+endsnippet
+
+snippet =f "float" i
+float
+endsnippet
+
+snippet =e "enum" i
+enum
+endsnippet
+
+snippet =S "String" i
+String
+endsnippet
+
+# Assignments
+snippet i= "int assign"
+int ${1:variableName} = ${2:0};
+endsnippet
+
+snippet b= "boolean assign"
+bool ${1:variableName} = ${2:0};
+endsnippet
+
+snippet d= "double" i
+double ${1:variableName} = ${2:0.0};
+endsnippet
+
+snippet f= "float" i
+float ${1:variableName} = ${2:0.0}f;
+endsnippet
+
+snippet e= "enum" i
+enum ${1:Name} {
+    $2
+}
+endsnippet
+
+snippet S= "String" i
+String ${1:variableName} = ${2:null};
+endsnippet
+
+#
+snippet $ "variable declaration"
+${1:Type} ${2:variableName}$0;
+endsnippet
+
+snippet == "assignment"
+${1:variableName}${3: = }${4:null};
+endsnippet
+
+snippet .= "argument to property assignment"
+this.${1:propertyName} = $1;
+endsnippet
+
+snippet === "constant" b
+static public final ${1:String} ${2:var} = $3;$0
+endsnippet
+
+
+###
+# Classes
+
+snippet __ "constructor"
+${1:public }${2:`!p snip.rv = snip.basename or "ClassName"`}($3) {
+    $0
+}
+endsnippet
+
+snippet main "method (main)" b
+public static void main(String[] args)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+# Getters/Setters
+snippet get "getter"
+public ${1:void} get${2:VarName}() {
+    return this.${2/\w+\s*/\l$0/};
+}
+endsnippet
+
+snippet set "setter"
+public void set${2:VarName}(${3:Type} ${4:value}) {
+    this.${2/\w+\s*/\l$0/} = $4;
+}
+endsnippet
+
+snippet getset "getter & setter"
+public ${1:void} get${2:VarName}() { return this.${2/\w+\s*/\l$0/}; }
+public void set$2($1 ${2/\w+\s*/\l$0/}) { this.${2/\w+\s*/\l$0/} = ${2/\w+\s*/\l$0/}; }
+
+endsnippet
+
+# vim:ft=snippets:

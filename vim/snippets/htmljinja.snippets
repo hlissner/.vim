@@ -1,0 +1,70 @@
+###########################################################################
+#                              TWIG snippets                              #
+###########################################################################
+extends html
+
+snippet if "If conditional"
+{% if ${1:condition} %}
+    ${VISUAL}$0
+{% endif %}
+endsnippet
+
+snippet ife "If-else conditional"
+{% if ${1:condition} %}
+    {%2}
+{% else %}
+    {%3}
+{% endif %}
+endsnippet
+
+snippet else "Else clause"
+{% else %}$0
+endsnippet
+
+snippet for "For loop"
+{% for ${1:var} in ${2:list} %}
+    ${VISUAL}$0
+{% endfor %}
+endsnippet
+
+snippet = "Output block"
+{{ ${VISUAL}${1:var} }}$0
+endsnippet
+
+snippet ## "Comment line"
+{# ${VISUAL}${1:var} #}$0
+endsnippet
+
+snippet ### "Comment block"
+{#
+    ${VISUAL}${1:comment}
+#}$0
+endsnippet
+
+snippet % "Inline code block"
+{% ${VISUAL}${1:var} %}$0
+endsnippet
+
+snippet %% "Code block"
+{% ${1:tag}${2: value} %}
+    ${3}
+{% end${1:tag} %}$0
+endsnippet
+
+snippet set "Set variable block"
+{% set ${1:varname} = ${2:value} %}
+endsnippet
+
+snippet ext "Extends block"
+{% extends ${1:path/to/template.twig} %}
+endsnippet
+
+snippet inc "Include block"
+{% include ${1:path/to/template.twig} %}
+endsnippet
+
+snippet block "Block"
+{% block ${1:name} %}
+    $0
+{% endblock %}
+endsnippet

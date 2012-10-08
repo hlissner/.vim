@@ -1,0 +1,15 @@
+extends css
+
+snippet + "include"
+@include $0;
+endsnippet
+
+snippet if "@if"
+@if $0
+endsnippet
+
+snippet = "mixin"
+@mixin ${1:name}${2:($3)} {
+    $0
+}
+endsnippet
