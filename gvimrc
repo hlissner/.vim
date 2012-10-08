@@ -2,6 +2,7 @@
 "                                 gvimrc                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Yes, quite
 set guifont=Inconsolata:h14
 
 " j doesn't seem to work from terminal
@@ -15,7 +16,7 @@ set go-=r
 set go-=R
 
 if has('gui_macvim')
-    " Replace CMD+T with CtrlP
+    " Replace some CMD shortcuts
     macmenu &File.New\ Tab key=<nop>
     nnoremap <D-t> :CtrlP<CR>
 
@@ -28,6 +29,7 @@ if has('gui_macvim')
     nmap <D-/> <leader>/
     vmap <D-/> <leader>/
 
+    " Fast scrolling shortcut
     nmap <D-j> ∆
     nmap <D-k> ˚
 

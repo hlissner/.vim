@@ -8,8 +8,8 @@
 "   Url: http://github.com/hlissner/mlvim
 "
 "   A vimrc for any web designer, developer or masochist. We all know they're
-"   the same thing. Many of these settings, if not by me, were inspired
-"   from too many places to list.
+"   the same thing. Many of these settings were inspired from too many places 
+"   to list.
 "
 "   This hasn't been tested on windows!
 "
@@ -107,9 +107,9 @@ au!
         " Misc {{
             Bundle 'tomasr/molokai'
         " }}
-
-        filetype plugin indent on
     " }}
+
+    filetype plugin indent on
 " }}
 
 " Preferences {{
@@ -126,9 +126,11 @@ au!
     set ruler                    " Show line/col no in statusline
     set showcmd                  " Show command issued
     set visualbell               " No sounds!
+    set noshowmode
+    set showmatch                " Show matching delimiters
+    set matchtime=2
 
     " Search {{
-        set showmatch            " Show matching delimiters
         set incsearch            " find as you type
         set hlsearch             " Highlight search terms
         set ignorecase           " case insensitive search
@@ -227,14 +229,12 @@ au!
         set noswapfile
         set nobackup
 
-        " Persistent undo
         set undofile
         set undodir=~/.vim/tmp/undo
         set undolevels=500
         set undoreload=500
         set history=500
 
-        " Buffer state persistence
         set viewdir=~/.vim/tmp/views
         set viewoptions=cursor,folds,unix,slash
         augroup persistence
@@ -367,6 +367,10 @@ au!
         " Strip whitespace
         com! -range Trim <line1>,<line2>s/\s\+$//
     " }}
+" }}
+
+" Abbr {{
+
 " }}
 
 " Uility {{
