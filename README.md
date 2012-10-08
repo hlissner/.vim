@@ -1,3 +1,3 @@
-# My Little Vim
+# Dotfiles
 
-A distro for web designers, developers and various other masochists.
+Config for git, vim, and zshrc - feel free to take what's useful to you.
