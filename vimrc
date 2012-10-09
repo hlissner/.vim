@@ -50,6 +50,8 @@ au!
             Bundle 'tpope/vim-unimpaired'
             Bundle 'xolox/vim-easytags'
 
+            Bundle 'YankRing.vim'
+
             Bundle 'PickAColor.vim'
             Bundle 'lilydjwg/colorizer'
             Bundle 'majutsushi/tagbar'
@@ -79,13 +81,14 @@ au!
             Bundle 'pythoncomplete'
 
             " Javascript
-            Bundle 'bloveridge/jslint.vim'
+            "Bundle 'bloveridge/jslint.vim'
             Bundle 'leshill/vim-json'
-            Bundle 'taxilian/vim-web-indent'
+            Bundle 'mmalecki/vim-node.js'
+            Bundle 'pangloss/vim-javascript'
 
             " HTML
             Bundle 'ervandew/sgmlendtag'
-            Bundle 'kogakure/vim-sparkup'
+            Bundle 'tristen/vim-sparkup'
 
             " CSS/SCSS/LESS
             Bundle 'cakebaker/scss-syntax.vim'
@@ -116,7 +119,7 @@ au!
     syntax on
     colorscheme molokai
     set background=dark
-    set synmaxcol=512
+    set synmaxcol=1024
 
     set cursorline               " Highlight current line
     set laststatus=2             " Show statusbar
@@ -128,7 +131,6 @@ au!
     set visualbell               " No sounds!
     set noshowmode
     set showmatch                " Show matching delimiters
-    set matchtime=2
 
     " Search {{
         set incsearch            " find as you type
@@ -247,7 +249,7 @@ au!
 
 " Keymappings {{
     " The rule is simple. Keymappings with leader = apply globally to any filetype.
-    " Keymappings with localleader = apply to specific filetypes.
+    " Keymappings with localleader = apply to specific filetypes or projects.
 
     " Comma get some... sorry.
     let mapleader = ','
@@ -348,6 +350,11 @@ au!
         " Shortcuts to vimrc and gvimrc
         nnoremap <leader>ev :e ~/.vimrc<CR>
         nnoremap <leader>eg :e ~/.gvimrc<CR>
+
+        " Tmp session management
+        nnoremap <leader>ss :w<CR>:mksession! ~/.vim/tmp/session.vim<CR>
+        nnoremap <leader>sl :so ~/.vim/tmp/session.vim<CR>
+        nnoremap <leader>sd :!rm ~/.vim/tmp/session.vim<CR>
     " }}
 
     " Command {{
@@ -359,8 +366,8 @@ au!
         cmap ww! w !sudo tree % >/dev/null
 
         " Shortcuts
-        cnoremap %% <C-R>=expand('%:h').'/'<CR>
-        cnoremap %r <C-R>=expand('%').'/'<CR>
+        cnoremap %% <C-R>=expand('%:p:h').'/'<CR>
+        cnoremap %r <C-R>=expand('%')<CR>
         cnoremap %. <C-R>=expand("%:t")<CR>
         cnoremap !! <C-R>="!".&filetype." "<CR>
         
@@ -476,7 +483,7 @@ au!
     " }}
 
     " Ctrip {{
-        let g:ctrlp_map = '<leader>t'
+        let g:ctrlp_map = '<leader>tt'
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
 
         let g:ctrlp_max_height = 10
@@ -487,7 +494,7 @@ au!
             \ 'file': '\.exe$\|\.so$\|\.dll|\.sass\-cache|\.classpath|\.project$' }
 
         nnoremap <silent> <leader>tb :CtrlPBuffer<CR>
-        nnoremap <silent> <leader>tt :CtrlPTag<CR>
+        nnoremap <silent> <leader>tr :CtrlPTag<CR>
         nnoremap <silent> <leader>tm :CtrlPMRU<CR>
         nnoremap <silent> <leader>tl :CtrlPLine<CR>
         nnoremap <silent> <leader>tc :CtrlPChangeAll<CR>
@@ -520,7 +527,7 @@ au!
     " }}
 
     " Lusty {{
-        nnoremap <leader>B :LustyJuggler<CR>
+        nnoremap <leader><leader> :LustyJuggler<CR>
         nnoremap <leader>. :LustyFilesystemExplorerFromHere<CR>
     " }}
 
@@ -579,8 +586,15 @@ au!
         endif
     " }}
 
+    " SparkUp {{
+        au FileType blade,twig,xml so ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
+    " }}
+
     " Syntastic {{
+        let g:syntastic_enable_highlighting = 0
         let g:syntastic_auto_loc_list=1
+        let g:syntastic_quiet_warnings=1
+        let g:syntastic_phpcs_disable = 1
     " }}
 
     " Tabularize {{
@@ -612,6 +626,12 @@ au!
         let g:indent_guides_guide_size            = 1
         let g:indent_guides_auto_colors           = 1
         let g:indent_guides_color_change_percent  = 4
+    " }}
+    
+    " YankRing {{
+        let g:yankring_history_dir = '~/.vim/tmp/yankring'
+        nnoremap <leader>p :YRShow<CR>
+        nnoremap <leader>y/ :YRSearch<CR>
     " }}
 " }}
 

@@ -4,12 +4,12 @@ export PATH=~/Dropbox/dev/bin:/usr/local/bin:/usr/local/sbin:$PATH
 export EDITOR='vim'
 export RUBYOPT=rubygems
 export CC=gcc-4.2
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # Aliases #######
 alias zrc='vim ~/.zshrc'
 alias dev='cd ~/Dropbox/dev'
 alias vrf='rm ~/.vim/tmp/*/*&rm ~/.vim/session/session.vim'
+alias v='mvim'
 
 # zshrc init ####
 ZSH=$HOME/.oh-my-zsh
@@ -58,4 +58,5 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="$reset_color"
 ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]+"
 ZSH_THEME_GIT_PROMPT_CLEAN="$fg[grey]"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# Load RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

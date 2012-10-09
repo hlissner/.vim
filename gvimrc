@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Yes, quite
-set guifont=Inconsolata:h14
+set guifont=Inconsolata:h16
 
 " j doesn't seem to work from terminal
 set formatoptions+=j
@@ -30,8 +30,8 @@ if has('gui_macvim')
     vmap <D-/> <leader>/
 
     " Fast scrolling shortcut
-    nmap <D-j> ∆
-    nmap <D-k> ˚
+    map <D-j> ∆
+    map <D-k> ˚
 
     " Outside apps {{
         " Open folder in Finder
@@ -42,7 +42,7 @@ if has('gui_macvim')
         nnoremap <silent> <leader>ot :exe '!open -a iTerm '.shellescape(expand("%:p:h"))<CR><CR>
 
         " Send file to transmit for upload (dropsend)
-        noremap <silent> <leader>u :exe '!open -a Transmit '.shellescape(expand("%"))<CR><CR>
+        noremap <silent> <leader>ou :exe '!open -a Transmit '.shellescape(expand("%"))<CR><CR>
     " }}
 endif
 
