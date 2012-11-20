@@ -1,62 +1,43 @@
-export PATH=~/Dropbox/dev/bin:/usr/local/bin:/usr/local/sbin:$PATH
-#export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
-#export HISTCONTROL=ignoreboth
-export EDITOR='vim'
-export RUBYOPT=rubygems
-export CC=gcc-4.2
-
-# Aliases #######
-alias zrc='vim ~/.zshrc'
-alias dev='cd ~/Dropbox/dev'
-alias vrf='rm ~/.vim/tmp/*/*&rm ~/.vim/session/session.vim'
-alias v='mvim'
-
-# zshrc init ####
+# Init ZSH #####
 ZSH=$HOME/.oh-my-zsh
+# ZSH_THEME="kardan"
+
 plugins=(git osx ruby brew vundle)
 source $ZSH/oh-my-zsh.sh
 
-# Theme #########
-function get_pwd() {
-    local PRE= NAME="$PWD" LENGTH="54";
-    [[ "$NAME" != "${NAME#$HOME/}" || -z "${NAME#$HOME}" ]] &&
-        PRE+='~' NAME="${NAME#$HOME}" LENGTH=$[LENGTH-1];
-    ((${#NAME}>$LENGTH)) && NAME="/...${NAME:$[${#NAME}-LENGTH+4]}";
-    echo "$PRE$NAME"
+# ZSH OPTIONS ##
+COMPLETION_WAITING_DOTS="true"
+
+# Path #########
+export PATH=~/Dropbox/dev/bin:/usr/local/bin:/usr/local/sbin:$PATH
+
+# Options ######
+export EDITOR='vim'
+export RUBYOPT=rubygems
+export CC=gcc-4.2
+export CPPFLAGS=-I/opt/X11/include
+
+# Aliases ######
+alias dev='cd ~/Dropbox/dev'
+alias v='mvim'
+alias noss='defaults write -g ApplePressAndHoldEnabled -bool false'
+
+# Prompt #######
+function get_host {
+	echo ' @ '`hostname`''
 }
 
-function put_spacing() {
-    local git=$(git_prompt_info)
-    if [ ${#git} != 0 ]; then
-        ((git=${#git} - 20))
-    else
-        git=0
-    fi
+PROMPT="
+%{$FX[bold]%}%{$fg[cyan]%}%{$BG[234]%}$ "
+RPROMPT="%~$(git_prompt_info)$(get_host)%{$reset_color%}"
 
-    local termwidth
-    (( termwidth = 4 + ${COLUMNS} - ${#HOST} - ${#$(get_pwd)} - ${git} ))
+ZSH_THEME_GIT_PROMPT_PREFIX="["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]"
 
-    local spacing=""
-    for i in {1..$termwidth}; do
-        spacing="${spacing} " 
-    done
-    echo $spacing
-}
-
-function git_prompt_info() {   
-    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-    echo "$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_PREFIX$(current_branch)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-
-PROMPT='
-$bg[grey]$FX[bold]$fg[cyan]%m$fg[white]: $fg[yellow]$(get_pwd)$(put_spacing)$(git_prompt_info)$reset_color
-→ '
-#RPROMPT=''
-
-ZSH_THEME_GIT_PROMPT_PREFIX="$bg[black]$fg[white]"
-ZSH_THEME_GIT_PROMPT_SUFFIX="$reset_color"
-ZSH_THEME_GIT_PROMPT_DIRTY="$fg[red]+"
-ZSH_THEME_GIT_PROMPT_CLEAN="$fg[grey]"
-
-# Load RVM
+# ENV ##########
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

@@ -2,7 +2,7 @@
 	name = Henrik Lissner
 	email = henrik@lissner.net
 [merge]
-	tool = vimdiff
+	tool = mvimdiff
 [core]
 	excludesfile = /Users/Henrik/.gitignore
 	quotepath = false
@@ -15,8 +15,6 @@
 	d = difftool
 	co = checkout
 [diff]
-	tool = Kaleidoscope
-[difftool "Kaleidoscope"]
-	cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+	tool = mvimdiff
 [difftool]
 	prompt = false

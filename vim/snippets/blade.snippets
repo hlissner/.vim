@@ -1,0 +1,111 @@
+extends html
+
+snippet == "output" !i
+{{ ${VISUAL}$1 }}
+endsnippet
+
+snippet -- "comment" i
+{{-- ${VISUAL}$1 --}}
+endsnippet
+
+snippet --- "block comment" i
+{{--
+    ${VISUAL}$1
+--}}
+endsnippet
+
+snippet lay "layout"
+@layout('${1:layoutName}');
+endsnippet
+
+snippet if "if block" !
+@if (${1:condition})
+    ${VISUAL}$0
+@endif
+endsnippet
+
+snippet ife "if/else block" !
+@if (${1:condition})
+    ${VISUAL}$2
+@else
+    $0
+@endif
+endsnippet
+
+snippet for "for block" !
+@for (${1:$i = 0}; $2; ${3:$i++})
+    ${VISUAL}$0
+@endfor
+endsnippet
+
+snippet fore "foreach block" !
+@foreach ($${1:varname} as $${2:valName})
+    ${VISUAL}$0
+@endforeach
+endsnippet
+
+snippet forek "foreach key=>val block" !
+@foreach ($${1:varname} as $${keyName}=>$${2:valName})
+    ${VISUAL}$0
+@endforeach
+endsnippet
+
+snippet forel "forelse block" !
+@forelse ($${1:varname} as $${2:valName})
+    ${VISUAL}$3
+@empty
+    $4
+@endforeach
+endsnippet
+
+snippet forelk "forelse key=>val block" !
+@forelse ($${1:varname} as $${keyName}=>$${2:valName})
+    ${VISUAL}$3
+@empty
+    $4
+@endforeach
+endsnippet
+
+snippet else "else block" !
+@else
+    ${VISUAL}$0
+endsnippet
+
+snippet elif "else if block" !
+@elseif ($1)
+    ${VISUAL}$0
+endsnippet
+
+snippet unl "unless block"
+@unless (${1:condition})
+    ${VISUAL}$0
+@endunless
+endsnippet
+
+snippet sec "section block"
+@section('${1:sectionName}')
+    ${VISUAL}$0
+@endsection
+endsnippet
+
+snippet ysec "section define block"
+@section('${1:sectionName}')
+    ${VISUAL}$0
+@yield_section
+endsnippet
+
+snippet yi "yield"
+@yield('${VISUAL}$1')
+endsnippet
+
+snippet inc "include"
+@include('${VISUAL}$1')
+endsnippet
+
+snippet ren "render"
+@render('${VISUAL}$1')
+endsnippet
+
+snippet ?: "ternary" i
+$1 ? $2 : $3
+endsnippet

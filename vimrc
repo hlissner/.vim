@@ -27,19 +27,22 @@ au!
         Bundle 'gmarik/vundle' 
 
         " General {{
-            Bundle 'matchit.zip'
+            Bundle 'Lokaltog/vim-powerline'
+            Bundle 'PickAColor.vim'
+            Bundle 'Raimondi/delimitMate'
+            Bundle 'YankRing.vim'
             Bundle 'bufkill.vim'
             Bundle 'buftabs'
-            Bundle 'Lokaltog/vim-powerline'
-            Bundle 'Raimondi/delimitMate'
             Bundle 'godlygeek/tabular'
             Bundle 'kien/ctrlp.vim'
+            Bundle 'chrisbra/color_highlight'
+            Bundle 'majutsushi/tagbar'
+            Bundle 'matchit.zip'
             Bundle 'mileszs/ack.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
-            Bundle 'scrooloose/nerdcommenter'
+            Bundle 'tomtom/tcomment_vim'
             Bundle 'scrooloose/nerdtree'
             Bundle 'scrooloose/syntastic'
-            Bundle 'tpope/vim-abolish'
             Bundle 'tpope/vim-endwise'
             Bundle 'tpope/vim-fugitive'
             Bundle 'tpope/vim-pastie'
@@ -50,19 +53,13 @@ au!
             Bundle 'tpope/vim-unimpaired'
             Bundle 'xolox/vim-easytags'
 
-            Bundle 'YankRing.vim'
-
-            Bundle 'PickAColor.vim'
-            Bundle 'lilydjwg/colorizer'
-            Bundle 'majutsushi/tagbar'
-
             if has("python")
                 Bundle 'SirVer/ultisnips'
             endif
 
             if has("ruby")
                 Bundle 'LustyJuggler'
-                Bundle 'LustyExplorer'
+                " Bundle 'LustyExplorer'
             endif
         " }}
 
@@ -81,7 +78,6 @@ au!
             Bundle 'pythoncomplete'
 
             " Javascript
-            "Bundle 'bloveridge/jslint.vim'
             Bundle 'leshill/vim-json'
             Bundle 'mmalecki/vim-node.js'
             Bundle 'pangloss/vim-javascript'
@@ -312,7 +308,7 @@ au!
         imap <expr> <C-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
         imap <expr> <S-C-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
         imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-o>"
-        imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<<C-x><C-o>"
+        imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-o>"
         " A convenient mapping (thanks spf13)
         inoremap <expr> <Esc>   pumvisible() ? "\<C-e>" : "\<Esc>"
 
@@ -363,7 +359,7 @@ au!
         com! Q q
         com! WQ wq
         " Forget to sudo? (Thanks spf13)
-        cmap ww! w !sudo tree % >/dev/null
+        com! WW w !sudo tree % >/dev/null
 
         " Shortcuts
         cnoremap %% <C-R>=expand('%:p:h').'/'<CR>
@@ -374,10 +370,6 @@ au!
         " Strip whitespace
         com! -range Trim <line1>,<line2>s/\s\+$//
     " }}
-" }}
-
-" Abbr {{
-
 " }}
 
 " Uility {{
@@ -473,8 +465,7 @@ au!
     " }}
 
     " Colorizer {{
-        let g:colorizer_nomap = 1
-        nmap <leader>ct <Plug>Colorizer
+        let g:colorizer_auto_color = 0
     " }}
 
     " CTags {{
@@ -483,7 +474,7 @@ au!
     " }}
 
     " Ctrip {{
-        let g:ctrlp_map = '<leader>tt'
+        let g:ctrlp_map = '<leader>.'
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
 
         let g:ctrlp_max_height = 10
@@ -528,21 +519,6 @@ au!
 
     " Lusty {{
         nnoremap <leader><leader> :LustyJuggler<CR>
-        nnoremap <leader>. :LustyFilesystemExplorerFromHere<CR>
-    " }}
-
-    " NERDCommenter {{
-        " Toggle commenting of current line
-        map <silent> <leader>/ <leader>c<space>
-
-        let g:NERDShutUp = 1
-        let g:NERDCustomDelimiters = {
-            \ 'less': { 'left': '//' },
-            \ 'scss': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
-            \ 'html': { 'left': '<!--', 'right': '-->' },
-            \ 'htmljinja': { 'left': '{#', 'right': '#}' },
-            \ 'twig': { 'left': '{#', 'right': '#}' }
-        \ }
     " }}
 
     " NERDTree {{
@@ -594,7 +570,7 @@ au!
         let g:syntastic_enable_highlighting = 0
         let g:syntastic_auto_loc_list=1
         let g:syntastic_quiet_warnings=1
-        let g:syntastic_phpcs_disable = 1
+        let g:syntastic_phpcs_disable=1
     " }}
 
     " Tabularize {{
@@ -614,8 +590,17 @@ au!
         nnoremap <silent> <leader>r :TagbarToggle<CR>
     " }}
 
+    " TComment {{
+        map <silent> <leader>/ gcc
+
+        let g:tcomment_types = {}
+        let g:tcomment_types['blade'] = '{{-- %s --}}'
+        let g:tcomment_types['twig'] = '{# %s #}'
+    " }}
+
     " UltiSnips {{
         let g:UltiSnipsSnippetDirectories = ['snippets']
+        let g:UltiSnipsExpandTrigger = "<tab>"
         let g:UltiSnipsJumpForwardTrigger = "<tab>"
         let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
     " }}
