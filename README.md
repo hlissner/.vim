@@ -88,13 +88,19 @@ Laravel, Symfony, etc), etc.
     :FetchManage        Opens a dictionary with references to online assets
     :Fetch <name>       Fetches the file or package
 
-A common assets dictionary might look like:
+This is what my assets dictionary looks like:
 
     {
-        "jquery":             "http://code.jquery.com/jquery.min.js",
-        "jquery-dev":         "http://code.jquery.com/jquery.js",
-        "html5-boilerplate":  "http://github.com/h5bp/html5-boilerplate/tarball/master"
-    }
+        "normalize":            "https://raw.github.com/necolas/normalize.css/master/normalize.css (./public/styles/normalize.css)",
+        "html5-boilerplate":    "http://github.com/h5bp/html5-boilerplate/tarball/master (./public)",
+        "bootstrap":            "http://twitter.github.com/bootstrap/assets/bootstrap.zip (./public)",
+        "bootstrap-css":        "http://twitter.github.com/bootstrap/assets/css/bootstrap.css (./public/styles/bootstrap.css)",
+        "bootstrap-responsive": "http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css (./public/styles/bootstrap-responsive.css)",
+        "underscore":           "http://documentcloud.github.com/underscore/underscore.js (./)",
+        "backbone":             "http://documentcloud.github.com/backbone/backbone.js (./)",
+        "laravel":              "http://laravel.com/download (./)",
+        "codeignitor":          "http://ellislab.com/codeigniter/download (./)"
+    }  
 
 ([source](https://github.com/mklabs/vim-fetch))
 
