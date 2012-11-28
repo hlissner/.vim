@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Yes, quite
-set guifont=Inconsolata:h16
+set guifont=Inconsolata:h14
 
 " j doesn't seem to work from terminal
 set formatoptions+=j
@@ -16,9 +16,14 @@ set go-=r
 set go-=R
 
 if has('gui_macvim')
+    set transparency=2
     " Replace some CMD shortcuts
     macmenu &File.New\ Tab key=<nop>
+    macmenu &File.Open\.\.\. key=<nop>
+
     nnoremap <D-t> :CtrlP<CR>
+    nnoremap <D-o> :e <C-R>=expand("%:p:h")<CR>/
+    nnoremap <D-O> :CtrlPBuffer<CR>
 
     " Textmate-like CMD+Enter
     inoremap <D-CR> <C-O>o

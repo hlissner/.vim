@@ -46,12 +46,12 @@ au!
             Bundle 'tpope/vim-endwise'
             Bundle 'tpope/vim-fugitive'
             Bundle 'tpope/vim-pastie'
-            Bundle 'tpope/vim-ragtag'
             Bundle 'tpope/vim-repeat'
             Bundle 'tpope/vim-speeddating'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-unimpaired'
             Bundle 'xolox/vim-easytags'
+            Bundle 'mklabs/vim-fetch'
 
             if has("python")
                 Bundle 'SirVer/ultisnips'
@@ -85,6 +85,7 @@ au!
             " HTML
             Bundle 'ervandew/sgmlendtag'
             Bundle 'tristen/vim-sparkup'
+            Bundle 'digitaltoad/vim-jade'
 
             " CSS/SCSS/LESS
             Bundle 'cakebaker/scss-syntax.vim'
@@ -92,9 +93,6 @@ au!
 
             " Ruby
             Bundle 'rails.vim'
-
-            " Java
-            Bundle 'pwicks86/eclim-for-vundle'
 
             " Other
             Bundle 'kchmck/vim-coffee-script'
@@ -115,9 +113,8 @@ au!
     syntax on
     colorscheme molokai
     set background=dark
-    set synmaxcol=1024
+    set synmaxcol=512
 
-    set cursorline               " Highlight current line
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show tabs (indent-guides does it nicer)
     set nospell                  " No spell check, please
@@ -504,10 +501,6 @@ au!
         let g:easytags_updatetime_autodisable = 1
     " }}
 
-    " Eclim {{
-        let g:EclimEclipseHome = "/Applications/eclipse"
-    " }}
-
     " Fugitive {{
         nnoremap <silent> <leader>gs :Gstatus<CR>
         nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -522,16 +515,15 @@ au!
     " }}
 
     " NERDTree {{
-        let NERDTreeMinimalUI = 1
+        let NERDTreeMinimalUI=1
         nnoremap <leader>n :NERDTreeToggle<CR>
         nnoremap <leader>N :NERDTreeFind<CR>
 
-        let NERDTreeChDirMode=0
         let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
-        let NERDTreeKeepTreeInNewTab=0
         let NERDTreeQuitOnOpen=0
         let NERDTreeShowBookmarks=0
         let NERDTreeShowHidden=1
+        let NERDTreeAutoDeleteBuffer=1
     " }}
 
     " PIV {{
@@ -609,7 +601,7 @@ au!
         let g:indent_guides_enable_on_vim_startup = 1
         let g:indent_guides_start_level           = 2
         let g:indent_guides_guide_size            = 1
-        let g:indent_guides_auto_colors           = 1
+        " let g:indent_guides_auto_colors           = 1
         let g:indent_guides_color_change_percent  = 4
     " }}
     
