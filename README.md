@@ -392,7 +392,7 @@ Check out the docs for more.
 * [CoffeeScript](http://coffeescript.org/)
 
 ## For the mac
-In .gimrc, I've added a four keyboard shortcuts:
+In .gvimrc, I've added a four keyboard shortcuts:
 
     <leader>of      Reveals the current file in finder
     <leader>ol      Sends the current file to launchbar
