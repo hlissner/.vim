@@ -1,6 +1,5 @@
-# My Little Vim
 
-## Introduction
+# My Little Vim
 
 mlvim is a distribution of plugins, resources and settings primarily for vim
 and [MacVim](http://code.google.com/p/macvim/) for web developers.
@@ -8,6 +7,42 @@ and [MacVim](http://code.google.com/p/macvim/) for web developers.
 It uses [Vundle](https://github.com/gmarik/vundle) to keep plugins in check!
 
 **Disclaimer:** For windows users, your mileage may vary.
+
+## Table of Contents
+
+- [My Little Vim](#my-little-vim)
+	- [Requirements](#requirements)
+	- [Installation](#installation)
+- [Plugins](#plugins)
+	- [Bundles](#bundles)
+		- [Ack](#ack)
+		- [Colorizer](#colorizer)
+		- [CtrlP](#ctrlp)
+		- [NetTuts+ Fetch](#nettuts+-fetch)
+		- [NERDTree](#nerdtree)
+		- [PickAColor](#pickacolor)
+		- [Powerline](#powerline)
+		- [Syntastic](#syntastic)
+		- [Tabular](#tabular)
+		- [Tagbar](#tagbar)
+		- [YankRing](#yankring)
+		- [bufkill](#bufkill)
+		- [buftabs](#buftabs)
+		- [delimitMate](#delimitmate)
+		- [LustyJuggler](#lustyjuggler)
+		- [tcomment](#tcomment)
+		- [ultisnips](#ultisnips)
+		- [vim-easytags](#vim-easytags)
+		- [vim-endwise](#vim-endwise)
+		- [vim-fugitive](#vim-fugitive)
+		- [vim-indent-guides](#vim-indent-guides)
+		- [vim-pastie](#vim-pastie)
+		- [vim-preview](#vim-preview)
+		- [vim-repeat](#vim-repeat)
+		- [vim-surround](#vim-surround)
+		- [vim-unimpaired](#vim-unimpaired)
+	- [Additional Syntaxes](#additional-syntaxes)
+	- [For the mac](#for-the-mac)
 
 ## Requirements
 Vim needs to be built with ruby and python for some of its plugins (though they

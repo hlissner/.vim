@@ -1,4 +1,5 @@
 vim/sessions/*
 vim/tmp/*
-vim/bundle/*
+vim/bundle
 .DS_Store
+tags
