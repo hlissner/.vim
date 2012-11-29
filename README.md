@@ -55,7 +55,7 @@ I'd recommend you install macvim via
 ## Installation
 A simple case of:
 
-    git clone https://github.com/hlissner/mlvim
+    git clone https://github.com/hlissner/mlvim ~/.vim
 
 # Plugins
 ## Bundles
