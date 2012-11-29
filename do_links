@@ -2,7 +2,7 @@
 
 BASE=`dirname $0:A`
 
-ln -sf "$BASE/vim" ~/.vim
+ln -sf "$BASE" ~/.vim
 ln -sf "$BASE/vimrc" ~/.vimrc
 ln -sf "$BASE/gvimrc" ~/.gvimrc
 

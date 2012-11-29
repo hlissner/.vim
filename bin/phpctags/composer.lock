@@ -1,0 +1,17 @@
+{
+    "hash": "2c71d26309ab0eb31ff7e9016777c02b",
+    "packages": [
+        {
+            "package": "nikic/php-parser",
+            "version": "v0.9.2"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ]
+}

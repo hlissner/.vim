@@ -1,5 +1,5 @@
-vim/sessions/*
-vim/tmp/*
-vim/bundle
+sessions/*
+tmp/*
+bundle
 .DS_Store
 tags
