@@ -8,10 +8,7 @@
 "   Url: http://github.com/hlissner/mlvim
 "
 "   A vimrc for any web designer, developer or masochist. We all know they're
-"   the same thing. Many of these settings were inspired from too many places 
-"   to list.
-"
-"   This hasn't been tested on windows!
+"   the same thing.
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
