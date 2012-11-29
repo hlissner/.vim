@@ -2,7 +2,9 @@
 
 BASE=`dirname $0:A`
 
-ln -sf "$BASE" ~/.vim
+if [ !-f ~/.vim ]; then
+    ln -sf "$BASE" ~/.vim
+fi
 ln -sf "$BASE/vimrc" ~/.vimrc
 ln -sf "$BASE/gvimrc" ~/.gvimrc
 

@@ -1,5 +1,5 @@
 sessions/*
-tmp/*
-bundle
+tmp/*/*
+bundle/
 .DS_Store
 tags

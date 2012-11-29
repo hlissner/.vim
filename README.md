@@ -53,9 +53,11 @@ I'd recommend you install macvim via
 [homebrew](http://mxcl.github.com/homebrew/).
 
 ## Installation
-A simple case of:
+Clone it, install vundle and run "do_links" to symlink .g?vimrc and .vim to your home directory.
 
     git clone https://github.com/hlissner/mlvim ~/.vim
+    git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    ~/.vim/do_links
 
 # Plugins
 ## Bundles
