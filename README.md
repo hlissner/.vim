@@ -1,12 +1,13 @@
 
 # My Little Vim
 
+![mlvim](http://n4s.co/mlvim.png)
+
 mlvim is a distribution of plugins, resources and settings primarily for vim
-and [MacVim](http://code.google.com/p/macvim/) for web developers.
+and [MacVim](http://code.google.com/p/macvim/) (your mileage will vary on
+windows) for web developers.
 
 It uses [Vundle](https://github.com/gmarik/vundle) to keep plugins in check!
-
-**Disclaimer:** For windows users, your mileage may vary.
 
 ## Table of Contents
 
