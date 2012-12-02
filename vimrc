@@ -110,7 +110,7 @@ au!
     syntax on
     colorscheme molokai
     set background=dark
-    set synmaxcol=512
+    set synmaxcol=1024
 
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show tabs (indent-guides does it nicer)
@@ -238,8 +238,8 @@ au!
 " }}
 
 " Keymappings {{
-    " The rule is simple. Keymappings with leader = apply globally to any filetype.
-    " Keymappings with localleader = apply to specific filetypes or projects.
+    " The rule is simple. Keymappings with leader apply globally to any filetype.
+    " Keymappings with localleader apply to specific filetypes or projects.
 
     " Comma get some... sorry.
     let mapleader = ','

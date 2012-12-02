@@ -3,7 +3,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Yes, quite
-set guifont=Inconsolata:h14
+" set guifont=Inconsolata:h16
+set guifont=Menlo:h14
 
 " j doesn't seem to work from terminal
 set formatoptions+=j
@@ -25,6 +26,9 @@ if has('gui_macvim')
     nnoremap <D-o> :e <C-R>=expand("%:p:h")<CR>/
     nnoremap <D-O> :CtrlPBuffer<CR>
 
+    " Quick way to refer to my dev folder (I use homebrew)
+    cnoremap $$ ~/usr/local/dev/
+
     " Textmate-like CMD+Enter
     inoremap <D-CR> <C-O>o
     inoremap <S-D-CR> <C-O>O
@@ -33,6 +37,7 @@ if has('gui_macvim')
     imap <D-/> <C-o><leader>/
     nmap <D-/> <leader>/
     vmap <D-/> <leader>/
+
 
     " Fast scrolling shortcut
     map <D-j> ∆
