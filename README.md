@@ -49,7 +49,7 @@ simply won't be active if you don't have them).
 I'd recommend you install macvim via 
 [homebrew](http://mxcl.github.com/homebrew/).
 
-Alos, it uses [Vundle](https://github.com/gmarik/vundle) to keep plugins in check!
+Also, it uses [Vundle](https://github.com/gmarik/vundle) to keep plugins in check!
 
 ## Installation
 Clone it, install vundle and run "do_links" to symlink .g?vimrc and .vim to your home directory.
