@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+BASE=`dirname $0:A`
+
+if [ !-f ~/.vim ]; then
+    ln -sf "$BASE" ~/.vim
+fi
+ln -sf "$BASE/vimrc" ~/.vimrc
+ln -sf "$BASE/gvimrc" ~/.gvimrc
+
+echo "VIM successfully linked!"
+
+if [ !-d $BASE/bundle/vundle ]; then
+    git clone https://github.com/gmarik/vundle $BASE/bundle/vundle
+fi
+
+mkdir -p $BASE/tmp/yankring $BASE/tmp/views $BASE/tmp/undo $BASE/tmp/tags $BASE/tmp/ctrip

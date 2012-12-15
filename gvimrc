@@ -2,8 +2,7 @@
 "                                 gvimrc                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Yes, quite
-" set guifont=Inconsolata:h16
+" mmyes, quite
 set guifont=Menlo:h14
 
 " j doesn't seem to work from terminal
@@ -17,7 +16,6 @@ set go-=r
 set go-=R
 
 if has('gui_macvim')
-    set transparency=2
     " Replace some CMD shortcuts
     macmenu &File.New\ Tab key=<nop>
     macmenu &File.Open\.\.\. key=<nop>
@@ -27,7 +25,7 @@ if has('gui_macvim')
     nnoremap <D-O> :CtrlPBuffer<CR>
 
     " Quick way to refer to my dev folder (I use homebrew)
-    cnoremap $$ ~/usr/local/dev/
+    cnoremap $$ /usr/local/dev/
 
     " Textmate-like CMD+Enter
     inoremap <D-CR> <C-O>o
@@ -37,7 +35,6 @@ if has('gui_macvim')
     imap <D-/> <C-o><leader>/
     nmap <D-/> <leader>/
     vmap <D-/> <leader>/
-
 
     " Fast scrolling shortcut
     map <D-j> ∆
@@ -51,8 +48,32 @@ if has('gui_macvim')
         " Open a terminal CD'd to the current file's folder
         nnoremap <silent> <leader>ot :exe '!open -a iTerm '.shellescape(expand("%:p:h"))<CR><CR>
 
-        " Send file to transmit for upload (dropsend)
-        noremap <silent> <leader>ou :exe '!open -a Transmit '.shellescape(expand("%"))<CR><CR>
+        " Send to transmit for FTP upload
+        au FileType scss,less,stylus 
+            \ let b:ml_upload_dir = "../css" |
+            \ let b:ml_upload_ext = "css"
+
+        func! MlUpload()
+            if exists('b:ml_upload_ext')
+                let basedir = expand("%:p:h") . "/" . b:ml_upload_dir . "/"
+                let filename = expand("%:t:r") . "." . b:ml_upload_ext
+                if filereadable(basedir.filename)
+                    call system('!open -a Transmit ' . shellescape(basedir . filename))
+                    echom "File uploaded (".filename.")"
+                else
+                    echoe "Couldn't find file to upload (".filename.")"
+                endif
+            else
+                if strlen(expand("%"))
+                    call system('!open -a Transmit ' . shellescape(expand("%")))
+                    echom "File uploaded (".expand("%:t").")"
+                else
+                    echoe "File must be saved!"
+                endif
+            endif
+        endfunc
+
+        nnoremap <silent> <leader>ou :call MlUpload()<CR>
     " }}
 endif
 

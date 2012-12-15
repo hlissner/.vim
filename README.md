@@ -4,10 +4,9 @@
 ![mlvim](http://n4s.co/mlvim.png)
 
 mlvim is a distribution of plugins, resources and settings primarily for vim
-and [MacVim](http://code.google.com/p/macvim/) (your mileage will vary on
-windows) for web developers.
+and [MacVim](http://code.google.com/p/macvim/).
 
-It uses [Vundle](https://github.com/gmarik/vundle) to keep plugins in check!
+I've only done a limited amount of testing on windows, so your mileage may vary.
 
 ## Table of Contents
 
@@ -28,9 +27,7 @@ It uses [Vundle](https://github.com/gmarik/vundle) to keep plugins in check!
 		- [Tagbar](#tagbar)
 		- [YankRing](#yankring)
 		- [bufkill](#bufkill)
-		- [buftabs](#buftabs)
 		- [delimitMate](#delimitmate)
-		- [LustyJuggler](#lustyjuggler)
 		- [tcomment](#tcomment)
 		- [ultisnips](#ultisnips)
 		- [vim-easytags](#vim-easytags)
@@ -51,6 +48,8 @@ simply won't be active if you don't have them).
 
 I'd recommend you install macvim via 
 [homebrew](http://mxcl.github.com/homebrew/).
+
+Alos, it uses [Vundle](https://github.com/gmarik/vundle) to keep plugins in check!
 
 ## Installation
 Clone it, install vundle and run "do_links" to symlink .g?vimrc and .vim to your home directory.
@@ -239,32 +238,11 @@ them) without affecting the window layout.
 
 ([source](https://github.com/vim-scripts/bufkill.vim))
 
-### buftabs
-Buftabs shows a list of your open tabs in the command bar. Yes, it will
-disappear a lot of the time, and it's not as useful as LustyJuggler or CtrlP
-for keeping track of your buffers - but it takes up less room than
-miniBufExplorer and doesn't act like it's own buffer.
-
-([source](https://github.com/vim-scripts/buftabs))
-
 ### delimitMate
 Auto-inserts closing quotes, parenthesis, brackets, etc. This just makes insert
 mode a whole lot nicer.
 
 ([source](https://github.com/Raimondi/delimitMate))
-
-### LustyJuggler
-Sure, you can use CtrlP to switch buffers, but sometimes you need something
-quicker - or just for a glance at what buffers are open (when buftabs are
-failing you).
-
-    <leader>lj      Triggers LustyJuggler
-
-The command line will turn into a |-delimited list of buffers, which will
-correctly to keys on your home row. Potentially less typing if you're working
-with fewer buffers. For everything else, there's mast–er, CtrlP.
-
-([source](https://github.com/vim-scripts/LustyJuggler))
 
 ### tcomment
 There's also NERDCommenter, but I chose tcomment because it has more vim-natural 
@@ -401,6 +379,10 @@ In .gvimrc, I've added a four keyboard shortcuts:
     <leader>ol      Sends the current file to launchbar
     <leader>ot      Opens iTerm and cd's to this file's directory
     <leader>ou      Send current file to Transmit (for docksend)
+
+**Note**: send-to-transmit is intelligent with sass, less and stylus
+stylesheets. It will look for a compiled css file in ../css and send that to
+transmit instead of the source file.
 
 Check the .gvimrc file for other mac-specific shortcuts.
 

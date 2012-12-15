@@ -16,6 +16,8 @@ set nocompatible
 scriptencoding utf-8
 au!
 
+let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
+
 " Vundle {{
     set rtp+=~/.vim/bundle/vundle
     call vundle#rc()
@@ -29,7 +31,6 @@ au!
             Bundle 'Raimondi/delimitMate'
             Bundle 'YankRing.vim'
             Bundle 'bufkill.vim'
-            Bundle 'buftabs'
             Bundle 'godlygeek/tabular'
             Bundle 'kien/ctrlp.vim'
             Bundle 'chrisbra/color_highlight'
@@ -53,11 +54,6 @@ au!
             if has("python")
                 Bundle 'SirVer/ultisnips'
             endif
-
-            if has("ruby")
-                Bundle 'LustyJuggler'
-                " Bundle 'LustyExplorer'
-            endif
         " }}
 
         " Syntaxes {{
@@ -80,7 +76,7 @@ au!
             Bundle 'pangloss/vim-javascript'
 
             " HTML
-            Bundle 'ervandew/sgmlendtag'
+            " Bundle 'ervandew/sgmlendtag'
             Bundle 'tristen/vim-sparkup'
             Bundle 'digitaltoad/vim-jade'
 
@@ -110,7 +106,6 @@ au!
     syntax on
     colorscheme molokai
     set background=dark
-    set synmaxcol=1024
 
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show tabs (indent-guides does it nicer)
@@ -121,6 +116,7 @@ au!
     set visualbell               " No sounds!
     set noshowmode
     set showmatch                " Show matching delimiters
+    set browsedir=buffer         " Sets File>Open to start in current file's path
 
     " Search {{
         set incsearch            " find as you type
@@ -131,6 +127,9 @@ au!
     " }}
 
     " Behavior {{
+        set synmaxcol=1024
+        syntax sync minlines=256
+
         set backspace=indent,eol,start
         set mouse=a
         set lazyredraw           " Don't update screen while running macros
@@ -189,7 +188,7 @@ au!
             set colorcolumn=85
             
             " see :h fo-table
-            set formatoptions=qrn1l
+            set formatoptions=qron1l
         " }}
     " }}
 
@@ -338,13 +337,14 @@ au!
         nnoremap <C-w>N :vnew<CR>
 
         " Shortcuts to vimrc and gvimrc
-        nnoremap <leader>ev :e ~/.vimrc<CR>
-        nnoremap <leader>eg :e ~/.gvimrc<CR>
+        nnoremap <leader>ev :e <C-R>=VIMDIR<CR>/vimrc<CR>
+        nnoremap <leader>eg :e <C-R>=VIMDIR<CR>/gvimrc<CR>
 
         " Tmp session management
-        nnoremap <leader>ss :w<CR>:mksession! ~/.vim/tmp/session.vim<CR>
-        nnoremap <leader>sl :so ~/.vim/tmp/session.vim<CR>
-        nnoremap <leader>sd :!rm ~/.vim/tmp/session.vim<CR>
+        let VIMDIR_SESS = VIMDIR."/tmp/session.vim"
+        nnoremap <leader>ss :w<CR>:mksession! <C-R>=VIMDIR_SESS<CR><CR>
+        nnoremap <leader>sl :so <C-R>=VIMDIR_SESS<CR><CR>
+        nnoremap <leader>sd :!rm <C-R>=VIMDIR_SESS<CR><CR>
     " }}
 
     " Command {{
@@ -367,7 +367,7 @@ au!
 " }}
 
 " Uility {{
-    " Functions {{
+    " Run inline code {{
         func! MlRun()
             let src = expand("%")
             let dst = tempname()
@@ -398,30 +398,6 @@ au!
             call MlPreview(dst)
         endfunc
 
-        func! MlSwitch(alt_exts)
-            let file_prefix = expand("%:r").'.'
-            if len(a:alt_exts) == 0 || a:alt_exts[0] == ""
-                if exists("g:ml_last_ft")
-                    let a:alt_exts[0] = g:ml_last_ft
-                elseif len(a:alt_exts == 0)
-                    echom "No source files found or readable to switch to"
-                    return
-                endif
-            endif
-            for ft in a:alt_exts
-                if filereadable(file_prefix.ft)
-                    let file = file_prefix.ft
-                    break
-                endif
-            endfor
-            if exists("file")
-                let g:ml_last_ft = expand("%:e")
-                exe "e ".escape(file)
-            else
-                echoe "No source files found or readable to switch to."
-            endif
-        endfunc
-
         func! MlPreview(tmpfile)
             silent exe ":pedit! ".a:tmpfile
             wincmd P
@@ -429,6 +405,16 @@ au!
             nnoremap <buffer> <Esc> :pclose<CR>
         endfunc
         
+        au FileType php,python,ruby,sh 
+            \ let b:ml_bin=&filetype | 
+            \ let b:ml_prepend="" | 
+            \ cnoremap !! !<C-R>=b:ml_bin<CR> |
+            \ nnoremap <buffer><silent> <localleader>r :call MlRun()<CR> |
+            \ vnoremap <buffer><silent> <localleader>r :call MlRunRange()<CR>
+        au FileType php let b:ml_prepend="<?php "
+    " }}
+
+    " Debugging {{
         " Reveal syntax highlighting group under cursor
         func! <SID>SynStack()
             if !exists("*synstack")
@@ -437,48 +423,32 @@ au!
             echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
         endfunc
 
-    " }}
-
-    " Setup {{
-        au FileType php,python,ruby,sh 
-            \ let b:ml_bin=&filetype | 
-            \ let b:ml_prepend="" | 
-            \ cnoremap !! !<C-R>=b:ml_bin<CR> |
-            \ nnoremap <buffer><silent> <localleader>r :call MlRun()<CR> |
-            \ vnoremap <buffer><silent> <localleader>r :call MlRunRange()<CR>
-        au FileType php let b:ml_prepend="<?php "
         nmap <C-S-P> :call <SID>SynStack()<CR>
     " }}
 " }}
 
 " Plugin Settings {{
-    " BufTabs {{
-        let g:buftabs_separator = "·"
-        let g:buftabs_marker_start = "["
-        let g:buftabs_marker_end = "]"
-    " }}
-
     " Colorizer {{
         let g:colorizer_auto_color = 0
     " }}
 
     " CTags {{
         set tags=./.tags;/,~/.tags
-        let g:tagbar_phpctags_bin="~/.vim/bin/phpctags/phpctags"
+        let g:tagbar_phpctags_bin = VIMDIR."/bin/phpctags/phpctags"
     " }}
 
     " Ctrip {{
         let g:ctrlp_map = '<leader>.'
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
 
-        let g:ctrlp_max_height = 10
-        let g:ctrlp_cache_dir = "~/.vim/tmp/ctrip"
+        let g:ctrlp_max_height = 12
+        let g:ctrlp_cache_dir = VIMDIR."/tmp/ctrip"
         let g:ctrlp_working_path_mode = 0
         let g:ctrlp_custom_ignore = {
             \ 'dir':  '\.git$\|\.hg$\|\.svn|\.settings$',
             \ 'file': '\.exe$\|\.so$\|\.dll|\.sass\-cache|\.classpath|\.project$' }
 
-        nnoremap <silent> <leader>tb :CtrlPBuffer<CR>
+        nnoremap <silent> <leader>, :CtrlPBuffer<CR>
         nnoremap <silent> <leader>tr :CtrlPTag<CR>
         nnoremap <silent> <leader>tm :CtrlPMRU<CR>
         nnoremap <silent> <leader>tl :CtrlPLine<CR>
@@ -494,7 +464,7 @@ au!
     " EasyTags {{
         let g:easytags_cmd = 'ctags'
         let g:easytags_dynamic_files = 1
-        let g:easytags_by_filetype = "~/.vim/tmp/tags"
+        let g:easytags_by_filetype = VIMDIR."/tmp/tags"
         let g:easytags_updatetime_autodisable = 1
     " }}
 
@@ -505,10 +475,6 @@ au!
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>
-    " }}
-
-    " Lusty {{
-        nnoremap <leader><leader> :LustyJuggler<CR>
     " }}
 
     " NERDTree {{
@@ -552,7 +518,7 @@ au!
     " }}
 
     " SparkUp {{
-        au FileType blade,twig,xml so ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
+        au FileType blade,twig,xml so <C-R>=VIMDIR<CR>/bundle/vim-sparkup/ftplugin/html/sparkup.vim
     " }}
 
     " Syntastic {{
@@ -603,7 +569,7 @@ au!
     " }}
     
     " YankRing {{
-        let g:yankring_history_dir = '~/.vim/tmp/yankring'
+        let g:yankring_history_dir = VIMDIR.'/tmp/yankring'
         nnoremap <leader>p :YRShow<CR>
         nnoremap <leader>y/ :YRSearch<CR>
     " }}
