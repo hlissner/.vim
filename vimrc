@@ -19,7 +19,7 @@ au!
 let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
 " Vundle {{
-    set rtp+=~/.vim/bundle/vundle
+    let &rtp.=','.VIMDIR."/bundle/vundle"
     call vundle#rc()
 
     " Bundles {{
@@ -76,7 +76,6 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             Bundle 'pangloss/vim-javascript'
 
             " HTML
-            " Bundle 'ervandew/sgmlendtag'
             Bundle 'tristen/vim-sparkup'
             Bundle 'digitaltoad/vim-jade'
 
@@ -137,8 +136,8 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         set nostartofline
 
         set clipboard+=unnamed
-        set scrolloff=10
         set shortmess+=filmnrxoOtTs
+        set scrolloff=10
     " }}
 
     " Omnicomplete {{
@@ -193,7 +192,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     " }}
 
     " Folding {{
-        set foldenable
+        " set foldenable
         set foldlevel=1
 
         " Cleaner, readable fold headers
@@ -217,16 +216,21 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
     " Backups, swapfiles, persistence {{
         " No backup (that's what git is for!) and swapfiles are annoying
+        let &undodir=VIMDIR . "/tmp/undo"
+        let &viewdir=VIMDIR . "/tmp/views"
+
+        func! MlClearTmpViews()
+            exe "!rm -rf ".VIMDIR."/tmp/views/*"
+        endfunc
+
         set noswapfile
         set nobackup
 
         set undofile
-        set undodir=~/.vim/tmp/undo
         set undolevels=500
         set undoreload=500
         set history=500
 
-        set viewdir=~/.vim/tmp/views
         set viewoptions=cursor,folds,unix,slash
         augroup persistence
             au!
@@ -433,7 +437,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     " }}
 
     " CTags {{
-        set tags=./.tags;/,~/.tags
+        set tags=./.tags;/,~/.tags,~/tags
         let g:tagbar_phpctags_bin = VIMDIR."/bin/phpctags/phpctags"
     " }}
 
