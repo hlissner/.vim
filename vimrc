@@ -375,12 +375,17 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         func! MlRun()
             let src = expand("%")
             let dst = tempname()
+            " If the file has been saved...
             if src != ""
+                " Run it through the interpreter and save output to a tmpfile
                 silent exe "!".b:ml_bin." ".shellescape(src)." > ".shellescape(dst)
             else
+                " Otherwise, run the contents directly through the interpreter
+                " (out to a tmpfile)
                 silent exe "w !".b:ml_bin." > ".shellescape(dst)
             endif
 
+            " Display it in a preview buffer
             call MlPreview(dst)
         endfunc
 
@@ -421,10 +426,9 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     " Debugging {{
         " Reveal syntax highlighting group under cursor
         func! <SID>SynStack()
-            if !exists("*synstack")
-                return
+            if exists("*synstack")
+                echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
             endif
-            echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
         endfunc
 
         nmap <C-S-P> :call <SID>SynStack()<CR>
