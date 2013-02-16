@@ -3,7 +3,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " mmyes, quite
-set guifont=Menlo:h14
+set guifont=Anonymous\ Pro:h15
 
 " j doesn't seem to work from terminal
 set formatoptions+=j
@@ -58,14 +58,14 @@ if has('gui_macvim')
                 let basedir = expand("%:p:h") . "/" . b:ml_upload_dir . "/"
                 let filename = expand("%:t:r") . "." . b:ml_upload_ext
                 if filereadable(basedir.filename)
-                    call system('!open -a Transmit ' . shellescape(basedir . filename))
+                    call system('open -a Transmit ' . shellescape(basedir . filename))
                     echom "File uploaded (".filename.")"
                 else
                     echoe "Couldn't find file to upload (".filename.")"
                 endif
             else
                 if strlen(expand("%"))
-                    call system('!open -a Transmit ' . shellescape(expand("%")))
+                    call system('open -a Transmit ' . shellescape(expand("%")))
                     echom "File uploaded (".expand("%:t").")"
                 else
                     echoe "File must be saved!"

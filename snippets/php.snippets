@@ -6,11 +6,11 @@ extends html
 #  PHP Blocks  #
 ################
 
-snippet php "PHP block"
+snippet phpp "PHP block"
 <?php ${VISUAL}$0 ?>
 endsnippet
 
-snippet ph "Opening PHP block"
+snippet php "Opening PHP block"
 <?php 
 endsnippet
 
@@ -32,6 +32,10 @@ endsnippet
 
 snippet $= "PHP class property assign"
 \$this->${1:varName} = \$$1;
+endsnippet
+
+snippet this "PHP $this"
+\$this->$1;
 endsnippet
 
 snippet ar "array" i

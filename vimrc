@@ -1,4 +1,5 @@
 "    __  __ _  __     _____ __  __
+"
 "   |  \/  | | \ \   / /_ _|  \/  |
 "   | |\/| | |  \ \ / / | || |\/| |
 "   | |  | | |___\ V /  | || |  | |
@@ -43,13 +44,16 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             Bundle 'scrooloose/syntastic'
             Bundle 'tpope/vim-endwise'
             Bundle 'tpope/vim-fugitive'
-            Bundle 'tpope/vim-pastie'
             Bundle 'tpope/vim-repeat'
-            Bundle 'tpope/vim-speeddating'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-unimpaired'
-            Bundle 'xolox/vim-easytags'
-            Bundle 'mklabs/vim-fetch'
+            " Bundle 'tpope/vim-pastie'
+            " Bundle 'tpope/vim-speeddating'
+            " Bundle 'mklabs/vim-fetch'
+
+            if executable('ctags')
+                Bundle 'xolox/vim-easytags'
+            endif
 
             if has("python")
                 Bundle 'SirVer/ultisnips'
@@ -87,10 +91,9 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             Bundle 'rails.vim'
 
             " Other
-            Bundle 'kchmck/vim-coffee-script'
+            " Bundle 'kchmck/vim-coffee-script'
             Bundle 'spf13/vim-markdown'
             Bundle 'spf13/vim-preview'
-            Bundle 'mediawiki.vim'
         " }}
 
         " Misc {{
@@ -216,8 +219,13 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
     " Backups, swapfiles, persistence {{
         " No backup (that's what git is for!) and swapfiles are annoying
-        let &undodir=VIMDIR . "/tmp/undo"
-        let &viewdir=VIMDIR . "/tmp/views"
+        if has("win32")
+            set undodir=~/vimfiles/tmp/undo
+            set viewdir=~/vimfiles/tmp/views
+        else
+            set undodir=~/.vim/tmp/undo
+            set viewdir=~/.vim/tmp/views
+        endif
 
         func! MlClearTmpViews()
             exe "!rm -rf ".VIMDIR."/tmp/views/*"
@@ -238,6 +246,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             au BufWinEnter * if expand("%") != "" | loadview | endif
         augroup END
     " }}
+    
 " }}
 
 " Keymappings {{
@@ -436,10 +445,6 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 " }}
 
 " Plugin Settings {{
-    " Colorizer {{
-        let g:colorizer_auto_color = 0
-    " }}
-
     " CTags {{
         set tags=./.tags;/,~/.tags,~/tags
         let g:tagbar_phpctags_bin = VIMDIR."/bin/phpctags/phpctags"
@@ -526,7 +531,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     " }}
 
     " SparkUp {{
-        au FileType blade,twig,xml so <C-R>=VIMDIR<CR>/bundle/vim-sparkup/ftplugin/html/sparkup.vim
+        au FileType blade,twig,xml so ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
     " }}
 
     " Syntastic {{
@@ -555,6 +560,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
     " TComment {{
         map <silent> <leader>/ gcc
+        vmap <silent> <leader>/ gc
 
         let g:tcomment_types = {}
         let g:tcomment_types['blade'] = '{{-- %s --}}'
