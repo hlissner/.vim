@@ -3,63 +3,48 @@
 
 ![mlvim](http://n4s.co/mlvim.png)
 
-mlvim is a distribution of plugins, resources and settings primarily for vim
-and [MacVim](http://code.google.com/p/macvim/).
+mlvim is a distribution of vim plugins, resources and settings managed with
+[Vundle](https://github.com/gmarik/vundle).
 
-I've only done a limited amount of testing on windows, so your mileage may vary.
+(Warning: Your mileage on windows may vary)
 
-## Table of Contents
-
-- [My Little Vim](#my-little-vim)
-	- [Requirements](#requirements)
-	- [Installation](#installation)
-- [Plugins](#plugins)
-	- [Bundles](#bundles)
-		- [Ack](#ack)
-		- [Colorizer](#colorizer)
-		- [CtrlP](#ctrlp)
-		- [NetTuts+ Fetch](#nettuts+-fetch)
-		- [NERDTree](#nerdtree)
-		- [PickAColor](#pickacolor)
-		- [Powerline](#powerline)
-		- [Syntastic](#syntastic)
-		- [Tabular](#tabular)
-		- [Tagbar](#tagbar)
-		- [YankRing](#yankring)
-		- [bufkill](#bufkill)
-		- [delimitMate](#delimitmate)
-		- [tcomment](#tcomment)
-		- [ultisnips](#ultisnips)
-		- [vim-easytags](#vim-easytags)
-		- [vim-endwise](#vim-endwise)
-		- [vim-fugitive](#vim-fugitive)
-		- [vim-indent-guides](#vim-indent-guides)
-		- [vim-pastie](#vim-pastie)
-		- [vim-preview](#vim-preview)
-		- [vim-repeat](#vim-repeat)
-		- [vim-surround](#vim-surround)
-		- [vim-unimpaired](#vim-unimpaired)
-	- [Additional Syntaxes](#additional-syntaxes)
-	- [For the mac](#for-the-mac)
-
-## Requirements
-Vim needs to be built with ruby and python for some of its plugins (though they
-simply won't be active if you don't have them).
-
-I'd recommend you install macvim via 
-[homebrew](http://mxcl.github.com/homebrew/).
-
-Also, it uses [Vundle](https://github.com/gmarik/vundle) to keep plugins in check!
+**Vim needs to be built with ruby and python for some of these plugins (though
+they will disable themselves otherwise).**
 
 ## Installation
-Clone it, install vundle and run "do_links" to symlink .g?vimrc and .vim to your home directory.
+Just do the following (this assumes you want vim in your $HOME):
 
     git clone https://github.com/hlissner/mlvim ~/.vim
     git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
     ~/.vim/do_links
 
-# Plugins
-## Bundles
+## Plugins
+
+- [Bundles](#bundles)
+    - [Ack](#ack)
+    - [CtrlP](#ctrlp)
+    - [NERDTree](#nerdtree)
+    - [PickAColor](#pickacolor)
+    - [Powerline](#powerline)
+    - [Syntastic](#syntastic)
+    - [Tabular](#tabular)
+    - [Tagbar](#tagbar)
+    - [YankRing](#yankring)
+    - [bufkill](#bufkill)
+    - [delimitMate](#delimitmate)
+    - [tcomment](#tcomment)
+    - [ultisnips](#ultisnips)
+    - [vim-easytags](#vim-easytags)
+    - [vim-endwise](#vim-endwise)
+    - [vim-fugitive](#vim-fugitive)
+    - [vim-indent-guides](#vim-indent-guides)
+    - [vim-preview](#vim-preview)
+    - [vim-repeat](#vim-repeat)
+    - [vim-surround](#vim-surround)
+    - [vim-unimpaired](#vim-unimpaired)
+- [Additional Syntaxes](#additional-syntaxes)
+- [For the mac](#for-the-mac)
+
 ### Ack
 How do you search your files? What's that? Not with Ack? Well there's your
 problem! 
@@ -80,19 +65,6 @@ Where you would use :grep, :grepadd, :lgrep, or :lgrepadd, you use :Ack,
 :AckAdd, :LAck, and :LAckAdd respectively.
 
 ([source](https://github.com/mileszs/ack.vim))
-
-### Colorizer
-Through one handy key, you can highlight #rrggbb, #rgb, color names,
-rgb(r,g,b), etc. in the color they represent. A handy plugin for CSS, in
-particular.
-
-    <leader>cC      Toggles color highlighting. In visual mode, this will
-                    only highlight colors in the selected region.
-
-**Note**: This is actually chrisbra's color_highlight plugin (which is inspired
-from the other colorizer plugins).
-
-([source](https://github.com/chrisbra/color_highlight))
 
 ### CtrlP
 If you've ever used textmate, sublime text 2, PeepOpen or the CommandT plugin
@@ -116,30 +88,6 @@ lines in all open buffers, and more.
     <leader>tc. :CtrlPChange            changes in current buffer
 
 ([source](https://github.com/kien/ctrlp.vim))
-
-### NetTuts+ Fetch
-Automatically fetches (and, if applicable, unpacks) files that you find
-yourself using a lot, like normalize.css, frameworks (CodeIgnitor,
-Laravel, Symfony, etc), etc.
-
-    :FetchManage        Opens a dictionary with references to online assets
-    :Fetch <name>       Fetches the file or package
-
-This is what my assets dictionary looks like:
-
-    {
-        "normalize":            "https://raw.github.com/necolas/normalize.css/master/normalize.css (./public/styles/normalize.css)",
-        "html5-boilerplate":    "http://github.com/h5bp/html5-boilerplate/tarball/master (./public)",
-        "bootstrap":            "http://twitter.github.com/bootstrap/assets/bootstrap.zip (./public)",
-        "bootstrap-css":        "http://twitter.github.com/bootstrap/assets/css/bootstrap.css (./public/styles/bootstrap.css)",
-        "bootstrap-responsive": "http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css (./public/styles/bootstrap-responsive.css)",
-        "underscore":           "http://documentcloud.github.com/underscore/underscore.js (./)",
-        "backbone":             "http://documentcloud.github.com/backbone/backbone.js (./)",
-        "laravel":              "http://laravel.com/download (./)",
-        "codeignitor":          "http://ellislab.com/codeigniter/download (./)"
-    }  
-
-([source](https://github.com/mklabs/vim-fetch))
 
 ### NERDTree
 The NERD tree allows you to explore your filesystem and to open files and
@@ -231,10 +179,12 @@ or you can outright use <leader>p and choose which one you want.
 ([source](https://github.com/vim-scripts/YankRing.vim))
 
 ### bufkill
-Offers a few helpful functions for handling buffers (particularly, deleting
-them) without affecting the window layout.
+Offers a few helpful functions for handling buffers (i.e. unloading, deleting
+or wiping them) without affecting the window layout.
 
     <leader>bd      Delete the current buffer, but preserves window layout
+
+Check the source for more functionality:
 
 ([source](https://github.com/vim-scripts/bufkill.vim))
 
@@ -245,9 +195,9 @@ mode a whole lot nicer.
 ([source](https://github.com/Raimondi/delimitMate))
 
 ### tcomment
-There's also NERDCommenter, but I chose tcomment because it has more vim-natural 
-movement controls and text object awareness. I can't do gciw to comment a word
-in NERDCommenter.
+There's also NERDCommenter, but I chose tcomment because of more vim-natural
+movement controls and text object awareness. For instance, I can't do gciw to
+comment a word in NERDCommenter.
 
 By default, gcc comments out a line, but I've also mapped the following to do
 so:
@@ -259,8 +209,8 @@ so:
 
 ### ultisnips
 So why not SnipMate? For one, it's nice having fewer dependencies - but that's
-a minor quip. UltiSnip seems more powerful - especially with the ability to
-embed ruby, python or VimL right into the snippets.
+a minor quip. UltiSnip is more powerful, especially with the ability to embed
+ruby, python or VimL into the snippets.
 
 For this distro I've assigned <Tab> as the snippet expansion trigger, and <Tab>
 / <S-Tab> can be used to jump between markers.
@@ -303,26 +253,6 @@ You can toggle indent guides using:
 
 ([source](https://github.com/nathanaelkane/vim-indent-guides))
 
-### vim-pastie
-For creating pasties straight from vim (and loading them too).
-
-    :Pastie                   Create a paste from all open windows
-    :Pastie!                  Create a paste from all open windows and paste it
-    :1,10Pastie               Create a paste from the specified range
-    :%Pastie                  Use the entire current file to create a new paste
-    :Pastie foo.txt bar.txt   Create a paste from foo.txt and bar.txt
-    :Pastie! foo.txt          Paste directly from foo.txt
-    :Pastie a                 Create a paste from the "a register
-    :Pastie @                 Create a paste from the default (unnamed) register
-    :Pastie *                 Create a paste from the primary selection/clipboard
-    :Pastie _                 Create a new, blank paste
-    :768Pastie                Load existing paste 768
-    :0Pastie                  Load the newest paste
-    :Pastie http://pastie.org/768            Load existing paste 768
-    :Pastie http://pastie.org/123456?key=... Use login from pastie bot"
-
-([source](https://github.com/tpope/vim-pastie))
-
 ### vim-preview
 Tools to preview markup files like markdown, rdoc, textile and rst while
 you're editing them, by compiling them into html and opening them in your
@@ -341,7 +271,7 @@ comes to repeating actions. This plugin tries to fix that.
 ### vim-surround
 One of the most **important** plugins in my arsenal. It's all about changing
 "surroundings": parenthesis, brackets, quotes, tags, and more. [Tim Pope explains it
-better than I can](https://github.com/tpope/vim-surround).
+better](https://github.com/tpope/vim-surround).
 
 ([source](https://github.com/tpope/vim-surround))
 
@@ -370,7 +300,6 @@ Check out the docs for more.
 * [Jade](http://jade-lang.com)
 * [SASS/SCSS](http://sass-lang.com/)
 * [LESS](http://lesscss.org/)
-* [CoffeeScript](http://coffeescript.org/)
 
 ## For the mac
 In .gvimrc, I've added a four keyboard shortcuts:

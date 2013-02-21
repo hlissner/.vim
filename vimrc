@@ -51,6 +51,8 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             " Bundle 'tpope/vim-speeddating'
             " Bundle 'mklabs/vim-fetch'
 
+            Bundle 'hlissner/vim-multiedit'
+
             if executable('ctags')
                 Bundle 'xolox/vim-easytags'
             endif
@@ -440,7 +442,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             endif
         endfunc
 
-        nmap <C-S-P> :call <SID>SynStack()<CR>
+        nmap ~ :call <SID>SynStack()<CR>
     " }}
 " }}
 
