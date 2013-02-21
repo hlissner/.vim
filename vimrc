@@ -47,9 +47,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             Bundle 'tpope/vim-repeat'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-unimpaired'
-            " Bundle 'tpope/vim-pastie'
             " Bundle 'tpope/vim-speeddating'
-            " Bundle 'mklabs/vim-fetch'
 
             Bundle 'hlissner/vim-multiedit'
 
