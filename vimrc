@@ -226,10 +226,6 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             set viewdir=~/.vim/tmp/views
         endif
 
-        func! MlClearTmpViews()
-            exe "!rm -rf ".VIMDIR."/tmp/views/*"
-        endfunc
-
         set noswapfile
         set nobackup
 
