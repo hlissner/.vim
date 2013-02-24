@@ -3,7 +3,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " mmyes, quite
-" set guifont=Anonymous\ Pro:h15
 set guifont=Inconsolata:h16
 
 " j doesn't seem to work from terminal
