@@ -16,7 +16,13 @@ Just do the following (this assumes you want vim in your $HOME):
 
     git clone https://github.com/hlissner/mlvim ~/.vim
     git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    ~/.vim/do_links
+
+And if you'd like my Ultisnip snippets:
+
+    git clone https://github.com/hlissner/vim-ultisnips-snippets ~/.vim/snippets
+
+**Note:** Ultisnips is configured to search for a 'snippets' folder and won't
+index the default ones that come with Ultisnips! You can change this in vimrc.
 
 ## Plugins
 
