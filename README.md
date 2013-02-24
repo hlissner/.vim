@@ -42,6 +42,8 @@ Just do the following (this assumes you want vim in your $HOME):
     - [vim-repeat](#vim-repeat)
     - [vim-surround](#vim-surround)
     - [vim-unimpaired](#vim-unimpaired)
+    - [vim-speeddating](#vim-speeddating)
+    - [vim-multiedit](#vim-multiedit)
 - [Additional Syntaxes](#additional-syntaxes)
 - [For the mac](#for-the-mac)
 
@@ -292,6 +294,23 @@ Adds a slew of helpful key maps. Here are just a few of them:
 Check out the docs for more.
 
 ([source](https://github.com/tpope/vim-unimpaired))
+
+### vim-speeddating
+
+Allows you to deal with date and time formats with ease. For example:
+
+    <C-A>   Increment
+    <C-X>   Decrement
+    d<C-A>  Sets timestamp under cursor to current time
+
+([source](https://github.com/tpope/vim-speeddating))
+
+### vim-multiedit
+
+Do you envy Sublime Text for it's multiple selection editing? Welp, this plugin
+tries its best to provide the same.
+
+([source](https://github.com/hlissner/vim-multiedit))
 
 ## Additional Syntaxes
 * [Markdown](https://github.com/spf13/vim-markdown)
