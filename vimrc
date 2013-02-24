@@ -47,9 +47,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             Bundle 'tpope/vim-repeat'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-unimpaired'
-            " Bundle 'tpope/vim-speeddating'
-
-            Bundle 'hlissner/vim-multiedit'
+            Bundle 'tpope/vim-speeddating'
 
             if executable('ctags')
                 Bundle 'xolox/vim-easytags'
@@ -58,6 +56,8 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             if has("python")
                 Bundle 'SirVer/ultisnips'
             endif
+
+            Bundle 'hlissner/vim-multiedit'
         " }}
 
         " Syntaxes {{
@@ -91,7 +91,6 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             Bundle 'rails.vim'
 
             " Other
-            " Bundle 'kchmck/vim-coffee-script'
             Bundle 'spf13/vim-markdown'
             Bundle 'spf13/vim-preview'
         " }}
