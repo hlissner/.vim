@@ -47,6 +47,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-unimpaired'
             Bundle 'tpope/vim-speeddating'
+            Bundle 'Valloric/YouCompleteMe'
 
             if executable('ctags')
                 Bundle 'xolox/vim-easytags'
@@ -89,6 +90,10 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             " Ruby
             Bundle 'rails.vim'
 
+            " Objective-C / Clang
+            Bundle 'b4winckler/vim-objc'
+            Bundle 'eraserhd/vim-ios.git'
+
             " Other
             Bundle 'spf13/vim-markdown'
             Bundle 'spf13/vim-preview'
@@ -117,6 +122,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     set noshowmode
     set showmatch                " Show matching delimiters
     set browsedir=buffer         " Sets File>Open to start in current file's path
+    set showmatch
 
     " Search {{
         set incsearch            " find as you type
@@ -164,8 +170,6 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             au FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
             au FileType python setl omnifunc=pythoncomplete#Complete
             au FileType xml setl omnifunc=xmlcomplete#CompleteTags
-
-            "au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
         augroup END
     " }}
 
@@ -305,12 +309,12 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         vnoremap <leader>q gq
 
         " Omnicomplete shortcuts
-        imap <expr> <C-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
-        imap <expr> <S-C-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
-        imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-o>"
-        imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-o>"
+        " imap <expr> <C-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
+        " imap <expr> <S-C-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
+        " imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-o>"
+        " imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-o>"
         " A convenient mapping (thanks spf13)
-        inoremap <expr> <Esc>   pumvisible() ? "\<C-e>" : "\<Esc>"
+        " inoremap <expr> <Esc>   pumvisible() ? "\<C-e>" : "\<Esc>"
 
         " Add semicolon to end of line
         nnoremap <leader>; ma$a;<Esc>`a
@@ -565,9 +569,14 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
     " UltiSnips {{
         let g:UltiSnipsSnippetDirectories = ['snippets']
-        let g:UltiSnipsExpandTrigger = "<tab>"
-        let g:UltiSnipsJumpForwardTrigger = "<tab>"
-        let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
+        " let g:UltiSnipsExpandTrigger = "<tab>"
+        " let g:UltiSnipsJumpForwardTrigger = "<tab>"
+        " let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
+        
+        " Temporary settings until YouCompleteMe incorporates ultisnips support
+        let g:UltiSnipsExpandTrigger = "<C-f>"
+        let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+        let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
     " }}
 
     " Vim-indent-guides {{
