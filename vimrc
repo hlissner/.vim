@@ -31,29 +31,29 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             Bundle 'Raimondi/delimitMate'
             Bundle 'YankRing.vim'
             Bundle 'bufkill.vim'
+            Bundle 'chrisbra/color_highlight'
             Bundle 'godlygeek/tabular'
             Bundle 'kien/ctrlp.vim'
-            Bundle 'chrisbra/color_highlight'
-            Bundle 'majutsushi/tagbar'
             Bundle 'matchit.zip'
             Bundle 'mileszs/ack.vim'
             Bundle 'nathanaelkane/vim-indent-guides'
-            Bundle 'tomtom/tcomment_vim'
             Bundle 'scrooloose/nerdtree'
             Bundle 'scrooloose/syntastic'
+            Bundle 'tomtom/tcomment_vim'
             Bundle 'tpope/vim-endwise'
             Bundle 'tpope/vim-fugitive'
             Bundle 'tpope/vim-repeat'
+            Bundle 'tpope/vim-speeddating'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-unimpaired'
-            Bundle 'tpope/vim-speeddating'
-            Bundle 'Valloric/YouCompleteMe'
 
             if executable('ctags')
+                Bundle 'majutsushi/tagbar'
                 Bundle 'xolox/vim-easytags'
             endif
 
             if has("python")
+                Bundle 'Valloric/YouCompleteMe'
                 Bundle 'SirVer/ultisnips'
             endif
 
@@ -62,7 +62,8 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
         " Syntaxes {{
             " PHP
-            Bundle 'spf13/PIV'
+            Bundle 'hlissner/PIV'
+            Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'techlivezheng/tagbar-phpctags.git'
             Bundle 'beyondwords/vim-twig'
             " PHP.laravel
@@ -99,7 +100,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             Bundle 'spf13/vim-preview'
         " }}
 
-        " Misc {{
+        " Colorschemes {{
             Bundle 'tomasr/molokai'
         " }}
     " }}
@@ -262,7 +263,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     inoremap <F1> <ESC>
     nnoremap <F1> <ESC>
     vnoremap <F1> <ESC>
-    " Turn off highlighting
+    " Turn off search highlighting
     noremap <silent> <leader>? :nohlsearch<CR>
 
     " Navigation {{
@@ -270,14 +271,11 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         " wrapped text
         noremap j gj
         noremap k gk
-        
-        noremap ∆ 5j
-        noremap ˚ 5k
 
         " Tab alias for matchit
         nmap <Tab> %
         
-        " Obey! Get used to hjkl!
+        " Get used to hjkl!
         noremap <Left> <Nop>
         noremap <Right> <Nop>
         noremap <Down> <Nop>
@@ -287,9 +285,9 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     " Editing {{
         " Fold toggle
         nnoremap <Space> za
-        " Make Y act consistant
+        " Make Y act consistant (e.g. w/ C and D)
         nnoremap Y y$
-        " Don't leave mode while indenting
+        " Don't leave visual mode end indenting
         vnoremap < <gv
         vnoremap > >gv
         nmap ≥ >>
@@ -300,6 +298,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         inoremap <C-S-CR> <C-O>O
         nnoremap <S-CR> o<Esc>
         nnoremap <C-S-CR> O<Esc>
+
         vmap . :normal .<CR>
 
         " Reselect pasted text
@@ -308,14 +307,17 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         nnoremap <leader>q gqip
         vnoremap <leader>q gq
 
-        " Omnicomplete shortcuts
+        " Uses C-Space for syntax omnicomplete (and to navigate the suggestions)
+        " NOTE: The YouCompleteMe plugin has replaced this
         " imap <expr> <C-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
         " imap <expr> <S-C-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
+
+        " Uses A-Space for generic omnicomplete
         imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
         imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
 
         " A convenient mapping (thanks spf13)
-        " inoremap <expr> <Esc>   pumvisible() ? "\<C-e>" : "\<Esc>"
+        inoremap <expr> <Esc>   pumvisible() ? "\<C-e>" : "\<Esc>"
 
         " Add semicolon to end of line
         nnoremap <leader>; ma$a;<Esc>`a
@@ -335,11 +337,11 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     " }}
 
     " Buffers {{
-        " Switching between open buffers
+        " Switch between open buffers
         noremap <C-Tab> :bnext<CR>
         noremap <C-S-Tab> :bprev<CR>
 
-        " Jumping between buffers
+        " Jump between buffers
         nnoremap <C-h> <C-w>h
         nnoremap <C-j> <C-w>j
         nnoremap <C-k> <C-w>k
@@ -349,11 +351,11 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         nnoremap <C-w>v <C-w>v<C-w>l
         nnoremap <C-w>N :vnew<CR>
 
-        " Shortcuts to vimrc and gvimrc
+        " Shortcut to vimrc and gvimrc
         nnoremap <leader>ev :e <C-R>=VIMDIR<CR>/vimrc<CR>
         nnoremap <leader>eg :e <C-R>=VIMDIR<CR>/gvimrc<CR>
 
-        " Tmp session management
+        " Temporary session management
         let VIMDIR_SESS = VIMDIR."/tmp/session.vim"
         nnoremap <leader>ss :w<CR>:mksession! <C-R>=VIMDIR_SESS<CR><CR>
         nnoremap <leader>sl :so <C-R>=VIMDIR_SESS<CR><CR>
@@ -381,6 +383,8 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
 " Uility {{
     " Run inline code {{
+        " Run entire current file (or line) through the appropriate interpreter
+        " (e.g.  PHP, ruby, etc) and put it in a preview window.
         func! MlRun()
             let src = expand("%")
             let dst = tempname()
@@ -398,6 +402,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             call MlPreview(dst)
         endfunc
 
+        " Run selected lines through an interpreter
         func! MlRunRange() range
             let dst = tempname()
             let dst_e = shellescape(dst)
@@ -416,6 +421,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             call MlPreview(dst)
         endfunc
 
+        " Open a preview window and inject output into it
         func! MlPreview(tmpfile)
             silent exe ":pedit! ".a:tmpfile
             wincmd P
@@ -423,6 +429,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
             nnoremap <buffer> <Esc> :pclose<CR>
         endfunc
         
+        " Set up the MlRun code executor for these languages
         au FileType php,python,ruby,sh 
             \ let b:ml_bin=&filetype | 
             \ let b:ml_prepend="" | 
@@ -503,7 +510,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         let NERDTreeAutoDeleteBuffer=1
     " }}
 
-    " PIV {{
+    " PIV {{deficiency
         " Just my coding preference
         let g:PIVPearStyle = 0
         let g:PHP_autoformatcomment = 0

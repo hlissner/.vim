@@ -41,8 +41,8 @@ if has('gui_macvim')
     nmap <D-[> <<
 
     " Fast scrolling shortcut
-    map <D-j> ∆
-    map <D-k> ˚
+    map <D-j> 5j
+    map <D-k> 5k
 
     " Outside apps {{
         " Open folder in Finder
