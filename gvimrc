@@ -36,6 +36,10 @@ if has('gui_macvim')
     nmap <D-/> <leader>/
     vmap <D-/> <leader>/
 
+    " Easier indent control
+    nmap <D-]> >>
+    nmap <D-[> <<
+
     " Fast scrolling shortcut
     map <D-j> ∆
     map <D-k> ˚
