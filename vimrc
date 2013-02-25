@@ -138,7 +138,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
         set clipboard+=unnamed
         set shortmess+=filmnrxoOtTs
-        set scrolloff=10
+        set scrolloff=5
     " }}
 
     " Omnicomplete {{
@@ -254,7 +254,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
     " Easier than escape. Pinnacle of laziness.
     imap jj <ESC>
-    " Damn you escape key! How I miss you... literally.
+    " Damn you escape key! How I miss you...
     inoremap <F1> <ESC>
     nnoremap <F1> <ESC>
     vnoremap <F1> <ESC>
@@ -313,7 +313,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         inoremap <expr> <Esc>   pumvisible() ? "\<C-e>" : "\<Esc>"
 
         " Add semicolon to end of line
-        nnoremap <localleader>; ma$a;<Esc>`a
+        nnoremap <leader>; ma$a;<Esc>`a
 
         " Adjust folding level {{
             nmap <leader>f0 :set foldlevel=0<CR>
@@ -340,6 +340,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         nnoremap <C-k> <C-w>k
         nnoremap <C-l> <C-w>l
 
+        " Make vertical split and move into it
         nnoremap <C-w>v <C-w>v<C-w>l
         nnoremap <C-w>N :vnew<CR>
 
@@ -482,6 +483,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         nnoremap <silent> <leader>gb :Gblame<CR>
         nnoremap <silent> <leader>gl :Glog<CR>
         nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
     " }}
 
     " NERDTree {{
