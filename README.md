@@ -31,6 +31,7 @@ index the default ones that come with Ultisnips! You can change this in vimrc.
     - [CtrlP](#ctrlp)
     - [NERDTree](#nerdtree)
     - [PickAColor](#pickacolor)
+    - [PIV](#PIV)
     - [Powerline](#powerline)
     - [Syntastic](#syntastic)
     - [Tabular](#tabular)
@@ -50,6 +51,7 @@ index the default ones that come with Ultisnips! You can change this in vimrc.
     - [vim-unimpaired](#vim-unimpaired)
     - [vim-speeddating](#vim-speeddating)
     - [vim-multiedit](#vim-multiedit)
+    - [YouCompleteMe](#YouCompleteMe)
 - [Additional Syntaxes](#additional-syntaxes)
 - [For the mac](#for-the-mac)
 
@@ -116,6 +118,13 @@ Colorizer.
     :PickHSL
     :PickRGB
     :PickRAW
+
+### PIV
+
+PHP integration for VIM; a compendium of functionality including: indent,
+syntax, auto-complete, phpdocgen, and more.
+
+([source](https://github.com/hlissner/PIV))
 
 ### Powerline
 An better-looking, more functional status line for vim. Compatible with many of
@@ -318,13 +327,26 @@ tries its best to provide the same.
 
 ([source](https://github.com/hlissner/vim-multiedit))
 
+### YouCompleteMe
+
+YouCompleteMe is a fast, as-you-type, fuzzy-search code completion engine for
+Vim. It has several completion engines: an identifier-based engine that works
+with every programming language, a semantic, Clang-based engine that provides
+native semantic code completion for C/C++/Objective-C/Objective-C++ (from now
+on referred to as "the C-family languages") and an omnifunc-based completer
+that uses data from Vim's omnicomplete system to provide semantic completions
+for many other languages (Python, Ruby, PHP etc.).
+
+([source](https://github.com/Valloric/YouCompleteMe))
+
 ## Additional Syntaxes
-* [Markdown](https://github.com/spf13/vim-markdown)
 * [Blade](http://laravel.com/docs/views/templating) ([Laravel](http://laravel.com/)'s templating engine)
-* [PHP Twig](http://twig.sensiolabs.org/)
 * [Jade](http://jade-lang.com)
-* [SASS/SCSS](http://sass-lang.com/)
 * [LESS](http://lesscss.org/)
+* [Markdown](https://github.com/spf13/vim-markdown)
+* [PHP Twig](http://twig.sensiolabs.org/)
+* [SASS/SCSS](http://sass-lang.com/)
+* [Objective-C](https://github.com/b4winckler/vim-objc)
 
 ## For the mac
 In .gvimrc, I've added a four keyboard shortcuts:
