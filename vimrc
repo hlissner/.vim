@@ -311,8 +311,9 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         " Omnicomplete shortcuts
         " imap <expr> <C-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
         " imap <expr> <S-C-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
-        " imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-o>"
-        " imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-o>"
+        imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
+        imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
+
         " A convenient mapping (thanks spf13)
         " inoremap <expr> <Esc>   pumvisible() ? "\<C-e>" : "\<Esc>"
 
