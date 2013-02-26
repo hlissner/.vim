@@ -16,10 +16,8 @@ set nocompatible
 scriptencoding utf-8
 au!
 
-let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
-
-" Vundle {{
-    let &rtp.=','.VIMDIR."/bundle/vundle"
+" Plugins {{
+    set rtp=~/.vim/bundle/vundle
     call vundle#rc()
 
     " Bundles {{
@@ -221,13 +219,8 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 
     " Backups, swapfiles, persistence {{
         " No backup (that's what git is for!) and swapfiles are annoying
-        if has("win32")
-            set undodir=~/vimfiles/tmp/undo
-            set viewdir=~/vimfiles/tmp/views
-        else
-            set undodir=~/.vim/tmp/undo
-            set viewdir=~/.vim/tmp/views
-        endif
+        set undodir=~/.vim/tmp/undo
+        set viewdir=~/.vim/tmp/views
 
         set noswapfile
         set nobackup
@@ -351,14 +344,14 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         nnoremap <C-w>N :vnew<CR>
 
         " Shortcut to vimrc and gvimrc
-        nnoremap <leader>ev :e <C-R>=VIMDIR<CR>/vimrc<CR>
-        nnoremap <leader>eg :e <C-R>=VIMDIR<CR>/gvimrc<CR>
+        nnoremap <leader>ev :e ~/.vimrc<CR>
+        nnoremap <leader>eg :e ~/.gvimrc<CR>
 
         " Temporary session management
-        let VIMDIR_SESS = VIMDIR."/tmp/session.vim"
-        nnoremap <leader>ss :w<CR>:mksession! <C-R>=VIMDIR_SESS<CR><CR>
-        nnoremap <leader>sl :so <C-R>=VIMDIR_SESS<CR><CR>
-        nnoremap <leader>sd :!rm <C-R>=VIMDIR_SESS<CR><CR>
+        let SESSDIR = "~/.vim/tmp/session.vim"
+        nnoremap <leader>ss :w<CR>:mksession! <C-R>=SESSDIR<CR><CR>
+        nnoremap <leader>sl :so <C-R>=SESSDIR<CR><CR>
+        nnoremap <leader>sd :!rm <C-R>=SESSDIR<CR><CR>
     " }}
 
     " Command {{
@@ -453,7 +446,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
 " Plugin Settings {{
     " CTags {{
         set tags=./.tags;/,~/.tags,~/tags
-        let g:tagbar_phpctags_bin = VIMDIR."/bin/phpctags/phpctags"
+        let g:tagbar_phpctags_bin = "~/.vim/bin/phpctags/phpctags"
     " }}
 
     " Ctrip {{
@@ -461,7 +454,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
 
         let g:ctrlp_max_height = 12
-        let g:ctrlp_cache_dir = VIMDIR."/tmp/ctrip"
+        let g:ctrlp_cache_dir = "~/.vim/tmp/ctrip"
         let g:ctrlp_working_path_mode = 0
         let g:ctrlp_custom_ignore = {
             \ 'dir':  '\.git$\|\.hg$\|\.svn|\.settings$',
@@ -483,7 +476,7 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     " EasyTags {{
         let g:easytags_cmd = 'ctags'
         let g:easytags_dynamic_files = 1
-        let g:easytags_by_filetype = VIMDIR."/tmp/tags"
+        let g:easytags_by_filetype = "~/.vim/tmp/tags"
         let g:easytags_updatetime_autodisable = 1
     " }}
 
@@ -595,10 +588,17 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
     " }}
     
     " YankRing {{
-        let g:yankring_history_dir = VIMDIR.'/tmp/yankring'
+        let g:yankring_history_dir = '~/.vim/tmp/yankring'
         nnoremap <leader>p :YRShow<CR>
         nnoremap <leader>y/ :YRSearch<CR>
     " }}
+" }}
+
+" First-run {{
+    if isdirectory('~/.vim/tmp')
+        !mkdir -p ~/.vim/tmp/undo
+        !mkdir ~/.vim/tmp/views
+    endif
 " }}
 
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker
