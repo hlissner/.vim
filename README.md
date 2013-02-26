@@ -86,11 +86,11 @@ entirely in VimL!
 It lets you fuzzy-find files, through your most-recently-used files, searchs
 lines in all open buffers, and more.
 
-    <leader>tt OR <D-t> (CMD+T)
+    <leader>. OR <D-t> (CMD+T)
 
     Command                             Fuzzy searching...:
     ----------------------------------------------------------------------------
-    <leader>tb :CtrlPBuffer             between open buffers
+    <leader>, :CtrlPBuffer             between open buffers
     <leader>tr :CtrlPTag                tags
     <leader>tm :CtrlPMRU                through recently opened files
     <leader>tl :CtrlPLine               lines in open buffers
