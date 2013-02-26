@@ -61,7 +61,6 @@ au!
         " Syntaxes {{
             " PHP
             Bundle 'hlissner/PIV'
-            Bundle 'techlivezheng/tagbar-phpctags.git'
             Bundle 'beyondwords/vim-twig'
             " PHP.laravel
             Bundle 'johnhamelink/blade.vim'
@@ -446,7 +445,6 @@ au!
 " Plugin Settings {{
     " CTags {{
         set tags=./.tags;/,~/.tags,~/tags
-        let g:tagbar_phpctags_bin = "~/.vim/bin/phpctags/phpctags"
     " }}
 
     " Ctrip {{
