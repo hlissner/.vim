@@ -81,8 +81,6 @@ If you've ever used textmate, sublime text 2, PeepOpen or the CommandT plugin
 for vim - you know a fraction of what CtrlP does. Best of all, it's written
 entirely in VimL!
 
-![CtrlP paired with Powerline](https://a248.e.akamai.net/camo.github.com/63f9947cac196ec7e6e3d790fd3cd1e1463a7b9b/687474703a2f2f692e696d6775722e636f6d2f4d737549422e706e67)
-
 It lets you fuzzy-find files, through your most-recently-used files, searchs
 lines in all open buffers, and more.
 
