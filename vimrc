@@ -63,7 +63,6 @@ let VIMDIR = has("win32") ? "~/vimfiles" : "~/.vim"
         " Syntaxes {{
             " PHP
             Bundle 'hlissner/PIV'
-            Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'techlivezheng/tagbar-phpctags.git'
             Bundle 'beyondwords/vim-twig'
             " PHP.laravel
