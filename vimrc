@@ -41,6 +41,7 @@ au!
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-unimpaired'
             Bundle 'hlissner/vim-multiedit'
+            Bundle 'hlissner/vim-transmitty'
 
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
@@ -56,6 +57,7 @@ au!
         " Syntaxes {
             " PHP
             Bundle 'hlissner/PIV'
+            Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
             " PHP.laravel
             Bundle 'johnhamelink/blade.vim'
@@ -473,7 +475,7 @@ au!
         " Strip whitespace
         com! -range Trim <line1>,<line2>s/\s\+$//
     " }
-
+    
     " Plugins {
         " Ctrlp {
             let g:ctrlp_map = '<leader>.'
@@ -498,6 +500,14 @@ au!
         " NERDTree {
             nnoremap <leader>n :NERDTreeToggle<CR>
             nnoremap <leader>N :NERDTreeFind<CR>
+        " }
+        
+        " PhpNamespaces {
+            imap <buffer> <Leader>u <C-O>:call PhpInsertUse()<CR>
+            map <buffer> <Leader>u :call PhpInsertUse()<CR> 
+
+            imap <buffer> <Leader>e <C-O>:call PhpExpandClass()<CR>
+            map <buffer> <Leader>e :call PhpExpandClass()<CR>
         " }
 
         " Tabularize {
@@ -541,73 +551,14 @@ au!
 " }
 
 " Uility {
-    " Run inline code {
-        " Run entire current file (or line) through the appropriate interpreter
-        " (e.g.  PHP, ruby, etc) and put it in a preview window.
-        func! MlRun()
-            let src = expand("%")
-            let dst = tempname()
-            " If the file has been saved...
-            if src != ""
-                " Run it through the interpreter and save output to a tmpfile
-                silent exe "!".b:ml_bin." ".shellescape(src)." > ".shellescape(dst)
-            else
-                " Otherwise, run the contents directly through the interpreter
-                " (out to a tmpfile)
-                silent exe "w !".b:ml_bin." > ".shellescape(dst)
-            endif
+    " Reveal syntax highlighting group under cursor
+    func! <SID>SynStack()
+        if exists("*synstack")
+            echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+        endif
+    endfunc
 
-            " Display it in a preview buffer
-            call MlPreview(dst)
-        endfunc
-
-        " Run selected lines through an interpreter
-        func! MlRunRange() range
-            let dst = tempname()
-            let dst_e = shellescape(dst)
-            if b:ml_prepend != ""
-                let tmp = shellescape(tempname())
-                silent exe "!echo ".shellescape(b:ml_prepend)." > ".tmp
-                silent exe a:firstline.",".a:lastline."w !cat >> ".tmp
-                silent exe "!".b:ml_bin." ".tmp." > ".dst_e
-
-                " tmpfile cleanup
-                silent exe "!rm ".tmp
-            else
-                silent exe a:firstline.",".a:lastline."w !".b:ml_bin." > ".dst_e
-            endif
-
-            call MlPreview(dst)
-        endfunc
-
-        " Open a preview window and inject output into it
-        func! MlPreview(tmpfile)
-            silent exe ":pedit! ".a:tmpfile
-            wincmd P
-            setl buftype=nofile noswapfile syntax=none bufhidden=delete
-            nnoremap <buffer> <Esc> :pclose<CR>
-        endfunc
-        
-        " Set up the MlRun code executor for these languages
-        au FileType php,python,ruby,sh 
-            \ let b:ml_bin=&filetype | 
-            \ let b:ml_prepend="" | 
-            \ cnoremap !! !<C-R>=b:ml_bin<CR> |
-            \ nnoremap <buffer><silent> <localleader>r :call MlRun()<CR> |
-            \ vnoremap <buffer><silent> <localleader>r :call MlRunRange()<CR>
-        au FileType php let b:ml_prepend="<?php "
-    " }
-
-    " Debugging {
-        " Reveal syntax highlighting group under cursor
-        func! <SID>SynStack()
-            if exists("*synstack")
-                echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-            endif
-        endfunc
-
-        nmap ~ :call <SID>SynStack()<CR>
-    " }
+    nmap ~ :call <SID>SynStack()<CR>
 " }
 
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker
