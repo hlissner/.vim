@@ -1,8 +1,4 @@
-"    __  __ _  __     _____ __  __
-"   |  \/  | | \ \   / /_ _|  \/  |
-"   | |\/| | |  \ \ / / | || |\/| |
-"   | |  | | |___\ V /  | || |  | |
-"   |_|  |_|_____|\_/  |___|_|  |_|
+" My Little Vim {
 "
 "   Author: Henrik Lissner
 "   Url: http://github.com/hlissner/mlvim
@@ -10,20 +6,20 @@
 "   A vimrc for any web designer, developer or masochist. We all know they're
 "   the same thing.
 "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" }
 
 set nocompatible
 scriptencoding utf-8
 au!
 
-" Plugins {{
-    set rtp=~/.vim/bundle/vundle
+" Plugins {
+    set runtimepath+=~/.vim/bundle/vundle
     call vundle#rc()
 
-    " Bundles {{
-        Bundle 'gmarik/vundle' 
+    " Plugins {
+        Bundle 'gmarik/vundle'
 
-        " General {{
+        " General {
             Bundle 'Lokaltog/vim-powerline'
             Bundle 'PickAColor.vim'
             Bundle 'Raimondi/delimitMate'
@@ -44,6 +40,7 @@ au!
             Bundle 'tpope/vim-speeddating'
             Bundle 'tpope/vim-surround'
             Bundle 'tpope/vim-unimpaired'
+            Bundle 'hlissner/vim-multiedit'
 
             if executable('ctags')
                 Bundle 'majutsushi/tagbar'
@@ -54,11 +51,9 @@ au!
                 Bundle 'Valloric/YouCompleteMe'
                 Bundle 'SirVer/ultisnips'
             endif
+        " }
 
-            Bundle 'hlissner/vim-multiedit'
-        " }}
-
-        " Syntaxes {{
+        " Syntaxes {
             " PHP
             Bundle 'hlissner/PIV'
             Bundle 'beyondwords/vim-twig'
@@ -94,42 +89,147 @@ au!
             " Other
             Bundle 'spf13/vim-markdown'
             Bundle 'spf13/vim-preview'
-        " }}
+        " }
 
-        " Colorschemes {{
+        " Colorschemes {
             Bundle 'tomasr/molokai'
-        " }}
-    " }}
+        " }
+    " }
+
+    " Settings {
+        " Ctrip {
+            let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
+
+            let g:ctrlp_max_height = 12
+            let g:ctrlp_cache_dir = "~/.vim/tmp/ctrip"
+            let g:ctrlp_working_path_mode = 0
+            let g:ctrlp_custom_ignore = {
+                \ 'dir':  '\.git$\|\.hg$\|\.svn|\.settings$',
+                \ 'file': '\.exe$\|\.so$\|\.dll|\.sass\-cache|\.classpath|\.project$' }
+        " }
+
+        " delimitMate {
+            let g:delimitMate_expand_cr = 1
+            let g:delimitMate_expand_space = 1
+        " }
+
+        " EasyTags {
+            let g:easytags_cmd = 'ctags'
+            let g:easytags_dynamic_files = 1
+            let g:easytags_by_filetype = "~/.vim/tmp/tags"
+            let g:easytags_updatetime_autodisable = 1
+        " }
+
+        " NERDTree {
+            let NERDTreeMinimalUI=1
+
+            let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
+            let NERDTreeQuitOnOpen=0
+            let NERDTreeShowBookmarks=0
+            let NERDTreeShowHidden=1
+            let NERDTreeAutoDeleteBuffer=1
+        " }
+
+        " PIV {
+            " Just my coding preference
+            let g:PIVPearStyle = 0
+            let g:PHP_autoformatcomment = 0
+
+            " Disable PIV's auto folding (preserves my nice foldtext function)
+            let g:DisableAutoPHPFolding = 1
+            " DelimitMate handles autoclosing delimiters for us, so disable PIV's
+            let g:PIVAutoClose = 0
+        " }
+
+        " Powerline {
+            let g:Powerline_mode_n = 'N'
+            let g:Powerline_mode_i = 'I'
+            let g:Powerline_mode_v = 'V'
+            let g:Powerline_mode_V = 'V-'
+            let g:Powerline_mode_cv = 'V+'
+            let g:Powerline_mode_R = 'R'
+        " }
+
+        " PythonMode {
+            let g:pymode_run = 0
+            let g:pymode_lint_checker = 'pyflakes'
+
+            if !has('python')
+                let g:pymode = 1
+            endif
+        " }
+
+        " SparkUp {
+            au FileType blade,twig,xml so ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
+        " }
+
+        " Syntastic {
+            let g:syntastic_enable_highlighting = 0
+            let g:syntastic_auto_loc_list=1
+            let g:syntastic_quiet_warnings=1
+            let g:syntastic_phpcs_disable=1
+        " }
+
+        " TComment {
+            let g:tcomment_types = {}
+            let g:tcomment_types['blade'] = '{-- %s --}'
+            let g:tcomment_types['twig'] = '{# %s #}'
+        " }
+
+        " UltiSnips {
+            let g:UltiSnipsSnippetDirectories = ['snippets']
+        " }
+
+        " Vim-indent-guides {
+            let g:indent_guides_enable_on_vim_startup = 1
+            let g:indent_guides_start_level           = 2
+            let g:indent_guides_guide_size            = 1
+            " let g:indent_guides_auto_colors           = 1
+            let g:indent_guides_color_change_percent  = 4
+        " }
+        
+        " YankRing {
+            let g:yankring_history_dir = '~/.vim/tmp/yankring'
+        " }
+    " }
+
+    " Have you own local settings. Great for sharing vim configs across
+    " different computers.
+    if filereadable(expand("~/.vimrc.local"))
+        source ~/.vimrc.local
+    endif
 
     filetype plugin indent on
-" }}
+" }
 
-" Preferences {{
+" Preferences {
     syntax on
-    colorscheme molokai
     set background=dark
+    colorscheme molokai
 
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show tabs (indent-guides does it nicer)
     set nospell                  " No spell check, please
     set number                   " Line numbers
-    set ruler                    " Show line/col no in statusline
-    set showcmd                  " Show command issued
     set visualbell               " No sounds!
     set noshowmode
     set showmatch                " Show matching delimiters
     set browsedir=buffer         " Sets File>Open to start in current file's path
-    set showmatch
 
-    " Search {{
+    if has('cmdline_info')
+        set ruler                " Show line/col no in statusline
+        set showcmd              " Show command issued
+    endif
+
+    " Search {
         set incsearch            " find as you type
         set hlsearch             " Highlight search terms
         set ignorecase           " case insensitive search
         set smartcase            " case sensitive when uc present
         set gdefault             " global flag for substitute by default
-    " }}
+    " }
 
-    " Behavior {{
+    " Behavior {
         set synmaxcol=1024
         syntax sync minlines=256
 
@@ -142,9 +242,11 @@ au!
         set clipboard+=unnamed
         set shortmess+=filmnrxoOtTs
         set scrolloff=5
-    " }}
+    " }
 
-    " Omnicomplete {{
+    " Omnicomplete {
+        set tags=./.tags;/,~/.tags,~/tags
+
         set completeopt=longest,menu,preview
         set wildmenu                    " Show menu instead of auto-complete
         set wildmode=list:longest,full  " command <Tab> completion: list
@@ -168,9 +270,9 @@ au!
             au FileType python setl omnifunc=pythoncomplete#Complete
             au FileType xml setl omnifunc=xmlcomplete#CompleteTags
         augroup END
-    " }}
+    " }
 
-    " Formatting {{
+    " Formatting {
         set autoindent
         set shiftround
         set expandtab
@@ -181,7 +283,7 @@ au!
         " Trigger to preserve indentation on pastes
         set pastetoggle=<localleader>p
 
-        " Wrapping {{
+        " Wrapping {
             set nowrap
             " Backspace and cursor keys to wrap
             set whichwrap=b,s,h,l,<,>,[,]
@@ -190,10 +292,10 @@ au!
             
             " see :h fo-table
             set formatoptions=qron1l
-        " }}
-    " }}
+        " }
+    " }
 
-    " Folding {{
+    " Folding {
         " set foldenable
         set foldlevel=1
 
@@ -211,38 +313,36 @@ au!
                 return '+ ' . indent . text
             endif
         endfunc
+    " }
 
-        " Restore some folding powers!
-        au FileType vim set foldmarker={{,}} foldmethod=marker
-    " }}
-
-    " Backups, swapfiles, persistence {{
-        " No backup (that's what git is for!) and swapfiles are annoying
+    " Backups, swapfiles, persistence {
         set undodir=~/.vim/tmp/undo
         set viewdir=~/.vim/tmp/views
+        if !isdirectory("~/.vim/tmp")
+            silent exec "!mkdir -p ~/.vim/tmp/undo"
+            silent exec "!mkdir -p ~/.vim/tmp/views"
+        endif
 
-        set noswapfile
+        " No backup (that's what git is for!) and swapfiles are annoying
         set nobackup
+        set noswapfile
 
         set undofile
         set undolevels=500
         set undoreload=500
-        set history=500
+        set history=1000
 
+        " Preserve buffer state (cursor location, folds, etc.)
         set viewoptions=cursor,folds,unix,slash
         augroup persistence
             au!
             au BufWinLeave * if expand("%") != "" | mkview | endif
             au BufWinEnter * if expand("%") != "" | loadview | endif
         augroup END
-    " }}
-    
-" }}
+    " }
+" }
 
-" Keymappings {{
-    " The rule is simple. Keymappings with leader apply globally to any filetype.
-    " Keymappings with localleader apply to specific filetypes or projects.
-
+" Keymappings {
     " Comma get some... sorry.
     let mapleader = ','
     let maplocalleader = '\'
@@ -250,37 +350,47 @@ au!
 
     " Easier than escape. Pinnacle of laziness.
     imap jj <ESC>
+
     " Damn you escape key! How I miss you...
     inoremap <F1> <ESC>
     nnoremap <F1> <ESC>
     vnoremap <F1> <ESC>
+
     " Turn off search highlighting
     noremap <silent> <leader>? :nohlsearch<CR>
 
-    " Navigation {{
-        " Normalize all the navigation keys to move by row/col despite and
+    " Navigation {
+        " Normalize all the navigation keys to move by row/col despite any
         " wrapped text
         noremap j gj
         noremap k gk
 
-        " Tab alias for matchit
-        nmap <Tab> %
-        
+        " Easier horizontal scrolling
+        map zl zL
+        map zh zH
+
         " Get used to hjkl!
         noremap <Left> <Nop>
         noremap <Right> <Nop>
         noremap <Down> <Nop>
         noremap <Up> <Nop>
-    " }}
 
-    " Editing {{
+        " Tab alias for matchit
+        nmap <Tab> %
+    " }
+
+    " Editing {
         " Fold toggle
         nnoremap <Space> za
-        " Make Y act consistant (e.g. w/ C and D)
+
+        " Make Y act consistant with C and D
         nnoremap Y y$
-        " Don't leave visual mode end indenting
+
+        " Don't leave visual mode after indenting
         vnoremap < <gv
         vnoremap > >gv
+
+        " One-key indent control
         nmap ≥ >>
         nmap ≤ <<
 
@@ -290,44 +400,37 @@ au!
         nnoremap <S-CR> o<Esc>
         nnoremap <C-S-CR> O<Esc>
 
+        " Enabling repeat in visual mode
         vmap . :normal .<CR>
 
         " Reselect pasted text
         nnoremap <leader>v V`]
+
         " Easier reformats
         nnoremap <leader>q gqip
         vnoremap <leader>q gq
-
-        " Uses C-Space for syntax omnicomplete (and to navigate the suggestions)
-        " NOTE: The YouCompleteMe plugin has replaced this
-        " imap <expr> <C-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
-        " imap <expr> <S-C-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
 
         " Uses A-Space for generic omnicomplete
         imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
         imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
 
-        " A convenient mapping (thanks spf13)
-        inoremap <expr> <Esc>   pumvisible() ? "\<C-e>" : "\<Esc>"
-
         " Add semicolon to end of line
         nnoremap <leader>; ma$a;<Esc>`a
 
-        " Adjust folding level {{
-            nmap <leader>f0 :set foldlevel=0<CR>
-            nmap <leader>f1 :set foldlevel=1<CR>
-            nmap <leader>f2 :set foldlevel=2<CR>
-            nmap <leader>f3 :set foldlevel=3<CR>
-            nmap <leader>f4 :set foldlevel=4<CR>
-            nmap <leader>f5 :set foldlevel=5<CR>
-            nmap <leader>f6 :set foldlevel=6<CR>
-            nmap <leader>f7 :set foldlevel=7<CR>
-            nmap <leader>f8 :set foldlevel=8<CR>
-            nmap <leader>f9 :set foldlevel=9<CR>
-        " }}
-    " }}
+        " Adjust folding level
+        nmap <leader>f0 :set foldlevel=0<CR>
+        nmap <leader>f1 :set foldlevel=1<CR>
+        nmap <leader>f2 :set foldlevel=2<CR>
+        nmap <leader>f3 :set foldlevel=3<CR>
+        nmap <leader>f4 :set foldlevel=4<CR>
+        nmap <leader>f5 :set foldlevel=5<CR>
+        nmap <leader>f6 :set foldlevel=6<CR>
+        nmap <leader>f7 :set foldlevel=7<CR>
+        nmap <leader>f8 :set foldlevel=8<CR>
+        nmap <leader>f9 :set foldlevel=9<CR>
+    " }
 
-    " Buffers {{
+    " Buffers {
         " Switch between open buffers
         noremap <C-Tab> :bnext<CR>
         noremap <C-S-Tab> :bprev<CR>
@@ -351,9 +454,9 @@ au!
         nnoremap <leader>ss :w<CR>:mksession! <C-R>=SESSDIR<CR><CR>
         nnoremap <leader>sl :so <C-R>=SESSDIR<CR><CR>
         nnoremap <leader>sd :!rm <C-R>=SESSDIR<CR><CR>
-    " }}
+    " }
 
-    " Command {{
+    " Command {
         " Annoying command mistakes
         com! W w 
         com! Q q
@@ -369,11 +472,76 @@ au!
         
         " Strip whitespace
         com! -range Trim <line1>,<line2>s/\s\+$//
-    " }}
-" }}
+    " }
 
-" Uility {{
-    " Run inline code {{
+    " Plugins {
+        " Ctrlp {
+            let g:ctrlp_map = '<leader>.'
+            nnoremap <silent> <leader>, :CtrlPBuffer<CR>
+            nnoremap <silent> <leader>tr :CtrlPTag<CR>
+            nnoremap <silent> <leader>tm :CtrlPMRU<CR>
+            nnoremap <silent> <leader>tl :CtrlPLine<CR>
+            nnoremap <silent> <leader>tc :CtrlPChangeAll<CR>
+            nnoremap <silent> <leader>tc. :CtrlPChange<CR>
+        " }
+
+        " Fugitive {
+            nnoremap <silent> <leader>gs :Gstatus<CR>
+            nnoremap <silent> <leader>gd :Gdiff<CR>
+            nnoremap <silent> <leader>gc :Gcommit<CR>
+            nnoremap <silent> <leader>gb :Gblame<CR>
+            nnoremap <silent> <leader>gl :Glog<CR>
+            nnoremap <silent> <leader>gp :Git push<CR>
+            nnoremap <silent> <leader>gw :Gwrite<CR>
+        " }
+
+        " NERDTree {
+            nnoremap <leader>n :NERDTreeToggle<CR>
+            nnoremap <leader>N :NERDTreeFind<CR>
+        " }
+
+        " Tabularize {
+            nmap <leader>a= :Tabularize /=<CR>
+            vmap <leader>a= :Tabularize /=<CR>
+            nmap <leader>a: :Tabularize /:<CR>
+            vmap <leader>a: :Tabularize /:<CR>
+            nmap <leader>a:: :Tabularize /:\zs<CR>
+            vmap <leader>a:: :Tabularize /:\zs<CR>
+            nmap <leader>a, :Tabularize /,<CR>
+            vmap <leader>a, :Tabularize /,<CR>
+            nmap <leader>a<Bar> :Tabularize /<Bar><CR>
+            vmap <leader>a<Bar> :Tabularize /<Bar><CR>
+        " }
+
+        " TagBar {
+            nnoremap <silent> <leader>r :TagbarToggle<CR>
+        " }
+
+        " TComment {
+            map <silent> <leader>/ gcc
+            vmap <silent> <leader>/ gc
+        " }
+
+        " UltiSnips {
+            " let g:UltiSnipsExpandTrigger = "<tab>"
+            " let g:UltiSnipsJumpForwardTrigger = "<tab>"
+            " let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
+            
+            " Temporary settings until YouCompleteMe incorporates ultisnips support
+            let g:UltiSnipsExpandTrigger = "<C-f>"
+            let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+            let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+        " }
+        
+        " YankRing {
+            nnoremap <leader>p :YRShow<CR>
+            nnoremap <leader>y/ :YRSearch<CR>
+        " }
+    " }
+" }
+
+" Uility {
+    " Run inline code {
         " Run entire current file (or line) through the appropriate interpreter
         " (e.g.  PHP, ruby, etc) and put it in a preview window.
         func! MlRun()
@@ -428,9 +596,9 @@ au!
             \ nnoremap <buffer><silent> <localleader>r :call MlRun()<CR> |
             \ vnoremap <buffer><silent> <localleader>r :call MlRunRange()<CR>
         au FileType php let b:ml_prepend="<?php "
-    " }}
+    " }
 
-    " Debugging {{
+    " Debugging {
         " Reveal syntax highlighting group under cursor
         func! <SID>SynStack()
             if exists("*synstack")
@@ -439,164 +607,7 @@ au!
         endfunc
 
         nmap ~ :call <SID>SynStack()<CR>
-    " }}
-" }}
+    " }
+" }
 
-" Plugin Settings {{
-    " CTags {{
-        set tags=./.tags;/,~/.tags,~/tags
-    " }}
-
-    " Ctrip {{
-        let g:ctrlp_map = '<leader>.'
-        let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
-
-        let g:ctrlp_max_height = 12
-        let g:ctrlp_cache_dir = "~/.vim/tmp/ctrip"
-        let g:ctrlp_working_path_mode = 0
-        let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\.git$\|\.hg$\|\.svn|\.settings$',
-            \ 'file': '\.exe$\|\.so$\|\.dll|\.sass\-cache|\.classpath|\.project$' }
-
-        nnoremap <silent> <leader>, :CtrlPBuffer<CR>
-        nnoremap <silent> <leader>tr :CtrlPTag<CR>
-        nnoremap <silent> <leader>tm :CtrlPMRU<CR>
-        nnoremap <silent> <leader>tl :CtrlPLine<CR>
-        nnoremap <silent> <leader>tc :CtrlPChangeAll<CR>
-        nnoremap <silent> <leader>tc. :CtrlPChange<CR>
-    " }}
-
-    " delimitMate {{
-        let g:delimitMate_expand_cr = 1
-        let g:delimitMate_expand_space = 1
-    " }}
-
-    " EasyTags {{
-        let g:easytags_cmd = 'ctags'
-        let g:easytags_dynamic_files = 1
-        let g:easytags_by_filetype = "~/.vim/tmp/tags"
-        let g:easytags_updatetime_autodisable = 1
-    " }}
-
-    " Fugitive {{
-        nnoremap <silent> <leader>gs :Gstatus<CR>
-        nnoremap <silent> <leader>gd :Gdiff<CR>
-        nnoremap <silent> <leader>gc :Gcommit<CR>
-        nnoremap <silent> <leader>gb :Gblame<CR>
-        nnoremap <silent> <leader>gl :Glog<CR>
-        nnoremap <silent> <leader>gp :Git push<CR>
-        nnoremap <silent> <leader>gw :Gwrite<CR>
-    " }}
-
-    " NERDTree {{
-        let NERDTreeMinimalUI=1
-        nnoremap <leader>n :NERDTreeToggle<CR>
-        nnoremap <leader>N :NERDTreeFind<CR>
-
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
-        let NERDTreeQuitOnOpen=0
-        let NERDTreeShowBookmarks=0
-        let NERDTreeShowHidden=1
-        let NERDTreeAutoDeleteBuffer=1
-    " }}
-
-    " PIV {{deficiency
-        " Just my coding preference
-        let g:PIVPearStyle = 0
-        let g:PHP_autoformatcomment = 0
-
-        " Disable PIV's auto folding (preserves my nice foldtext function)
-        let g:DisableAutoPHPFolding = 1
-        " DelimitMate handles autoclosing delimiters for us, so disable PIV's
-        let g:PIVAutoClose = 0
-    " }}
-
-    " Powerline {{
-        let g:Powerline_mode_n = 'N'
-        let g:Powerline_mode_i = 'I'
-        let g:Powerline_mode_v = 'V'
-        let g:Powerline_mode_V = 'V-'
-        let g:Powerline_mode_cv = 'V+'
-        let g:Powerline_mode_R = 'R'
-    " }}
-
-    " PythonMode {{
-        let g:pymode_run = 0
-        let g:pymode_lint_checker = 'pyflakes'
-        if !has('python')
-            let g:pymode = 1
-        endif
-    " }}
-
-    " SparkUp {{
-        au FileType blade,twig,xml so ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
-    " }}
-
-    " Syntastic {{
-        let g:syntastic_enable_highlighting = 0
-        let g:syntastic_auto_loc_list=1
-        let g:syntastic_quiet_warnings=1
-        let g:syntastic_phpcs_disable=1
-    " }}
-
-    " Tabularize {{
-        nmap <leader>a= :Tabularize /=<CR>
-        vmap <leader>a= :Tabularize /=<CR>
-        nmap <leader>a: :Tabularize /:<CR>
-        vmap <leader>a: :Tabularize /:<CR>
-        nmap <leader>a:: :Tabularize /:\zs<CR>
-        vmap <leader>a:: :Tabularize /:\zs<CR>
-        nmap <leader>a, :Tabularize /,<CR>
-        vmap <leader>a, :Tabularize /,<CR>
-        nmap <leader>a<Bar> :Tabularize /<Bar><CR>
-        vmap <leader>a<Bar> :Tabularize /<Bar><CR>
-    " }}
-
-    " TagBar {{
-        nnoremap <silent> <leader>r :TagbarToggle<CR>
-    " }}
-
-    " TComment {{
-        map <silent> <leader>/ gcc
-        vmap <silent> <leader>/ gc
-
-        let g:tcomment_types = {}
-        let g:tcomment_types['blade'] = '{{-- %s --}}'
-        let g:tcomment_types['twig'] = '{# %s #}'
-    " }}
-
-    " UltiSnips {{
-        let g:UltiSnipsSnippetDirectories = ['snippets']
-        " let g:UltiSnipsExpandTrigger = "<tab>"
-        " let g:UltiSnipsJumpForwardTrigger = "<tab>"
-        " let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
-        
-        " Temporary settings until YouCompleteMe incorporates ultisnips support
-        let g:UltiSnipsExpandTrigger = "<C-f>"
-        let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-        let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
-    " }}
-
-    " Vim-indent-guides {{
-        let g:indent_guides_enable_on_vim_startup = 1
-        let g:indent_guides_start_level           = 2
-        let g:indent_guides_guide_size            = 1
-        " let g:indent_guides_auto_colors           = 1
-        let g:indent_guides_color_change_percent  = 4
-    " }}
-    
-    " YankRing {{
-        let g:yankring_history_dir = '~/.vim/tmp/yankring'
-        nnoremap <leader>p :YRShow<CR>
-        nnoremap <leader>y/ :YRSearch<CR>
-    " }}
-" }}
-
-" First-run {{
-    if isdirectory('~/.vim/tmp')
-        !mkdir -p ~/.vim/tmp/undo
-        !mkdir ~/.vim/tmp/views
-    endif
-" }}
-
-" vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker
