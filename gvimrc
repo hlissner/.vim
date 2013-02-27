@@ -32,7 +32,6 @@ if has('gui_macvim')
     inoremap <S-D-CR> <C-O>O
 
     " Commenting using CMD+/"
-    imap <D-/> <C-o><leader>/
     nmap <D-/> <leader>/
     vmap <D-/> <leader>/
 
@@ -51,34 +50,9 @@ if has('gui_macvim')
         nnoremap <silent> <leader>ol :exe '!open -a Launchbar '.shellescape(expand("%"))<CR><CR>
         " Open a terminal CD'd to the current file's folder
         nnoremap <silent> <leader>ot :exe '!open -a iTerm '.shellescape(expand("%:p:h"))<CR><CR>
-
-        " Send to transmit for FTP upload
-        au FileType scss,less,stylus 
-            \ let b:ml_upload_dir = "../css" |
-            \ let b:ml_upload_ext = "css"
-
-        func! MlUpload()
-            if exists('b:ml_upload_ext')
-                let basedir = expand("%:p:h") . "/" . b:ml_upload_dir . "/"
-                let filename = expand("%:t:r") . "." . b:ml_upload_ext
-                if filereadable(basedir.filename)
-                    call system('open -a Transmit ' . shellescape(basedir . filename))
-                    echom "File uploaded (".filename.")"
-                else
-                    echoe "Couldn't find file to upload (".filename.")"
-                endif
-            else
-                if strlen(expand("%"))
-                    call system('open -a Transmit ' . shellescape(expand("%")))
-                    echom "File uploaded (".expand("%:t").")"
-                else
-                    echoe "File must be saved!"
-                endif
-            endif
-        endfunc
-
-        nnoremap <silent> <leader>ou :call MlUpload()<CR>
     " }}
 endif
+
+" TODO: Implement Gvim for linux and windows
 
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker
