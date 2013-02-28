@@ -134,14 +134,15 @@ au!
         set foldtext=MyFoldText()
         func! MyFoldText()
             let line = getline(v:foldstart)
+            " Lines that have been folded
             let nl = v:foldend - v:foldstart + 1
 
             let foldedLines = "( ".nl." ) "
             let symbol = " ... "
 
-            let indent  = repeat(' ', indent(v:foldstart))
-
-            let startcol = &columns < &colorcolumn ? &columns-4 : &colorcolumn
+            let indent = repeat(' ', indent(v:foldstart))
+            let endcol = &colorcolumn ? &colorcolumn : &textwidth
+            let startcol = &columns < endcol ? &columns-4 : endcol
             let outdent = repeat(' ', startcol - strlen(line . foldedLines . symbol))
 
             return indent . substitute(line,"^ *","",1) . symbol . outdent . foldedLines
