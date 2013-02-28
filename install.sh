@@ -54,4 +54,4 @@ fi
 echo "[Updating vim plugins]"
 vim -u ~/.vimrc +BundleInstall! +BundleClean +qall
 
-echo "[Done!]"
+echo "[Done! Don't forget to compile YCM!]"
