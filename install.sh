@@ -19,13 +19,19 @@ command -v git >/dev/null 2>&1 || {
     exit 1; 
 }
 
+command -v curl >/dev/null 2>&1 || { 
+    echo >&2 "Curl wasn't found and is required."; 
+    exit 1; 
+}
+
 # Install/update mlvim
 if [ ! -e $VIMDIR/.git ]; then
-    echo "Installing mlvim..."
+    echo "[Installing mlvim]"
     git clone https://github.com/hlissner/mlvim ~/.vim
     mkdir $VIMDIR/tmp $VIMDIR/bundle
+    mkdir $VIMDIR/tmp/views $VIMDIR/tmp/yankring $VIMDIR/tmp/undo
 else
-    echo "Updating mlvim..."
+    echo "[Updating mlvim]"
     cd ~/.vim && git pull
 fi
 
@@ -35,16 +41,16 @@ lnfile $VIMDIR/gvimrc $HOME/.gvimrc
 
 # Install vundle
 if [ ! -e $VIMDIR/bundle/vundle ]; then
-    echo "Installing Vundle..."
+    echo "[Installing Vundle]"
     git clone https://github.com/gmarik/vundle $HOME/.vim/bundle/vundle
 fi
 
 if [ ! -e $VIMDIR/snippets/.git ]; then
-    echo "Installing snippets..."
+    echo "[Installing snippets]"
     git clone https://github.com/hlissner/vim-ultisnips-snippets $HOME/.vim/snippets
 fi
 
-echo "Updating vim plugins"
+echo "[Updating vim plugins]"
 vim -u ~/.vimrc +BundleInstall! +BundleClean +qall
 
-echo "Done!"
+echo "[Done!]"
