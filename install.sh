@@ -47,11 +47,6 @@ if [ ! -e $VIMDIR/bundle/vundle ]; then
     git clone https://github.com/tomasr/molokai ~/.vim/bundle/molokai
 fi
 
-if [ ! -e $VIMDIR/snippets/.git ]; then
-    echo "[Installing snippets]"
-    git clone https://github.com/hlissner/vim-ultisnips-snippets $HOME/.vim/snippets
-fi
-
 echo "[Updating vim plugins]"
 vim -u ~/.vimrc +BundleInstall! +BundleClean +qall
 
