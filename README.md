@@ -31,14 +31,6 @@ And voila! Good to go.
 **Vim needs to be built with ruby and python for some of these plugins (though
 they will disable themselves otherwise).**
 
-* [Blade](http://laravel.com/docs/views/templating) ([Laravel](http://laravel.com/)'s templating engine)
-* [Jade](http://jade-lang.com)
-* [LESS](http://lesscss.org/)
-* [Markdown](https://github.com/spf13/vim-markdown)
-* [PHP Twig](http://twig.sensiolabs.org/)
-* [SASS/SCSS](http://sass-lang.com/)
-* [Objective-C](https://github.com/b4winckler/vim-objc)
-
 # Plugins
 
 Plugins are managed using [Vundle](https://github.com/gmarik/vundle).
