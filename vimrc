@@ -133,16 +133,18 @@ au!
         " Cleaner, readable fold headers
         set foldtext=MyFoldText()
         func! MyFoldText()
-            let indent_level = indent(v:foldstart)
-            let indent = repeat(' ',indent_level-2)
+            let line = getline(v:foldstart)
             let nl = v:foldend - v:foldstart + 1
-            let comment = substitute(getline(v:foldstart),"^ *","",1)
-            let text = comment . ' … [' . nl . ']'
-            if indent_level <= 0
-                return indent . text
-            else
-                return '+ ' . indent . text
-            endif
+
+            let foldedLines = "( ".nl." ) "
+            let symbol = " ... "
+
+            let indent  = repeat(' ', indent(v:foldstart))
+
+            let startcol = &columns < &colorcolumn ? &columns-4 : &colorcolumn
+            let outdent = repeat(' ', startcol - strlen(line . foldedLines . symbol))
+
+            return indent . substitute(line,"^ *","",1) . symbol . outdent . foldedLines
         endfunc
     " }
 
