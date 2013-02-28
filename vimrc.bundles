@@ -3,89 +3,116 @@
 "
 
 " Plugins {
-    Bundle 'tomasr/molokai'
+    " Appearance {
+        Bundle 'Lokaltog/vim-powerline'
+        Bundle 'nathanaelkane/vim-indent-guides'
+        Bundle 'tomasr/molokai'
+    " }
 
-    Bundle 'Lokaltog/vim-powerline'
-    Bundle 'PickAColor.vim'
-    Bundle 'Raimondi/delimitMate'
-    Bundle 'YankRing.vim'
-    Bundle 'bufkill.vim'
-    Bundle 'chrisbra/color_highlight'
-    Bundle 'godlygeek/tabular'
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'matchit.zip'
-    Bundle 'mileszs/ack.vim'
-    Bundle 'nathanaelkane/vim-indent-guides'
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'scrooloose/syntastic'
-    Bundle 'tomtom/tcomment_vim'
-    Bundle 'tpope/vim-endwise'
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'tpope/vim-repeat'
-    Bundle 'tpope/vim-speeddating'
-    Bundle 'tpope/vim-surround'
-    Bundle 'tpope/vim-unimpaired'
-    Bundle 'hlissner/vim-multiedit'
+    " File search {
+        Bundle 'kien/ctrlp.vim'
+        Bundle 'mileszs/ack.vim'
+        Bundle 'scrooloose/nerdtree'
+    " }
 
-    if executable('ctags')
-        Bundle 'majutsushi/tagbar'
-        Bundle 'xolox/vim-easytags'
-    endif
+    " Editing {
+        Bundle 'PickAColor.vim'
+        Bundle 'Raimondi/delimitMate'
+        Bundle 'YankRing.vim'
+        Bundle 'bufkill.vim'
+        Bundle 'chrisbra/color_highlight'
+        Bundle 'godlygeek/tabular'
+        Bundle 'hlissner/vim-multiedit'
+        Bundle 'matchit.zip'
+        Bundle 'tomtom/tcomment_vim'
+        Bundle 'tpope/vim-endwise'
+        Bundle 'tpope/vim-repeat'
+        Bundle 'tpope/vim-speeddating'
+        Bundle 'tpope/vim-surround'
+        Bundle 'tpope/vim-fugitive'
+        Bundle 'tpope/vim-unimpaired'
+    " }
+    
+    " Remote resources {
+        Bundle 'mattn/gist-vim'
+    " }
 
-    if has("python")
-        Bundle 'Valloric/YouCompleteMe'
-        Bundle 'SirVer/ultisnips'
-    endif
+    " Programming {
+        Bundle 'scrooloose/syntastic'
 
-    " Mac only
-    if has("unix") && system("uname") == "Darwin"
-        Bundle 'hlissner/vim-transmitty'
+        if executable('ctags')
+            Bundle 'majutsushi/tagbar'
+            Bundle 'xolox/vim-easytags'
+        endif
 
-        " Objective-C (Pretty much mac only)
-        Bundle 'b4winckler/vim-objc'
-        Bundle 'eraserhd/vim-ios.git'
-    endif
+        if has("python")
+            Bundle 'Valloric/YouCompleteMe'
 
-    " PHP
-    Bundle 'hlissner/PIV'
-    Bundle 'hlissner/vim-php-namespace'
-    Bundle 'beyondwords/vim-twig'
-    " PHP.laravel
-    Bundle 'johnhamelink/blade.vim'
+            " Snippets
+            Bundle 'SirVer/ultisnips'
+            Bundle 'hlissner/vim-ultisnips-snippets'
+        endif
 
-    " Python
-    Bundle 'indentpython.vim--nianyang'
-    Bundle 'klen/python-mode'
-    Bundle 'python_match.vim'
-    Bundle 'pythoncomplete'
+        " Mac only
+        if has("unix") && system("uname") == "Darwin"
+            Bundle 'hlissner/vim-transmitty'
 
-    " Javascript
-    Bundle 'leshill/vim-json'
-    Bundle 'mmalecki/vim-node.js'
-    Bundle 'pangloss/vim-javascript'
-    Bundle 'kchmck/vim-coffee-script'
+            " Objective-C / iOS
+            Bundle 'b4winckler/vim-objc'
+            Bundle 'eraserhd/vim-ios.git'
+        endif
 
-    " HTML
-    Bundle 'tristen/vim-sparkup'
-    Bundle 'digitaltoad/vim-jade'
+        " PHP
+        Bundle 'hlissner/PIV'
+        Bundle 'arnaud-lb/vim-php-namespace'
+        Bundle 'beyondwords/vim-twig'
+        " PHP.laravel
+        Bundle 'johnhamelink/blade.vim'
 
-    " CSS/SCSS/LESS
-    Bundle 'cakebaker/scss-syntax.vim'
-    Bundle 'groenewege/vim-less'
+        " Python
+        Bundle 'indentpython.vim--nianyang'
+        Bundle 'klen/python-mode'
+        Bundle 'python_match.vim'
+        Bundle 'pythoncomplete'
 
-    " Ruby
-    Bundle 'rails.vim'
+        " Java
+        Bundle 'derekwyatt/vim-scala'
 
-    " Other
-    Bundle 'spf13/vim-markdown'
-    Bundle 'spf13/vim-preview'
-    " Bundle 'hlissner/vim-forrestgump'
+        " Javascript
+        Bundle 'leshill/vim-json'
+        Bundle 'mmalecki/vim-node.js'
+        Bundle 'pangloss/vim-javascript'
+        Bundle 'kchmck/vim-coffee-script'
+
+        " HTML
+        Bundle 'tristen/vim-sparkup'
+        Bundle 'digitaltoad/vim-jade'
+
+        " CSS/SCSS/LESS
+        Bundle 'cakebaker/scss-syntax.vim'
+        Bundle 'groenewege/vim-less'
+
+        " Ruby
+        Bundle 'rails.vim'
+
+        " Other
+        Bundle 'spf13/vim-markdown'
+        Bundle 'spf13/vim-preview'
+        " Bundle 'hlissner/vim-forrestgump'
+    " }
 " }
 
 " Settings {
+    " Ack {
+        if executable('ack-grep')
+            let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+        elseif executable('ag')
+            let g:ackprg = 'ag --nogroup --nocolor --column'
+        endif
+    " }
+
     " Ctrip {
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
-
         let g:ctrlp_max_height = 12
         let g:ctrlp_cache_dir = "~/.vim/tmp/ctrip"
         let g:ctrlp_working_path_mode = 0
