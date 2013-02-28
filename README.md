@@ -41,6 +41,10 @@ need:
 
     sh <(curl https://raw.github.com/hlissner/mlvim/master/install.sh -L)
 
+## Windows
+
+At the moment, this won't work well on windows. Stay tuned!
+
 # Plugins
 
 Plugins are managed using [Vundle](https://github.com/gmarik/vundle).
