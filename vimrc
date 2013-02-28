@@ -84,13 +84,15 @@ au!
             " Ruby
             Bundle 'rails.vim'
 
-            " Objective-C / Clang
-            Bundle 'b4winckler/vim-objc'
-            Bundle 'eraserhd/vim-ios.git'
-
             " Other
             Bundle 'spf13/vim-markdown'
             Bundle 'spf13/vim-preview'
+
+            " Objective-C (Pretty much mac only)
+            if has("unix") && system("uname") == "Darwin"
+                Bundle 'b4winckler/vim-objc'
+                Bundle 'eraserhd/vim-ios.git'
+            endif
         " }
 
         " Colorschemes {
