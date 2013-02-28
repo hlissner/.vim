@@ -2,9 +2,6 @@
 "                                 gvimrc                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" mmyes, quite
-set guifont=Inconsolata:h16
-
 " j doesn't seem to work from terminal
 set formatoptions+=j
 
@@ -16,6 +13,10 @@ set go-=r
 set go-=R
 
 if has('gui_macvim')
+
+    " mmyes, quite
+    set guifont=Inconsolata:h16
+
     " Replace some CMD shortcuts
     macmenu &File.New\ Tab key=<nop>
     macmenu &File.Open\.\.\. key=<nop>
@@ -23,9 +24,6 @@ if has('gui_macvim')
     nnoremap <D-t> :CtrlP<CR>
     nnoremap <D-o> :e <C-R>=expand("%:p:h")<CR>/
     nnoremap <D-O> :CtrlPBuffer<CR>
-
-    " Quick way to refer to my dev folder (I use homebrew)
-    cnoremap $$ /usr/local/dev/
 
     " Textmate-like CMD+Enter
     inoremap <D-CR> <C-O>o
@@ -51,8 +49,27 @@ if has('gui_macvim')
         " Open a terminal CD'd to the current file's folder
         nnoremap <silent> <leader>ot :exe '!open -a iTerm '.shellescape(expand("%:p:h"))<CR><CR>
     " }}
-endif
+    
+else
 
-" TODO: Implement Gvim for linux and windows
+    " For GVIM
+    
+    " Textmate-like CMD+Enter
+    inoremap <C-CR> <C-O>o
+    inoremap <S-C-CR> <C-O>O
+
+    " Commenting using CMD+/"
+    nmap <A-/> <leader>/
+    vmap <A-/> <leader>/
+
+    " Easier indent control
+    nmap <A-]> >>
+    nmap <A-[> <<
+
+    " Fast scrolling shortcut
+    map <A-j> 5j
+    map <A-k> 5k
+
+endif
 
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker
