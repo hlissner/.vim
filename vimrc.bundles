@@ -1,0 +1,182 @@
+"
+" My Little Vim Bundles
+"
+
+" Plugins {
+    Bundle 'tomasr/molokai'
+
+    Bundle 'Lokaltog/vim-powerline'
+    Bundle 'PickAColor.vim'
+    Bundle 'Raimondi/delimitMate'
+    Bundle 'YankRing.vim'
+    Bundle 'bufkill.vim'
+    Bundle 'chrisbra/color_highlight'
+    Bundle 'godlygeek/tabular'
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'matchit.zip'
+    Bundle 'mileszs/ack.vim'
+    Bundle 'nathanaelkane/vim-indent-guides'
+    Bundle 'scrooloose/nerdtree'
+    Bundle 'scrooloose/syntastic'
+    Bundle 'tomtom/tcomment_vim'
+    Bundle 'tpope/vim-endwise'
+    Bundle 'tpope/vim-fugitive'
+    Bundle 'tpope/vim-repeat'
+    Bundle 'tpope/vim-speeddating'
+    Bundle 'tpope/vim-surround'
+    Bundle 'tpope/vim-unimpaired'
+    Bundle 'hlissner/vim-multiedit'
+
+    if executable('ctags')
+        Bundle 'majutsushi/tagbar'
+        Bundle 'xolox/vim-easytags'
+    endif
+
+    if has("python")
+        Bundle 'Valloric/YouCompleteMe'
+        Bundle 'SirVer/ultisnips'
+    endif
+
+    " Mac only
+    if has("unix") && system("uname") == "Darwin"
+        Bundle 'hlissner/vim-transmitty'
+
+        " Objective-C (Pretty much mac only)
+        Bundle 'b4winckler/vim-objc'
+        Bundle 'eraserhd/vim-ios.git'
+    endif
+
+    " PHP
+    Bundle 'hlissner/PIV'
+    Bundle 'hlissner/vim-php-namespace'
+    Bundle 'beyondwords/vim-twig'
+    " PHP.laravel
+    Bundle 'johnhamelink/blade.vim'
+
+    " Python
+    Bundle 'indentpython.vim--nianyang'
+    Bundle 'klen/python-mode'
+    Bundle 'python_match.vim'
+    Bundle 'pythoncomplete'
+
+    " Javascript
+    Bundle 'leshill/vim-json'
+    Bundle 'mmalecki/vim-node.js'
+    Bundle 'pangloss/vim-javascript'
+    Bundle 'kchmck/vim-coffee-script'
+
+    " HTML
+    Bundle 'tristen/vim-sparkup'
+    Bundle 'digitaltoad/vim-jade'
+
+    " CSS/SCSS/LESS
+    Bundle 'cakebaker/scss-syntax.vim'
+    Bundle 'groenewege/vim-less'
+
+    " Ruby
+    Bundle 'rails.vim'
+
+    " Other
+    Bundle 'spf13/vim-markdown'
+    Bundle 'spf13/vim-preview'
+    " Bundle 'hlissner/vim-forrestgump'
+" }
+
+" Settings {
+    " Ctrip {
+        let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
+
+        let g:ctrlp_max_height = 12
+        let g:ctrlp_cache_dir = "~/.vim/tmp/ctrip"
+        let g:ctrlp_working_path_mode = 0
+        let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\.git$\|\.hg$\|\.svn|\.settings$',
+            \ 'file': '\.exe$\|\.so$\|\.dll|\.sass\-cache|\.classpath|\.project$' }
+    " }
+
+    " delimitMate {
+        let g:delimitMate_expand_cr = 1
+        let g:delimitMate_expand_space = 1
+    " }
+
+    " EasyTags {
+        let g:easytags_cmd = 'ctags'
+        let g:easytags_dynamic_files = 1
+        let g:easytags_by_filetype = "~/.vim/tmp/tags"
+        let g:easytags_updatetime_autodisable = 1
+    " }
+
+    " NERDTree {
+        let NERDTreeMinimalUI=1
+
+        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
+        let NERDTreeQuitOnOpen=0
+        let NERDTreeShowBookmarks=0
+        let NERDTreeShowHidden=1
+        let NERDTreeAutoDeleteBuffer=1
+    " }
+
+    " PIV {
+        " Just my coding preference
+        let g:PIVPearStyle = 0
+        let g:PHP_autoformatcomment = 0
+
+        " Disable PIV's auto folding (preserves my nice foldtext function)
+        let g:DisableAutoPHPFolding = 1
+        " DelimitMate handles autoclosing delimiters for us, so disable PIV's
+        let g:PIVAutoClose = 0
+    " }
+
+    " Powerline {
+        let g:Powerline_mode_n = 'N'
+        let g:Powerline_mode_i = 'I'
+        let g:Powerline_mode_v = 'V'
+        let g:Powerline_mode_V = 'V-'
+        let g:Powerline_mode_cv = 'V+'
+        let g:Powerline_mode_R = 'R'
+    " }
+
+    " PythonMode {
+        let g:pymode_run = 0
+        let g:pymode_lint_checker = 'pyflakes'
+
+        if !has('python')
+            let g:pymode = 1
+        endif
+    " }
+
+    " SparkUp {
+        au FileType blade,twig,xml so ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
+    " }
+
+    " Syntastic {
+        let g:syntastic_enable_highlighting = 0
+        let g:syntastic_auto_loc_list=1
+        let g:syntastic_quiet_warnings=1
+        let g:syntastic_phpcs_disable=1
+    " }
+
+    " TComment {
+        let g:tcomment_types = {}
+        let g:tcomment_types['blade'] = '{-- %s --}'
+        let g:tcomment_types['twig'] = '{# %s #}'
+    " }
+
+    " UltiSnips {
+        let g:UltiSnipsSnippetDirectories = ['snippets']
+    " }
+
+    " Vim-indent-guides {
+        let g:indent_guides_enable_on_vim_startup = 1
+        let g:indent_guides_start_level           = 2
+        let g:indent_guides_guide_size            = 1
+        " let g:indent_guides_auto_colors           = 1
+        let g:indent_guides_color_change_percent  = 4
+    " }
+    
+    " YankRing {
+        let g:yankring_history_dir = '~/.vim/tmp/yankring'
+    " }
+" }
+
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker
