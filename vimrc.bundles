@@ -128,7 +128,6 @@
 
     " EasyTags {
         let g:easytags_cmd = 'ctags'
-        let g:easytags_dynamic_files = 1
         let g:easytags_by_filetype = "~/.vim/tmp/tags"
         let g:easytags_updatetime_autodisable = 1
     " }
@@ -181,6 +180,7 @@
         let g:syntastic_auto_loc_list=1
         let g:syntastic_quiet_warnings=1
         let g:syntastic_phpcs_disable=1
+        let g:syntastic_echo_current_error=0
     " }
 
     " TComment {
