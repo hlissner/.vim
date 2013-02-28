@@ -37,6 +37,7 @@ fi
 
 echo "Setting up symlinks..."
 lnfile $VIMDIR/vimrc $HOME/.vimrc
+lnfile $VIMDIR/vimrc.bundles $HOME/.vimrc.bundles
 lnfile $VIMDIR/gvimrc $HOME/.gvimrc
 
 # Install vundle
