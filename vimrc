@@ -57,7 +57,7 @@ au!
         " Syntaxes {
             " PHP
             Bundle 'hlissner/PIV'
-            Bundle 'arnaud-lb/vim-php-namespace'
+            Bundle 'hlissner/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
             " PHP.laravel
             Bundle 'johnhamelink/blade.vim'
@@ -320,10 +320,6 @@ au!
     " Backups, swapfiles, persistence {
         set undodir=~/.vim/tmp/undo
         set viewdir=~/.vim/tmp/views
-        if !isdirectory("~/.vim/tmp")
-            silent exec "!mkdir -p ~/.vim/tmp/undo"
-            silent exec "!mkdir -p ~/.vim/tmp/views"
-        endif
 
         " No backup (that's what git is for!) and swapfiles are annoying
         set nobackup
@@ -503,11 +499,7 @@ au!
         " }
         
         " PhpNamespaces {
-            imap <buffer> <Leader>u <C-O>:call PhpInsertUse()<CR>
-            map <buffer> <Leader>u :call PhpInsertUse()<CR> 
-
-            imap <buffer> <Leader>e <C-O>:call PhpExpandClass()<CR>
-            map <buffer> <Leader>e :call PhpExpandClass()<CR>
+            " see ~/.vim/ftplugin/php.vim
         " }
 
         " Tabularize {
