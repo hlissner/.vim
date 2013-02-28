@@ -11,7 +11,7 @@ the framework goodness that comes with it, ala JQuery, Mootools, Prototype,
 etc.), Coffeescript, SASS/SCSS, LESS, Stylus, Haml, Jade, Slim, PHP (5.4),
 Ruby, Python, Obj-C, Java...
 
-*\*huge breath\**
+*huge breath*
 
 The only thing it *won't* do is make coffee. And code C#. Or actionscript
 (dangnabbit). Or play nice on windows computers (yet).
