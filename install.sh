@@ -43,6 +43,7 @@ lnfile $VIMDIR/gvimrc $HOME/.gvimrc
 if [ ! -e $VIMDIR/bundle/vundle ]; then
     echo "[Installing Vundle]"
     git clone https://github.com/gmarik/vundle $HOME/.vim/bundle/vundle
+    git clone https://github.com/tomasr/molokai ~/.vim/bundle/molokai
 fi
 
 if [ ! -e $VIMDIR/snippets/.git ]; then
