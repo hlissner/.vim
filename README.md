@@ -17,19 +17,29 @@ The only thing it *won't* do is make coffee. And code C#. Or actionscript
 (dangnabbit). Or play nice on windows computers (yet).
 
 # Installation
-Install macvim, gvim or just plain ol' vim. On a mac, I'd recommend
+## Mac
+Install [macvim](https://code.google.com/p/macvim/). On a mac, I'd recommend
 [homebrew](http://mxcl.github.com/homebrew/), then all you need is a simple:
 
     brew install macvim
+    # or
+    brew install vim --with-ruby --with-python
 
-With [mac|g]vim installed, copy and paste the following:
+With [mac]vim installed, copy and paste the following:
 
-    sh <(curl https://raw.github.com/hlissner/mlvim/master/install_mac.sh -L)
+    sh <(curl https://raw.github.com/hlissner/mlvim/master/install.sh -L)
 
 And voila! Good to go.
 
-**Vim needs to be built with ruby and python for some of these plugins (though
-they will disable themselves otherwise).**
+## Linux
+You'll need vim (or gvim running vim) 7.3.584 or greater. On ubuntu you'll need
+to [compile it
+yourself](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source).
+
+With that, you'll need ruby, python, cmake, curl and git. Then this is all you
+need:
+
+    sh <(curl https://raw.github.com/hlissner/mlvim/master/install.sh -L)
 
 # Plugins
 
