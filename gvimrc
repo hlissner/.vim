@@ -9,6 +9,7 @@ set go-=L
 set go-=r
 set go-=R
 
+" For macvim
 if has('gui_macvim')
 
     " j doesn't seem to work from terminal
@@ -52,12 +53,12 @@ if has('gui_macvim')
     
 else
 
-    " For Window
+    " For Windows
     if has("gui_win32") || has("win64")
         set guifont=Consolas:h10
     endif
 
-    " For GVIM
+    " For gvim
     
     " Textmate-like CMD+Enter
     inoremap <C-CR> <C-O>o
