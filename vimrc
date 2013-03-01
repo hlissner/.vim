@@ -1,12 +1,20 @@
-" My Little Vim {
+"              _       _           
+"             | |     (_)          
+"    _ __ ___ | |_   ___ _ __ ___  
+"   | '_ ` _ \| \ \ / / | '_ ` _ \ 
+"   | | | | | | |\ V /| | | | | | |
+"   |_| |_| |_|_| \_/ |_|_| |_| |_|
 "
 "   Author: Henrik Lissner
 "   Url: http://github.com/hlissner/mlvim
 "
-"   A vimrc for any web designer, developer or masochist. We all know they're
-"   the same thing.
+"   Mlvim is a distribution of resources and settings I put together for all
+"   the dabbling I do in web, game, mobile and app development (the politically
+"   correct term would be 'masochist').
+" 
+"   But it won't make you coffee. Yet.
 "
-" }
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible
 scriptencoding utf-8

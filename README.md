@@ -1,7 +1,7 @@
 
 # My Little Vim
 
-![mlvim](http://n4s.co/mlvim.png)
+![mlvim](http://i.imgur.com/50dYqoM.png)
 
 mlvim is a distribution of resources and settings I put together for all the
 dabbling I do. In web, game, mobile and app development (yes, I'm a masochist).
