@@ -236,7 +236,7 @@ You can toggle indent guides using:
 
     <leader>ig
 
-## [vim-php-namespaces]
+## [vim-php-namespace]
 Inserts "use" statements and expands class names into their fully qualified
 names.
 
