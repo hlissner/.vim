@@ -2,9 +2,6 @@
 "                                 gvimrc                                  "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" j doesn't seem to work from terminal
-set formatoptions+=j
-
 " Say neigh to UI cruft!
 set go-=T
 set go-=l
@@ -13,6 +10,9 @@ set go-=r
 set go-=R
 
 if has('gui_macvim')
+
+    " j doesn't seem to work from terminal
+    set formatoptions+=j
 
     " mmyes, quite
     set guifont=Inconsolata:h16
@@ -51,6 +51,11 @@ if has('gui_macvim')
     " }}
     
 else
+
+    " For Window
+    if has("gui_win32") || has("win64")
+        set guifont=Consolas:h10
+    endif
 
     " For GVIM
     
