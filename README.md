@@ -3,19 +3,6 @@
 
 ![mlvim](http://i.imgur.com/50dYqoM.png)
 
-mlvim is a distribution of resources and settings I put together for all the
-dabbling I do. In web, game, mobile and app development (yes, I'm a masochist).
-
-Meaning, this distro's tailored to work for HTML5, CSS3, Javascript (and all
-the framework goodness that comes with it, ala JQuery, Mootools, Prototype,
-etc.), Coffeescript, SASS/SCSS, LESS, Stylus, Haml, Jade, Slim, PHP (5.4),
-Ruby, Python, Obj-C, Java...
-
-*huge breath*
-
-The only thing it *won't* do is make coffee. And code C#. Or actionscript
-(dangnabbit). Or play nice on windows computers (yet).
-
 # Installation
 ## Mac
 Install [macvim](https://code.google.com/p/macvim/). On a mac, I'd recommend
