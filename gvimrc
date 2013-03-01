@@ -16,7 +16,7 @@ if has('gui_macvim')
     set formatoptions+=j
 
     " mmyes, quite
-    set guifont=Inconsolata:h16
+    set guifont=Andale\ Mono:h14
 
     " Replace some CMD shortcuts
     macmenu &File.New\ Tab key=<nop>
@@ -42,14 +42,14 @@ if has('gui_macvim')
     map <D-j> 5j
     map <D-k> 5k
 
-    " Outside apps {{
+    " Outside apps {
         " Open folder in Finder
         nnoremap <silent> <leader>of :exe '!open '.shellescape(expand("%:p:h"))<CR><CR>
         " Send current file to launchbar
         nnoremap <silent> <leader>ol :exe '!open -a Launchbar '.shellescape(expand("%"))<CR><CR>
         " Open a terminal CD'd to the current file's folder
         nnoremap <silent> <leader>ot :exe '!open -a iTerm '.shellescape(expand("%:p:h"))<CR><CR>
-    " }}
+    " }
     
 else
 
@@ -78,4 +78,4 @@ else
 
 endif
 
-" vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker
