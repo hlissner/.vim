@@ -253,7 +253,7 @@ au!
         imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
 
         " Add semicolon to end of line
-        nnoremap <leader>; ma$a;<Esc>`a
+        nnoremap <localleader>; ma$a;<Esc>`a
 
         " Adjust folding level
         nmap <leader>f0 :set foldlevel=0<CR>
@@ -358,7 +358,7 @@ au!
         " }
 
         " TagBar {
-            nnoremap <silent> <leader>r :TagbarToggle<CR>
+            nnoremap <silent> <leader>tb :TagbarToggle<CR>
         " }
 
         " TComment {
