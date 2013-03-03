@@ -286,7 +286,7 @@ au!
         " Shortcut to vimrc and gvimrc
         nnoremap <leader>ev :e ~/.vimrc<CR>
         nnoremap <leader>el :e ~/.vimrc.local<CR>
-        nnoremap <leader>ed :e ~/.vimrc.dev<CR>
+        nnoremap <leader>eb :e ~/.vimrc.bundles<CR>
         nnoremap <leader>eg :e ~/.gvimrc<CR>
 
         " Temporary session management
