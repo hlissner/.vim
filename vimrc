@@ -30,10 +30,9 @@ au!
         source ~/.vimrc.bundles
     endif
 
-    " Have you own local settings. Great for sharing vim configs across
-    " different computers.
-    if filereadable(expand("~/.vimrc.local"))
-        source ~/.vimrc.local
+    " A local bundles config separate from this distro.
+    if filereadable(expand("~/.vimrc.bundles.local"))
+        source ~/.vimrc.bundles.local
     endif
 
     filetype plugin indent on
@@ -180,7 +179,7 @@ au!
     " }
 " }
 
-" Keymappings {
+" Keymaps {
     " Comma get some... sorry.
     let mapleader = ','
     let maplocalleader = '\'
@@ -383,5 +382,10 @@ au!
         " }
     " }
 " }
+
+" A local rc file separate from this distro.
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
 
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker
