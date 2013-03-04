@@ -70,7 +70,7 @@ au!
 
     " Behavior {
         set synmaxcol=1024
-        syntax sync minlines=256
+        syntax sync minlines=300
 
         set backspace=indent,eol,start
         set mouse=a
