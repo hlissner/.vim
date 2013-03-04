@@ -69,17 +69,20 @@ au!
 
     " Behavior {
         set synmaxcol=1024
-        syntax sync minlines=300
 
         set backspace=indent,eol,start
         set mouse=a
         set lazyredraw           " Don't update screen while running macros
         set hidden               " Hide abandoned buffers
         set nostartofline
-
-        set clipboard+=unnamed
-        set shortmess+=filmnrxoOtTs
         set scrolloff=5
+        set shortmess+=filmnrxoOtTs
+
+        if has('x') && has('gui')
+            set clipboard=unnamedplus
+        elseif has('gui')
+            set clipboard=unnamed
+        endif
     " }
 
     " Omnicomplete {
