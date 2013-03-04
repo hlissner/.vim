@@ -300,9 +300,15 @@ au!
 
     " Command {
         " Annoying command mistakes
-        com! W w 
-        com! Q q
-        com! WQ wq
+        com! -bang -nargs=* -complete=file E e<bang> <args>
+        com! -bang -nargs=* -complete=file W w<bang> <args>
+        com! -bang -nargs=* -complete=file Wq wq<bang> <args>
+        com! -bang -nargs=* -complete=file WQ wq<bang> <args>
+        com! -bang Wa wa<bang>
+        com! -bang WA wa<bang>
+        com! -bang Q q<bang>
+        com! -bang QA qa<bang>
+        com! -bang Qa qa<bang>
         " Forget to sudo? (Thanks spf13)
         com! WW w !sudo tree % >/dev/null
 
