@@ -28,12 +28,13 @@
         Bundle 'tpope/vim-repeat'
         Bundle 'tpope/vim-speeddating'
         Bundle 'tpope/vim-surround'
-        Bundle 'tpope/vim-fugitive'
         Bundle 'tpope/vim-unimpaired'
     " }
     
     " Remote resources {
+        Bundle 'tpope/vim-fugitive'
         Bundle 'mattn/gist-vim'
+        Bundle 'airblade/vim-gitgutter'
     " }
 
     " Programming {
