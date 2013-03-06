@@ -129,7 +129,7 @@ au!
             " Backspace and cursor keys to wrap
             set whichwrap=b,s,h,l,<,>,[,]
             set textwidth=79
-            set colorcolumn=85
+            " set colorcolumn=85
             
             " see :h fo-table
             set formatoptions=qron1l
@@ -223,8 +223,12 @@ au!
         " Fold toggle
         nnoremap <Space> za
 
-        " Make Y act consistant with C and D
-        nnoremap Y y$
+        " Make Y act consistant with C and D. It must be in this form to
+        " override YankRing's remapping of Y.
+        " nnoremap Y y
+        function! YRRunAfterMaps()
+            nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+        endfunction$
 
         " Don't leave visual mode after indenting
         vnoremap < <gv
