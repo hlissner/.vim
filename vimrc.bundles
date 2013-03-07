@@ -93,7 +93,8 @@
         Bundle 'groenewege/vim-less'
 
         " Ruby
-        Bundle 'rails.vim'
+        Bundle 'vim-ruby/vim-ruby'
+        Bundle 'tpope/vim-rails'
 
         " Other
         Bundle 'spf13/vim-markdown'
