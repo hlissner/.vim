@@ -176,8 +176,8 @@ au!
         set viewoptions=cursor,folds,unix,slash
         augroup persistence
             au!
-            au BufWinLeave * if expand("%") != "" | mkview | endif
-            au BufWinEnter * if expand("%") != "" | loadview | endif
+            au BufWinLeave * if expand("%") != "" | silent! mkview | endif
+            au BufWinEnter * if expand("%") != "" | silent! loadview | endif
         augroup END
     " }
 " }
