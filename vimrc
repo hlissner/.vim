@@ -323,11 +323,12 @@ au!
         " Ctrlp {
             let g:ctrlp_map = '<leader>.'
             nnoremap <silent> <leader>, :CtrlPBuffer<CR>
-            nnoremap <silent> <leader>tr :CtrlPTag<CR>
-            nnoremap <silent> <leader>tm :CtrlPMRU<CR>
-            nnoremap <silent> <leader>tl :CtrlPLine<CR>
-            nnoremap <silent> <leader>tc :CtrlPChangeAll<CR>
-            nnoremap <silent> <leader>tc. :CtrlPChange<CR>
+            nnoremap <silent> <leader>or :CtrlPBufTag<CR>
+            nnoremap <silent> <leader>oR :CtrlPBufTagAll<CR>
+            nnoremap <silent> <leader>om :CtrlPMRU<CR>
+            nnoremap <silent> <leader>oc :CtrlPChange<CR>
+            nnoremap <silent> <leader>oC :CtrlPChangeAll<CR>
+            nnoremap <silent> <leader>oL :CtrlPChangeAll<CR>
         " }
 
         " Fugitive {
