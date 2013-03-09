@@ -29,16 +29,31 @@
         Bundle 'tpope/vim-speeddating'
         Bundle 'tpope/vim-surround'
         Bundle 'tpope/vim-unimpaired'
+
+        " Multi-selection and editing like Sublime Text 2's
+        Bundle 'hlissner/vim-multiedit'
     " }
     
     " Remote resources {
-        Bundle 'tpope/vim-fugitive'
+        " Posting to, editing or deleting gists
         Bundle 'mattn/gist-vim'
+
+        " 'a Git wrapper so awesome, it should be illegal'
+        Bundle 'tpope/vim-fugitive'
+
+        " Show file diff in gutter
         Bundle 'airblade/vim-gitgutter'
     " }
 
     " Programming {
+        " Syntax checkers for a multitude of languages
         Bundle 'scrooloose/syntastic'
+
+        " Running code inline for testing purposes
+        Bundle 'hlissner/vim-forrestgump'
+
+        " Previewing markdown, rdoc, textile and html files in the browser
+        Bundle 'spf13/vim-preview'
 
         if executable('ctags')
             Bundle 'majutsushi/tagbar'
@@ -46,15 +61,18 @@
         endif
 
         if has("python")
+            " IDE-like autocomplete
             Bundle 'Valloric/YouCompleteMe'
 
-            " Snippets
+            " Snippets system
             Bundle 'SirVer/ultisnips'
             Bundle 'hlissner/vim-ultisnips-snippets'
         endif
 
         " Mac only
-        if has("unix") && system("uname") == "Darwin"
+        let os = substitute(system("uname -s"), '\n', '', '')
+        if os ==# "Darwin"
+            " Transmit.app integration for vim
             Bundle 'hlissner/vim-transmitty'
 
             " Objective-C / iOS
@@ -62,56 +80,51 @@
             Bundle 'eraserhd/vim-ios.git'
         endif
 
-        " PHP
-        Bundle 'hlissner/PIV'
-        Bundle 'arnaud-lb/vim-php-namespace'
-        Bundle 'beyondwords/vim-twig'
-        " PHP.laravel
-        Bundle 'johnhamelink/blade.vim'
+        " Syntax specific {
+            " PHP
+            Bundle 'hlissner/PIV'
+            Bundle 'arnaud-lb/vim-php-namespace'
+            Bundle 'beyondwords/vim-twig'
+            " PHP.laravel
+            Bundle 'johnhamelink/blade.vim'
 
-        " Python
-        Bundle 'indentpython.vim--nianyang'
-        Bundle 'klen/python-mode'
-        Bundle 'python_match.vim'
-        Bundle 'pythoncomplete'
+            " Python
+            Bundle 'indentpython.vim--nianyang'
+            Bundle 'klen/python-mode'
+            Bundle 'python_match.vim'
+            Bundle 'pythoncomplete'
 
-        " Java
-        Bundle 'derekwyatt/vim-scala'
+            " Java
+            Bundle 'derekwyatt/vim-scala'
 
-        " Javascript
-        Bundle 'leshill/vim-json'
-        Bundle 'mmalecki/vim-node.js'
-        Bundle 'pangloss/vim-javascript'
-        Bundle 'kchmck/vim-coffee-script'
+            " Javascript
+            Bundle 'leshill/vim-json'
+            Bundle 'mmalecki/vim-node.js'
+            Bundle 'pangloss/vim-javascript'
+            Bundle 'kchmck/vim-coffee-script'
 
-        " HTML
-        Bundle 'tristen/vim-sparkup'
-        Bundle 'digitaltoad/vim-jade'
+            " HTML
+            Bundle 'tristen/vim-sparkup'
+            Bundle 'digitaltoad/vim-jade'
 
-        " CSS/SCSS/LESS
-        Bundle 'cakebaker/scss-syntax.vim'
-        Bundle 'groenewege/vim-less'
+            " CSS/SCSS/LESS
+            Bundle 'cakebaker/scss-syntax.vim'
+            Bundle 'groenewege/vim-less'
 
-        " Ruby
-        Bundle 'vim-ruby/vim-ruby'
-        Bundle 'tpope/vim-rails'
+            " Ruby
+            Bundle 'vim-ruby/vim-ruby'
+            Bundle 'tpope/vim-rails'
 
-        " Other
-        Bundle 'spf13/vim-markdown'
-        Bundle 'spf13/vim-preview'
-        " Bundle 'hlissner/vim-forrestgump'
-    " }
-
-    " My plugins {
-        Bundle 'hlissner/vim-multiedit'
-        Bundle 'hlissner/vim-forrestgump'
+            " Other
+            Bundle 'spf13/vim-markdown'
+        " }
     " }
 " }
 
 " Settings {
     " Ack {
         if executable('ack-grep')
-            let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+            let g:ackprg = "ack-grep -H --nocolor --nogroup --column"
         elseif executable('ag')
             let g:ackprg = 'ag --nogroup --nocolor --column'
         endif
@@ -147,7 +160,7 @@
     " NERDTree {
         let NERDTreeMinimalUI=1
 
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
+        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
         let NERDTreeQuitOnOpen=0
         let NERDTreeShowBookmarks=0
         let NERDTreeShowHidden=1
@@ -182,6 +195,7 @@
     " }
 
     " SparkUp {
+        " Enable zen-coding in other html-based filetypes
         au FileType blade,twig,xml so ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
     " }
 
@@ -200,6 +214,7 @@
     " }
 
     " UltiSnips {
+        " Ignore the default snippets so I (and others) can define their own
         let g:UltiSnipsSnippetDirectories = ['snippets']
     " }
 
