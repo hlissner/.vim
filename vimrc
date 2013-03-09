@@ -216,7 +216,7 @@ au!
         noremap <Up> <Nop>
 
         " Tab alias for matchit
-        nmap <Tab> %
+        map <Tab> %
     " }
 
     " Editing {
@@ -250,18 +250,11 @@ au!
         " Reselect pasted text
         nnoremap <leader>v V`]
 
-        " Easier reformats
-        nnoremap <leader>q gqip
-        vnoremap <leader>q gq
-
         " Uses A-Space for generic omnicomplete
         imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
         imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
 
-        " Add semicolon to end of line
-        nnoremap <localleader>; ma$a;<Esc>`a
-
-        " Adjust folding level
+        " Adjust folding level <https://github.com/spf13/spf13-vim>
         nmap <leader>f0 :set foldlevel=0<CR>
         nmap <leader>f1 :set foldlevel=1<CR>
         nmap <leader>f2 :set foldlevel=2<CR>
@@ -303,7 +296,7 @@ au!
     " }
 
     " Command {
-        " Annoying command mistakes
+        " Annoying command mistakes <https://github.com/spf13/spf13-vim>
         com! -bang -nargs=* -complete=file E e<bang> <args>
         com! -bang -nargs=* -complete=file W w<bang> <args>
         com! -bang -nargs=* -complete=file Wq wq<bang> <args>
@@ -313,7 +306,7 @@ au!
         com! -bang Q q<bang>
         com! -bang QA qa<bang>
         com! -bang Qa qa<bang>
-        " Forget to sudo? (Thanks spf13)
+        " Forget to sudo?
         com! WW w !sudo tree % >/dev/null
 
         " Shortcuts
