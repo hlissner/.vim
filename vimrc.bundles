@@ -4,30 +4,67 @@
 
 " Plugins {
     " Appearance {
+        " A prettier status bar
         Bundle 'Lokaltog/vim-powerline'
+
+        " Pretty indent indicators
         Bundle 'nathanaelkane/vim-indent-guides'
+
+        " A personal favorite :3
         Bundle 'tomasr/molokai'
     " }
 
     " File search {
-        Bundle 'kien/ctrlp.vim'
+        " More powerful file searching
         Bundle 'mileszs/ack.vim'
+    
+        " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
+        Bundle 'kien/ctrlp.vim'
+
+        " A filetree navigator replacement for netrw
         Bundle 'scrooloose/nerdtree'
     " }
 
     " Editing {
+        " Opens the OS color picker on demand
         Bundle 'PickAColor.vim'
+
+        " Auto-closes delimiters like (),{},[],etc.
         Bundle 'Raimondi/delimitMate'
+
+        " Keeps track of everything that's yanked
         Bundle 'YankRing.vim'
+
+        " Clean way to close buffers without altering window layout
         Bundle 'bufkill.vim'
+
+        " Highlights color codes on the page (in #hex, (r,g,b,a) and <color
+        " name> format)
         Bundle 'chrisbra/color_highlight'
+
+        " For aligning text
         Bundle 'godlygeek/tabular'
+
+        " Improved % and hopping delimiters (can now be 1+ character)
         Bundle 'matchit.zip'
+
+        " Comment out code with native comment syntax
         Bundle 'tomtom/tcomment_vim'
+
+        " Auto-place code blocks for languages like ruby or viml
         Bundle 'tpope/vim-endwise'
+
+        " Offers some plugins better compatibility with repeat ('.') 
         Bundle 'tpope/vim-repeat'
+
+        " Incrementing/decrementing numbers, dates and time formatted strings
         Bundle 'tpope/vim-speeddating'
+
+        " Easy changing and insertion of surrounding delimiters (e.g. quotes,
+        " parenthesis, etc.)
         Bundle 'tpope/vim-surround'
+
+        " A series of useful [<x> and <x>] mappings
         Bundle 'tpope/vim-unimpaired'
 
         " Multi-selection and editing like Sublime Text 2's
@@ -61,11 +98,15 @@
         endif
 
         if has("python")
-            " IDE-like autocomplete
-            Bundle 'Valloric/YouCompleteMe'
+            " Minimum version and build required
+            if v:version >= 703 && has("patch584")
+                " IDE-like autocomplete
+                Bundle 'Valloric/YouCompleteMe'
+            endif
 
             " Snippets system
             Bundle 'SirVer/ultisnips'
+            " My snippets
             Bundle 'hlissner/vim-ultisnips-snippets'
         endif
 
