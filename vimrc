@@ -50,7 +50,7 @@ au!
     set nospell                  " No spell check, please
     set number                   " Line numbers
     set visualbell               " No sounds!
-    set showmode
+    set showmode                 " Show mode in cmdline
     set showmatch                " Show matching delimiters
     set browsedir=buffer         " Sets File>Open to start in current file's path
 
@@ -320,6 +320,11 @@ au!
     " }
     
     " Plugins {
+        " bufkill {
+            " Reopen last closed buffer
+            nnoremap <silent> <leader>bz :BUNDO<CR>
+        " }
+
         " Ctrlp {
             let g:ctrlp_map = '<leader>.'
             nnoremap <silent> <leader>, :CtrlPBuffer<CR>
