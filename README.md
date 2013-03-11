@@ -158,17 +158,18 @@ into
 Need I say more?
 
 ## [YankRing]
-Keeping track of everything you yank, delete or change; basically a fancy
-clipboard manager for vim. You can use <C-n> and <C-p> to switch between yanks,
-or use <leader>p and choose which one you want.
+A fancy clipboard manager for vim. Use &lt;C-n&gt; and &lt;C-p&gt; to switch
+between yanks, or use &lt;leader&gt;p and choose which one you want from
+a list.
 
 Easy.
 
 ## [bufkill]
-Offers some helpful functions for handling buffers (i.e. unloading, deleting
-or wiping them) without affecting the window layout.
+Offers kep maps for handling buffers (i.e. unloading, deleting or wiping them)
+without affecting the window layout.
 
     <leader>bd      Delete the current buffer, but preserves window layout
+    <leader>bz      Reopen the last closed buffer (i.e. 'undo')
 
 Check the source for more functionality:
 
@@ -298,6 +299,20 @@ and it will look for its CSS counterpart to upload).
 
     <leader>ou      Upload this file or, if applicable, it's compiled version 
     <leader>oU      Don't be clever, just upload this file
+
+## [vim-forrestgump]
+One thing I miss from textmate? ⌘R and ⌥⌘R.
+
+The former would run the current script and display output in a separate
+window. The latter would run selected code (or the current line). Output would
+be shown in an output window.
+
+This simple plugin aims to mimic that, except it is mapped to:
+
+    <leader>r       Run file (or selected lines)
+
+Works with php, python, ruby, perl, javascript, coffeescript and shellscript
+out of the box.
 
 ## [YouCompleteMe]
 "YouCompleteMe is a fast, as-you-type, fuzzy-search code completion engine for
