@@ -374,4 +374,5 @@ Disclaimer: I keed, I keed :P
 [vim-speeddating]:https://github.com/tpope/vim-speeddating
 [vim-multiedit]:https://github.com/hlissner/vim-multiedit
 [vim-transmitty]:https://github.com/hlissner/vim-transmitty
+[vim-forrestgump]:https://github.com/hlissner/vim-forrestgump
 [YouCompleteMe]:https://github.com/Valloric/YouCompleteMe
