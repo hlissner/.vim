@@ -78,11 +78,8 @@ au!
         set scrolloff=5
         set shortmess+=filmnrxoOtTs
 
-        if has('x') && has('gui')
-            set clipboard=unnamedplus
-        elseif has('gui')
-            set clipboard=unnamed
-        endif
+        " Share a clipboard with OS and vim terminal sessions
+        set clipboard=unnamed
     " }
 
     " Omnicomplete {
