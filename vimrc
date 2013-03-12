@@ -108,6 +108,9 @@ au!
             au FileType python setl omnifunc=pythoncomplete#Complete
             au FileType xml setl omnifunc=xmlcomplete#CompleteTags
         augroup END
+
+        " automatically open and close the popup menu / preview window
+        au InsertLeave * if pumvisible() == 0|silent! pclose|endif
     " }
 
     " Formatting {
