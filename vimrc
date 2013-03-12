@@ -104,7 +104,7 @@ au!
             " Enable omni completion.
             au FileType css,scss,less setl omnifunc=csscomplete#CompleteCSS
             au FileType html,markdown,htmljinja,xml setl omnifunc=htmlcomplete#CompleteTags
-            au FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
+            " au FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
             au FileType python setl omnifunc=pythoncomplete#Complete
             au FileType xml setl omnifunc=xmlcomplete#CompleteTags
         augroup END

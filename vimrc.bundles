@@ -141,6 +141,7 @@
             " Javascript
             Bundle 'leshill/vim-json'
             Bundle 'mmalecki/vim-node.js'
+            Bundle 'myhere/vim-nodejs-complete'
             Bundle 'pangloss/vim-javascript'
             Bundle 'kchmck/vim-coffee-script'
 
