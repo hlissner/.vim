@@ -12,6 +12,8 @@ set go-=R
 " For macvim
 if has('gui_macvim')
 
+    set transparency=1
+
     " j doesn't seem to work from terminal
     set formatoptions+=j
 
