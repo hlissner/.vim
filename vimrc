@@ -268,10 +268,6 @@ au!
     " }
 
     " Buffers {
-        " Switch between open buffers
-        noremap <C-Tab> :bnext<CR>
-        noremap <C-S-Tab> :bprev<CR>
-
         " Jump between buffers
         nnoremap <C-h> <C-w>h
         nnoremap <C-j> <C-w>j
@@ -382,7 +378,8 @@ au!
             " let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
             
             " Temporary settings until YouCompleteMe incorporates ultisnips support
-            let g:UltiSnipsExpandTrigger = "<C-f>"
+            let g:UltiSnipsExpandTrigger = "<C-Tab>"
+            let g:UltiSnipsListSnippets = ""
             let g:UltiSnipsJumpForwardTrigger = "<C-j>"
             let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
         " }
