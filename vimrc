@@ -160,19 +160,21 @@ au!
     " }
 
     " Backups, swapfiles, persistence {
-        set undodir=~/.vim/tmp/undo
-        set viewdir=~/.vim/tmp/views
-
         " No backup (that's what git is for!) and swapfiles are annoying
         set nobackup
         set noswapfile
 
-        set undofile
-        set undolevels=500
-        set undoreload=500
+        if has('persistent_undo')
+            set undodir=~/.vim/tmp/undo
+
+            set undofile
+            set undolevels=500
+            set undoreload=500
+        endif
         set history=1000
 
         " Preserve buffer state (cursor location, folds, etc.)
+        set viewdir=~/.vim/tmp/views
         set viewoptions=cursor,folds,unix,slash
         augroup persistence
             au!
