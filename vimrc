@@ -68,8 +68,6 @@ au!
     " }
 
     " Behavior {
-        set synmaxcol=1024
-
         set backspace=indent,eol,start
         set mouse=a
         set lazyredraw           " Don't update screen while running macros
@@ -109,7 +107,7 @@ au!
             au FileType xml setl omnifunc=xmlcomplete#CompleteTags
         augroup END
 
-        " automatically open and close the popup menu / preview window
+        " Automatically open and close the popup menu / preview window
         au InsertLeave * if pumvisible() == 0|silent! pclose|endif
     " }
 
@@ -129,7 +127,7 @@ au!
             " Backspace and cursor keys to wrap
             set whichwrap=b,s,h,l,<,>,[,]
             set textwidth=79
-            " set colorcolumn=85
+            set colorcolumn=85
             
             " see :h fo-table
             set formatoptions=qron1l
@@ -229,7 +227,7 @@ au!
         " override YankRing's remapping of Y.
         " nnoremap Y y
         function! YRRunAfterMaps()
-            nnoremap Y   :<C-U>YRYankCount 'y$'<CR>
+            nnoremap Y :<C-U>YRYankCount 'y$'<CR>
         endfunction$
 
         " Don't leave visual mode after indenting
@@ -315,7 +313,6 @@ au!
         cnoremap %% <C-R>=expand('%:p:h').'/'<CR>
         cnoremap %r <C-R>=expand('%')<CR>
         cnoremap %. <C-R>=expand("%:t")<CR>
-        cnoremap !! <C-R>="!".&filetype." "<CR>
         
         " Strip whitespace
         com! -range Trim <line1>,<line2>s/\s\+$//
