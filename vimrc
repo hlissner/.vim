@@ -270,7 +270,7 @@ au!
     " }
 
     " Buffers {
-        " Make vertical split and move into it
+        " New buffer in a v-split
         nnoremap <C-w>N :vnew<CR>
 
         " Shortcut to vimrc and gvimrc
