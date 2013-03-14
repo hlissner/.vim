@@ -10,7 +10,7 @@
         " Pretty indent indicators
         Bundle 'nathanaelkane/vim-indent-guides'
 
-        " A personal favorite :3
+        " A personal favorite (colorscheme) :3
         Bundle 'tomasr/molokai'
     " }
 
@@ -72,9 +72,6 @@
     " }
     
     " Remote resources {
-        " Posting to, editing or deleting gists
-        Bundle 'mattn/gist-vim'
-
         " 'a Git wrapper so awesome, it should be illegal'
         Bundle 'tpope/vim-fugitive'
 
@@ -120,7 +117,6 @@
         " Syntax specific {
             " PHP
             Bundle 'spf13/PIV'
-            Bundle 'arnaud-lb/vim-php-namespace'
             Bundle 'beyondwords/vim-twig'
             " PHP.laravel
             Bundle 'johnhamelink/blade.vim'
@@ -135,10 +131,8 @@
             Bundle 'derekwyatt/vim-scala'
 
             " Javascript
-            Bundle 'leshill/vim-json'
-            Bundle 'mmalecki/vim-node.js'
-            Bundle 'myhere/vim-nodejs-complete'
             Bundle 'pangloss/vim-javascript'
+            Bundle 'myhere/vim-nodejs-complete'
             Bundle 'kchmck/vim-coffee-script'
 
             " HTML
