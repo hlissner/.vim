@@ -230,7 +230,7 @@ au!
         " nnoremap Y y
         function! YRRunAfterMaps()
             nnoremap Y :<C-U>YRYankCount 'y$'<CR>
-        endfunction$
+        endfunction
 
         " Don't leave visual mode after indenting
         vnoremap < <gv
@@ -374,7 +374,7 @@ au!
             
             " Temporary settings until YouCompleteMe incorporates ultisnips support
             let g:UltiSnipsExpandTrigger = "<C-Tab>"
-            let g:UltiSnipsListSnippets = ""
+            let g:UltiSnipsListSnippets = "<S-C-Tab>"
             let g:UltiSnipsJumpForwardTrigger = "<C-j>"
             let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
         " }
