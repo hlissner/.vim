@@ -205,9 +205,11 @@ au!
         noremap j gj
         noremap k gk
 
-        " Easier horizontal scrolling
-        map zl zL
-        map zh zH
+        " Easier scrolling
+        nnoremap <C-h> zL
+        nnoremap <C-j> 5j
+        nnoremap <C-k> 5k
+        nnoremap <C-l> zH
 
         " Get used to hjkl!
         noremap <Left> <Nop>
@@ -268,12 +270,6 @@ au!
     " }
 
     " Buffers {
-        " Jump between buffers
-        nnoremap <C-h> <C-w>h
-        nnoremap <C-j> <C-w>j
-        nnoremap <C-k> <C-w>k
-        nnoremap <C-l> <C-w>l
-
         " Make vertical split and move into it
         nnoremap <C-w>N :vnew<CR>
 
