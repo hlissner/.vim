@@ -151,7 +151,6 @@
 
             " CSS/SCSS/LESS
             Bundle 'cakebaker/scss-syntax.vim'
-            Bundle 'groenewege/vim-less'
 
             " Ruby
             Bundle 'vim-ruby/vim-ruby'
