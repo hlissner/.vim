@@ -275,7 +275,6 @@ au!
         nnoremap <C-l> <C-w>l
 
         " Make vertical split and move into it
-        nnoremap <C-w>v <C-w>v<C-w>l
         nnoremap <C-w>N :vnew<CR>
 
         " Shortcut to vimrc and gvimrc
