@@ -115,10 +115,6 @@
         if os ==# "Darwin"
             " Transmit.app integration for vim
             Bundle 'hlissner/vim-transmitty'
-
-            " Objective-C / iOS
-            Bundle 'b4winckler/vim-objc'
-            Bundle 'eraserhd/vim-ios.git'
         endif
 
         " Syntax specific {
