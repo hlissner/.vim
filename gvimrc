@@ -70,14 +70,6 @@ else
     nmap <A-/> <leader>/
     vmap <A-/> <leader>/
 
-    " Easier indent control
-    nmap <A-]> >>
-    nmap <A-[> <<
-
-    " Fast scrolling shortcut
-    map <A-j> 5j
-    map <A-k> 5k
-
 endif
 
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker
