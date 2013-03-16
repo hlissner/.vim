@@ -206,10 +206,10 @@ au!
         noremap k gk
 
         " Easier scrolling
-        nnoremap <C-h> zL
+        nnoremap <C-h> zH
         nnoremap <C-j> 5j
         nnoremap <C-k> 5k
-        nnoremap <C-l> zH
+        nnoremap <C-l> zL
 
         " Get used to hjkl!
         noremap <Left> <Nop>
