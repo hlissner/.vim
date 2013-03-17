@@ -26,13 +26,13 @@ au!
     Bundle 'gmarik/vundle'
 
     " Bundles and their settings are specified externally.
-    if filereadable(expand("~/.vimrc.bundles"))
-        source ~/.vimrc.bundles
+    if filereadable($HOME."/.vimrc.bundles")
+        source $HOME/.vimrc.bundles
     endif
 
     " A local bundles config separate from this distro.
-    if filereadable(expand("~/.vimrc.bundles.local"))
-        source ~/.vimrc.bundles.local
+    if filereadable($HOME."/.vimrc.bundles.local")
+        source $HOME/.vimrc.bundles.local
     endif
 
     filetype plugin indent on
@@ -387,8 +387,8 @@ au!
 " }
 
 " A local rc file separate from this distro.
-if filereadable(expand("~/.vimrc.local"))
-    source ~/.vimrc.local
+if filereadable($HOME."/.vimrc.local")
+    source $HOME/.vimrc.local
 endif
 
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker
