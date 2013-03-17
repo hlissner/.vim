@@ -33,8 +33,7 @@ if has('gui_macvim')
     inoremap <S-D-CR> <C-O>O
 
     " Commenting using CMD+/"
-    nmap <D-/> <leader>/
-    vmap <D-/> <leader>/
+    map <D-/> <leader>/
 
     " Easier indent control
     nmap <D-]> >>
@@ -44,15 +43,6 @@ if has('gui_macvim')
     map <D-j> 5j
     map <D-k> 5k
 
-    " Outside apps {
-        " Open folder in Finder
-        nnoremap <silent> <leader>of :exe '!open '.shellescape(expand("%:p:h"))<CR><CR>
-        " Send current file to launchbar
-        nnoremap <silent> <leader>ol :exe '!open -a Launchbar '.shellescape(expand("%"))<CR><CR>
-        " Open a terminal CD'd to the current file's folder
-        nnoremap <silent> <leader>ot :exe '!open -a iTerm '.shellescape(expand("%:p:h"))<CR><CR>
-    " }
-    
 else
 
     " For Windows
@@ -67,8 +57,7 @@ else
     inoremap <S-C-CR> <C-O>O
 
     " Commenting using CMD+/"
-    nmap <A-/> <leader>/
-    vmap <A-/> <leader>/
+    map <C-/> <leader>/
 
 endif
 
