@@ -341,10 +341,6 @@ au!
             nnoremap <leader>N :NERDTreeFind<CR>
         " }
         
-        " PhpNamespaces {
-            " see ~/.vim/ftplugin/php.vim
-        " }
-
         " Tabularize {
             nmap <leader>a= :Tabularize /=<CR>
             vmap <leader>a= :Tabularize /=<CR>

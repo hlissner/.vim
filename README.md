@@ -237,13 +237,6 @@ You can toggle indent guides using:
 
     <leader>ig
 
-## [vim-php-namespace]
-Inserts "use" statements and expands class names into their fully qualified
-names.
-
-    <leader>u       Inserts use statement
-    <leader>e       Expands to FQN
-
 ## [vim-preview]
 Tools to preview markup files like markdown, rdoc, textile and rst while
 you're editing them, by compiling them into html and opening them in your
