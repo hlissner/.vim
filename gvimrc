@@ -52,10 +52,6 @@ else
 
     " For gvim
     
-    " Textmate-like CMD+Enter
-    inoremap <C-CR> <C-O>o
-    inoremap <S-C-CR> <C-O>O
-
     " Commenting using CMD+/"
     map <C-/> <leader>/
 
