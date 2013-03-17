@@ -18,41 +18,58 @@ command -v git >/dev/null 2>&1 || {
     exit 1; 
 }
 
-command -v curl >/dev/null 2>&1 || { 
-    echo >&2 "Curl wasn't found and is required."; 
+command -v brew >/dev/null 2>&1 || { 
+    echo >&2 "Homebrew wasn't found and is required."; 
     exit 1; 
 }
 
-echo "\n* My Little Vim"
+echo "[My Little Vim]"
 
 # Install/update mlvim
 if [ ! -e $VIMDIR/.git ]; then
-    echo "\n* Installing mlvim"
-    git clone https://github.com/hlissner/mlvim ~/.vim
+    echo
+    echo "* Installing vim"
+    
+    if [ -d $VIMDIR ]; then
+        rm -rf $VIMDIR
+    fi
+
+    git clone https://github.com/hlissner/mlvim $VIMDIR
     mkdir $VIMDIR/tmp $VIMDIR/bundle
     mkdir $VIMDIR/tmp/views $VIMDIR/tmp/yankring $VIMDIR/tmp/undo
 else
-    echo "\n* Updating mlvim"
+    echo
+    echo "* Updating mlvim"
     cd ~/.vim && git pull
 fi
 
-echo "\n* Setting up symlinks..."
+# Install vundle
+if [ ! -e $VIMDIR/bundle/vundle ]; then
+    echo
+    echo "* Installing Vundle"
+    git clone https://github.com/gmarik/vundle $VIMDIR/bundle/vundle
+    git clone https://github.com/tomasr/molokai $VIMDIR/bundle/molokai
+fi
+
+# Setup links
+echo
+echo "* Setting up symlinks..."
 lnfile $VIMDIR/vimrc $HOME/.vimrc
 lnfile $VIMDIR/vimrc.bundles $HOME/.vimrc.bundles
 lnfile $VIMDIR/gvimrc $HOME/.gvimrc
 
-# Install vundle
-if [ ! -e $VIMDIR/bundle/vundle ]; then
-    echo "\n* Installing Vundle"
-    git clone https://github.com/gmarik/vundle $HOME/.vim/bundle/vundle
-    git clone https://github.com/tomasr/molokai ~/.vim/bundle/molokai
-fi
-
-echo "\n* Updating vim plugins"
+echo
+echo "* Updating vim plugins"
 vim +BundleInstall! +BundleClean +qall
 
-echo "\n* Trying to compile YCM"
-cd ~/.vim/bundle/YouCompleteMe
-./install.sh --clang-completer
+# YCM
+if [ -d $VIMDIR/bundle/YouCompleteMe ] && [ ! -e $VIMDIR/bundle/YouCompleteMe/python/ycm_core.so ]; then
+    echo
+    echo "* Trying to compile YCM"
+    brew install cmake
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer
+fi
 
-echo "\n* Done! Don't forget to compile YCM!"
+echo
+echo "* Done!"
