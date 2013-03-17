@@ -161,7 +161,7 @@
         endif
     " }
 
-    " Ctrip {
+    " Ctrlp {
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
         let g:ctrlp_max_height = 12
         let g:ctrlp_cache_dir = "~/.vim/tmp/ctrip"
