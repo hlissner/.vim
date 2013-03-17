@@ -188,6 +188,10 @@
         let g:easytags_updatetime_autodisable = 1
     " }
 
+    " GitGutter {
+        let g:gitgutter_on_bufenter = 0
+    " }
+
     " NERDTree {
         let NERDTreeMinimalUI=1
 
