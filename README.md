@@ -325,29 +325,6 @@ for many other languages (Python, Ruby, PHP etc.)."
 
 Oh, and it rocks.
 
-# Useful commands
-
-## For the mac
-In .gvimrc, I've added a four keyboard shortcuts:
-
-    <leader>of      Reveals the current file in finder
-    <leader>ol      Sends the current file to launchbar
-    <leader>ot      Opens iTerm and cd's to this file's directory
-
-Check the .gvimrc file for other mac-specific shortcuts.
-
-## For linux
-
-None yet.
-
-## For windows
-
-Eenope. Install linux.
-
-Disclaimer: I keed, I keed :P
-
-# Good luck!
-
 [Ack]:https://github.com/mileszs/ack.vim
 [CtrlP]:https://github.com/kien/ctrlp.vim
 [NERDTree]:https://github.com/scrooloose/nerdtree
