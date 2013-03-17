@@ -202,9 +202,9 @@ allows you to embed ruby, python or VimL into the snippets.
 Currently, the plugin YouCompleteMe monopolizes <Tab>, <C-n> and <C-p>. So
 Ultisnips is temporarily mapped to:
 
-    <C-f>   Trigger snippet
-    <C-j>   Next snippet marker
-    <C-k>   Previous snippet marker
+    <C-tab>   Trigger snippet
+    <C-j>     Next snippet marker
+    <C-k>     Previous snippet marker
 
 ## [vim-easytags]
 Something to autogenerate my tags. What can I say? I'm lazy.
@@ -238,16 +238,12 @@ You can toggle indent guides using:
     <leader>ig
 
 ## [vim-preview]
-Tools to preview markup files like markdown, rdoc, textile and rst while
-you're editing them, by compiling them into html and opening them in your
-browser.
-
-    <leader>P   Open preview in browser
+Preview markup files like markdown, rdoc, textile and rst in your browser with
+<code>&lt;leader&gt;P</code>
 
 ## [vim-repeat]
-I don't like to repeat myself. Most (if not all) plugins don't seem to work
-well with <code>.</code> when it comes to repeating actions. This plugin tries
-to fix that.
+Enables certain plugins to make <code>.</code> (repeat) smarter and more
+atomic.
 
 ## [vim-surround]
 One of the most **underrated** plugins in my arsenal. It's all about changing
