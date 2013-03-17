@@ -116,7 +116,7 @@
 
         " Syntax specific {
             " PHP
-            Bundle 'spf13/PIV'
+            Bundle 'hlissner/PIV'
             Bundle 'beyondwords/vim-twig'
             " PHP.laravel
             Bundle 'johnhamelink/blade.vim'
