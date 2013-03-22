@@ -27,8 +27,7 @@ echo "[My Little Vim]"
 
 # Install/update mlvim
 if [ ! -e $VIMDIR/.git ]; then
-    echo
-    echo "* Installing vim"
+    echo "==> Installing vim"
     
     if [ -d $VIMDIR ]; then
         rm -rf $VIMDIR
@@ -38,38 +37,33 @@ if [ ! -e $VIMDIR/.git ]; then
     mkdir $VIMDIR/tmp $VIMDIR/bundle
     mkdir $VIMDIR/tmp/views $VIMDIR/tmp/yankring $VIMDIR/tmp/undo
 else
-    echo
-    echo "* Updating mlvim"
+    echo "==> Updating mlvim"
     cd ~/.vim && git pull
 fi
 
 # Install vundle
 if [ ! -e $VIMDIR/bundle/vundle ]; then
-    echo
-    echo "* Installing Vundle"
+    echo "==> Installing Vundle"
     git clone https://github.com/gmarik/vundle $VIMDIR/bundle/vundle
     git clone https://github.com/tomasr/molokai $VIMDIR/bundle/molokai
 fi
 
 # Setup links
-echo
-echo "* Setting up symlinks..."
+echo "==> Setting up symlinks"
 lnfile $VIMDIR/vimrc $HOME/.vimrc
 lnfile $VIMDIR/vimrc.bundles $HOME/.vimrc.bundles
 lnfile $VIMDIR/gvimrc $HOME/.gvimrc
 
-echo
-echo "* Updating vim plugins"
+echo "==> Updating vim plugins"
 vim +BundleInstall! +BundleClean +qall
 
 # YCM
-if [ -d $VIMDIR/bundle/YouCompleteMe ] && [ ! -e $VIMDIR/bundle/YouCompleteMe/python/ycm_core.so ]; then
-    echo
-    echo "* Trying to compile YCM"
+YVM_DIR="$VIMDIR/bundle/YouCompleteMe"
+if [ -d "$YCM_DIR" ] && [ ! -e "$YCM_DIR/python/ycm_core.so" ]; then
+    echo "==> Trying to compile YCM"
     brew install cmake
     cd ~/.vim/bundle/YouCompleteMe
     ./install.sh --clang-completer
 fi
 
-echo
-echo "* Done!"
+echo "==> Done!"
