@@ -54,8 +54,8 @@ echo "==> Updating vim plugins"
 vim +BundleInstall! +BundleClean +qall
 
 # YCM
-YVM_DIR="$VIMHOME/bundle/YouCompleteMe"
-if [ -d "$YCM_DIR" ] && [ ! -e "$YCM_DIR/python/ycm_core.so" ]; then
+YCMDIR="$VIMHOME/bundle/YouCompleteMe"
+if [ -d "$YCMDIR" ] && [ ! -e "$YCMDIR/python/ycm_core.so" ]; then
     echo "==> Trying to compile YCM"
     if ! command -v "cmake" 2>&1 >/dev/null; then
         echo "Cmake is required. Please install it!"
@@ -63,7 +63,7 @@ if [ -d "$YCM_DIR" ] && [ ! -e "$YCM_DIR/python/ycm_core.so" ]; then
         echo "   cd ~/.vim/bundle/YouCompleteMe"
         echo "   ./install.sh --clang-completer"
     else
-        cd ~/.vim/bundle/YouCompleteMe
+        cd "$YCMDIR"
         ./install.sh --clang-completer
     fi
 fi
