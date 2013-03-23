@@ -14,7 +14,7 @@ Install [macvim](https://code.google.com/p/macvim/). On a mac, I'd recommend
 
 With [mac]vim installed, copy and paste the following:
 
-    sh <(curl https://raw.github.com/hlissner/mlvim/master/install.sh -L)
+    bash <(curl https://raw.github.com/hlissner/mlvim/master/install.sh -L)
 
 And voila! Good to go.
 
@@ -26,7 +26,7 @@ yourself](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-sourc
 With that, you'll need ruby, python, cmake, curl and git. Then this is all you
 need:
 
-    sh <(curl https://raw.github.com/hlissner/mlvim/master/install.sh -L)
+    bash <(curl https://raw.github.com/hlissner/mlvim/master/install.sh -L)
 
 ## Windows
 
