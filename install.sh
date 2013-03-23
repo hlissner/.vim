@@ -20,28 +20,29 @@ command -v git >/dev/null 2>&1 || {
 
 echo "[My Little Vim]"
 
-cd "$VIMDIR"
 # Install/update mlvim
-if [ ! -e $VIMDIR/.git ]; then
+if [ ! -d $VIMDIR/.git ]; then
     echo "==> Installing vim"
     
-    if [ -d $VIMDIR ]; then
-        rm -rf $VIMDIR
+    if [ -d "$VIMDIR" ]; then
+        rm -rf "$VIMDIR"
     fi
 
-    git clone https://github.com/hlissner/mlvim "$VIMDIR"
-    mkdir $VIMDIR/tmp $VIMDIR/bundle
-    mkdir $VIMDIR/tmp/views $VIMDIR/tmp/yankring $VIMDIR/tmp/undo
+    git clone https://github.com/hlissner/mlvim.git "$VIMDIR"
+    mkdir "$VIMDIR/tmp" "$VIMDIR/bundle"
+    mkdir "$VIMDIR/tmp/views" "$VIMDIR/tmp/yankring" "$VIMDIR/tmp/undo"
 else
     echo "==> Updating mlvim"
-    cd ~/.vim && git pull
+    cd "$VIMDIR" && git pull
 fi
+
+cd "$VIMDIR"
 
 # Install vundle
 if [ ! -e $VIMDIR/bundle/vundle ]; then
     echo "==> Installing Vundle"
-    git clone https://github.com/gmarik/vundle "$VIMDIR/bundle/vundle"
-    git clone https://github.com/tomasr/molokai "$VIMDIR/bundle/molokai"
+    git clone https://github.com/gmarik/vundle.git "$VIMDIR/bundle/vundle"
+    git clone https://github.com/tomasr/molokai.git "$VIMDIR/bundle/molokai"
 fi
 
 # Setup links
