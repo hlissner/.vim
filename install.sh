@@ -64,7 +64,15 @@ if [ -d "$YCMDIR" ] && [ ! -e "$YCMDIR/python/ycm_core.so" ]; then
         echo "   ./install.sh --clang-completer"
     else
         cd "$YCMDIR"
-        ./install.sh --clang-completer
+        cmake -G "Unix Makefiles" . ~/.vim/bundle/YouCompleteMe/ccp
+        if [[ $(uname) == "Darwin" ]]; then
+            ./install.sh --clang-completer
+        else
+            mkdir ycm_build
+            cd ycm_build
+            cmake -G "Unix Makefiles" . "$VIMHOME/bundle/YouCompleteMe/cpp"
+            make ycm_core
+        fi
     fi
 fi
 
