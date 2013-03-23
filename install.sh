@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 VIMDIR="$HOME/.vim"
 
@@ -15,11 +15,6 @@ lnfile() {
 
 command -v git >/dev/null 2>&1 || { 
     echo >&2 "Git wasn't found and is required."; 
-    exit 1; 
-}
-
-command -v brew >/dev/null 2>&1 || { 
-    echo >&2 "Homebrew wasn't found and is required."; 
     exit 1; 
 }
 
@@ -61,9 +56,15 @@ vim +BundleInstall! +BundleClean +qall
 YVM_DIR="$VIMDIR/bundle/YouCompleteMe"
 if [ -d "$YCM_DIR" ] && [ ! -e "$YCM_DIR/python/ycm_core.so" ]; then
     echo "==> Trying to compile YCM"
-    brew install cmake
-    cd ~/.vim/bundle/YouCompleteMe
-    ./install.sh --clang-completer
+    if ! command -v "cmake" 2>&1 >/dev/null; then
+        echo "Cmake is required. Please install it!"
+        echo "Then you can compile YCM by running this:"
+        echo "   cd ~/.vim/bundle/YouCompleteMe"
+        echo "   ./install.sh --clang-completer"
+    else
+        cd ~/.vim/bundle/YouCompleteMe
+        ./install.sh --clang-completer
+    fi
 fi
 
 echo "==> Done!"
