@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VIMDIR="$HOME/.vim"
+VIMHOME="$HOME/.vim"
 
 lnfile() {
     if [ ! -e $2 ]; then
@@ -21,41 +21,40 @@ command -v git >/dev/null 2>&1 || {
 echo "[My Little Vim]"
 
 # Install/update mlvim
-if [ ! -d $VIMDIR/.git ]; then
-    echo "==> Installing vim"
-    
-    if [ -d "$VIMDIR" ]; then
-        rm -rf "$VIMDIR"
+if [ ! -d $VIMHOME/.git ]; then
+    if [ -d "$VIMHOME" ]; then
+        rm -rf "$VIMHOME"
     fi
 
-    git clone https://github.com/hlissner/mlvim.git "$VIMDIR"
-    mkdir "$VIMDIR/tmp" "$VIMDIR/bundle"
-    mkdir "$VIMDIR/tmp/views" "$VIMDIR/tmp/yankring" "$VIMDIR/tmp/undo"
+    echo "==> Installing vim"
+    git clone https://github.com/hlissner/mlvim.git "$VIMHOME"
+    mkdir "$VIMHOME/bundle"
+    mkdir -p "$VIMHOME/tmp/views" "$VIMHOME/tmp/yankring" "$VIMHOME/tmp/undo"
 else
     echo "==> Updating mlvim"
-    cd "$VIMDIR" && git pull
+    cd "$VIMHOME" && git pull
 fi
 
-cd "$VIMDIR"
+cd "$VIMHOME"
 
 # Install vundle
-if [ ! -e $VIMDIR/bundle/vundle ]; then
+if [ ! -e $VIMHOME/bundle/vundle ]; then
     echo "==> Installing Vundle"
-    git clone https://github.com/gmarik/vundle.git "$VIMDIR/bundle/vundle"
-    git clone https://github.com/tomasr/molokai.git "$VIMDIR/bundle/molokai"
+    git clone https://github.com/gmarik/vundle.git "$VIMHOME/bundle/vundle"
+    git clone https://github.com/tomasr/molokai.git "$VIMHOME/bundle/molokai"
 fi
 
 # Setup links
 echo "==> Setting up symlinks"
-lnfile $VIMDIR/vimrc $HOME/.vimrc
-lnfile $VIMDIR/vimrc.bundles $HOME/.vimrc.bundles
-lnfile $VIMDIR/gvimrc $HOME/.gvimrc
+lnfile $VIMHOME/vimrc $HOME/.vimrc
+lnfile $VIMHOME/vimrc.bundles $HOME/.vimrc.bundles
+lnfile $VIMHOME/gvimrc $HOME/.gvimrc
 
 echo "==> Updating vim plugins"
 vim +BundleInstall! +BundleClean +qall
 
 # YCM
-YVM_DIR="$VIMDIR/bundle/YouCompleteMe"
+YVM_DIR="$VIMHOME/bundle/YouCompleteMe"
 if [ -d "$YCM_DIR" ] && [ ! -e "$YCM_DIR/python/ycm_core.so" ]; then
     echo "==> Trying to compile YCM"
     if ! command -v "cmake" 2>&1 >/dev/null; then
