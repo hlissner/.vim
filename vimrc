@@ -364,15 +364,9 @@ au!
         " }
 
         " UltiSnips {
-            " let g:UltiSnipsExpandTrigger = "<tab>"
-            " let g:UltiSnipsJumpForwardTrigger = "<tab>"
-            " let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
-            
-            " Temporary settings until YouCompleteMe incorporates ultisnips support
-            let g:UltiSnipsExpandTrigger = "<C-Tab>"
-            let g:UltiSnipsListSnippets = "<S-C-Tab>"
-            let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-            let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+            let g:UltiSnipsExpandTrigger = "<tab>"
+            let g:UltiSnipsJumpForwardTrigger = "<tab>"
+            let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
         " }
         
         " YankRing {

@@ -267,6 +267,11 @@
     " YankRing {
         let g:yankring_history_dir = '~/.vim/tmp/yankring'
     " }
+
+    " YouCompleteMe {
+        let g:ycm_key_list_select_completion = ['<Down>']
+        let g:ycm_key_list_previous_completion = ['<Up>']
+    " }
 " }
 
 " vim: set foldmarker={,} foldlevel=0 foldmethod=marker
