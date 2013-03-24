@@ -269,8 +269,9 @@
     " }
 
     " YouCompleteMe {
-        let g:ycm_key_list_select_completion = ['<Down>']
-        let g:ycm_key_list_previous_completion = ['<Up>']
+        " Remove <Tab> so that UltiSnips can use it (use C-j/k)
+        let g:ycm_key_list_select_completion = ['<Down>', '<C-j>']
+        let g:ycm_key_list_previous_completion = ['<Up>', '<C-k>']
     " }
 " }
 
