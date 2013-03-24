@@ -318,8 +318,8 @@ au!
         " Ctrlp {
             let g:ctrlp_map = '<leader>.'
             nnoremap <silent> <leader>, :CtrlPBuffer<CR>
-            nnoremap <silent> <leader>or :CtrlPBufTag<CR>
-            nnoremap <silent> <leader>oR :CtrlPBufTagAll<CR>
+            nnoremap <silent> <leader>ot :CtrlPBufTag<CR>
+            nnoremap <silent> <leader>oT :CtrlPBufTagAll<CR>
             nnoremap <silent> <leader>om :CtrlPMRU<CR>
             nnoremap <silent> <leader>oc :CtrlPChange<CR>
             nnoremap <silent> <leader>oC :CtrlPChangeAll<CR>
