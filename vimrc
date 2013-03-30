@@ -381,4 +381,4 @@ if filereadable($HOME."/.vimrc.local")
     source $HOME/.vimrc.local
 endif
 
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker
+" vim:set foldmarker={,} foldlevel=0 foldmethod=marker:
