@@ -127,10 +127,10 @@ au!
             " Backspace and cursor keys to wrap
             set whichwrap=b,s,h,l,<,>,[,]
             set textwidth=79
-            set colorcolumn=85
+            " set colorcolumn=85
             
             " see :h fo-table
-            set formatoptions=qron1l
+            set formatoptions=qrn1lr
         " }
     " }
 
@@ -340,7 +340,7 @@ au!
             nnoremap <leader>n :NERDTreeToggle<CR>
             nnoremap <leader>N :NERDTreeFind<CR>
         " }
-        
+
         " Tabularize {
             nmap <leader>a= :Tabularize /=<CR>
             vmap <leader>a= :Tabularize /=<CR>
@@ -370,7 +370,7 @@ au!
         " }
         
         " YankRing {
-            nnoremap <leader>p :YRShow<CR>
+            nnoremap <leader>yp :YRShow<CR>
             nnoremap <leader>y/ :YRSearch<CR>
         " }
     " }
