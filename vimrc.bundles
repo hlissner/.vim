@@ -74,9 +74,6 @@
     " Remote resources {
         " 'a Git wrapper so awesome, it should be illegal'
         Bundle 'tpope/vim-fugitive'
-
-        " Show file diff in gutter
-        Bundle 'airblade/vim-gitgutter'
     " }
 
     " Programming {
@@ -103,49 +100,45 @@
 
             " Snippets system
             Bundle 'SirVer/ultisnips'
+
             " My snippets
             Bundle 'hlissner/vim-ultisnips-snippets'
         endif
 
         " Mac only
-        let os = substitute(system("uname -s"), '\n', '', '')
-        if os ==# "Darwin"
+        if substitute(system("uname -s"), '\n', '', '') ==# "Darwin"
             " Transmit.app integration for vim
             Bundle 'hlissner/vim-transmitty'
         endif
 
         " Syntax specific {
             " PHP
-            Bundle 'hlissner/PIV'
-            Bundle 'beyondwords/vim-twig'
+            " Bundle 'hlissner/PIV'
+            Bundle 'lessmind/php.vim'
+            Bundle '2072/PHP-Indenting-for-VIm'
+            Bundle 'shawncplus/phpcomplete.vim'
+            Bundle 'stephpy/vim-phpdoc'
             " PHP.laravel
             Bundle 'johnhamelink/blade.vim'
-
             " Python
             Bundle 'indentpython.vim--nianyang'
             Bundle 'klen/python-mode'
             Bundle 'python_match.vim'
             Bundle 'pythoncomplete'
-
             " Java
             Bundle 'derekwyatt/vim-scala'
-
             " Javascript
             Bundle 'pangloss/vim-javascript'
             Bundle 'myhere/vim-nodejs-complete'
             Bundle 'kchmck/vim-coffee-script'
-
             " HTML
             Bundle 'tristen/vim-sparkup'
             Bundle 'digitaltoad/vim-jade'
-
             " CSS/SCSS/LESS
             Bundle 'cakebaker/scss-syntax.vim'
-
             " Ruby
             Bundle 'vim-ruby/vim-ruby'
             Bundle 'tpope/vim-rails'
-
             " Other
             Bundle 'spf13/vim-markdown'
         " }
@@ -186,11 +179,6 @@
         let g:easytags_cmd = 'ctags'
         let g:easytags_by_filetype = "~/.vim/tmp/tags"
         let g:easytags_updatetime_autodisable = 1
-    " }
-
-    " GitGutter {
-        let g:gitgutter_on_bufenter = 0
-        let g:gitgutter_all_on_focusgained = 0
     " }
 
     " NERDTree {
