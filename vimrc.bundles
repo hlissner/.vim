@@ -118,6 +118,7 @@
             Bundle '2072/PHP-Indenting-for-VIm'
             Bundle 'shawncplus/phpcomplete.vim'
             Bundle 'stephpy/vim-phpdoc'
+            Bundle 'joonty/vim-phpunitqf'
             " PHP.laravel
             Bundle 'johnhamelink/blade.vim'
             " Python
@@ -125,8 +126,6 @@
             Bundle 'klen/python-mode'
             Bundle 'python_match.vim'
             Bundle 'pythoncomplete'
-            " Java
-            Bundle 'derekwyatt/vim-scala'
             " Javascript
             Bundle 'pangloss/vim-javascript'
             Bundle 'myhere/vim-nodejs-complete'
