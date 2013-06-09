@@ -45,7 +45,7 @@ au!
 
     syntax on
     set background=dark
-    colorscheme molokai
+    colorscheme molokai2
 
     set cursorline               " Highlight current line
     set laststatus=2             " Show statusbar
