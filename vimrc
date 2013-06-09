@@ -12,7 +12,7 @@
 "   the dabbling I do in web, game, mobile and app development (the politically
 "   correct term would be 'masochist').
 " 
-"   But it won't make you coffee. Yet.
+"   Only thing it won't do is drive you to work... Yet.
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -21,6 +21,8 @@ scriptencoding utf-8
 au!
 
 " Plugins {
+    filetype off
+
     set runtimepath+=~/.vim/bundle/vundle
     call vundle#rc()
     Bundle 'gmarik/vundle'
@@ -39,14 +41,15 @@ au!
 " }
 
 " Preferences {
-    set t_Co=256
+    " set t_Co=256
 
     syntax on
     set background=dark
     colorscheme molokai
 
+    set cursorline               " Highlight current line
     set laststatus=2             " Show statusbar
-    set nolist                   " Don't show tabs (indent-guides does it nicer)
+    set nolist                   " Don't show whitespace chars (indent-guides does it nicer)
     set nospell                  " No spell check, please
     set number                   " Line numbers
     set visualbell               " No sounds!
@@ -58,6 +61,37 @@ au!
         set ruler                " Show line/col no in statusline
         set showcmd              " Show command issued
     endif
+
+    " Status line {
+        fu! SetActiveStatusLine()
+            setl statusline=%1*\ 
+            setl statusline+=%t             " tail of the filename
+            setl statusline+=\ %*\ 
+            setl statusline+=%h%m%r         " flags (help/modified/read-only)
+            setl statusline+=%=             " left/right separator
+            setl statusline+=%Y             " filetype
+            setl statusline+=\ %1*\|%*\ 
+            setl statusline+=%c,%l          " cursor column/line number
+            setl statusline+=/%L            " total lines
+            setl statusline+=\ :\ %P\          " percent through file
+        endf
+
+        fu! SetInactiveStatusLine()
+            setl statusline=\ %t
+            setl statusline+=%h      " help file flag
+            setl statusline+=%m      " modified flag
+            setl statusline+=%r      " read only flag
+        endf
+
+        hi User1 ctermfg=bg ctermbg=grey guifg=white guibg=bg gui=bold
+
+        augroup vim_statusline
+            au!
+            " Switch active/inactive statusline
+            au BufEnter,WinEnter * call SetActiveStatusLine()
+            au WinLeave * call SetInactiveStatusLine()
+        augroup END
+    " }
 
     " Search {
         set incsearch            " find as you type
@@ -140,7 +174,7 @@ au!
 
         " Cleaner, readable fold headers
         set foldtext=MyFoldText()
-        func! MyFoldText()
+        fu! MyFoldText()
             let line = getline(v:foldstart)
             " Lines that have been folded
             let nl = v:foldend - v:foldstart + 1
@@ -154,7 +188,7 @@ au!
             let outdent = repeat(' ', startcol - strlen(line . foldedLines . symbol))
 
             return indent . substitute(line,"^ *","",1) . symbol . outdent . foldedLines
-        endfunc
+        endf
     " }
 
     " Backups, swapfiles, persistence {
@@ -326,16 +360,6 @@ au!
             nnoremap <silent> <leader>oL :CtrlPChangeAll<CR>
         " }
 
-        " Fugitive {
-            nnoremap <silent> <leader>gs :Gstatus<CR>
-            nnoremap <silent> <leader>gd :Gdiff<CR>
-            nnoremap <silent> <leader>gc :Gcommit<CR>
-            nnoremap <silent> <leader>gb :Gblame<CR>
-            nnoremap <silent> <leader>gl :Glog<CR>
-            nnoremap <silent> <leader>gp :Git push<CR>
-            nnoremap <silent> <leader>gw :Gwrite<CR>
-        " }
-
         " NERDTree {
             nnoremap <leader>n :NERDTreeToggle<CR>
             nnoremap <leader>N :NERDTreeFind<CR>
@@ -364,14 +388,20 @@ au!
         " }
 
         " UltiSnips {
-            let g:UltiSnipsExpandTrigger = "<tab>"
-            let g:UltiSnipsJumpForwardTrigger = "<tab>"
-            let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
+            let g:UltiSnipsExpandTrigger = "<C-CR>"
+            let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+            let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
         " }
         
         " YankRing {
             nnoremap <leader>yp :YRShow<CR>
             nnoremap <leader>y/ :YRSearch<CR>
+        " }
+
+        " YouCompleteMe {
+            " Remove <Tab> so that UltiSnips can use it (use C-j/k)
+            let g:ycm_key_list_select_completion = ['<Down>', '<Tab>']
+            let g:ycm_key_list_previous_completion = ['<Up>', '<S-Tab>']
         " }
     " }
 " }
@@ -381,4 +411,4 @@ if filereadable($HOME."/.vimrc.local")
     source $HOME/.vimrc.local
 endif
 
-" vim:set foldmarker={,} foldlevel=0 foldmethod=marker:
+" vim:set fmr={,} fdl=0 fdm=marker:

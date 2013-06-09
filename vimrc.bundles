@@ -4,14 +4,13 @@
 
 " Plugins {
     " Appearance {
-        " A prettier status bar
-        Bundle 'Lokaltog/vim-powerline'
-
-        " Pretty indent indicators
-        Bundle 'nathanaelkane/vim-indent-guides'
-
         " A personal favorite (colorscheme) :3
         Bundle 'tomasr/molokai'
+
+        if has("gui_running")
+            " Pretty indent indicators
+            Bundle 'nathanaelkane/vim-indent-guides'
+        endif
     " }
 
     " File search {
@@ -23,11 +22,14 @@
 
         " A filetree navigator replacement for netrw
         Bundle 'scrooloose/nerdtree'
+
+        " A window that lists all open buffers
+        Bundle 'jeetsukumaran/vim-buffergator'
     " }
 
     " Editing {
-        " Opens the OS color picker on demand
-        Bundle 'PickAColor.vim'
+        " Improved % and hopping delimiters (can now be 1+ character)
+        Bundle 'matchit.zip'
 
         " Auto-closes delimiters like (),{},[],etc.
         Bundle 'Raimondi/delimitMate'
@@ -38,15 +40,8 @@
         " Clean way to close buffers without altering window layout
         Bundle 'bufkill.vim'
 
-        " Highlights color codes on the page (in #hex, (r,g,b,a) and <color
-        " name> format)
-        Bundle 'chrisbra/color_highlight'
-
         " For aligning text
         Bundle 'godlygeek/tabular'
-
-        " Improved % and hopping delimiters (can now be 1+ character)
-        Bundle 'matchit.zip'
 
         " Comment out code with native comment syntax
         Bundle 'tomtom/tcomment_vim'
@@ -64,11 +59,11 @@
         " parenthesis, etc.)
         Bundle 'tpope/vim-surround'
 
-        " A series of useful [<x> and <x>] mappings
-        Bundle 'tpope/vim-unimpaired'
-
         " Multi-selection and editing like Sublime Text 2's
         Bundle 'hlissner/vim-multiedit'
+
+        " Opens the OS color picker on demand
+        Bundle 'PickAColor.vim'
     " }
     
     " Remote resources {
@@ -86,9 +81,14 @@
         " Previewing markdown, rdoc, textile and html files in the browser
         Bundle 'spf13/vim-preview'
 
-        if executable('ctags')
+        if executable("ctags")
             Bundle 'majutsushi/tagbar'
-            Bundle 'xolox/vim-easytags'
+
+            " If not running a gui, you're liking on a smaller version of vim
+            " (or on a remote server). Either way, easytags chokes.
+            if has("gui_running")
+                Bundle 'xolox/vim-easytags'
+            endif
         endif
 
         if has("python")
@@ -113,8 +113,7 @@
 
         " Syntax specific {
             " PHP
-            " Bundle 'hlissner/PIV'
-            Bundle 'lessmind/php.vim'
+            Bundle 'StanAngeloff/php.vim'
             Bundle '2072/PHP-Indenting-for-VIm'
             Bundle 'shawncplus/phpcomplete.vim'
             Bundle 'stephpy/vim-phpdoc'
@@ -153,6 +152,10 @@
         endif
     " }
 
+    " BufferGator {
+        let g:buffergator_viewport_split_policy = "b"
+    " }
+
     " Ctrlp {
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
         let g:ctrlp_max_height = 12
@@ -188,27 +191,6 @@
         let NERDTreeShowBookmarks=0
         let NERDTreeShowHidden=1
         let NERDTreeAutoDeleteBuffer=1
-    " }
-
-    " PIV {
-        " Just my coding preference
-        let g:PIVPearStyle = 0
-        let g:PHP_autoformatcomment = 0
-
-        " Disable PIV's auto folding (preserves my nice foldtext function)
-        let g:DisableAutoPHPFolding = 1
-
-        " Disable PIV's autoclosing delimiters (DelimitMate handles that)
-        let g:PIVAutoClose = 0
-    " }
-
-    " Powerline {
-        let g:Powerline_mode_n = 'N'
-        let g:Powerline_mode_i = 'I'
-        let g:Powerline_mode_v = 'V'
-        let g:Powerline_mode_V = 'V-'
-        let g:Powerline_mode_cv = 'V+'
-        let g:Powerline_mode_R = 'R'
     " }
 
     " PythonMode {
@@ -256,11 +238,6 @@
         let g:yankring_history_dir = '~/.vim/tmp/yankring'
     " }
 
-    " YouCompleteMe {
-        " Remove <Tab> so that UltiSnips can use it (use C-j/k)
-        let g:ycm_key_list_select_completion = ['<Down>', '<C-j>']
-        let g:ycm_key_list_previous_completion = ['<Up>', '<C-k>']
-    " }
 " }
 
 " vim:set foldmarker={,} foldlevel=0 foldmethod=marker:
