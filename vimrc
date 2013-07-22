@@ -41,13 +41,10 @@ au!
 " }
 
 " Preferences {
-    " set t_Co=256
-
     syntax on
     set background=dark
     colorscheme molokai2
 
-    set cursorline               " Highlight current line
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show whitespace chars (indent-guides does it nicer)
     set nospell                  " No spell check, please
@@ -61,37 +58,6 @@ au!
         set ruler                " Show line/col no in statusline
         set showcmd              " Show command issued
     endif
-
-    " Status line {
-        fu! SetActiveStatusLine()
-            setl statusline=%1*\ 
-            setl statusline+=%t             " tail of the filename
-            setl statusline+=\ %*\ 
-            setl statusline+=%h%m%r         " flags (help/modified/read-only)
-            setl statusline+=%=             " left/right separator
-            setl statusline+=%Y             " filetype
-            setl statusline+=\ %1*\|%*\ 
-            setl statusline+=%c,%l          " cursor column/line number
-            setl statusline+=/%L            " total lines
-            setl statusline+=\ :\ %P\          " percent through file
-        endf
-
-        fu! SetInactiveStatusLine()
-            setl statusline=\ %t
-            setl statusline+=%h      " help file flag
-            setl statusline+=%m      " modified flag
-            setl statusline+=%r      " read only flag
-        endf
-
-        hi User1 ctermfg=bg ctermbg=grey guifg=white guibg=bg gui=bold
-
-        augroup vim_statusline
-            au!
-            " Switch active/inactive statusline
-            au BufEnter,WinEnter * call SetActiveStatusLine()
-            au WinLeave * call SetInactiveStatusLine()
-        augroup END
-    " }
 
     " Search {
         set incsearch            " find as you type
@@ -354,6 +320,7 @@ au!
             nnoremap <silent> <leader>, :CtrlPBuffer<CR>
             nnoremap <silent> <leader>ot :CtrlPBufTag<CR>
             nnoremap <silent> <leader>oT :CtrlPBufTagAll<CR>
+            nnoremap <silent> <leader>or :CtrlPFunky<CR>
             nnoremap <silent> <leader>om :CtrlPMRU<CR>
             nnoremap <silent> <leader>oc :CtrlPChange<CR>
             nnoremap <silent> <leader>oC :CtrlPChangeAll<CR>
@@ -388,7 +355,7 @@ au!
         " }
 
         " UltiSnips {
-            let g:UltiSnipsExpandTrigger = "<C-CR>"
+            let g:UltiSnipsExpandTrigger = "<Tab>"
             let g:UltiSnipsJumpForwardTrigger = "<C-j>"
             let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
         " }
@@ -396,12 +363,6 @@ au!
         " YankRing {
             nnoremap <leader>yp :YRShow<CR>
             nnoremap <leader>y/ :YRSearch<CR>
-        " }
-
-        " YouCompleteMe {
-            " Remove <Tab> so that UltiSnips can use it (use C-j/k)
-            let g:ycm_key_list_select_completion = ['<Down>', '<Tab>']
-            let g:ycm_key_list_previous_completion = ['<Up>', '<S-Tab>']
         " }
     " }
 " }

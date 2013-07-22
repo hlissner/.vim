@@ -8,6 +8,9 @@
         Bundle 'tomasr/molokai'
 
         if has("gui_running")
+            " A nicer status line that isn't as heavy as powerline
+            Bundle 'bling/vim-airline'
+
             " Pretty indent indicators
             Bundle 'nathanaelkane/vim-indent-guides'
         endif
@@ -20,11 +23,11 @@
         " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
         Bundle 'kien/ctrlp.vim'
 
+        " Ctrlp extension for jumping to functions
+        Bundle 'tacahiroy/ctrlp-funky'
+
         " A filetree navigator replacement for netrw
         Bundle 'scrooloose/nerdtree'
-
-        " A window that lists all open buffers
-        Bundle 'jeetsukumaran/vim-buffergator'
     " }
 
     " Editing {
@@ -59,16 +62,25 @@
         " parenthesis, etc.)
         Bundle 'tpope/vim-surround'
 
-        " Multi-selection and editing like Sublime Text 2's
-        Bundle 'hlissner/vim-multiedit'
-
         " Opens the OS color picker on demand
         Bundle 'PickAColor.vim'
+
+        " Sublime-text multi-cursors!
+        Bundle 'terryma/vim-multiple-cursors'
+
+        " Resizes buffers as I switch between them
+        Bundle 'justincampbell/vim-eighties.git'
+
+        " f on steroids
+        Bundle 'goldfeld/vim-seek'
     " }
     
     " Remote resources {
         " 'a Git wrapper so awesome, it should be illegal'
         Bundle 'tpope/vim-fugitive'
+
+        " Fetch remote files and packages
+        Bundle 'mklabs/vim-fetch'
     " }
 
     " Programming {
@@ -76,39 +88,17 @@
         Bundle 'scrooloose/syntastic'
 
         " Running code inline for testing purposes
-        Bundle 'hlissner/vim-forrestgump'
+        Bundle 'notalex/vim-run-live'
 
         " Previewing markdown, rdoc, textile and html files in the browser
         Bundle 'spf13/vim-preview'
 
-        if executable("ctags")
-            Bundle 'majutsushi/tagbar'
-
-            " If not running a gui, you're liking on a smaller version of vim
-            " (or on a remote server). Either way, easytags chokes.
-            if has("gui_running")
-                Bundle 'xolox/vim-easytags'
-            endif
-        endif
-
         if has("python")
-            " Minimum version and build required
-            if v:version >= 703 && has("patch584")
-                " IDE-like autocomplete
-                Bundle 'Valloric/YouCompleteMe'
-            endif
-
             " Snippets system
             Bundle 'SirVer/ultisnips'
 
             " My snippets
             Bundle 'hlissner/vim-ultisnips-snippets'
-        endif
-
-        " Mac only
-        if substitute(system("uname -s"), '\n', '', '') ==# "Darwin"
-            " Transmit.app integration for vim
-            Bundle 'hlissner/vim-transmitty'
         endif
 
         " Syntax specific {
@@ -121,10 +111,10 @@
             " PHP.laravel
             Bundle 'johnhamelink/blade.vim'
             " Python
+            Bundle 'davidhalter/jedi-vim'
             Bundle 'indentpython.vim--nianyang'
             Bundle 'klen/python-mode'
             Bundle 'python_match.vim'
-            Bundle 'pythoncomplete'
             " Javascript
             Bundle 'pangloss/vim-javascript'
             Bundle 'myhere/vim-nodejs-complete'
@@ -137,8 +127,17 @@
             " Ruby
             Bundle 'vim-ruby/vim-ruby'
             Bundle 'tpope/vim-rails'
+            " C/C++
+            if substitute(system("uname -s"), '\n', '', '') ==# "Darwin"
+                Bundle 'Rip-Rip/clang_complete'
+            endif
+            Bundle 'octol/vim-cpp-enhanced-highlight'
+            " Go
+            Bundle 'jnwhiteh/vim-golang'
+            Bundle 'Blackrush/vim-gocode'
             " Other
             Bundle 'spf13/vim-markdown'
+            Bundle 'rdolgushin/PlantUML-Vim'
         " }
     " }
 " }
@@ -152,12 +151,21 @@
         endif
     " }
 
-    " BufferGator {
-        let g:buffergator_viewport_split_policy = "b"
+    " Airline {
+        let g:airline_left_sep=""
+        let g:airline_right_sep=""
+        let g:airline_enable_fugitive=1
+        let g:airline_enable_syntastic=1
+        let g:airline_theme='badwolf'
+    " }
+
+    " Clang {
+        let b:clang_user_options = '-std=c++11'
+        let g:clang_complete_auto = 0
     " }
 
     " Ctrlp {
-        let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes']
+        let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'changes', 'funky']
         let g:ctrlp_max_height = 12
         let g:ctrlp_cache_dir = "~/.vim/tmp/ctrip"
         let g:ctrlp_working_path_mode = 0
@@ -191,6 +199,10 @@
         let NERDTreeShowBookmarks=0
         let NERDTreeShowHidden=1
         let NERDTreeAutoDeleteBuffer=1
+    " }
+
+    " PlantUML {
+        let g:plantuml_executable_script = 'java -jar ~/Dropbox/dev/bin/plantuml.jar'
     " }
 
     " PythonMode {
