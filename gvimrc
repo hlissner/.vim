@@ -18,7 +18,7 @@ if has('gui_macvim')
     set formatoptions+=j
 
     " mmyes, quite
-    set guifont=Andale\ Mono:h14
+    set guifont=Ubuntu\ Mono:h14
 
     " Replace some CMD shortcuts
     macmenu &File.New\ Tab key=<nop>
@@ -43,17 +43,56 @@ if has('gui_macvim')
     map <D-j> 5j
     map <D-k> 5k
 
+    " Shortcuts to outside apps {
+        " Open in finder
+        nnoremap <localleader>f :silent !open %:p:h<CR>
+
+        " Open in terminal
+        nnoremap <localleader>t :silent !open -a iTerm %:p:h<CR>
+
+        " Send to transmit
+        nnoremap <localleader>u :silent !open -a Transmit %<CR>
+    " }
+
 else
 
     " For Windows
     if has("gui_win32") || has("win64")
-        set guifont=Consolas:h10
+        set guifont=Inconsolata:h11
+
+        set go-=m
+        set go-=t
+        set novisualbell
+
+        " Restore some windows-esque keyboard commands
+        map <C-s> :w<CR>
+        imap <C-v> <C-o>P
+        cmap <C-v> <C-r>*
+
+        " Restore word-deletion on windows
+        inoremap <C-BS> <C-O>db<BS>
+        inoremap <C-Del> <C-O>de
+
+        set lines=70
+        set columns=100
+
+        " Shortcuts to outside apps {
+            " Open in finder
+            nnoremap <localleader>f :exe 'silent !explorer.exe '.shellescape(expand("%:p:h"))<CR><CR>
+
+            " Open in terminal
+            nnoremap <localleader>t :silent !conemu -a iTerm %:p:h<CR>
+        " }
     endif
 
     " For gvim
     
     " Commenting using CMD+/"
     map <C-/> <leader>/
+
+    " Textmate-like CMD+Enter
+    inoremap <C-CR> <C-O>o
+    inoremap <S-C-CR> <C-O>O
 
 endif
 
