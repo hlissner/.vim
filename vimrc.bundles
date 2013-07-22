@@ -73,6 +73,8 @@
 
         " f on steroids
         Bundle 'goldfeld/vim-seek'
+
+        Bundle 'tpope/vim-unimpaired'
     " }
     
     " Remote resources {
