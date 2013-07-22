@@ -74,6 +74,7 @@
         " f on steroids
         Bundle 'goldfeld/vim-seek'
 
+        " Muh [] binds
         Bundle 'tpope/vim-unimpaired'
     " }
     
