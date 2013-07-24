@@ -68,9 +68,6 @@
         " Sublime-text multi-cursors!
         Bundle 'terryma/vim-multiple-cursors'
 
-        " Resizes buffers as I switch between them
-        Bundle 'justincampbell/vim-eighties.git'
-
         " f on steroids
         Bundle 'goldfeld/vim-seek'
 
