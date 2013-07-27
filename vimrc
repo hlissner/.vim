@@ -32,7 +32,7 @@ au!
 " Preferences {
     syntax on
     set background=dark
-    colorscheme molokai2
+    colorscheme molokai
 
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show whitespace chars (indent-guides does it nicer)

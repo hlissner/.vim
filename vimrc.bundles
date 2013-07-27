@@ -257,7 +257,6 @@
     " YankRing {
         let g:yankring_history_dir = '~/.vim/tmp/yankring'
     " }
-
 " }
 
 " vim:set foldmarker={,} foldlevel=0 foldmethod=marker:
