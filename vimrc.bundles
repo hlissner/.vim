@@ -1,6 +1,3 @@
-"
-" My Little Vim Bundles
-"
 
 " Plugins {
     " Appearance {
@@ -31,6 +28,7 @@
     " }
 
     " Editing {
+        " Use tab for completion (works fine with ultisnip)
         Bundle 'ervandew/supertab'
 
         " Improved % and hopping delimiters (can now be 1+ character)
