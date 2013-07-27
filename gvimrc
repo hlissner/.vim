@@ -57,7 +57,7 @@ else
 
     " For Windows
     if has("gui_win32") || has("win64")
-        set guifont=Inconsolata:h11
+        set guifont=Ubuntu\ Mono:h11
 
         set go-=m
         set go-=t
