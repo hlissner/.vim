@@ -8,6 +8,7 @@ set go-=l
 set go-=L
 set go-=r
 set go-=R
+set go+=c
 
 " For macvim
 if has('gui_macvim')
@@ -23,6 +24,7 @@ if has('gui_macvim')
     " Replace some CMD shortcuts
     macmenu &File.New\ Tab key=<nop>
     macmenu &File.Open\.\.\. key=<nop>
+    macmenu &Tools.Make key=<nop>
 
     nnoremap <D-t> :CtrlP<CR>
     nnoremap <D-o> :e <C-R>=expand("%:p:h")<CR>/
@@ -42,6 +44,9 @@ if has('gui_macvim')
     " Fast scrolling shortcut
     map <D-j> 5j
     map <D-k> 5k
+
+    " Replace :make
+    map <D-b> :Dispatch<CR>
 
     " Shortcuts to outside apps {
         " Open in finder
