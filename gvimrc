@@ -84,9 +84,6 @@ else
         " Shortcuts to outside apps {
             " Open in finder
             nnoremap <localleader>f :exe 'silent !explorer.exe '.shellescape(expand("%:p:h"))<CR><CR>
-
-            " Open in terminal
-            nnoremap <localleader>t :silent !conemu -a iTerm %:p:h<CR>
         " }
     endif
 
