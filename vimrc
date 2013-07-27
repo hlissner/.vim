@@ -1,19 +1,8 @@
-"              _       _           
-"             | |     (_)          
-"    _ __ ___ | |_   ___ _ __ ___  
-"   | '_ ` _ \| \ \ / / | '_ ` _ \ 
-"   | | | | | | |\ V /| | | | | | |
-"   |_| |_| |_|_| \_/ |_|_| |_| |_|
-"
-"   Author: Henrik Lissner
-"   Url: http://github.com/hlissner/mlvim
-"
-"   Mlvim is a distribution of resources and settings I put together for all
-"   the dabbling I do in web, game, mobile and app development (the politically
-"   correct term would be 'masochist').
-" 
-"   Only thing it won't do is drive you to work... Yet.
-"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                                                                             "
+"   Author: Henrik Lissner                                                    "
+"   Url: http://github.com/hlissner/vim                                       "
+"                                                                             "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible
@@ -155,6 +144,12 @@ au!
 
             return indent . substitute(line,"^ *","",1) . symbol . outdent . foldedLines
         endf
+    " }
+
+    " Shell {
+        if has("gui_win32") || has("win64")
+            set shell=C:/Dev/cygwin/bin/bash.exe
+        endif
     " }
 
     " Backups, swapfiles, persistence {
