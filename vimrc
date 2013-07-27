@@ -227,7 +227,6 @@ au!
 
         " Make Y act consistant with C and D. It must be in this form to
         " override YankRing's remapping of Y.
-        " nnoremap Y y
         function! YRRunAfterMaps()
             nnoremap Y :<C-U>YRYankCount 'y$'<CR>
         endfunction
@@ -302,7 +301,6 @@ au!
 
         " Shortcuts
         cnoremap %% <C-R>=expand('%:p:h').'/'<CR>
-        cnoremap %r <C-R>=expand('%')<CR>
         cnoremap %. <C-R>=expand("%:t")<CR>
         
         " Strip whitespace
@@ -335,6 +333,8 @@ au!
         " Tabularize {
             nmap <leader>a= :Tabularize /=<CR>
             vmap <leader>a= :Tabularize /=<CR>
+            nmap <leader>a> :Tabularize /=><CR>
+            vmap <leader>a> :Tabularize /=><CR>
             nmap <leader>a: :Tabularize /:<CR>
             vmap <leader>a: :Tabularize /:<CR>
             nmap <leader>a:: :Tabularize /:\zs<CR>
@@ -345,10 +345,6 @@ au!
             vmap <leader>a<Bar> :Tabularize /<Bar><CR>
         " }
 
-        " TagBar {
-            nnoremap <silent> <leader>tb :TagbarToggle<CR>
-        " }
-
         " TComment {
             map <silent> <leader>/ gcc
             vmap <silent> <leader>/ gc
@@ -356,8 +352,8 @@ au!
 
         " UltiSnips {
             let g:UltiSnipsExpandTrigger = "<Tab>"
-            let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-            let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+            let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+            let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
         " }
         
         " YankRing {
