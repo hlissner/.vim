@@ -13,8 +13,6 @@ set go+=c
 " For macvim
 if has('gui_macvim')
 
-    set transparency=2
-
     " j doesn't seem to work from terminal
     set formatoptions+=j
 
@@ -36,10 +34,6 @@ if has('gui_macvim')
 
     " Commenting using CMD+/"
     map <D-/> <leader>/
-
-    " Easier indent control
-    nmap <D-]> >>
-    nmap <D-[> <<
 
     " Fast scrolling shortcut
     map <D-j> 5j
