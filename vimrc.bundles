@@ -31,6 +31,8 @@
     " }
 
     " Editing {
+        Bundle 'ervandew/supertab'
+
         " Improved % and hopping delimiters (can now be 1+ character)
         Bundle 'matchit.zip'
 
@@ -81,6 +83,9 @@
 
         " Fetch remote files and packages
         Bundle 'mklabs/vim-fetch'
+
+        " Async compiler plugins
+        Bundle 'tpope/vim-dispatch'
     " }
 
     " Programming {
@@ -132,9 +137,10 @@
                 Bundle 'Rip-Rip/clang_complete'
             endif
             Bundle 'octol/vim-cpp-enhanced-highlight'
+            " C# (For Mono on mac)
+            Bundle 'nosami/Omnisharp'
             " Go
             Bundle 'jnwhiteh/vim-golang'
-            Bundle 'Blackrush/vim-gocode'
             " Other
             Bundle 'spf13/vim-markdown'
             Bundle 'rdolgushin/PlantUML-Vim'
@@ -217,6 +223,10 @@
     " SparkUp {
         " Enable zen-coding in other html-based filetypes
         au FileType blade,twig,xml so ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
+    " }
+
+    " SuperTab {
+        let g:SuperTabDefaultCompletionType = "<c-n>"
     " }
 
     " Syntastic {
