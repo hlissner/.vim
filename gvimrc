@@ -8,6 +8,8 @@ set go-=l
 set go-=L
 set go-=r
 set go-=R
+
+" Don't show dialogues, use text prompts
 set go+=c
 
 " For macvim
@@ -45,10 +47,8 @@ if has('gui_macvim')
     " Shortcuts to outside apps {
         " Open in finder
         nnoremap <localleader>f :silent !open %:p:h<CR>
-
         " Open in terminal
         nnoremap <localleader>t :silent !open -a iTerm %:p:h<CR>
-
         " Send to transmit
         nnoremap <localleader>u :silent !open -a Transmit %<CR>
     " }
@@ -57,38 +57,51 @@ else
 
     " For Windows
     if has("gui_win32") || has("win64")
-        set guifont=Ubuntu\ Mono:h11
-
+        set guifont=Ubuntu\ Mono:h12
+        set lines=60
+        set columns=100
         set go-=m
         set go-=t
         set novisualbell
 
+        " Restore select-all
+        nnoremap <C-a> ggVG
+
         " Restore some windows-esque keyboard commands
-        map <C-s> :w<CR>
-        imap <C-v> <C-o>P
-        cmap <C-v> <C-r>*
+        map <C-s> <esc>:w<CR>
+        inoremap <C-v> <C-r>*
+        cnoremap <C-v> <C-r>*
 
         " Restore word-deletion on windows
         inoremap <C-BS> <C-O>db<BS>
         inoremap <C-Del> <C-O>de
 
-        set lines=70
-        set columns=100
+        nnoremap <F11> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0) <Bar> call libcallnr("VimTweak.dll", "SetAlpha", 245)<CR>
+
+        " Resizing the window in gvim
+        nnoremap <C-Left> :<C-u>set columns-=20<CR>
+        nnoremap <C-Right> :<C-u>set columns+=20<CR>
+        nnoremap <C-Up> :<C-u>set lines-=5<CR>
+        nnoremap <C-Down> :<C-u>set lines+=5<CR>
 
         " Shortcuts to outside apps {
             " Open in finder
             nnoremap <localleader>f :exe 'silent !explorer.exe '.shellescape(expand("%:p:h"))<CR><CR>
+            " Open a cygwin terminal (using zsh) here
+            nnoremap <localleader>t :silent !start C:\Dev\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico /bin/bash -c "cd `cygpath -au \"<C-R>=expand("%:p:h")<CR>\"`; bash -i"<CR>
         " }
+    else
+
+        " For gvim
+        
+        " Commenting using CMD+/"
+        map <C-/> <leader>/
+
+        " Textmate-like CMD+Enter
+        inoremap <C-CR> <C-O>o
+        inoremap <S-C-CR> <C-O>O
+
     endif
-
-    " For gvim
-    
-    " Commenting using CMD+/"
-    map <C-/> <leader>/
-
-    " Textmate-like CMD+Enter
-    inoremap <C-CR> <C-O>o
-    inoremap <S-C-CR> <C-O>O
 
 endif
 

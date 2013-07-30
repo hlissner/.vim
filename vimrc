@@ -9,44 +9,71 @@ set nocompatible
 scriptencoding utf-8
 au!
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Plugins {
     filetype off
 
-    set runtimepath+=~/.vim/bundle/vundle
-    call vundle#rc()
-    Bundle 'gmarik/vundle'
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    call neobundle#rc(expand('~/.vim/bundle'))
+    NeoBundleFetch 'Shougo/neobundle.vim'
 
     " Bundles and their settings are specified externally.
-    if filereadable($HOME."/.vimrc.bundles")
-        source $HOME/.vimrc.bundles
-    endif
-
-    " A local bundles config separate from this distro.
-    if filereadable($HOME."/.vimrc.bundles.local")
+    source $HOME/.vimrc.bundles
+    try
+        " A local bundles config separate from this distro.
         source $HOME/.vimrc.bundles.local
-    endif
+    catch
+    endtry
 
     filetype plugin indent on
+    NeoBundleCheck
 " }
-
 " Preferences {
+    " 256bit terminals
+    set t_Co=256
+
+    " Set GUI colors
     syntax on
     set background=dark
     colorscheme molokai
+    let g:airline_theme = "badwolf"
 
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show whitespace chars (indent-guides does it nicer)
     set nospell                  " No spell check, please
     set number                   " Line numbers
     set visualbell               " No sounds!
-    set showmode                 " Show mode in cmdline
     set showmatch                " Show matching delimiters
     set browsedir=buffer         " Sets File>Open to start in current file's path
+    set noshowmode               " Don't show mode in cmdline (no need with airline)
+    set autoread                 " Auto-update a file that's been edited externally
+    set autowriteall
+    set backspace=indent,eol,start
+    set mouse=a
+    set lazyredraw               " Don't update screen while running macros
+    set hidden                   " Hide abandoned buffers
+    set nostartofline
+    set scrolloff=5
+    set shortmess+=filmnrxoOtTs
+
+    " Share a clipboard with OS and vim terminal sessions
+    if has ('unnamedplus')
+        set clipboard=unnamedplus
+    else
+        set clipboard=unnamed
+    endif
 
     if has('cmdline_info')
         set ruler                " Show line/col no in statusline
         set showcmd              " Show command issued
     endif
+
+    set textwidth=88
+    set colorcolumn=90
+
+    set fillchars=vert:\|,fold:�
+    set iskeyword-=_
 
     " Search {
         set incsearch            " find as you type
@@ -55,20 +82,6 @@ au!
         set smartcase            " case sensitive when uc present
         set gdefault             " global flag for substitute by default
     " }
-
-    " Behavior {
-        set backspace=indent,eol,start
-        set mouse=a
-        set lazyredraw           " Don't update screen while running macros
-        set hidden               " Hide abandoned buffers
-        set nostartofline
-        set scrolloff=5
-        set shortmess+=filmnrxoOtTs
-
-        " Share a clipboard with OS and vim terminal sessions
-        set clipboard=unnamed
-    " }
-
     " Omnicomplete {
         set tags=./.tags;/,~/.tags,~/tags
 
@@ -77,7 +90,8 @@ au!
         set wildmode=list:longest,full  " command <Tab> completion: list
                                         " matches -> longest common -> then
                                         " all.
-        set wildignore+=.*,*.cache,cache/**,*~,*.swp,*.log,.sass-cache,__*,*.class
+        set wildignore+=.*,*.cache,cache/**,*~,*.swp,*.log,.sass-cache
+        set wildignore+=*.class,*.o,*.obj,*DS_Store*
 
         augroup vim_omnicomplete
             au!
@@ -99,7 +113,6 @@ au!
         " Automatically open and close the popup menu / preview window
         au InsertLeave * if pumvisible() == 0|silent! pclose|endif
     " }
-
     " Formatting {
         set autoindent
         set shiftround
@@ -107,33 +120,22 @@ au!
         set shiftwidth=4
         set tabstop=4
         set softtabstop=4
-
-        " Trigger to preserve indentation on pastes
-        set pastetoggle=<localleader>p
-
-        " Wrapping {
-            set nowrap
-            " Backspace and cursor keys to wrap
-            set whichwrap=b,s,h,l,<,>,[,]
-            set textwidth=79
-            " set colorcolumn=85
-            
-            " see :h fo-table
-            set formatoptions=qrn1lr
-        " }
+        " Wrapping
+        set nowrap
+        " Backspace and cursor keys to wrap
+        set whichwrap=b,s,h,l,<,>,[,]
+        " see :h fo-table
+        set formatoptions=qrn1lr
     " }
-
     " Folding {
         " set foldenable
         set foldlevel=1
-
         " Cleaner, readable fold headers
         set foldtext=MyFoldText()
         fu! MyFoldText()
             let line = getline(v:foldstart)
             " Lines that have been folded
             let nl = v:foldend - v:foldstart + 1
-
             let foldedLines = "( ".nl." ) "
             let symbol = " ... "
 
@@ -145,43 +147,35 @@ au!
             return indent . substitute(line,"^ *","",1) . symbol . outdent . foldedLines
         endf
     " }
-
-    " Shell {
-        if has("gui_win32") || has("win64")
-            set shell=C:/Dev/cygwin/bin/bash.exe
-        endif
-    " }
-
-    " Backups, swapfiles, persistence {
-        " No backup (that's what git is for!) and swapfiles are annoying
-        set nobackup
-        set noswapfile
-
-        if has('persistent_undo')
-            set undodir=~/.vim/tmp/undo
-
-            set undofile
-            set undolevels=500
-            set undoreload=500
-        endif
-        set history=1000
-
-        " Preserve buffer state (cursor location, folds, etc.)
-        set viewdir=~/.vim/tmp/views
-        set viewoptions=cursor,folds,unix,slash
-        augroup persistence
-            au!
-            au BufWinLeave * if expand("%") != "" | silent! mkview | endif
-            au BufWinEnter * if expand("%") != "" | silent! loadview | endif
-        augroup END
-    " }
 " }
-
+" Backups, swapfiles, persistence {
+    " No backup (that's what git is for!) and swapfiles are annoying
+    set nobackup
+    set nowritebackup
+    set noswapfile
+    if has('persistent_undo')
+        set undodir=~/.vim/tmp/undo
+        set undofile
+        set undolevels=500
+        set undoreload=500
+    endif
+    set history=1000
+    " Preserve buffer state (cursor location, folds, etc.)
+    set viewdir=~/.vim/tmp/views
+    set viewoptions=cursor,folds,unix,slash
+    augroup persistence
+        au!
+        au BufWinLeave * if expand("%") != "" | silent! mkview | endif
+        au BufWinEnter * if expand("%") != "" | silent! loadview | endif
+    augroup END
+" }
 " Keymaps {
     " Comma get some... sorry.
     let mapleader = ','
     let maplocalleader = '\'
     noremap ; :
+    " Trigger to preserve indentation on pastes
+    set pastetoggle=<localleader>p
 
     " Easier than escape. Pinnacle of laziness.
     imap jj <ESC>
@@ -199,12 +193,24 @@ au!
         " wrapped text
         noremap j gj
         noremap k gk
-
+        " % matchit shortcut, but only in normal mode!
+        nmap <Tab> %
+        " Easier fold toggle
+        noremap <Space> za
         " Easier scrolling
         noremap <C-h> zH
         noremap <C-j> 5j
         noremap <C-k> 5k
         noremap <C-l> zL
+
+        " Ctrl-h: Move word left
+        inoremap <c-h> <c-o>b
+        " Ctrl-j: Move cursor up
+        inoremap <C-j> <Down>
+        " Ctrl-k: Move cursor up
+        inoremap <C-k> <Up>
+        " Ctrl-l: Move word right
+        inoremap <c-l> <c-o>w
 
         " Get used to hjkl!
         noremap <Left> <Nop>
@@ -212,13 +218,23 @@ au!
         noremap <Down> <Nop>
         noremap <Up> <Nop>
 
-        " Tab alias for matchit
-        map <Tab> %
+        " f: Find. Also support repeating with .
+        nnoremap <Plug>OriginalSemicolon ;
+        nnoremap <silent> f :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>f
+        nnoremap <silent> t :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>t
+        nnoremap <silent> F :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>F
+        nnoremap <silent> T :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>T
     " }
-
     " Editing {
-        " Fold toggle
-        nnoremap <Space> za
+        " Insert-mode navigation
+        " Delete a word
+        inoremap <C-w> <C-g>u<C-w>
+        " Go to end of line
+        inoremap <C-e> <Esc>A
+        " Delete line
+        inoremap <C-u> <C-g>u<C-u>
+        " Go to start of line
+        inoremap <C-a> <Esc>I
 
         " Make Y act consistant with C and D. It must be in this form to
         " override YankRing's remapping of Y.
@@ -230,9 +246,12 @@ au!
         vnoremap < <gv
         vnoremap > >gv
 
-        " One-key indent control
-        nmap ≥ >>
-        nmap ≤ <<
+        " u = undo, U = redo
+        nmap U <C-r>
+
+        " Increment/decrement shortcuts
+        nnoremap + <C-a>
+        nnoremap - <C-x>
 
         " Textmate-like CMD+Enter (O in insert mode)
         inoremap <S-CR> <C-O>o
@@ -247,39 +266,28 @@ au!
         nnoremap <leader>v V`]
 
         " Uses A-Space for generic omnicomplete
-        imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
-        imap <expr> <S-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
-
-        " Adjust folding level <https://github.com/spf13/spf13-vim>
-        nmap <leader>f0 :set foldlevel=0<CR>
-        nmap <leader>f1 :set foldlevel=1<CR>
-        nmap <leader>f2 :set foldlevel=2<CR>
-        nmap <leader>f3 :set foldlevel=3<CR>
-        nmap <leader>f4 :set foldlevel=4<CR>
-        nmap <leader>f5 :set foldlevel=5<CR>
-        nmap <leader>f6 :set foldlevel=6<CR>
-        nmap <leader>f7 :set foldlevel=7<CR>
-        nmap <leader>f8 :set foldlevel=8<CR>
-        nmap <leader>f9 :set foldlevel=9<CR>
+        imap <expr> <C-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
+        imap <expr> <C-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
     " }
-
     " Buffers {
-        " New buffer in a v-split
-        nnoremap <C-w>N :vnew<CR>
+        " Go to last buffer
+        nnoremap <C-b> <C-^>
+
+        " Change CWD to current file's directory
+        nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>    
 
         " Shortcut to vimrc and gvimrc
-        nnoremap <leader>ev :e ~/.vimrc<CR>
-        nnoremap <leader>el :e ~/.vimrc.local<CR>
-        nnoremap <leader>eb :e ~/.vimrc.bundles<CR>
-        nnoremap <leader>eg :e ~/.gvimrc<CR>
+        nnoremap <localleader>ev :e $HOME/.vimrc<CR>
+        nnoremap <localleader>el :e $HOME/.vimrc.local<CR>
+        nnoremap <localleader>eb :e $HOME/.vimrc.bundles<CR>
+        nnoremap <localleader>eg :e $HOME/.gvimrc<CR>
 
         " Temporary session management
-        let SESSDIR = "~/.vim/tmp/session.vim"
+        let SESSDIR = "~/.vim-session.vim"
         nnoremap <leader>ss :w<CR>:mksession! <C-R>=SESSDIR<CR><CR>
         nnoremap <leader>sl :so <C-R>=SESSDIR<CR><CR>
         nnoremap <leader>sd :!rm <C-R>=SESSDIR<CR><CR>
     " }
-
     " Command {
         " Annoying command mistakes <https://github.com/spf13/spf13-vim>
         com! -bang -nargs=* -complete=file E e<bang> <args>
@@ -295,19 +303,21 @@ au!
         com! WW w !sudo tree % >/dev/null
 
         " Shortcuts
-        cnoremap %% <C-R>=expand('%:p:h').'/'<CR>
-        cnoremap %. <C-R>=expand("%:t")<CR>
+        cnoremap ;; <C-R>=expand('%:p:h').'/'<CR>
+        cnoremap ;. <C-R>=expand("%:t")<CR>
         
         " Strip whitespace
         com! -range Trim <line1>,<line2>s/\s\+$//
+
+        " Mimic shortcuts in the terminal
+        cnoremap <C-a> <Home>
+        cnoremap <C-e> <End>
     " }
-    
     " Plugins {
         " bufkill {
             " Reopen last closed buffer
             nnoremap <silent> <leader>bz :BUNDO<CR>
         " }
-
         " Ctrlp {
             let g:ctrlp_map = '<leader>.'
             nnoremap <silent> <leader>, :CtrlPBuffer<CR>
@@ -319,12 +329,14 @@ au!
             nnoremap <silent> <leader>oC :CtrlPChangeAll<CR>
             nnoremap <silent> <leader>oL :CtrlPChangeAll<CR>
         " }
-
+        " Dispatch {
+            nnoremap <localleader>b :Make<CR>
+            nnoremap <localleader>B :Dispatch<CR>
+        " }
         " NERDTree {
             nnoremap <leader>n :NERDTreeToggle<CR>
             nnoremap <leader>N :NERDTreeFind<CR>
         " }
-
         " Tabularize {
             nmap <leader>a= :Tabularize /=<CR>
             vmap <leader>a= :Tabularize /=<CR>
@@ -339,28 +351,34 @@ au!
             nmap <leader>a<Bar> :Tabularize /<Bar><CR>
             vmap <leader>a<Bar> :Tabularize /<Bar><CR>
         " }
-
         " TComment {
             map <silent> <leader>/ gcc
             vmap <silent> <leader>/ gc
         " }
-
         " UltiSnips {
             let g:UltiSnipsExpandTrigger = "<Tab>"
             let g:UltiSnipsJumpForwardTrigger = "<Tab>"
             let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
         " }
-        
         " YankRing {
             nnoremap <leader>yp :YRShow<CR>
             nnoremap <leader>y/ :YRSearch<CR>
         " }
     " }
+    " Autocommands {
+        " Turn on cursorline only on active window
+        augroup CursorLineTrigger
+            autocmd WinLeave * setlocal nocursorline
+            autocmd WinEnter,BufRead * setlocal cursorline
+        augroup END
+    " }
 " }
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " A local rc file separate from this distro.
-if filereadable($HOME."/.vimrc.local")
+try
     source $HOME/.vimrc.local
-endif
+catch
+endtry
 
 " vim:set fmr={,} fdl=0 fdm=marker:
