@@ -55,22 +55,24 @@ if has('gui_macvim')
 
 else
 
+    inoremap <C-v> <C-r>*
+    cnoremap <C-v> <C-r>*
+
+    set go-=m
+    set novisualbell
+
     " For Windows
     if has("gui_win32") || has("win64")
         set guifont=Ubuntu\ Mono:h12
         set lines=60
         set columns=100
-        set go-=m
         set go-=t
-        set novisualbell
 
         " Restore select-all
         nnoremap <C-a> ggVG
 
         " Restore some windows-esque keyboard commands
         map <C-s> <esc>:w<CR>
-        inoremap <C-v> <C-r>*
-        cnoremap <C-v> <C-r>*
 
         " Restore word-deletion on windows
         inoremap <C-BS> <C-O>db<BS>
@@ -93,6 +95,7 @@ else
     else
 
         " For gvim
+        set guifont=Monospace\ 10
         
         " Commenting using CMD+/"
         map <C-/> <leader>/
