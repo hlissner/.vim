@@ -1,7 +1,7 @@
 
 # My Little Vim
 
-![mlvim](http://i.imgur.com/50dYqoM.png)
+![mlvim](http://i.imgur.com/zVwoAGN.png)
 
 This is my little vim distro for my mac, windows and linux machines, and for any
 of my fellow spaghetti code warriors (aka masochists). 
