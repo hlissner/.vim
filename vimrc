@@ -48,7 +48,6 @@ au!
     set browsedir=buffer         " Sets File>Open to start in current file's path
     set noshowmode               " Don't show mode in cmdline (no need with airline)
     set autoread                 " Auto-update a file that's been edited externally
-    set autowriteall
     set backspace=indent,eol,start
     set mouse=a
     set lazyredraw               " Don't update screen while running macros
@@ -160,14 +159,6 @@ au!
         set undoreload=500
     endif
     set history=1000
-    " Preserve buffer state (cursor location, folds, etc.)
-    set viewdir=~/.vim/tmp/views
-    set viewoptions=cursor,folds,unix,slash
-    augroup persistence
-        au!
-        au BufWinLeave * if expand("%") != "" | silent! mkview | endif
-        au BufWinEnter * if expand("%") != "" | silent! loadview | endif
-    augroup END
 " }
 " Keymaps {
     " Comma get some... sorry.
@@ -266,8 +257,8 @@ au!
         nnoremap <leader>v V`]
 
         " Uses A-Space for generic omnicomplete
-        imap <expr> <C-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
-        imap <expr> <C-A-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
+        imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
+        imap <expr> <A-S-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
     " }
     " Buffers {
         " Go to last buffer
@@ -318,17 +309,6 @@ au!
             " Reopen last closed buffer
             nnoremap <silent> <leader>bz :BUNDO<CR>
         " }
-        " Ctrlp {
-            let g:ctrlp_map = '<leader>.'
-            nnoremap <silent> <leader>, :CtrlPBuffer<CR>
-            nnoremap <silent> <leader>ot :CtrlPBufTag<CR>
-            nnoremap <silent> <leader>oT :CtrlPBufTagAll<CR>
-            nnoremap <silent> <leader>or :CtrlPFunky<CR>
-            nnoremap <silent> <leader>om :CtrlPMRU<CR>
-            nnoremap <silent> <leader>oc :CtrlPChange<CR>
-            nnoremap <silent> <leader>oC :CtrlPChangeAll<CR>
-            nnoremap <silent> <leader>oL :CtrlPChangeAll<CR>
-        " }
         " Dispatch {
             nnoremap <localleader>b :Make<CR>
             nnoremap <localleader>B :Dispatch<CR>
@@ -360,9 +340,15 @@ au!
             let g:UltiSnipsJumpForwardTrigger = "<Tab>"
             let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
         " }
-        " YankRing {
-            nnoremap <leader>yp :YRShow<CR>
-            nnoremap <leader>y/ :YRSearch<CR>
+        " Unite {
+            nnoremap <silent> <leader>. :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<CR><c-u>
+            nnoremap <silent> <leader>, :<C-u>Unite -auto-resize -buffer-name=buffers buffer<CR>
+            nnoremap <silent> <leader>y :<C-u>Unite -buffer-name=yanks history/yank<CR>
+            nnoremap <silent> <leader>f :<C-u>Unite -auto-resize -buffer-name=search grep:.<CR>
+            nnoremap <silent> <leader>m :<C-u>Unite -auto-resize -toggle -buffer-name=mru file_mru<CR>
+            nnoremap <silent> <leader><space> :<C-u>Unite -auto-resize -buffer-name=outline outline<CR>
+            nnoremap <silent> <leader>` :<C-u>Unite -start-insert menu<CR>
+            nnoremap <silent> <leader>g :<C-u>Unite -start-insert menu:git<CR>
         " }
     " }
     " Autocommands {
