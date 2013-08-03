@@ -322,10 +322,6 @@ au!
             nnoremap <localleader>b :Make<CR>
             nnoremap <localleader>B :Dispatch<CR>
         " }
-        " VimFiler {
-            nnoremap <leader><CR> :VimFilerExplorer<CR>
-            nnoremap <leader><S-CR> :VimFilerExplorer -find<CR>
-        " }
         " Tabularize {
             nmap <leader>a= :Tabularize /=<CR>
             vmap <leader>a= :Tabularize /=<CR>
