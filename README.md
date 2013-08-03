@@ -3,47 +3,42 @@
 
 ![mlvim](http://i.imgur.com/zVwoAGN.png)
 
-This is my little vim distro for my mac, windows and linux machines, and for any
-of my fellow spaghetti code warriors (aka masochists). 
+These are my weapons. Anything unix based will love it, like a chocolate covered smore
+wrapped in baconstrips. Only fellow spaghetti code warriors need apply. Masochists are
+welcome too (as if they aren't the same thing).
 
-It's got stuff for everything from web design (html, css, scss/less, js,
-jquery, coffeescript), to web dev (php, ruby/rails, python), to game and app
-dev (lua/love2D, Csharp+Mono, C++, Go) and some extras (markdown and plantuml).
-
-It has some nifty extra plugins, like
-[CtrlP](https://github.com/kien/ctrlp.vim) and
-[SuperTab](https://github.com/ervandew/supertab). Check out the bundles folder
-for more!
+It wubs everything from web design (html, css, scss/less, js, jquery, coffeescript), to
+web dev (php, ruby/rails, python), to game and app dev (lua/love2D, Csharp+Mono, C++,
+Go) and then some (markdown and plantuml).
 
 # Installation
-## Mac
-Install [macvim](https://code.google.com/p/macvim/). On a mac, I'd recommend
-[homebrew](http://mxcl.github.com/homebrew/), then all you need is:
+So, you're running...
+## Mac / Linux
+Fantastic! Install gvim or [macvim](https://code.google.com/p/macvim/). On mac, I'd recommend
+[homebrew](http://mxcl.github.com/homebrew/):
 
-    brew install macvim
+    brew install macvim --devel
     # or
     brew install vim --with-ruby --with-python
 
-## Mac & Linux
+If you're on linux, you're smarter than the average bear. Good luck!
 
-With [mac|g]vim installed, copy and paste the following:
+With [mac|g]vim installed, whisper these words into the ear of your console (nicely, it
+has feelings):
 
-    git clone https://github.com/hlissner/vim.git ~/.vim
-    git clone https://github.com/gmarik/vundle.git "$VIMHOME/bundle/vundle"
-    git clone https://github.com/tomasr/molokai.git "$VIMHOME/bundle/molokai"
+    git clone https://github.com/hlissner/vim ~/.vim
+    git clone https://github.com/Shougo/neobundle.vim "$VIMHOME/bundle/neobundle.vim"
     ln -s ~/.vim/vimrc ~/.vimrc
     ln -s ~/.vim/vimrc.bundles ~/.vimrc.bundles
     ln -s ~/.vim/gvimrc ~/.gvimrc
-    vim +BundleInstall! +BundleClean +qall
+    vim +NeoBundleInstall! +qall
 
-And don't forget to run :BundleInstall in vim. Then you're good to go!
+GLORIOUS.
 
-## Windows
+## What about Windo—
 
-This distro works great out of the box in Windows, except you'll need Cygwin
-installed for vim to take advantage of the bash shell. Otherwise, just change
-(or remove) the set shell=... line in vimrc.
+![Windows, you say...](http://i3.kym-cdn.com/photos/images/newsfeed/000/549/293/504.gif)
 
-# Welp!
+# That's all!
 
-That's all folks! Good luck fellow masochists!
+Now get back to work.
