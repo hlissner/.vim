@@ -21,7 +21,7 @@ if has('gui_macvim')
     set formatoptions+=j
 
     " mmyes, quite
-    set guifont=Ubuntu\ Mono:h14
+    set guifont=Ubuntu\ Mono:h15
 
     " Replace some CMD shortcuts
     macmenu &File.New\ Tab key=<nop>
@@ -38,12 +38,6 @@ if has('gui_macvim')
 
     " Commenting using CMD+/"
     map <D-/> <leader>/
-
-    " Fast scrolling shortcut
-    nnoremap <D-h> <C-w>h
-    nnoremap <D-j> <C-w>j
-    nnoremap <D-k> <C-w>k
-    nnoremap <D-l> <C-w>l
 
     " Replace :make
     map <D-b> :Dispatch<CR>

@@ -193,11 +193,17 @@ au!
         nmap <Tab> %
         " Easier fold toggle
         noremap <Space> za
-        " Easier scrolling
+        " Faster scrolling
         map <C-h> zH
         map <C-j> 5j
         map <C-k> 5k
         map <C-l> zL
+        " Navigating buffers
+        nnoremap <A-h> <C-w>h
+        nnoremap <A-j> <C-w>j
+        nnoremap <A-k> <C-w>k
+        nnoremap <A-l> <C-w>l
+
 
         " Ctrl-h: Move word left
         inoremap <c-h> <c-o>b
