@@ -24,7 +24,8 @@
             NeoBundle 'mileszs/ack.vim'
         endif
         " A filetree navigator replacement for netrw
-        NeoBundle 'scrooloose/nerdtree'
+        " NeoBundle 'scrooloose/nerdtree'
+        NeoBundle 'Shougo/vimfiler.vim'
 
         " ...
         NeoBundleLazy 'Shougo/unite.vim', {'autoload':{'commands':'Unite', 'insert': 1}} 
@@ -154,6 +155,16 @@
         let g:airline_right_sep=""
         let g:airline_enable_branch=1
         let g:airline_enable_prefix=1
+        let g:airline_linecolumn_prefix = '␤ '
+        let g:airline_paste_symbol = 'ρ'
+        let g:airline_mode_map = {'n':'N', 'i':'I', 'R':'R', 'v':'V', 'V':'V-', 'c':'CMD', '':'V¤'}
+        let g:airline_section_x = "%{strlen(&fenc)>0?&fenc:''}"
+        let g:airline_section_y = "%{strlen(&filetype)>0?&filetype:''}"
+    " }
+    " BufferLine {
+        let g:bufferline_echo = 0
+        let g:bufferline_show_bufnr = 0
+        let g:bufferline_rotate = 3
     " }
     " delimitMate {
         let g:delimitMate_expand_cr = 1
@@ -244,6 +255,19 @@
                     \   '> git push': 'Git! push', 
                     \   '> git pull': 'Git! pull' } 
                     \ }
+    " }
+    " VimFiler {
+        let g:vimfiler_as_default_explorer = 1
+        let g:vimfiler_safe_mode_by_default = 0
+        let g:vimfiler_tree_leaf_icon = ' '
+        let g:vimfiler_tree_opened_icon = '▾'
+        let g:vimfiler_tree_closed_icon = '▸'
+        let g:vimfiler_file_icon = ' '
+        let g:vimfiler_marked_file_icon = '*'
+
+        " call vimfiler#set_execute_file('jpg', 'open -a Photoshop')
+
+        let g:vimfiler_quick_look_command = 'qlmanage -p'
     " }
     " Vim-indent-guides {
         let g:indent_guides_enable_on_vim_startup = 1

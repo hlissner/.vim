@@ -1,4 +1,4 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+﻿"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                                                             "
 "   Author: Henrik Lissner                                                    "
 "   Url: http://github.com/hlissner/vim                                       "
@@ -10,10 +10,7 @@ scriptencoding utf-8
 au!
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Plugins {
-    filetype off
-
     set runtimepath+=~/.vim/bundle/neobundle.vim/
     call neobundle#rc(expand('~/.vim/bundle'))
     NeoBundleFetch 'Shougo/neobundle.vim'
@@ -30,9 +27,6 @@ au!
     NeoBundleCheck
 " }
 " Preferences {
-    " 256bit terminals
-    set t_Co=256
-
     " Set GUI colors
     syntax on
     set background=dark
@@ -70,14 +64,11 @@ au!
 
     set textwidth=88
     set colorcolumn=90
-
-    set fillchars=vert:\|,fold:�
-    set iskeyword-=_
+    set fillchars=vert:\|,fold:·
 
     " Shell {
-        if has("unix") || has("macunix")
-            set shellcmdflag=--login\ -c
-        endif
+        " 256bit terminals
+        set t_Co=256
     " }
     " Search {
         set incsearch            " find as you type
@@ -97,7 +88,7 @@ au!
         set wildignore+=.*,*.cache,cache/**,*~,*.swp,*.log,.sass-cache
         set wildignore+=*.class,*.o,*.obj,*DS_Store*
 
-        augroup vim_omnicomplete
+        augroup Omnicomplete
             au!
             if exists("+omnifunc")
                 au Filetype *
@@ -110,7 +101,6 @@ au!
             au FileType css,scss,less setl omnifunc=csscomplete#CompleteCSS
             au FileType html,markdown,htmljinja,xml setl omnifunc=htmlcomplete#CompleteTags
             " au FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
-            au FileType python setl omnifunc=pythoncomplete#Complete
             au FileType xml setl omnifunc=xmlcomplete#CompleteTags
         augroup END
 
@@ -152,7 +142,7 @@ au!
         endf
     " }
 " }
-" Backups, swapfiles, persistence {
+" History/Backup {
     " No backup (that's what git is for!) and swapfiles are annoying
     set nobackup
     set nowritebackup
@@ -164,6 +154,15 @@ au!
         set undoreload=500
     endif
     set history=1000
+
+    " Preserve buffer state (cursor location, folds, etc.)
+    set viewdir=~/.vim/tmp/views
+    set viewoptions=cursor,folds,unix,slash
+    augroup persistence
+        au!
+        au BufWinLeave * if expand("%") != "" | silent! mkview | endif
+        au BufWinEnter * if expand("%") != "" | silent! loadview | endif
+    augroup END
 " }
 " Keymaps {
     " Comma get some... sorry.
@@ -171,7 +170,7 @@ au!
     let maplocalleader = '\'
     noremap ; :
     " Trigger to preserve indentation on pastes
-    set pastetoggle=<localleader>p
+    set pastetoggle=<localleader><localleader>
 
     " Easier than escape. Pinnacle of laziness.
     imap jj <ESC>
@@ -199,11 +198,10 @@ au!
         map <C-k> 5k
         map <C-l> zL
         " Navigating buffers
-        nnoremap <A-h> <C-w>h
-        nnoremap <A-j> <C-w>j
-        nnoremap <A-k> <C-w>k
-        nnoremap <A-l> <C-w>l
-
+        nnoremap ˙ <C-w>h
+        nnoremap ∆ <C-w>j
+        nnoremap ˚ <C-w>k
+        nnoremap ¬ <C-w>l
 
         " Ctrl-h: Move word left
         inoremap <c-h> <c-o>b
@@ -324,9 +322,9 @@ au!
             nnoremap <localleader>b :Make<CR>
             nnoremap <localleader>B :Dispatch<CR>
         " }
-        " NERDTree {
-            nnoremap <leader>n :NERDTreeToggle<CR>
-            nnoremap <leader>N :NERDTreeFind<CR>
+        " VimFiler {
+            nnoremap <leader><CR> :VimFilerExplorer<CR>
+            nnoremap <leader><S-CR> :VimFilerExplorer -find<CR>
         " }
         " Tabularize {
             nmap <leader>a= :Tabularize /=<CR>
