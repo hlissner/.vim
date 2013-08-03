@@ -29,8 +29,8 @@ if has('gui_macvim')
     macmenu &Tools.Make key=<nop>
 
     nnoremap <D-t> :CtrlP<CR>
-    nnoremap <D-o> :e <C-R>=expand("%:p:h")<CR>/
-    nnoremap <D-O> :CtrlPBuffer<CR>
+    nnoremap <D-o> :<C-u>Unite file<CR>
+    nnoremap <D-O> :<C-u>Unite file_mru<CR>
 
     " Textmate-like CMD+Enter
     inoremap <D-CR> <C-O>o
@@ -40,8 +40,10 @@ if has('gui_macvim')
     map <D-/> <leader>/
 
     " Fast scrolling shortcut
-    map <D-j> 5j
-    map <D-k> 5k
+    nnoremap <D-h> <C-w>h
+    nnoremap <D-j> <C-w>j
+    nnoremap <D-k> <C-w>k
+    nnoremap <D-l> <C-w>l
 
     " Replace :make
     map <D-b> :Dispatch<CR>
