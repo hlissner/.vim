@@ -74,6 +74,11 @@ au!
     set fillchars=vert:\|,fold:·
     set iskeyword-=_
 
+    " Shell {
+        if has("unix") || has("macunix")
+            set shellcmdflag=--login\ -c
+        endif
+    " }
     " Search {
         set incsearch            " find as you type
         set hlsearch             " Highlight search terms
@@ -189,10 +194,10 @@ au!
         " Easier fold toggle
         noremap <Space> za
         " Easier scrolling
-        noremap <C-h> zH
-        noremap <C-j> 5j
-        noremap <C-k> 5k
-        noremap <C-l> zL
+        map <C-h> zH
+        map <C-j> 5j
+        map <C-k> 5k
+        map <C-l> zL
 
         " Ctrl-h: Move word left
         inoremap <c-h> <c-o>b
