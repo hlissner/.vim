@@ -11,6 +11,8 @@ au!
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins {
+    filetype off
+
     set runtimepath+=~/.vim/bundle/neobundle.vim/
     call neobundle#rc(expand('~/.vim/bundle'))
     NeoBundleFetch 'Shougo/neobundle.vim'
