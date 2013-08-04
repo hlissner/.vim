@@ -322,6 +322,10 @@ au!
             nnoremap <localleader>b :Make<CR>
             nnoremap <localleader>B :Dispatch<CR>
         " }
+        " NERDTree {
+            nnoremap <leader>n :NERDTreeToggle<CR>
+            nnoremap <leader>N :NERDTreeFind<CR>
+        " }
         " Tabularize {
             nmap <leader>a= :Tabularize /=<CR>
             vmap <leader>a= :Tabularize /=<CR>
