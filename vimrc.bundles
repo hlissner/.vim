@@ -234,8 +234,8 @@
         let g:indent_guides_color_change_percent  = 4
     " }
     " YouCompleteMe {
-        let g:ycm_key_list_select_completion = ['<Down>']
-        let g:ycm_key_list_previous_completion = ['<Up>']
+        let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+        let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_confirm_extra_conf = 0
     " }
