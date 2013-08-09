@@ -320,6 +320,16 @@ au!
             " Reopen last closed buffer
             nnoremap <silent> <leader>bz :BUNDO<CR>
         " }
+        " CtrlP {
+            let g:ctrlp_map = '<leader>.'
+            nnoremap <silent> <leader>, :CtrlPBuffer<CR>
+            nnoremap <silent> <leader><space> :CtrlPFunky<CR>
+            nnoremap <silent> <leader>m :CtrlPMRU<CR>
+            nnoremap <silent> <leader>od :CtrlPModified<CR>
+            nnoremap <silent> <leader>oD :CtrlPBranch<CR>
+            nnoremap <silent> <leader>ot :CtrlPBufTag<CR>
+            nnoremap <silent> <leader>oT :CtrlPBufTagAll<CR>
+        " }
         " Dispatch {
             nnoremap <localleader>b :Make<CR>
             nnoremap <localleader>B :Dispatch<CR>
@@ -351,23 +361,6 @@ au!
             let g:UltiSnipsJumpForwardTrigger = "<Tab>"
             let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
         " }
-        " Unite {
-            nnoremap <silent> <leader>. :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<CR><c-u>
-            nnoremap <silent> <leader>, :<C-u>Unite -auto-resize -buffer-name=buffers buffer<CR>
-            nnoremap <silent> <leader>y :<C-u>Unite -buffer-name=yanks history/yank<CR>
-            nnoremap <silent> <leader>f :<C-u>Unite -auto-resize -buffer-name=search grep:.<CR>
-            nnoremap <silent> <leader>m :<C-u>Unite -auto-resize -toggle -buffer-name=mru file_mru<CR>
-            nnoremap <silent> <leader><space> :<C-u>Unite -auto-resize -buffer-name=outline outline<CR>
-            nnoremap <silent> <leader>` :<C-u>Unite -start-insert menu<CR>
-            nnoremap <silent> <leader>g :<C-u>Unite -start-insert menu:git<CR>
-        " }
-    " }
-    " Autocommands {
-        " Turn on cursorline only on active window
-        augroup CursorLineTrigger
-            autocmd WinLeave * setlocal nocursorline
-            autocmd WinEnter,BufRead * setlocal cursorline
-        augroup END
     " }
 " }
 

@@ -27,8 +27,15 @@
         NeoBundle 'scrooloose/nerdtree'
 
         " ...
-        NeoBundleLazy 'Shougo/unite.vim', {'autoload':{'commands':'Unite', 'insert': 1}} 
-        NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}} 
+        " NeoBundleLazy 'Shougo/unite.vim', {'autoload':{'commands':'Unite', 'insert': 1}} 
+        " NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}} 
+
+        " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
+        NeoBundle 'kien/ctrlp.vim'
+        " Ctrlp extension for jumping to functions
+        NeoBundle 'tacahiroy/ctrlp-funky'
+        " Ctrlp extension for listing git modified files
+        NeoBundle 'jasoncodes/ctrlp-modified.vim'
     " }
     " Editing {
         " Visual git diffs in the gutter
@@ -165,6 +172,22 @@
         let g:bufferline_show_bufnr = 0
         let g:bufferline_rotate = 3
     " }
+    " Ctrlp {
+        let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'funky']
+        let g:ctrlp_max_height = 15
+        let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
+        let g:ctrlp_working_path_mode = 0
+        let g:ctrlp_custom_ignore = {
+                    \ 'dir':  '\.git$\|\.hg$\|\.svn|\.settings$',
+                    \ 'file': '\.exe$\|\.so$\|\.dll|\.sass\-cache|\.classpath|\.project$' }
+        let g:ctrlp_user_command = {
+                    \ 'types': {
+                    \   ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                    \   ['.hg', 'hg --cwd %s locate -I']
+                    \ },
+                    \ 'fallback': 'ag %s -l --nocolor -g ""'
+                \ }
+    " }
     " delimitMate {
         let g:delimitMate_expand_cr = 1
         let g:delimitMate_expand_space = 1
@@ -203,57 +226,6 @@
         " Ignore the default snippets so I (and others) can define their own
         let g:UltiSnipsSnippetDirectories = ['snippets']
         let g:UltiSnipsExpandTrigger = "<Tab>"
-    " }
-    " Unite {
-        let bundle = neobundle#get('unite.vim')
-        function! bundle.hooks.on_source(bundle)
-            call unite#filters#matcher_default#use(['matcher_fuzzy'])
-            call unite#filters#sorter_default#use(['sorter_rank'])
-            call unite#set_profile('files', 'smartcase', 1)
-            call unite#custom#source('line,outline','matchers','matcher_fuzzy')
-        endfunction
-
-        let g:unite_data_directory='~/.vim/tmp/unite'
-        let g:unite_enable_start_insert=1
-        let g:unite_source_history_yank_enable=1
-        let g:unite_source_rec_max_cache_files=5000
-        let g:unite_enable_use_short_source_names=1
-        let g:unite_prompt='$ '
-        let g:unite_split_rule='botright'
-
-        if executable('ag')
-            let g:unite_source_grep_command='ag'
-            let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
-            let g:unite_source_grep_recursive_opt=''
-        elseif executable('ack')
-            let g:unite_source_grep_command='ack'
-            let g:unite_source_grep_default_opts='--no-heading --no-color -a'
-            let g:unite_source_grep_recursive_opt=''
-        endif
-
-        function! s:unite_settings()
-            nmap <buffer> Q <plug>(unite_exit)
-            nmap <buffer> <esc> <plug>(unite_exit)
-            imap <buffer> <esc> <plug>(unite_exit)
-        endfunction
-        autocmd FileType unite call s:unite_settings()
-
-        let g:unite_source_menu_menus = {}
-        let g:unite_source_menu_menus.git = { 
-                    \ 'description': 'Fugitive git commands', 
-                    \ 'command_candidates': { 
-                    \   '> git status': 'Gstatus', 
-                    \   '> git diff': 'Gdiff', 
-                    \   '> git commit': 'Gcommit', 
-                    \   '> git log': 'exe "silent Glog | Unite quickfix"', 
-                    \   '> git blame': 'Gblame', 
-                    \   '> git stage': 'Gwrite', 
-                    \   '> git checkout': 'Gread', 
-                    \   '> git rm': 'Gremove', 
-                    \   '> git mv': 'exe "Gmove " input("to: ")', 
-                    \   '> git push': 'Git! push', 
-                    \   '> git pull': 'Git! pull' } 
-                    \ }
     " }
     " Vim-indent-guides {
         let g:indent_guides_enable_on_vim_startup = 1
