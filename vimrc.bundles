@@ -26,10 +26,6 @@
         " A filetree navigator replacement for netrw
         NeoBundle 'scrooloose/nerdtree'
 
-        " ...
-        " NeoBundleLazy 'Shougo/unite.vim', {'autoload':{'commands':'Unite', 'insert': 1}} 
-        " NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}} 
-
         " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
         NeoBundle 'kien/ctrlp.vim'
         " Ctrlp extension for jumping to functions
@@ -40,8 +36,6 @@
     " Editing {
         " Visual git diffs in the gutter
         NeoBundle 'airblade/vim-gitgutter'
-        " Use tab for completion (works fine with ultisnip)
-        " NeoBundle 'ervandew/supertab'
         " Improved % and hopping delimiters (can now be 1+ character)
         NeoBundle 'matchit.zip'
         " Auto-closes delimiters like (),{},[],etc.
