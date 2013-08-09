@@ -114,14 +114,20 @@
         endif
 
         " Syntax specific {
+            " HTML
+            NeoBundleLazy 'othree/html5.vim',           {'autoload': {'filetypes': ['html', 'blade', 'twig'] }}
+            NeoBundleLazy 'tristen/vim-sparkup',        {'autoload': {'filetypes': ['html', 'blade', 'twig', 'xml']}}
+            NeoBundleLazy 'digitaltoad/vim-jade',       {'autoload': {'filetypes': ['jade']}}
+            " CSS/SCSS/LESS
+            NeoBundleLazy 'cakebaker/scss-syntax.vim',  {'autoload': {'filetypes': ['scss', 'sass']}}
             " PHP
             NeoBundleLazy 'StanAngeloff/php.vim',       {'autoload': {'filetypes': ['php', 'blade']}}
-            NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload': {'filetypes': ['php', 'blade']}}
+            NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload': {'filetypes': ['php']}}
             NeoBundleLazy 'shawncplus/phpcomplete.vim', {'autoload': {'filetypes': ['php', 'blade']}}
             NeoBundleLazy 'stephpy/vim-phpdoc',         {'autoload': {'filetypes': ['php']}}
             NeoBundleLazy 'joonty/vim-phpunitqf',       {'autoload': {'filetypes': ['php']}}
             " PHP.laravel
-            NeoBundleLazy 'johnhamelink/blade.vim',     {'autoload': {'filetypes': ['php', 'blade']}}
+            NeoBundleLazy 'xsbeats/vim-blade',          {'autoload': {'filetypes': ['php', 'blade']}}
             " Python
             NeoBundleLazy 'indentpython.vim--nianyang', {'autoload': {'filetypes': ['python']}}
             NeoBundleLazy 'python_match.vim',           {'autoload': {'filetypes': ['python']}}
@@ -129,21 +135,16 @@
             NeoBundleLazy 'pangloss/vim-javascript',    {'autoload': {'filetypes': ['javascript']}}
             NeoBundleLazy 'myhere/vim-nodejs-complete', {'autoload': {'filetypes': ['javascript']}}
             NeoBundleLazy 'kchmck/vim-coffee-script',   {'autoload': {'filetypes': ['javascript']}}
-            " HTML
-            NeoBundleLazy 'tristen/vim-sparkup',        {'autoload': {'filetypes': ['html', 'blade', 'twig', 'xml']}}
-            NeoBundleLazy 'digitaltoad/vim-jade',       {'autoload': {'filetypes': ['jade']}}
-            " CSS/SCSS/LESS
-            NeoBundleLazy 'cakebaker/scss-syntax.vim',  {'autoload': {'filetypes': ['scss', 'sass']}}
             " Ruby
-            NeoBundleLazy 'vim-ruby/vim-ruby',  {'autoload': {'filetypes': ['ruby']}}
-            NeoBundleLazy 'tpope/vim-rails',    {'autoload': {'filetypes': ['ruby']}}
+            NeoBundleLazy 'vim-ruby/vim-ruby',          {'autoload': {'filetypes': ['ruby']}}
+            NeoBundleLazy 'tpope/vim-rails',            {'autoload': {'filetypes': ['ruby']}}
             " C/C++
-            NeoBundleLazy 'octol/vim-cpp-enhanced-highlight',   {'autoload': {'filetypes': ['cpp']}}
+            NeoBundleLazy 'octol/vim-cpp-enhanced-highlight', {'autoload': {'filetypes': ['cpp']}}
             " Go
-            NeoBundleLazy 'jnwhiteh/vim-golang', {'autoload': {'filetypes': ['go']}}
+            NeoBundleLazy 'jnwhiteh/vim-golang',        {'autoload': {'filetypes': ['go']}}
             " Other
-            NeoBundleLazy 'spf13/vim-markdown', {'autoload': {'filetypes': ['markdown']}}
-            NeoBundleLazy 'rdolgushin/PlantUML-Vim', {'autoload': {'filetypes': ['plantuml']}}
+            NeoBundleLazy 'spf13/vim-markdown',         {'autoload': {'filetypes': ['markdown']}}
+            NeoBundleLazy 'rdolgushin/PlantUML-Vim',    {'autoload': {'filetypes': ['plantuml']}}
         " }
     " }
 " }
