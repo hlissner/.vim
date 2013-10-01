@@ -176,10 +176,10 @@
                     \ 'dir':  '\.git$\|\.hg$\|\.svn|\.settings$',
                     \ 'file': '\.exe$\|\.so$\|\.dll|\.sass\-cache|\.classpath|\.project$' }
         let g:ctrlp_user_command = {
-                    \ 'types': {
+                    \ 'types': [
                     \   ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
                     \   ['.hg', 'hg --cwd %s locate -I']
-                    \ },
+                    \ ],
                     \ 'fallback': 'ag %s -l --nocolor -g ""'
                 \ }
     " }
