@@ -1,18 +1,10 @@
 
 " Plugins {
-    " NeoBundle 'Shougo/vimproc', { 'build' : {
-    "             \     'windows' : 'make -f make_mingw32.mak',
-    "             \     'cygwin' : 'make -f make_cygwin.mak',
-    "             \     'mac' : 'make -f make_mac.mak',
-    "             \     'unix' : 'make -f make_unix.mak' }, }
-
     " Appearance {
         " A personal favorite colorscheme :3
         NeoBundle 'tomasr/molokai'
         " A nicer status line that isn't as heavy as powerline
         NeoBundle 'bling/vim-airline'
-        NeoBundle 'zhaocai/linepower.vim'
-        NeoBundle 'bling/vim-bufferline'
         " Pretty indent indicators
         NeoBundle 'nathanaelkane/vim-indent-guides'
     " }
@@ -79,7 +71,6 @@
         NeoBundle 'scrooloose/syntastic'
         " Running code inline for testing purposes
         NeoBundle 'notalex/vim-run-live'
-        " NeoBundle 'hlissner/vim-forrestgump'
         " Previewing markdown, rdoc, textile and html files in the browser
         NeoBundle 'spf13/vim-preview'
 
@@ -133,6 +124,8 @@
         endif
     " }
     " Airline {
+        let g:airline#extensions#hunks#enabled = 0
+        let g:airline#extensions#tabline#enabled = 1
         let g:airline_left_sep=""
         let g:airline_right_sep=""
         let g:airline_enable_branch=1
@@ -144,9 +137,9 @@
         let g:airline_section_y = "%{strlen(&filetype)>0?&filetype:''}"
     " }
     " BufferLine {
-        let g:bufferline_echo = 0
-        let g:bufferline_show_bufnr = 0
-        let g:bufferline_rotate = 3
+    "     let g:bufferline_echo = 0
+    "     let g:bufferline_show_bufnr = 0
+    "     let g:bufferline_rotate = 3
     " }
     " Ctrlp {
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'funky']
