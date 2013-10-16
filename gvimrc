@@ -66,56 +66,23 @@ if has('gui_macvim')
 
 else
 
+    " For unix only
+
     inoremap <C-v> <C-r>*
     cnoremap <C-v> <C-r>*
 
     set go-=m
     set novisualbell
 
-    " For Windows
-    if has("gui_win32") || has("win64")
-        set guifont=Ubuntu\ Mono:h12
-        set lines=60
-        set columns=100
-        set go-=t
+    " For gvim
+    set guifont=Monospace\ 10
+    
+    " Commenting using CMD+/"
+    map <C-/> <leader>/
 
-        " Restore select-all
-        nnoremap <C-a> ggVG
-
-        " Restore some windows-esque keyboard commands
-        map <C-s> <esc>:w<CR>
-
-        " Restore word-deletion on windows
-        inoremap <C-BS> <C-O>db<BS>
-        inoremap <C-Del> <C-O>de
-
-        nnoremap <F11> :call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0) <Bar> call libcallnr("VimTweak.dll", "SetAlpha", 245)<CR>
-
-        " Resizing the window in gvim
-        nnoremap <C-Left> :<C-u>set columns-=20<CR>
-        nnoremap <C-Right> :<C-u>set columns+=20<CR>
-        nnoremap <C-Up> :<C-u>set lines-=5<CR>
-        nnoremap <C-Down> :<C-u>set lines+=5<CR>
-
-        " Shortcuts to outside apps {
-            " Open in finder
-            nnoremap <localleader>f :exe 'silent !explorer.exe '.shellescape(expand("%:p:h"))<CR><CR>
-            " Open a cygwin terminal (using zsh) here
-            nnoremap <localleader>t :silent !start C:\Dev\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico /bin/bash -c "cd `cygpath -au \"<C-R>=expand("%:p:h")<CR>\"`; bash -i"<CR>
-        " }
-    else
-
-        " For gvim
-        set guifont=Monospace\ 10
-        
-        " Commenting using CMD+/"
-        map <C-/> <leader>/
-
-        " Textmate-like CMD+Enter
-        inoremap <C-CR> <C-O>o
-        inoremap <S-C-CR> <C-O>O
-
-    endif
+    " Textmate-like CMD+Enter
+    inoremap <C-CR> <C-O>o
+    inoremap <S-C-CR> <C-O>O
 
 endif
 
