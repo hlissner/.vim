@@ -17,7 +17,6 @@
         endif
         " A filetree navigator replacement for netrw
         NeoBundle 'scrooloose/nerdtree'
-
         " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
         NeoBundle 'kien/ctrlp.vim'
         " Ctrlp extension for jumping to functions
@@ -26,8 +25,6 @@
         NeoBundle 'jasoncodes/ctrlp-modified.vim'
     " }
     " Editing {
-        " Visual git diffs in the gutter
-        NeoBundle 'airblade/vim-gitgutter'
         " Improved % and hopping delimiters (can now be 1+ character)
         NeoBundle 'matchit.zip'
         " Auto-closes delimiters like (),{},[],etc.
@@ -55,6 +52,8 @@
         NeoBundle 'tpope/vim-unimpaired'
     " }
     " Remote resources {
+        " Visual git diffs in the gutter
+        NeoBundle 'airblade/vim-gitgutter'
         " 'a Git wrapper so awesome, it should be illegal'
         NeoBundle 'tpope/vim-fugitive'
         " Async compiler plugins
@@ -126,6 +125,7 @@
     " Airline {
         let g:airline#extensions#hunks#enabled = 0
         let g:airline#extensions#tabline#enabled = 1
+
         let g:airline_left_sep=""
         let g:airline_right_sep=""
         let g:airline_enable_branch=1
