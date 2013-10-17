@@ -21,7 +21,7 @@ if has('gui_macvim')
     set formatoptions+=j
 
     " mmyes, quite
-    set guifont=Ubuntu\ Mono:h16
+    set guifont=Ubuntu\ Mono:h15
 
     " Replace some CMD shortcuts
     macmenu &File.Open\.\.\. key=<nop>
@@ -38,16 +38,18 @@ if has('gui_macvim')
     nmap <D-8> 8gt
     nmap <D-9> 9gt
     nmap <D-0> 10gt
-    nmap <D-Up> :tabnew<CR>
-    nmap <D-Right> :tabnext<CR>
-    nmap <D-Left> :tabprevious<CR>
-    " Better open functionality
-    nnoremap <D-o> :<C-u>Unite -toggle -auto-resize -no-start-insert -buffer-name=Files file<CR>
-    nnoremap <D-O> :<C-u>Unite -auto-resize tab<CR>
+
+    " Switching buffers
+    nmap <D-Right> ]b
+    nmap <D-Left> [b
 
     " Textmate-like CMD+Enter
     inoremap <D-CR> <C-O>o
     inoremap <S-D-CR> <C-O>O
+
+    " Fast scrolling
+    nmap <D-j> 5j
+    nmap <D-k> 5k
 
     " Commenting using CMD+/"
     map <D-/> <leader>/
