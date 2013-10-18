@@ -1,7 +1,6 @@
-
 # My Little Vim
 
-![mlvim](http://i.imgur.com/zVwoAGN.png)
+![mlvim](https://dl.dropboxusercontent.com/u/2908279/public/vimrc.png)
 
 These are my weapons. Anything unix based will love it, like a chocolate covered smore
 wrapped in baconstrips. Only fellow spaghetti code warriors need apply. Masochists are
