@@ -15,6 +15,9 @@
         elseif executable('ack')
             NeoBundle 'mileszs/ack.vim'
         endif
+
+        " Project-wide search and replace
+        NeoBundle 'EasyGrep'
         " A filetree navigator replacement for netrw
         NeoBundle 'scrooloose/nerdtree'
         " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
@@ -81,9 +84,11 @@
         endif
 
         " Syntax specific {
+            NeoBundle 'mattn/emmet-vim'
+
             " HTML
             NeoBundleLazy 'othree/html5.vim',           {'autoload': {'filetypes': ['html', 'blade', 'twig'] }}
-            NeoBundleLazy 'tristen/vim-sparkup',        {'autoload': {'filetypes': ['html', 'blade', 'twig', 'xml']}}
+            " NeoBundleLazy 'tristen/vim-sparkup',        {'autoload': {'filetypes': ['html', 'blade', 'twig', 'xml']}}
             NeoBundleLazy 'digitaltoad/vim-jade',       {'autoload': {'filetypes': ['jade']}}
             " CSS/SCSS/LESS
             NeoBundleLazy 'cakebaker/scss-syntax.vim',  {'autoload': {'filetypes': ['scss', 'sass']}}
@@ -101,7 +106,6 @@
             " Javascript
             NeoBundleLazy 'pangloss/vim-javascript',    {'autoload': {'filetypes': ['javascript']}}
             NeoBundleLazy 'myhere/vim-nodejs-complete', {'autoload': {'filetypes': ['javascript']}}
-            NeoBundleLazy 'kchmck/vim-coffee-script',   {'autoload': {'filetypes': ['javascript']}}
             " Ruby
             NeoBundleLazy 'vim-ruby/vim-ruby',          {'autoload': {'filetypes': ['ruby']}}
             NeoBundleLazy 'tpope/vim-rails',            {'autoload': {'filetypes': ['ruby']}}
@@ -115,9 +119,10 @@
 " }
 
 " Settings {
-    " Ack {
+    " Ag {
         if executable('ag')
             let g:ackprg = 'ag --nogroup --nocolor --column'
+            set grepprg=ag\ --nogroup\ --nocolor
         elseif executable('ack-grep')
             let g:ackprg = "ack-grep -H --nocolor --nogroup --column"
         endif
@@ -125,21 +130,17 @@
     " Airline {
         let g:airline#extensions#hunks#enabled = 0
         let g:airline#extensions#tabline#enabled = 1
+        let g:airline#extensions#tabline#buffer_min_count = 2
+        let g:airline#extensions#whitespace#enabled = 0
 
         let g:airline_left_sep=""
         let g:airline_right_sep=""
         let g:airline_enable_branch=1
         let g:airline_enable_prefix=1
-        let g:airline_linecolumn_prefix = '␤ '
         let g:airline_paste_symbol = 'ρ'
         let g:airline_mode_map = {'n':'N', 'i':'I', 'R':'R', 'v':'V', 'V':'V-', 'c':'CMD', '':'V¤'}
         let g:airline_section_x = "%{strlen(&fenc)>0?&fenc:''}"
         let g:airline_section_y = "%{strlen(&filetype)>0?&filetype:''}"
-    " }
-    " BufferLine {
-    "     let g:bufferline_echo = 0
-    "     let g:bufferline_show_bufnr = 0
-    "     let g:bufferline_rotate = 3
     " }
     " Ctrlp {
         let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'funky']
@@ -175,9 +176,8 @@
     " PlantUML {
         let g:plantuml_executable_script = 'java -jar plantuml.jar'
     " }
-    " SparkUp {
-        " Enable zen-coding in other html-based filetypes
-        au FileType blade,twig,xml so ~/.vim/bundle/vim-sparkup/ftplugin/html/sparkup.vim
+    " Emmet {
+        imap <expr> <C-CR> emmet#expandAbbrIntelligent("\<tab>")
     " }
     " Syntastic {
         let g:syntastic_enable_highlighting = 0
@@ -207,6 +207,8 @@
         let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_confirm_extra_conf = 0
+
+        map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
     " }
 " }
 
