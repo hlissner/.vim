@@ -92,12 +92,12 @@ au!
 
         augroup Omnicomplete
             au!
-            if exists("+omnifunc")
-                au Filetype *
-                    \if &omnifunc == "" |
-                    \   setl omnifunc=syntaxcomplete#Complete |
-                    \endif
-            endif
+            " if exists("+omnifunc")
+            "     au Filetype *
+            "         \if &omnifunc == "" |
+            "         \   setl omnifunc=syntaxcomplete#Complete |
+            "         \endif
+            " endif
 
             " Enable omni completion.
             au FileType css,scss,less setl omnifunc=csscomplete#CompleteCSS
@@ -308,9 +308,6 @@ au!
         cnoremap ;; <C-R>=expand('%:p:h').'/'<CR>
         cnoremap ;. <C-R>=expand("%:t")<CR>
         
-        " Strip whitespace
-        com! -range Trim <line1>,<line2>s/\s\+$//
-
         " Mimic shortcuts in the terminal
         cnoremap <C-a> <Home>
         cnoremap <C-e> <End>
@@ -362,6 +359,25 @@ au!
             let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
         " }
     " }
+" }
+" Commands {
+    " Strip whitespace
+    com! Trim %s/\s\+$//
+
+    func! HtmlSpecialChars()
+ruby << EOF
+    @str=VIM::Buffer.current.line
+    VIM::Buffer.current.line=@str.unpack("U*").collect {|s| (s > 127 ? "&##{s};" : s.chr) }.join("")
+EOF
+    endfunc
+
+    func! StripTags(tag) range
+        let l:tag = strlen(a:tag) ? a:tag : '.'
+        exe a:firstline.','.a:lastline.'s/<\/\?'.l:tag.'\{-\}>/'
+    endfunc
+
+    com! -range HtmlSpecialChars <line1>,<line2>call HtmlSpecialChars()
+    com! -range -nargs=? StripTags <line1>,<line2>call StripTags(<q-args>)
 " }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
