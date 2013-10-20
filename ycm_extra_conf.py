@@ -5,14 +5,35 @@ flags = [
     '-Wall',
     '-Wextra',
     '-Werror',
-    '-Wc++98-compat',
-    '-Wno-long-long',
+    '-DNDEBUG',
     '-DUSE_CLANG_COMPLETER',
+    '-D_GNU_SOURCE',
     '-std=c++11',
+    '-stdlib=libstdc++',
+    '-I',
+    '/Library/Frameworks/SFML.framework',
+    '-isystem',
+    '/usr/include',
+    '-framework',
+    'Artemis',
     '-x',
     'c++',
     '-I',
-    './ClangCompleter'
+    '/usr/local/include',
+    '-isystem',
+    '../BoostParts',
+    '-isystem',
+    # This path will only work on OS X, but extra paths that don't exist are not
+    # harmful
+    '/System/Library/Frameworks/Python.framework/Headers',
+    '-isystem',
+    '../llvm/include',
+    '-isystem',
+    '../llvm/tools/clang/include',
+    '-I',
+    '.',
+    '-I',
+    './ClangCompleter',
 ]
 
 compilation_database_folder = ''
