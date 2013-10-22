@@ -92,13 +92,6 @@ au!
 
         augroup Omnicomplete
             au!
-            " if exists("+omnifunc")
-            "     au Filetype *
-            "         \if &omnifunc == "" |
-            "         \   setl omnifunc=syntaxcomplete#Complete |
-            "         \endif
-            " endif
-
             " Enable omni completion.
             au FileType css,scss,less setl omnifunc=csscomplete#CompleteCSS
             au FileType html,markdown,htmljinja,xml setl omnifunc=htmlcomplete#CompleteTags
