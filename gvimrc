@@ -56,7 +56,7 @@ if has('gui_macvim')
 
     " Replace :make
     map <D-b> :Dispatch<CR>
-    map <D-d> :NERDTree<CR>
+    map <D-d> :NERDTreeToggle<CR>
 
     " Shortcuts to outside apps {
         " Open in finder
