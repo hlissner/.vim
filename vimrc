@@ -231,11 +231,8 @@ au!
         " Go to start of line
         inoremap <C-a> <Esc>I
 
-        " Make Y act consistant with C and D. It must be in this form to
-        " override YankRing's remapping of Y.
-        function! YRRunAfterMaps()
-            nnoremap Y :<C-U>YRYankCount 'y$'<CR>
-        endfunction
+        " Make Y act consistant with C and D
+        nnoremap Y y$
 
         " Don't leave visual mode after indenting
         vnoremap < <gv
@@ -243,10 +240,6 @@ au!
 
         " u = undo, U = redo
         nmap U <C-r>
-
-        " Increment/decrement shortcuts
-        nnoremap + <C-a>
-        nnoremap - <C-x>
 
         " Textmate-like CMD+Enter (O in insert mode)
         inoremap <S-CR> <C-O>o
@@ -276,12 +269,6 @@ au!
         nnoremap <localleader>el :e $HOME/.vimrc.local<CR>
         nnoremap <localleader>eb :e $HOME/.vimrc.bundles<CR>
         nnoremap <localleader>eg :e $HOME/.gvimrc<CR>
-
-        " Temporary session management
-        let SESSDIR = "~/.vim-session.vim"
-        nnoremap <leader>ss :w<CR>:mksession! <C-R>=SESSDIR<CR><CR>
-        nnoremap <leader>sl :so <C-R>=SESSDIR<CR><CR>
-        nnoremap <leader>sd :!rm <C-R>=SESSDIR<CR><CR>
     " }
     " Command {
         " Annoying command mistakes <https://github.com/spf13/spf13-vim>
