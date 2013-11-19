@@ -32,7 +32,7 @@ au!
     " Set GUI colors
     syntax on
     set background=dark
-    colorscheme molokai
+    colorscheme molonew
     let g:airline_theme = "badwolf"
 
     set laststatus=2             " Show statusbar
@@ -65,7 +65,7 @@ au!
     endif
 
     set textwidth=88
-    set colorcolumn=90
+    " set colorcolumn=90
     set fillchars=vert:\|,fold:·
 
     " Shell {
