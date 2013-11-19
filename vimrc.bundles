@@ -88,7 +88,7 @@
 
             " HTML
             NeoBundleLazy 'othree/html5.vim',           {'autoload': {'filetypes': ['html', 'blade', 'twig'] }}
-            " NeoBundleLazy 'tristen/vim-sparkup',        {'autoload': {'filetypes': ['html', 'blade', 'twig', 'xml']}}
+            NeoBundleLazy 'Valloric/MatchTagAlways',    {'autoload': {'filetypes': ['html', 'blade', 'twig'] }}
             NeoBundleLazy 'digitaltoad/vim-jade',       {'autoload': {'filetypes': ['jade']}}
             " CSS/SCSS/LESS
             NeoBundleLazy 'cakebaker/scss-syntax.vim',  {'autoload': {'filetypes': ['scss', 'sass']}}
