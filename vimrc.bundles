@@ -1,8 +1,6 @@
 
 " Plugins {
     " Appearance {
-        " A personal favorite colorscheme :3
-        NeoBundle 'tomasr/molokai'
         " A nicer status line that isn't as heavy as powerline
         NeoBundle 'bling/vim-airline'
         " Pretty indent indicators
@@ -115,6 +113,10 @@
             NeoBundleLazy 'spf13/vim-markdown',         {'autoload': {'filetypes': ['markdown']}}
             NeoBundleLazy 'rdolgushin/PlantUML-Vim',    {'autoload': {'filetypes': ['plantuml']}}
         " }
+    " }
+    " External Tools {
+        " Color picker pop-up
+        NeoBundle 'PickAColor.vim'
     " }
 " }
 
