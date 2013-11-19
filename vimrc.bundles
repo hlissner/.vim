@@ -4,7 +4,7 @@
         " A nicer status line that isn't as heavy as powerline
         NeoBundle 'bling/vim-airline'
         " Pretty indent indicators
-        NeoBundle 'nathanaelkane/vim-indent-guides'
+        NeoBundle 'Yggdroot/indentLine'
     " }
     " File search {
         " More powerful file searching
@@ -197,6 +197,10 @@
         " Ignore the default snippets so I (and others) can define their own
         let g:UltiSnipsSnippetDirectories = ['snippets']
         let g:UltiSnipsExpandTrigger = "<Tab>"
+    " }
+    " indentLine {
+        " let g:indentLine_char = '¦'
+        let g:indentLine_color_gui = '#2c3234'
     " }
     " Vim-indent-guides {
         let g:indent_guides_enable_on_vim_startup = 1
