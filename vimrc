@@ -7,7 +7,6 @@
 
 set nocompatible
 scriptencoding utf-8
-au!
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins {
@@ -65,8 +64,7 @@ au!
     endif
 
     set textwidth=88
-    " set colorcolumn=90
-    set fillchars=vert:\|,fold:·
+    set fillchars=vert:\|
 
     " Shell {
         " 256bit terminals
@@ -125,15 +123,16 @@ au!
             let line = getline(v:foldstart)
             " Lines that have been folded
             let nl = v:foldend - v:foldstart + 1
-            let foldedLines = "( ".nl." ) "
-            let symbol = " ... "
+            " let foldedLines = "( ".nl." ) "
+            " let symbol = ""
 
             let indent = repeat(' ', indent(v:foldstart))
             let endcol = &colorcolumn ? &colorcolumn : &textwidth
             let startcol = &columns < endcol ? &columns-4 : endcol
-            let outdent = repeat(' ', startcol - strlen(line . foldedLines . symbol))
+            " let outdent = repeat(' ', startcol - strlen(line . foldedLines . symbol))
 
-            return indent . substitute(line,"^ *","",1) . symbol . outdent . foldedLines
+            " return indent . substitute(line,"^ *","",1) . symbol . outdent . foldedLines
+            return indent . substitute(line,"^ *","",1)
         endf
     " }
 " }
@@ -148,7 +147,7 @@ au!
         set undolevels=500
         set undoreload=500
     endif
-    set history=1000
+    set history=10000
 
     " Preserve buffer state (cursor location, folds, etc.)
     set viewdir=~/.vim/tmp/views
@@ -339,6 +338,11 @@ au!
             let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
         " }
     " }
+    " Debug {
+        map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+                    \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+                    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+    " }
 " }
 " Commands {
     " Strip whitespace
@@ -359,8 +363,8 @@ EOF
     com! -range HtmlSpecialChars <line1>,<line2>call HtmlSpecialChars()
     com! -range -nargs=? StripTags <line1>,<line2>call StripTags(<q-args>)
 " }
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " A local rc file separate from this distro.
 try
     source $HOME/.vimrc.local
