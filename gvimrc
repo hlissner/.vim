@@ -22,22 +22,11 @@ if has('gui_macvim')
 
     " mmyes, quite
     set guifont=Ubuntu\ Mono:h16
+    set linespace=2
 
     " Replace some CMD shortcuts
     macmenu &File.Open\.\.\. key=<nop>
     macmenu &Tools.Make key=<nop>
-
-    " Switching tabs
-    nmap <D-1> 1gt
-    nmap <D-2> 2gt
-    nmap <D-3> 3gt
-    nmap <D-4> 4gt
-    nmap <D-5> 5gt
-    nmap <D-6> 6gt
-    nmap <D-7> 7gt
-    nmap <D-8> 8gt
-    nmap <D-9> 9gt
-    nmap <D-0> 10gt
 
     " Switching buffers
     nmap <D-Right> ]b
