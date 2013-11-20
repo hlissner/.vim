@@ -10,25 +10,23 @@ scriptencoding utf-8
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins {
-    filetype off
+    " Check to see if neobundle is installed, install it if not
+    source $HOME/.vim/rc/deps
 
     set runtimepath+=~/.vim/bundle/neobundle.vim/
     call neobundle#rc(expand('~/.vim/bundle'))
     NeoBundleFetch 'Shougo/neobundle.vim'
 
     " Bundles and their settings are specified externally.
-    source $HOME/.vimrc.bundles
-    try
-        " A local bundles config separate from this distro.
-        source $HOME/.vimrc.bundles.local
-    catch
-    endtry
+    source $HOME/.vim/rc/plugins
+    " A local bundles config separate from this distro.
+    try source $HOME/.vimrc.bundles.local catch endtry
 
     filetype plugin indent on
     NeoBundleCheck
 " }
+
 " Preferences {
-    " Set GUI colors
     syntax on
     set background=dark
     colorscheme molonew
@@ -355,20 +353,11 @@ ruby << EOF
 EOF
     endfunc
 
-    func! StripTags(tag) range
-        let l:tag = strlen(a:tag) ? a:tag : '.'
-        exe a:firstline.','.a:lastline.'s/<\/\?'.l:tag.'\{-\}>/'
-    endfunc
-
-    com! -range HtmlSpecialChars <line1>,<line2>call HtmlSpecialChars()
-    com! -range -nargs=? StripTags <line1>,<line2>call StripTags(<q-args>)
-" }
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source $HOME/.vim/rc/backup
+source $HOME/.vim/rc/keymaps
+source $HOME/.vim/rc/util
 
 " A local rc file separate from this distro.
-try
-    source $HOME/.vimrc.local
-catch
-endtry
+try source $HOME/.vimrc.local catch endtry
 
 " vim:set fmr={,} fdl=0 fdm=marker:

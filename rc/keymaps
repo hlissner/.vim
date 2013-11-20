@@ -1,0 +1,198 @@
+
+" Comma get some... sorry.
+let mapleader = ','
+let maplocalleader = '\'
+noremap ; :
+
+" Trigger to preserve indentation on pastes
+set pastetoggle=<localleader><localleader>
+
+" Easier than escape. Pinnacle of laziness.
+imap jj <ESC>
+
+" Damn you escape key! How I miss you...
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+" Turn off search highlighting
+noremap <silent> <leader>? :nohlsearch<CR>
+
+" Navigation {
+    " Normalize all the navigation keys to move by row/col despite any
+    " wrapped text
+    noremap j gj
+    noremap k gk
+    " % matchit shortcut, but only in normal mode!
+    nmap <Tab> %
+    " Easier fold toggle
+    noremap <Space> za
+    " Faster scrolling
+    map <C-h> zH
+    map <C-j> 5j
+    map <C-k> 5k
+    map <C-l> zL
+    " Navigating buffers
+    nnoremap ˙ <C-w>h
+    nnoremap ∆ <C-w>j
+    nnoremap ˚ <C-w>k
+    nnoremap ¬ <C-w>l
+
+    " Ctrl-h: Move word left
+    inoremap <c-h> <c-o>b
+    " Ctrl-j: Move cursor up
+    inoremap <C-j> <Down>
+    " Ctrl-k: Move cursor up
+    inoremap <C-k> <Up>
+    " Ctrl-l: Move word right
+    inoremap <c-l> <c-o>w
+
+    " Get used to hjkl!
+    noremap <Left> <Nop>
+    noremap <Right> <Nop>
+    noremap <Down> <Nop>
+    noremap <Up> <Nop>
+
+    " f: Find. Also support repeating with .
+    nnoremap <Plug>OriginalSemicolon ;
+    nnoremap <silent> f :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>f
+    nnoremap <silent> t :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>t
+    nnoremap <silent> F :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>F
+    nnoremap <silent> T :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>T
+
+    " Uses normal-mode C-Space to jump to delimiters
+    nmap <C-Space>   /[([{]<CR>:nohlsearch<CR>
+    nmap <C-S-Space> ?[)\]}]<CR>:nohlsearch<CR>
+" }
+
+" Editing {
+    " Insert-mode navigation
+    " Delete a word
+    inoremap <C-w> <C-g>u<C-w>
+    " Go to end of line
+    inoremap <C-e> <Esc>A
+    " Delete line
+    inoremap <C-u> <C-g>u<C-u>
+    " Go to start of line
+    inoremap <C-a> <Esc>I
+
+    " Make Y act consistant with C and D
+    nnoremap Y y$
+
+    " Don't leave visual mode after indenting
+    vnoremap < <gv
+    vnoremap > >gv
+
+    " u = undo, U = redo
+    nmap U <C-r>
+
+    " Textmate-like CMD+Enter (O in insert mode)
+    inoremap <S-CR> <C-O>o
+    inoremap <C-S-CR> <C-O>O
+    nnoremap <S-CR> o<Esc>
+    nnoremap <C-S-CR> O<Esc>
+
+    " Enabling repeat in visual mode
+    vmap . :normal .<CR>
+
+    " Reselect pasted text
+    nnoremap <leader>v V`]
+
+    " Uses A-Space for generic omnicomplete
+    imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
+    imap <expr> <A-S-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
+" }
+
+" Buffers {
+    " Go to last buffer
+    nnoremap <C-b> <C-^>
+
+    " Change CWD to current file's directory
+    nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>    
+
+" }
+
+" Command {
+    " Annoying command mistakes <https://github.com/spf13/spf13-vim>
+    com! -bang -nargs=* -complete=file E e<bang> <args>
+    com! -bang -nargs=* -complete=file W w<bang> <args>
+    com! -bang -nargs=* -complete=file Wq wq<bang> <args>
+    com! -bang -nargs=* -complete=file WQ wq<bang> <args>
+    com! -bang Wa wa<bang>
+    com! -bang WA wa<bang>
+    com! -bang Q q<bang>
+    com! -bang QA qa<bang>
+    com! -bang Qa qa<bang>
+    " Forget to sudo?
+    com! WW w !sudo tree % >/dev/null
+
+    " Shortcuts
+    cnoremap ;; <C-R>=expand('%:p:h').'/'<CR>
+    cnoremap ;. <C-R>=expand("%:t")<CR>
+    
+    " Mimic shortcuts in the terminal
+    cnoremap <C-a> <Home>
+    cnoremap <C-e> <End>
+" }
+
+" Plugins {
+    " bufkill - reopen last closed buffer
+    nnoremap <silent> <leader>bz :BUNDO<CR>
+
+    " CtrlP
+    let g:ctrlp_map = '<leader>.'
+    nnoremap <silent> <leader>, :CtrlPBuffer<CR>
+    nnoremap <silent> <leader><space> :CtrlPFunky<CR>
+    nnoremap <silent> <leader>m :CtrlPMRU<CR>
+    nnoremap <silent> <leader>od :CtrlPModified<CR>
+    nnoremap <silent> <leader>oD :CtrlPBranch<CR>
+    nnoremap <silent> <leader>ot :CtrlPBufTag<CR>
+    nnoremap <silent> <leader>oT :CtrlPBufTagAll<CR>
+
+    " Dispatch
+    nnoremap <localleader>b :Make<CR>
+    nnoremap <localleader>B :Dispatch<CR>
+
+    " NERDTree
+    nnoremap <leader>n :NERDTreeToggle<CR>
+    nnoremap <leader>N :NERDTreeFind<CR>
+
+    " Tabularize
+    nmap <leader>a= :Tabularize /=<CR>
+    vmap <leader>a= :Tabularize /=<CR>
+    nmap <leader>a> :Tabularize /=><CR>
+    vmap <leader>a> :Tabularize /=><CR>
+    nmap <leader>a: :Tabularize /:<CR>
+    vmap <leader>a: :Tabularize /:<CR>
+    nmap <leader>a:: :Tabularize /:\zs<CR>
+    vmap <leader>a:: :Tabularize /:\zs<CR>
+    nmap <leader>a, :Tabularize /,<CR>
+    vmap <leader>a, :Tabularize /,<CR>
+    nmap <leader>a<Bar> :Tabularize /<Bar><CR>
+    vmap <leader>a<Bar> :Tabularize /<Bar><CR>
+
+    " TComment
+    map <silent> <leader>/ gcc
+    vmap <silent> <leader>/ gc
+
+    " UltiSnips
+    let g:UltiSnipsExpandTrigger = "<Tab>"
+    let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+    let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+    
+    " Emmet
+    imap <expr> <C-CR> emmet#expandAbbrIntelligent("\<tab>")
+
+    " YCM
+    map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+    let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+" }
+
+" Shortcut to vimrc and gvimrc
+nnoremap <localleader>ev :e $HOME/.vimrc<CR>
+nnoremap <localleader>el :e $HOME/.vimrc.local<CR>
+nnoremap <localleader>eg :e $HOME/.gvimrc<CR>
+nnoremap <localleader>eb :e $HOME/.vim/rc/<CR>
+
+" vim:set filetype=vim fmr={,} fdl=0 fdm=marker:

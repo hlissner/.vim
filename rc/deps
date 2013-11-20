@@ -1,4 +1,9 @@
 
+" Check for bundle directory
+if !isdirectory(expand("~/.vim/bundle"))
+    silent !mkdir -p ~/.vim/bundle
+endif
+
 " Checks for and installs neobundle
 let has_nb = 1
 let nb_path = expand("~/.vim/bundle/neobundle.vim/README.md")
@@ -6,8 +11,9 @@ if !filereadable(nb_path)
     echo "Installing NeoBundle"
     echo ""
 
-    silent !mkdir -p ~/.vim/bundle
     silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
     let has_nb = 0
 endif
+
+" vim:set filetype=vim fmr={,} fdl=0 fdm=marker:

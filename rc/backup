@@ -1,0 +1,23 @@
+
+" No backup (that's what git is for!) and swapfiles are annoying
+set nobackup
+set nowritebackup
+set noswapfile
+if has('persistent_undo')
+    set undodir=~/.vim/tmp/undo
+    set undofile
+    set undolevels=500
+    set undoreload=500
+endif
+set history=10000
+
+" Preserve buffer state (cursor location, folds, etc.)
+set viewdir=~/.vim/tmp/views
+set viewoptions=cursor,folds,unix,slash
+augroup persistence
+    au!
+    au BufWinLeave * if expand("%") != "" | silent! mkview | endif
+    au BufWinEnter * if expand("%") != "" | silent! loadview | endif
+augroup END
+
+" vim:set filetype=vim fmr={,} fdl=0 fdm=marker:
