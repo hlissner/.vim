@@ -19,7 +19,10 @@ scriptencoding utf-8
     " Bundles and their settings are specified externally.
     source $HOME/.vim/rc/plugins
     " A local bundles config separate from this distro.
-    try source $HOME/.vimrc.bundles.local catch endtry
+    try 
+        source $HOME/.vimrc.bundles.local
+    catch
+    endtry
 
     filetype plugin indent on
     NeoBundleCheck
@@ -143,6 +146,9 @@ source $HOME/.vim/rc/keymaps
 source $HOME/.vim/rc/util
 
 " A local rc file separate from this distro.
-try source $HOME/.vimrc.local catch endtry
+try 
+    source $HOME/.vimrc.local 
+catch 
+endtry
 
 " vim:set fmr={,} fdl=0 fdm=marker:
