@@ -2,8 +2,6 @@
 nmap <localleader>p :<C-u>call PhpDoc()<CR>
 
 "" Settings """""""""""
-setl dictionary-=$VIMRUNTIME/misc/funclist.txt dictionary+=$VIMRUNTIME/misc/funclist.txt
-setl complete-=k complete+=k
 setl nowrap
 
 setl makeprg=php\ -l\ %
