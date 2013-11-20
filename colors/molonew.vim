@@ -123,7 +123,7 @@ hi SyntasticWarningLine guibg=#303026
 " Support for 256-color terminal
 "
 if &t_Co > 255
-   hi Normal          ctermfg=252 ctermbg=233
+   hi Normal          ctermfg=252 ctermbg=none
    hi CursorLine                  ctermbg=234   cterm=none
    hi CursorLineNr    ctermfg=208               cterm=none
 
@@ -210,7 +210,7 @@ if &t_Co > 255
    hi Comment         ctermfg=59
    hi CursorColumn                ctermbg=236
    hi ColorColumn                 ctermbg=236
-   hi LineNr          ctermfg=250 ctermbg=236
+   hi LineNr          ctermfg=237 ctermbg=234
    hi NonText         ctermfg=59
 
    hi SpecialKey      ctermfg=59
@@ -253,9 +253,3 @@ if &t_Co > 255
        hi SpecialKey      ctermfg=239
    endif
 end
-
-" LANGUAGE SPECIFIC COLORS
-
-" SCSS {
-hi scssColor guifg=#EEEEEE
-" }
