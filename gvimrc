@@ -15,13 +15,11 @@ set go+=c
 " For macvim
 if has('gui_macvim')
 
-    set transparency=2
-
     " j doesn't seem to work from terminal
     set formatoptions+=j
 
     " mmyes, quite
-    set guifont=Ubuntu\ Mono:h16
+    set guifont=Ubuntu\ Mono:h15
     set linespace=2
 
     " Replace some CMD shortcuts
@@ -59,7 +57,6 @@ if has('gui_macvim')
 else
 
     " For unix only
-
     inoremap <C-v> <C-r>*
     cnoremap <C-v> <C-r>*
 
