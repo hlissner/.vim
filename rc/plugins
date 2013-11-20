@@ -158,7 +158,7 @@
     NeoBundle 'PickAColor.vim'
 
     " Communication with tmux
-    NeoBundle 'kikijump/tslime.vim'
+    NeoBundle 'jgdavey/tslime.vim'
 " }
 
 " Syntax {
