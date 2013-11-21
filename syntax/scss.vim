@@ -1,7 +1,6 @@
 
-if exists("_loaded_syntax_scss")
-  finish
-endif
-let _loaded_syntax_scss = 1
+" Clear a problematic hi group, causing issues with text-* and padding
+syn clear cssUIAttr
 
 hi scssColor guifg=#EEEEEE
+hi link cssBraces scssDefinition
