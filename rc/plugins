@@ -118,6 +118,7 @@
     " Async compiler plugins
     NeoBundle 'tpope/vim-dispatch'
     " Glorious gists!
+    NeoBundle 'mattn/webapi-vim'
     NeoBundle 'mattn/gist-vim'
 " }
 
