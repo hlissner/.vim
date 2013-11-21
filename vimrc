@@ -11,11 +11,6 @@ scriptencoding utf-8
 " Plugins {
     " Check to see if neobundle is installed, install it if not
     source $HOME/.vim/rc/deps
-
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-    call neobundle#rc(expand('~/.vim/bundle'))
-    NeoBundleFetch 'Shougo/neobundle.vim'
-
     " Bundles and their settings are specified externally.
     source $HOME/.vim/rc/plugins
     " A local bundles config separate from this distro.
@@ -25,7 +20,6 @@ scriptencoding utf-8
     endtry
 
     filetype plugin indent on
-    NeoBundleCheck
 " }
 
 " Preferences {
@@ -141,6 +135,7 @@ scriptencoding utf-8
     " }
 " }
 
+" rcfiles
 source $HOME/.vim/rc/backup
 source $HOME/.vim/rc/keymaps
 source $HOME/.vim/rc/util

@@ -27,5 +27,10 @@ for f in rcfiles
     endif
 endfor
 
+" Initialize NeoBundle
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+call neobundle#rc(expand('~/.vim/bundle'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundleCheck
 
 " vim:set filetype=vim fmr={,} fdl=0 fdm=marker:
