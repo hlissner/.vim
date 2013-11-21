@@ -63,6 +63,12 @@
 " }
 
 " Editing {
+    " Auto-closes delimiters like (),{},[],etc.
+    NeoBundle 'Raimondi/delimitMate'
+        let g:delimitMate_expand_cr = 1
+        let g:delimitMate_expand_space = 1
+
+    NeoBundle 'mattn/emmet-vim'
     " Improved % and hopping delimiters (can now be 1+ character)
     NeoBundle 'matchit.zip'
     " Clean way to close buffers without altering window layout
@@ -90,13 +96,6 @@
     NeoBundle 'goldfeld/vim-seek'
     " Muh [] binds
     NeoBundle 'tpope/vim-unimpaired'
-
-    " Auto-closes delimiters like (),{},[],etc.
-    NeoBundle 'Raimondi/delimitMate'
-    let g:delimitMate_expand_cr = 1
-    let g:delimitMate_expand_space = 1
-
-    NeoBundle 'mattn/emmet-vim'
 
     " Snippets system
     if has("python")
@@ -169,7 +168,7 @@
     NeoBundleLazy 'digitaltoad/vim-jade',       {'autoload': {'filetypes': ['jade']}}
 
     " CSS/SCSS/LESS
-    NeoBundle 'cakebaker/scss-syntax.vim'
+    NeoBundleLazy 'cakebaker/scss-syntax.vim',  {'autoload': {'filetypes': ['scss']}}
 
     " PHP
     NeoBundleLazy 'StanAngeloff/php.vim',       {'autoload': {'filetypes': ['php', 'blade']}}
