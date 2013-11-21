@@ -20,7 +20,7 @@ endif
 " Checks for and install vim's rc files
 let rcfiles = [".gvimrc", ".ycm_extra_conf.py"]
 for f in rcfiles
-    if !filereadable(expand("~/.".f))
+    if !filereadable(expand("~/".f))
         echo "Linking ".f
         echo ""
 
