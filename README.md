@@ -22,10 +22,7 @@ With [mac|g]vim installed, whisper these words into the ear of your console (nic
 has feelings):
 
     git clone https://github.com/hlissner/vim ~/.vim
-    git clone https://github.com/Shougo/neobundle.vim "$VIMHOME/bundle/neobundle.vim"
     ln -s ~/.vim/vimrc ~/.vimrc
-    ln -s ~/.vim/vimrc.bundles ~/.vimrc.bundles
-    ln -s ~/.vim/gvimrc ~/.gvimrc
     vim +NeoBundleInstall! +qall
 
 GLORIOUS.
