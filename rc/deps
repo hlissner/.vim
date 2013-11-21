@@ -13,11 +13,12 @@ if !filereadable(nb_path)
 
     silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
+    NeoBundleInstall!
     let has_nb = 0
 endif
 
 " Checks for and install vim's rc files
-let rcfiles = ["vimrc", "gvimrc", "ycm_extra_conf.py"]
+let rcfiles = ["gvimrc", "ycm_extra_conf.py"]
 for f in rcfiles
     if !filereadable(expand("~/.".f))
         echo "Linking ".f
