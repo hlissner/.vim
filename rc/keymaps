@@ -62,7 +62,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
     " Uses normal-mode C-Space to jump to delimiters
     nmap <C-Space>   /[([{]<CR>:nohlsearch<CR>
-    nmap <C-S-Space> ?[)\]}]<CR>:nohlsearch<CR>
+    nmap <C-S-Space> ?[([{]<CR>:nohlsearch<CR>
 " }
 
 " Editing {
