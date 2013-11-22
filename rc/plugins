@@ -105,6 +105,8 @@
             " Ignore the default snippets so I (and others) can define their own
             let g:UltiSnipsSnippetDirectories = ['snippets']
     endif
+
+    NeoBundle 'AndrewRadev/switch.vim'
 " }
 
 " Remote resources {
