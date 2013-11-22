@@ -7,6 +7,7 @@
 
 set nocompatible
 scriptencoding utf-8
+au!
 
 " Plugins {
     " Check to see if neobundle is installed, install it if not
