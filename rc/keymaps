@@ -194,5 +194,6 @@ nnoremap <localleader>ev :e $HOME/.vimrc<CR>
 nnoremap <localleader>el :e $HOME/.vimrc.local<CR>
 nnoremap <localleader>eg :e $HOME/.gvimrc<CR>
 nnoremap <localleader>eb :e $HOME/.vim/rc/<CR>
+nnoremap <localleader>ef :e $HOME/.vim/ftplugin/<CR>
 
 " vim:set filetype=vim:
