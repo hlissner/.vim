@@ -21,7 +21,7 @@ endif
 let g:colors_name="molokai"
 
 " Main colors
-hi Cursor          guifg=#111111 guibg=#d6f8f8
+hi Cursor          guifg=#000000 guibg=#e3ffff
 
 hi Normal          guifg=#F8F8F2 guibg=#1B1D1E
 hi Comment         guifg=#7E8E91
@@ -64,7 +64,7 @@ hi Label           guifg=#E6DB74               gui=none
 hi Macro           guifg=#C4BE89               gui=italic
 hi SpecialKey      guifg=#66D9EF               gui=italic
 
-hi MatchParen      guifg=#000000 guibg=#71b7e0  gui=bold
+hi MatchParen      guifg=#000000 guibg=#63a1c4
 hi ModeMsg         guifg=#E6DB74
 hi MoreMsg         guifg=#E6DB74
 hi Operator        guifg=#F92672
