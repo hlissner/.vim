@@ -19,7 +19,7 @@ if has('gui_macvim')
     set formatoptions+=j
 
     " mmyes, quite
-    set guifont=Ubuntu\ Mono:h15
+    set guifont=Ubuntu\ Mono:h14
     set linespace=2
 
     " Replace some CMD shortcuts
