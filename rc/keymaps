@@ -18,7 +18,7 @@ vnoremap <F1> <ESC>
 " Turn off search highlighting
 noremap <silent> <leader>? :nohlsearch<CR>
 
-" Navigation {
+" Navigation {{{
     " Normalize all the navigation keys to move by row/col despite any
     " wrapped text
     noremap j gj
@@ -63,9 +63,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Uses normal-mode C-Space to jump to delimiters
     nmap <C-Space>   /[([{]<CR>:nohlsearch<CR>
     nmap <C-S-Space> ?[([{]<CR>:nohlsearch<CR>
-" }
+" }}}
 
-" Editing {
+" Editing {{{
     " Insert-mode navigation
     " Delete a word
     inoremap <C-w> <C-g>u<C-w>
@@ -101,18 +101,18 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Uses A-Space for generic omnicomplete
     imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
     imap <expr> <A-S-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
-" }
+" }}}
 
-" Buffers {
+" Buffers {{{
     " Go to last buffer
     nnoremap <C-b> <C-^>
 
     " Change CWD to current file's directory
     nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>    
 
-" }
+" }}}
 
-" Command {
+" Command {{{
     " Annoying command mistakes <https://github.com/spf13/spf13-vim>
     com! -bang -nargs=* -complete=file E e<bang> <args>
     com! -bang -nargs=* -complete=file W w<bang> <args>
@@ -133,9 +133,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Mimic shortcuts in the terminal
     cnoremap <C-a> <Home>
     cnoremap <C-e> <End>
-" }
+" }}}
 
-" Plugins {
+" Plugins {{{
     " bufkill - reopen last closed buffer
     nnoremap <silent> <leader>bz :BUNDO<CR>
 
@@ -187,7 +187,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
     map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
     let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-" }
+" }}}
 
 " Shortcut to vimrc and gvimrc
 nnoremap <localleader>ev :e $HOME/.vimrc<CR>
@@ -195,4 +195,4 @@ nnoremap <localleader>el :e $HOME/.vimrc.local<CR>
 nnoremap <localleader>eg :e $HOME/.gvimrc<CR>
 nnoremap <localleader>eb :e $HOME/.vim/rc/<CR>
 
-" vim:set filetype=vim fmr={,} fdl=0 fdm=marker:
+" vim:set filetype=vim:

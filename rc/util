@@ -1,5 +1,5 @@
 
-" Commands {
+" Commands {{{
     " Strip whitespace
     com! Trim %s/\s\+$//
 
@@ -17,12 +17,12 @@ EOF
 
     com! -range HtmlSpecialChars <line1>,<line2>call HtmlSpecialChars()
     com! -range -nargs=? StripTags <line1>,<line2>call StripTags(<q-args>)
-" }
+" }}}
 
-" Debug {
+" Debug {{{
     map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
                 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
                 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-" }
+" }}}
 
-" vim:set filetype=vim fmr={,} fdl=0 fdm=marker:
+" vim:set filetype=vim:

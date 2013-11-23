@@ -1,5 +1,5 @@
 
-" Appearance {
+" Appearance {{{
     " Pretty indent indicators
     NeoBundle 'Yggdroot/indentLine'
         let g:indentLine_color_gui = '#2c3234'
@@ -18,9 +18,9 @@
         let g:airline_mode_map = {'n':'N', 'i':'I', 'R':'R', 'v':'V', 'V':'V-', 'c':'CMD', '':'V¤'}
         let g:airline_section_x = "%{strlen(&fenc)>0?&fenc:''}"
         let g:airline_section_y = "%{strlen(&filetype)>0?&filetype:''}"
-" }
+" }}}
 
-" File search {
+" File search {{{
     " More powerful file searching
     if executable('ag')
         NeoBundle 'rking/ag.vim'
@@ -60,9 +60,9 @@
                     \ ],
                     \ 'fallback': 'ag %s -l --nocolor -g ""'
                 \ }
-" }
+" }}}
 
-" Editing {
+" Editing {{{
     " Auto-closes delimiters like (),{},[],etc.
     NeoBundle 'Raimondi/delimitMate'
         let g:delimitMate_expand_cr = 1
@@ -107,9 +107,9 @@
     endif
 
     NeoBundle 'AndrewRadev/switch.vim'
-" }
+" }}}
 
-" Remote resources {
+" Remote resources {{{
     " Visual git diffs in the gutter
     NeoBundle 'airblade/vim-gitgutter'
         let g:gitgutter_eager = 0
@@ -123,7 +123,7 @@
     NeoBundle 'mattn/gist-vim'
 " }
 
-" Programming {
+" Programming {{{
     " Awesome autocompletion
     NeoBundle 'Valloric/YouCompleteMe', {'build': {
                 \ 'mac': './install.sh --clang-completer',
@@ -152,18 +152,17 @@
 
     " Previewing markdown, rdoc, textile and html files in the browser
     NeoBundle 'spf13/vim-preview'
+" }}}
 
-" }
-
-" External Tools {
+" External Tools {{{
     " Color picker pop-up
     NeoBundle 'PickAColor.vim'
 
     " Communication with tmux
     NeoBundle 'jgdavey/tslime.vim'
-" }
+" }}}
 
-" Syntax {
+" Syntax {{{
     " HTML
     NeoBundleLazy 'othree/html5.vim',           {'autoload': {'filetypes': ['html', 'blade', 'twig'] }}
     NeoBundleLazy 'Valloric/MatchTagAlways',    {'autoload': {'filetypes': ['html', 'blade', 'twig'] }}
@@ -202,6 +201,6 @@
 
     NeoBundleLazy 'rdolgushin/PlantUML-Vim',    {'autoload': {'filetypes': ['plantuml']}}
         let g:plantuml_executable_script = 'java -jar plantuml.jar'
-" }
+" }}}
 
-" vim:set filetype=vim fmr={,} fdl=0 fdm=marker:
+" vim:set filetype=vim:
