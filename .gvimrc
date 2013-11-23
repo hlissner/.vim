@@ -45,7 +45,7 @@ if has('gui_macvim')
     map <D-b> :Dispatch<CR>
     map <D-d> :NERDTreeToggle<CR>
 
-    " Shortcuts to outside apps {
+    " Shortcuts to outside apps {{{
         " Open in finder
         nnoremap <localleader>f :silent !open %:p:h<CR>
         nnoremap <localleader>F :silent !open .<CR>
@@ -54,7 +54,7 @@ if has('gui_macvim')
         nnoremap <localleader>T :silent !open -a iTerm .<CR>
         " Send to transmit
         nnoremap <localleader>u :silent !open -a Transmit %<CR>
-    " }
+    " }}}
 
 else
 
@@ -76,5 +76,3 @@ else
     inoremap <S-C-CR> <C-O>O
 
 endif
-
-" vim:set foldmarker={,} foldlevel=0 foldmethod=marker:
