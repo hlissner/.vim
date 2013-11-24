@@ -9,7 +9,7 @@ set nocompatible
 scriptencoding utf-8
 au!
 
-" Plugins {
+" Plugins {{{
     " Check to see if neobundle is installed, install it if not
     source $HOME/.vim/rc/deps
     " Bundles and their settings are specified externally.
@@ -21,9 +21,9 @@ au!
     endtry
 
     filetype plugin indent on
-" }
+" }}}
 
-" Preferences {
+" Preferences {{{
     syntax on
     set background=dark
     colorscheme molonew
@@ -62,11 +62,11 @@ au!
     set textwidth=88
     set fillchars=vert:¦
 
-    " Shell {
+    " Shell {{{
         " 256bit terminals
         set t_Co=256
-    " }
-    " Search {
+    " }}}
+    " Search {{{
         set incsearch            " find as you type
         set hlsearch             " Highlight search terms
         set ignorecase           " case insensitive search
@@ -79,8 +79,8 @@ au!
         elseif executable('ack-grep')
             let g:ackprg = "ack-grep -H --nocolor --nogroup --column"
         endif
-    " }
-    " Omnicomplete {
+    " }}}
+    " Omnicomplete {{{
         set tags=./.tags;/,~/.tags,~/tags
 
         set completeopt=longest,menu,preview
@@ -102,8 +102,8 @@ au!
 
         " Automatically close the popup menu / preview window
         au InsertLeave * if pumvisible() == 0|silent! pclose|endif
-    " }
-    " Formatting {
+    " }}}
+    " Formatting {{{
         set autoindent
         set shiftround
         set expandtab
@@ -116,8 +116,8 @@ au!
         set whichwrap=b,s,h,l,<,>,[,]
         " see :h fo-table
         set formatoptions=qrn1lr
-    " }
-    " Folding {
+    " }}}
+    " Folding {{{
         " set foldenable
         set foldlevel=1
         " Cleaner, readable fold headers
@@ -133,8 +133,8 @@ au!
 
             return indent . substitute(line,"^ *","",1)
         endf
-    " }
-" }
+    " }}}
+" }}}
 
 " rcfiles
 source $HOME/.vim/rc/backup
@@ -147,4 +147,4 @@ try
 catch 
 endtry
 
-" vim:set fmr={,} fdl=0 fdm=marker:
+" vim:set fdl=0:
