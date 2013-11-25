@@ -11,7 +11,7 @@ au!
 
 " Plugins {{{
     " Check to see if neobundle is installed, install it if not
-    source $HOME/.vim/rc/deps
+    source $HOME/.vim/rc/init
     " Bundles and their settings are specified externally.
     source $HOME/.vim/rc/plugins
     " A local bundles config separate from this distro.
