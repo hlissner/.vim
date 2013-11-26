@@ -19,8 +19,8 @@ if has('gui_macvim')
     set formatoptions+=j
 
     " mmyes, quite
-    set guifont=Ubuntu\ Mono:h14
-    set linespace=2
+    " set guifont=Ubuntu\ Mono:h14
+    set guifont=Monaco:h12
 
     " Replace some CMD shortcuts
     macmenu &File.Open\.\.\. key=<nop>
