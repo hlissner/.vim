@@ -28,9 +28,11 @@ for f in rcfiles
 endfor
 
 " Initialize NeoBundle
+filetype off
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundleCheck
+filetype indent plugin on
 
 " vim:set filetype=vim fmr={,} fdl=0 fdm=marker:
