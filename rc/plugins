@@ -107,6 +107,10 @@
     endif
 
     NeoBundle 'AndrewRadev/switch.vim'
+
+    NeoBundle 'kana/vim-textobj-user'
+    NeoBundle 'kana/vim-textobj-indent'
+    NeoBundle 'glts/vim-textobj-comment'
 " }}}
 
 " Remote resources {{{
@@ -187,7 +191,7 @@
 
     " Javascript
     NeoBundleLazy 'pangloss/vim-javascript',    {'autoload': {'filetypes': ['javascript']}}
-    NeoBundleLazy 'myhere/vim-nodejs-complete', {'autoload': {'filetypes': ['javascript']}}
+    NeoBundleLazy 'marijnh/tern_for_vim',       {'autoload': {'filetypes': ['javascript']}, 'build': {'mac' : 'npm install'}}
 
     " Ruby
     NeoBundleLazy 'vim-ruby/vim-ruby',          {'autoload': {'filetypes': ['ruby']}}
