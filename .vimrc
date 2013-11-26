@@ -1,27 +1,11 @@
-﻿"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                                                             "
-"   Author: Henrik Lissner                                                    "
-"   Url: http://github.com/hlissner/vim                                       "
-"                                                                             "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+﻿set nocompatible
 
-set nocompatible
-scriptencoding utf-8
-au!
+" Check to see if neobundle is installed, install it if not. Init
+" plugins and what not afterwards.
+source $HOME/.vim/rc/init
 
-" Plugins {{{
-    " Check to see if neobundle is installed, install it if not
-    source $HOME/.vim/rc/init
-    " Bundles and their settings are specified externally.
-    source $HOME/.vim/rc/plugins
-    " A local bundles config separate from this distro.
-    try 
-        source $HOME/.vimrc.bundles.local
-    catch
-    endtry
-
-    filetype plugin indent on
-" }}}
+" Bundles and their settings are specified externally.
+source $HOME/.vim/rc/plugins
 
 " Preferences {{{
     syntax on
@@ -147,4 +131,4 @@ try
 catch 
 endtry
 
-" vim:set fdl=0:
+" vim:set fdl=0 fdm=marker:
