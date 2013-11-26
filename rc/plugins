@@ -130,7 +130,7 @@
                 \ 'unix': './install.sh --clang-completer' } }
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_confirm_extra_conf = 0
-
+        let g:ycm_filetype_specific_completion_to_disable = {'html':0,'jade':0}
 
     " Syntax checkers for a multitude of languages
     NeoBundle 'scrooloose/syntastic'
