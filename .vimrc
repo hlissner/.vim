@@ -79,9 +79,7 @@ source $HOME/.vim/rc/plugins
             au!
             " Enable omni completion.
             au FileType css,scss,less setl omnifunc=csscomplete#CompleteCSS
-            au FileType html,markdown,htmljinja,xml setl omnifunc=htmlcomplete#CompleteTags
-            " au FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
-            au FileType xml setl omnifunc=xmlcomplete#CompleteTags
+            au FileType markdown,htmljinja,xml setl omnifunc=htmlcomplete#CompleteTags
         augroup END
 
         " Automatically close the popup menu / preview window
