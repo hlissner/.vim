@@ -169,7 +169,7 @@
     NeoBundleLazy 'digitaltoad/vim-jade',       {'autoload': {'filetypes': ['jade']}}
 
     " CSS/SCSS/LESS
-    NeoBundleLazy 'hlissner/scss-syntax.vim',   {'autoload': {'filetypes': ['scss']}}
+    NeoBundleLazy 'cakebaker/scss-syntax.vim',   {'autoload': {'filetypes': ['scss']}}
 
     " PHP
     NeoBundleLazy 'StanAngeloff/php.vim',       {'autoload': {'filetypes': ['php', 'blade']}}

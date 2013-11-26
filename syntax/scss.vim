@@ -1,3 +1,3 @@
 
 hi scssColor guifg=#EEEEEE
-hi link cssBraces scssDefinition
+hi link scssProperty StorageClass
