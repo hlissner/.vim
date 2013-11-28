@@ -201,9 +201,11 @@
     NeoBundleLazy 'indentpython.vim--nianyang', {'autoload': {'filetypes': ['python']}}
     NeoBundleLazy 'python_match.vim',           {'autoload': {'filetypes': ['python']}}
 
-    " Javascript
-    NeoBundleLazy 'pangloss/vim-javascript',    {'autoload': {'filetypes': ['javascript']}}
-    NeoBundleLazy 'marijnh/tern_for_vim',       {'autoload': {'filetypes': ['javascript']}, 'build': {'mac' : 'npm install'}}
+    " Javascript/Node
+    NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload': {'filetypes': ['javascript']}}
+    NeoBundleLazy 'moll/vim-node',                {'autoload': {'filetypes': ['javascript']}}
+    NeoBundleLazy 'marijnh/tern_for_vim',         {'autoload': {'filetypes': ['javascript']}, 'build': {'mac' : 'npm install'}}
+    " NeoBundleLazy 'kchmck/vim-coffee-script',     {'autoload': {'filetypes': ['coffeescript']}}
 
     " Ruby
     NeoBundleLazy 'vim-ruby/vim-ruby',          {'autoload': {'filetypes': ['ruby']}}
