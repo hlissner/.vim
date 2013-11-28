@@ -13,7 +13,6 @@ if !filereadable(nb_path)
 
     silent !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 
-    NeoBundleInstall!
     let has_nb = 0
 endif
 
@@ -32,7 +31,12 @@ filetype off
 set runtimepath+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundleCheck
+
+if has_nb
+    NeoBundleInstall!
+else
+    NeoBundleCheck
+endif
 filetype indent plugin on
 
 " vim:set filetype=vim fmr={,} fdl=0 fdm=marker:
