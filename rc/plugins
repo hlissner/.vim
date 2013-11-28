@@ -83,19 +83,22 @@
 
     " Auto-place code blocks for languages like ruby or viml
     NeoBundle 'tpope/vim-endwise'
+
     " Offers some plugins better compatibility with repeat ('.') 
     NeoBundle 'tpope/vim-repeat'
+
     " Incrementing/decrementing numbers, dates and time formatted strings
     NeoBundle 'tpope/vim-speeddating'
+
     " Easy changing and insertion of surrounding delimiters (e.g. quotes,
     " parenthesis, etc.)
     NeoBundle 'tpope/vim-surround'
+
     " Sublime-text multi-cursors!
     NeoBundle 'terryma/vim-multiple-cursors'
+
     " f on steroids
     NeoBundle 'goldfeld/vim-seek'
-    " Muh [] binds
-    NeoBundle 'tpope/vim-unimpaired'
 
     " Snippets system
     if has("python")

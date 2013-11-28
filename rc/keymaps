@@ -92,6 +92,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Change CWD to current file's directory
     nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>    
 
+    " Next/prev buffer
+    nnoremap ]b :<C-u>bnext<CR>
+    nnoremap [b :<C-u>bprevious<CR>
 " }}}
 
 " Command {{{
