@@ -4,7 +4,7 @@
     NeoBundle 'Yggdroot/indentLine'
         let g:indentLine_color_gui = '#2c3234'
 
-    " A nicer status line that isn't as heavy as powerline
+    " A status line that lighter than powerline
     NeoBundle 'bling/vim-airline'
         let g:airline#extensions#hunks#enabled = 0
         let g:airline#extensions#whitespace#enabled = 0
@@ -106,8 +106,10 @@
             let g:UltiSnipsSnippetDirectories = ['snippets']
     endif
 
+    " Switching segments of text with predefined replacements
     NeoBundle 'AndrewRadev/switch.vim'
 
+    " Custom text objects
     NeoBundle 'kana/vim-textobj-user'
     NeoBundle 'kana/vim-textobj-indent'
     NeoBundle 'glts/vim-textobj-comment'
@@ -120,8 +122,10 @@
 
     " 'a Git wrapper so awesome, it should be illegal'
     NeoBundle 'tpope/vim-fugitive'
+
     " Async compiler plugins
     NeoBundle 'tpope/vim-dispatch'
+
     " Glorious gists!
     NeoBundle 'mattn/webapi-vim'
     NeoBundle 'mattn/gist-vim'
@@ -131,7 +135,7 @@
     " Awesome autocompletion
     NeoBundle 'Valloric/YouCompleteMe', {'build': {
                 \ 'mac': './install.sh --clang-completer',
-                \ 'unix': './install.sh --clang-completer' } }
+                \ 'unix': './install.sh --clang-completer' }}
         let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_confirm_extra_conf = 0
         let g:ycm_filetype_specific_completion_to_disable = {'html':0,'jade':0}
