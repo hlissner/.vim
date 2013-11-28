@@ -46,20 +46,21 @@
     NeoBundle 'tacahiroy/ctrlp-funky'
     " Ctrlp extension for listing git modified files
     NeoBundle 'jasoncodes/ctrlp-modified.vim'
-        let g:ctrlp_extensions = ['tag', 'buffertag', 'quickfix', 'line', 'funky']
+        let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'funky']
         let g:ctrlp_max_height = 15
         let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
         let g:ctrlp_working_path_mode = 0
         let g:ctrlp_custom_ignore = {
-                    \ 'dir':  '\.git$\|\.hg$\|\.svn|\.settings$',
-                    \ 'file': '\.exe$\|\.so$\|\.dll|\.sass\-cache|\.classpath|\.project$' }
+            \ 'dir':  '\v\.(git|hg|svn|settings)$|tmp$',
+            \ 'file': '\v\.(exe|so|dll|sass-cache|classpaths|project|cache|jpg|png|gif|swf)$'
+        \ }
         let g:ctrlp_user_command = {
-                    \ 'types': [
-                    \   ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \   ['.hg', 'hg --cwd %s locate -I']
-                    \ ],
-                    \ 'fallback': 'ag %s -l --nocolor -g ""'
-                \ }
+            \ 'types': [
+            \   ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+            \   ['.hg', 'hg --cwd %s locate -I']
+            \ ],
+            \ 'fallback': 'ag %s -l --nocolor -g ""'
+        \ }
 " }}}
 
 " Editing {{{

@@ -125,18 +125,17 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> <leader>bz :BUNDO<CR>
 
     " CtrlP
-    let g:ctrlp_map = '<leader>.'
-    nnoremap <silent> <leader>, :CtrlPBuffer<CR>
-    nnoremap <silent> <leader><space> :CtrlPFunky<CR>
-    nnoremap <silent> <leader>m :CtrlPMRU<CR>
-    nnoremap <silent> <leader>od :CtrlPModified<CR>
-    nnoremap <silent> <leader>oD :CtrlPBranch<CR>
-    nnoremap <silent> <leader>ot :CtrlPBufTag<CR>
-    nnoremap <silent> <leader>oT :CtrlPBufTagAll<CR>
-
-    " Dispatch
-    nnoremap <localleader>b :Make<CR>
-    nnoremap <localleader>B :Dispatch<CR>
+    nnoremap [ctrlp] <Nop>
+    nmap <leader> [ctrlp]
+    
+    let g:ctrlp_map = '[ctrlp].'
+    nnoremap <silent> [ctrlp], :CtrlPBuffer<CR>
+    nnoremap <silent> [ctrlp]; :CtrlPFunky<CR>
+    nnoremap <silent> [ctrlp]m :CtrlPMRU<CR>
+    nnoremap <silent> [ctrlp]om :CtrlPModified<CR>
+    nnoremap <silent> [ctrlp]ob :CtrlPBranch<CR>
+    nnoremap <silent> [ctrlp]ot :CtrlPBufTag<CR>
+    nnoremap <silent> [ctrlp]oT :CtrlPBufTagAll<CR>
 
     " NERDTree
     nnoremap <leader>n :NERDTreeToggle<CR>
