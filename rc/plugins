@@ -186,7 +186,6 @@
     " HTML
     NeoBundleLazy 'othree/html5.vim',           {'autoload': {'filetypes': ['html', 'blade', 'twig'] }}
     NeoBundleLazy 'Valloric/MatchTagAlways',    {'autoload': {'filetypes': ['html', 'blade', 'twig'] }}
-    NeoBundleLazy 'digitaltoad/vim-jade',       {'autoload': {'filetypes': ['jade']}}
 
     " CSS/SCSS/LESS
     NeoBundleLazy 'cakebaker/scss-syntax.vim',   {'autoload': {'filetypes': ['scss']}}
@@ -218,9 +217,7 @@
 
     " Other
     NeoBundleLazy 'spf13/vim-markdown',         {'autoload': {'filetypes': ['markdown']}}
-
-    NeoBundleLazy 'rdolgushin/PlantUML-Vim',    {'autoload': {'filetypes': ['plantuml']}}
-        let g:plantuml_executable_script = 'java -jar plantuml.jar'
+    NeoBundleLazy 'digitaltoad/vim-jade',       {'autoload': {'filetypes': ['jade']}}
 " }}}
 
 " vim:set filetype=vim:
