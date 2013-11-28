@@ -33,12 +33,12 @@
 
     " A filetree navigator replacement for netrw
     NeoBundle 'scrooloose/nerdtree'
-        let NERDTreeMinimalUI=1
-        let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
-        let NERDTreeQuitOnOpen=0
-        let NERDTreeShowBookmarks=0
-        let NERDTreeShowHidden=1
-        let NERDTreeAutoDeleteBuffer=1
+        let NERDTreeMinimalUI = 1
+        let NERDTreeChDirMode = 1
+        let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
+        let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
+        let NERDTreeShowHidden = 1
+        let NERDTreeAutoDeleteBuffer = 1
 
     " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
     NeoBundle 'kien/ctrlp.vim'
