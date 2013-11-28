@@ -64,18 +64,25 @@
 " }}}
 
 " Editing {{{
+    " Improved % and hopping delimiters (can now be 1+ character)
+    NeoBundle 'matchit.zip'
+
+    " Extended visual mode commands, substitutes and searches
+    NeoBundle 'vis'
+
     " Auto-closes delimiters like (),{},[],etc.
     NeoBundle 'Raimondi/delimitMate'
         let g:delimitMate_expand_cr = 1
         let g:delimitMate_expand_space = 1
 
+    " HTML & CSS emmet goodness; Zen coding's successor
     NeoBundle 'mattn/emmet-vim'
-    " Improved % and hopping delimiters (can now be 1+ character)
-    NeoBundle 'matchit.zip'
+
     " Clean way to close buffers without altering window layout
     NeoBundle 'bufkill.vim'
     " For aligning text
     NeoBundle 'godlygeek/tabular'
+
     " Comment out code with native comment syntax
     NeoBundle 'tomtom/tcomment_vim'
         let g:tcomment_types = {}
