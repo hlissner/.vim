@@ -79,7 +79,8 @@
     NeoBundle 'mattn/emmet-vim'
 
     " Clean way to close buffers without altering window layout
-    NeoBundle 'bufkill.vim'
+    NeoBundle 'mattdbridges/bufkill.vim'
+
     " For aligning text
     NeoBundle 'godlygeek/tabular'
 
