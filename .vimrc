@@ -32,7 +32,7 @@ source $HOME/.vim/rc/plugins
     set ttyfast
 
     " Share a clipboard with OS and vim terminal sessions
-    if has ('unnamedplus')
+    if has('unnamedplus')
         set clipboard=unnamedplus
     else
         set clipboard=unnamed
