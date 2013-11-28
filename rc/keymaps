@@ -32,20 +32,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
     map <C-j> 5j
     map <C-k> 5k
     map <C-l> zL
-    " Navigating buffers
-    nnoremap ˙ <C-w>h
-    nnoremap ∆ <C-w>j
-    nnoremap ˚ <C-w>k
-    nnoremap ¬ <C-w>l
-
-    " Ctrl-h: Move word left
-    inoremap <c-h> <c-o>b
-    " Ctrl-j: Move cursor up
-    inoremap <C-j> <Down>
-    " Ctrl-k: Move cursor up
-    inoremap <C-k> <Up>
-    " Ctrl-l: Move word right
-    inoremap <c-l> <c-o>w
 
     " Get used to hjkl!
     noremap <Left> <Nop>
@@ -67,12 +53,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
 " Editing {{{
     " Insert-mode navigation
-    " Delete a word
-    inoremap <C-w> <C-g>u<C-w>
     " Go to end of line
     inoremap <C-e> <Esc>A
-    " Delete line
-    inoremap <C-u> <C-g>u<C-u>
     " Go to start of line
     inoremap <C-a> <Esc>I
 
