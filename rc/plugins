@@ -195,9 +195,6 @@
     NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload': {'filetypes': ['php']}}
     NeoBundleLazy 'shawncplus/phpcomplete.vim', {'autoload': {'filetypes': ['php', 'blade']}}
     NeoBundleLazy 'stephpy/vim-phpdoc',         {'autoload': {'filetypes': ['php']}}
-    NeoBundleLazy 'joonty/vim-phpunitqf',       {'autoload': {'filetypes': ['php']}}
-
-    " PHP.laravel
     NeoBundleLazy 'xsbeats/vim-blade',          {'autoload': {'filetypes': ['php', 'blade']}}
 
     " Python
