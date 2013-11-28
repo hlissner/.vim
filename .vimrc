@@ -72,7 +72,7 @@ source $HOME/.vim/rc/plugins
         set wildmode=list:longest,full  " command <Tab> completion: list
                                         " matches -> longest common -> then
                                         " all.
-        set wildignore+=*~,*.swp,*.log,.sass-cache
+        set wildignore+=*.swp,*.log,.sass-cache
         set wildignore+=*.class,*.o,*.pyc,*.obj,*DS_Store*
 
         augroup Omnicomplete
