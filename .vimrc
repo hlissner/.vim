@@ -72,12 +72,11 @@ source $HOME/.vim/rc/plugins
         set wildmode=list:longest,full  " command <Tab> completion: list
                                         " matches -> longest common -> then
                                         " all.
-        set wildignore+=*.cache,cache/**,*~,*.swp,*.log,.sass-cache
-        set wildignore+=*.class,*.o,*.obj,*DS_Store*
+        set wildignore+=*~,*.swp,*.log,.sass-cache
+        set wildignore+=*.class,*.o,*.pyc,*.obj,*DS_Store*
 
         augroup Omnicomplete
             au!
-            " Enable omni completion.
             au FileType css,scss,less setl omnifunc=csscomplete#CompleteCSS
             au FileType markdown,htmljinja,xml setl omnifunc=htmlcomplete#CompleteTags
         augroup END
