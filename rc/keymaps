@@ -171,13 +171,16 @@ noremap <silent> <leader>? :nohlsearch<CR>
     map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
     let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+
+    " vim-switch
+    nnoremap - :Switch<CR>
 " }}}
 
 " Shortcut to vimrc and gvimrc
 nnoremap <localleader>ev :e $HOME/.vimrc<CR>
 nnoremap <localleader>el :e $HOME/.vimrc.local<CR>
 nnoremap <localleader>eg :e $HOME/.gvimrc<CR>
-nnoremap <localleader>eb :e $HOME/.vim/rc/<CR>
-nnoremap <localleader>ef :e $HOME/.vim/ftplugin/<CR>
+nnoremap <localleader>ek :e $HOME/.vim/rc/plugins<CR>
+nnoremap <localleader>e. :e $HOME/.vim/<CR>
 
 " vim:set filetype=vim:
