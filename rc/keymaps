@@ -179,4 +179,4 @@ nnoremap <localleader>el :e $HOME/.vimrc.local<CR>
 nnoremap <localleader>eg :e $HOME/.gvimrc<CR>
 nnoremap <localleader>e. :e $HOME/.vim<CR>
 
-" vim:set filetype=vim:
+" vim:set ft=vim:

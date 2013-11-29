@@ -20,4 +20,4 @@ augroup persistence
     au BufWinEnter * if expand("%") != "" | silent! loadview | endif
 augroup END
 
-" vim:set filetype=vim fdm=marker:
+" vim:set ft=vim fdm=marker:

@@ -39,4 +39,4 @@ else
 endif
 filetype indent plugin on
 
-" vim:set filetype=vim fmr={,} fdl=0 fdm=marker:
+" vim:set ft=vim fmr={,} fdl=0 fdm=marker:

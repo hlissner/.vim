@@ -219,4 +219,4 @@
     NeoBundleLazy 'digitaltoad/vim-jade',       {'autoload': {'filetypes': ['jade']}}
 " }}}
 
-" vim:set filetype=vim:
+" vim:set ft=vim:

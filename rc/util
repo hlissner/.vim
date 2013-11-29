@@ -25,4 +25,4 @@ EOF
                 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " }}}
 
-" vim:set filetype=vim:
+" vim:set ft=vim:
