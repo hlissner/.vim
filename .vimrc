@@ -13,6 +13,7 @@ source $HOME/.vim/rc/plugins
     colorscheme molonew
     let g:airline_theme = "badwolf"
 
+    set autoread                 " Auto-update a file that's been edited externally
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show whitespace chars (indentLine does it nicer)
     set nospell                  " No spell check, please
@@ -21,9 +22,7 @@ source $HOME/.vim/rc/plugins
     set showmatch                " Show matching delimiters
     set browsedir=buffer         " Sets File>Open to start in current file's path
     set noshowmode               " Don't show mode in cmdline (no need with airline)
-    set autoread                 " Auto-update a file that's been edited externally
     set backspace=indent,eol,start
-    set mouse=a
     set lazyredraw               " Don't update screen while running macros
     set hidden                   " Hide abandoned buffers
     set nostartofline
