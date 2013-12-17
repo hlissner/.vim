@@ -75,6 +75,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Uses A-Space for generic omnicomplete
     imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
     imap <expr> <A-S-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
+
+    " Append semicolon at end of the line
+    inoremap \; <C-o>A;
 " }}}
 
 " Buffers {{{
