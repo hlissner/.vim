@@ -46,6 +46,9 @@ source $HOME/.vim/rc/plugins
     set textwidth=88
     set fillchars=vert:¦
 
+    " Rebalance windows when resizing vim
+    autocmd VimResized * :wincmd =
+
     " Shell {{{
         " 256bit terminals
         set t_Co=256
