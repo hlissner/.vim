@@ -112,7 +112,7 @@
         " My snippets
         NeoBundle 'hlissner/vim-ultisnips-snippets'
             " Ignore the default snippets so I (and others) can define their own
-            let g:UltiSnipsSnippetDirectories = ['snippets']
+            let g:UltiSnipsSnippetDirectories = ['snips']
     endif
 
     " Switching segments of text with predefined replacements
