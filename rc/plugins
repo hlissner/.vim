@@ -14,6 +14,7 @@
         let g:airline_enable_branch=1
         let g:airline_enable_prefix=1
         let g:airline_paste_symbol = 'ρ'
+        let g:airline_exclude_preview = 1
 
         let g:airline_mode_map = {'n':'N', 'i':'I', 'R':'R', 'v':'V', 'V':'V-', 'c':'CMD', '':'V¤'}
         let g:airline_section_x = "%{strlen(&fenc)>0?&fenc:''}"
@@ -21,6 +22,8 @@
 " }}}
 
 " File search {{{
+    NeoBundle 'majutsushi/tagbar'
+
     " More powerful file searching
     if executable('ag')
         NeoBundle 'rking/ag.vim'
