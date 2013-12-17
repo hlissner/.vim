@@ -28,9 +28,11 @@ for f in rcfiles
 endfor
 
 " Initialize NeoBundle
+filetype on " without this vim emits a zero exit status, later, because of :ft off
 filetype off
-set runtimepath+=~/.vim/bundle/neobundle.vim/
+set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle'))
+
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundleCheck
 
