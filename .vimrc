@@ -13,21 +13,22 @@ source $HOME/.vim/rc/plugins
     colorscheme molonew
     let g:airline_theme = "badwolf"
 
+    set number                   " Line numbers
     set autoread                 " Auto-update a file that's been edited externally
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show whitespace chars (indentLine does it nicer)
     set nospell                  " No spell check, please
-    set number                   " Line numbers
+    set mouse=a
     set visualbell               " No sounds!
-    set showmatch                " Show matching delimiters
     set browsedir=buffer         " Sets File>Open to start in current file's path
     set noshowmode               " Don't show mode in cmdline (no need with airline)
     set backspace=indent,eol,start
     set lazyredraw               " Don't update screen while running macros
     set hidden                   " Hide abandoned buffers
     set nostartofline
-    set scrolloff=5
     set shortmess+=filmnrxoOtTs
+    set scrolloff=8
+    set scrolljump=5             " Scroll 5 lines at a time at bottom/top
     set ttyfast
 
     " Share a clipboard with OS and vim terminal sessions
@@ -73,12 +74,6 @@ source $HOME/.vim/rc/plugins
                                         " all.
         set wildignore+=*.swp,*.log,.sass-cache
         set wildignore+=*.class,*.o,*.pyc,*.obj,*DS_Store*
-
-        augroup Omnicomplete
-            au!
-            au FileType css,scss,less setl omnifunc=csscomplete#CompleteCSS
-            au FileType markdown,htmljinja,xml setl omnifunc=htmlcomplete#CompleteTags
-        augroup END
 
         " Automatically close the popup menu / preview window
         au InsertLeave * if pumvisible() == 0|silent! pclose|endif
