@@ -21,7 +21,7 @@ if has('gui_macvim')
     " mmyes, quite
     " set guifont=Ubuntu\ Mono:h14
     " set guifont=Monaco:h12
-    set guifont=Inconsolata:h14
+    set guifont=Inconsolata:h16
 
     " Replace some CMD shortcuts
     macmenu &File.Open\.\.\. key=<nop>
