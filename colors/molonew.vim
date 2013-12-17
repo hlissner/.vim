@@ -24,19 +24,20 @@ let g:colors_name="molokai"
 hi Cursor          guifg=#000000 guibg=#e3ffff
 
 hi Normal          guifg=#F8F8F2 guibg=#1B1D1E
-hi Comment         guifg=#7E8E91
+hi Comment         guifg=#424545
+" hi Comment         guifg=#7E8E91
 hi CursorLine                    guibg=#293739
 hi CursorLineNr    guifg=#FD971F               gui=none
 hi CursorColumn                  guibg=#293739
 hi ColorColumn                   guibg=#232526
-hi LineNr          guifg=#343737 guibg=#1b1c1d
+hi LineNr          guifg=#424545 guibg=#1b1c1d
 hi NonText         guifg=#465457
 hi SpecialKey      guifg=#465457
 
 hi Boolean         guifg=#AE81FF
 hi Character       guifg=#E6DB74
 hi Number          guifg=#c39fff
-hi String          guifg=#E6DB74
+hi String          guifg=#ecc41c
 hi Conditional     guifg=#F92672               gui=bold
 hi Constant        guifg=#AE81FF               gui=bold
 hi Debug           guifg=#BCA3A3               gui=bold
@@ -67,7 +68,8 @@ hi SpecialKey      guifg=#66D9EF               gui=italic
 hi MatchParen      guifg=#000000 guibg=#63a1c4
 hi ModeMsg         guifg=#E6DB74
 hi MoreMsg         guifg=#E6DB74
-hi Operator        guifg=#F92672
+hi Operator        guifg=#59646b
+" hi Operator        guifg=#F92672
 
 " complete menu
 hi Pmenu           guifg=#66D9EF guibg=#000000
