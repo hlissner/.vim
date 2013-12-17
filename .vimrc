@@ -9,16 +9,18 @@ source $HOME/.vim/rc/plugins
 
 " Preferences {{{
     syntax on
+
     set background=dark
     colorscheme molonew
     let g:airline_theme = "badwolf"
 
-    set number                   " Line numbers
+    set autowrite                " Auto-write files
     set autoread                 " Auto-update a file that's been edited externally
+
+    set number                   " Line numbers
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show whitespace chars (indentLine does it nicer)
     set nospell                  " No spell check, please
-    set mouse=a
     set visualbell               " No sounds!
     set browsedir=buffer         " Sets File>Open to start in current file's path
     set noshowmode               " Don't show mode in cmdline (no need with airline)
@@ -30,6 +32,11 @@ source $HOME/.vim/rc/plugins
     set scrolloff=8
     set scrolljump=5             " Scroll 5 lines at a time at bottom/top
     set ttyfast
+
+    set mouse=a
+    if exists('$TMUX')  " Support resizing in tmux
+        set ttymouse=xterm2
+    endif
 
     " Share a clipboard with OS and vim terminal sessions
     if has('unnamedplus')
