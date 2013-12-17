@@ -124,10 +124,10 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> <leader>, :CtrlPBuffer<CR>
     nnoremap <silent> <leader>; :CtrlPFunky<CR>
     nnoremap <silent> <leader>m :CtrlPMRU<CR>
+    nnoremap <silent> <leader>t :CtrlPBufTag<CR>
+    nnoremap <silent> <leader>T :CtrlPBufTagAll<CR>
     nnoremap <silent> <leader>om :CtrlPModified<CR>
     nnoremap <silent> <leader>ob :CtrlPBranch<CR>
-    nnoremap <silent> <leader>ot :CtrlPBufTag<CR>
-    nnoremap <silent> <leader>oT :CtrlPBufTagAll<CR>
 
     " NERDTree
     nnoremap <leader>n :NERDTreeToggle<CR>
@@ -166,12 +166,15 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
     " vim-switch
     nnoremap - :Switch<CR>
+
+    " Dash.app
+    map <F1> <Plug>DashSearch
 " }}}
 
 " Shortcut to vimrc and gvimrc
 nnoremap <localleader>ev :e $HOME/.vimrc<CR>
 nnoremap <localleader>el :e $HOME/.vimrc.local<CR>
 nnoremap <localleader>eg :e $HOME/.gvimrc<CR>
-nnoremap <localleader>e. :e $HOME/.vim<CR>
+nnoremap <localleader>e. :CtrlP $HOME/.vim/rc<CR>
 
 " vim:set ft=vim:
