@@ -49,7 +49,7 @@
     NeoBundle 'tacahiroy/ctrlp-funky'
     " Ctrlp extension for listing git modified files
     NeoBundle 'jasoncodes/ctrlp-modified.vim'
-        let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'funky']
+        let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'funky', 'tag']
         let g:ctrlp_max_height = 15
         let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
         let g:ctrlp_working_path_mode = 0
