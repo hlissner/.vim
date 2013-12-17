@@ -10,11 +10,6 @@ set pastetoggle=<localleader><localleader>
 " Easier than escape. Pinnacle of laziness.
 imap jj <ESC>
 
-" Damn you escape key! How I miss you...
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
 " Turn off search highlighting
 noremap <silent> <leader>? :nohlsearch<CR>
 
@@ -64,9 +59,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Don't leave visual mode after indenting
     vnoremap < <gv
     vnoremap > >gv
-
-    " u = undo, U = redo
-    nmap U <C-r>
 
     " Textmate-like CMD+Enter (O in insert mode)
     inoremap <S-CR> <C-O>o
