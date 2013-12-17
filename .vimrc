@@ -67,7 +67,7 @@ source $HOME/.vim/rc/plugins
     " Omnicomplete {{{
         set tags=./.tags;/,~/.tags,~/tags
 
-        set completeopt=longest,menu,preview
+        set completeopt=longest,menu
         set wildmenu                    " Show menu instead of auto-complete
         set wildmode=list:longest,full  " command <Tab> completion: list
                                         " matches -> longest common -> then
