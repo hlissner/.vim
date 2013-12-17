@@ -109,6 +109,12 @@ source $HOME/.vim/rc/plugins
             return indent . substitute(line,"^ *","",1)
         endf
     " }}}
+    " Ftdetects {{{
+        au BufRead,BufNewFile *.scss set filetype=scss
+        " For some reason vaxe isn't always on the ball when I open
+        " *.hx files without this.
+        au BufRead,BufNewFile *.hx set filetype=haxe
+    " }}}
 " }}}
 
 " rcfiles
