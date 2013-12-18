@@ -35,7 +35,7 @@ set nocompatible
                                     " matches -> longest common -> then
                                     " all.
     set wildignore+=*.cache,cache/**,*~,*.swp,*.log,.sass-cache
-    set wildignore+=*.class,*.o,*.obj,*DS_Store*
+    set wildignore+=*.class,*.o,*.pyc,*.obj,*DS_Store*
 
     " Shell {{{
         " 256bit terminals

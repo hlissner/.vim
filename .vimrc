@@ -121,8 +121,7 @@ source $HOME/.vim/rc/plugins
     " }}}
     " Ftdetects {{{
         au BufRead,BufNewFile *.scss set filetype=scss
-        " For some reason vaxe isn't always on the ball when I open
-        " *.hx files without this.
+        " For some reason vaxe's ftdetect isn't always on the ball
         au BufRead,BufNewFile *.hx set filetype=haxe
     " }}}
 " }}}
