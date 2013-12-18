@@ -100,7 +100,7 @@
     NeoBundle 'tpope/vim-repeat'
 
     " Incrementing/decrementing numbers, dates and time formatted strings
-    NeoBundle 'tpope/vim-speeddating'
+    " NeoBundle 'tpope/vim-speeddating'
 
     " Easy changing and insertion of surrounding delimiters (e.g. quotes,
     " parenthesis, etc.)
