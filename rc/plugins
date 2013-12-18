@@ -142,30 +142,25 @@
 " Programming {{{
     " Awesome autocompletion
     NeoBundle 'Valloric/YouCompleteMe', {'build': {
-                \ 'mac': './install.sh --clang-completer --omnisharp-completer',
+                \ 'mac': './install.sh --clang-completer',
                 \ 'unix': './install.sh --clang-completer' }}
-        " let g:ycm_auto_trigger = 0
-        let g:ycm_autoclose_preview_window_after_insertion = 1
+        " let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_confirm_extra_conf = 0
         let g:ycm_filetype_blacklist = { 'html':1, 'jade':1 }
 
     " Syntax checkers for a multitude of languages
     NeoBundle 'scrooloose/syntastic'
-        let g:syntastic_enable_highlighting = 0
         let g:syntastic_auto_loc_list=1
         let g:syntastic_quiet_warnings=1
         let g:syntastic_phpcs_disable=1
         let g:syntastic_echo_current_error=0
-        let g:syntastic_auto_jump = 0
         let g:syntastic_enable_balloons = 0
 
         let g:syntastic_error_symbol = '►'
         let g:syntastic_warning_symbol = '►'
 
         let g:syntastic_loc_list_height = 5
-        let g:syntastic_mode_map = { 'mode': 'active',
-                               \ 'active_filetypes': [],
-                               \ 'passive_filetypes': ['html'] }
+        let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 
     " Running code inline for testing purposes
     NeoBundle 'notalex/vim-run-live'
