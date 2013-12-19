@@ -78,6 +78,15 @@
         let g:delimitMate_expand_cr = 1
         let g:delimitMate_expand_space = 1
 
+    " Snippets system
+    if has("python")
+        NeoBundle 'SirVer/ultisnips'
+        " My snippets
+        NeoBundle 'hlissner/vim-ultisnips-snippets'
+        " Ignore the default snippets so I (and others) can define their own
+        let g:UltiSnipsSnippetDirectories = ['snips']
+    endif
+
     " HTML & CSS emmet goodness; Zen coding's successor
     NeoBundle 'mattn/emmet-vim'
 
@@ -99,21 +108,11 @@
     " Offers some plugins better compatibility with repeat ('.') 
     NeoBundle 'tpope/vim-repeat'
 
-    " Incrementing/decrementing numbers, dates and time formatted strings
-    " NeoBundle 'tpope/vim-speeddating'
-
     " Easy changing and insertion of surrounding delimiters (e.g. quotes,
     " parenthesis, etc.)
     NeoBundle 'tpope/vim-surround'
-
-    " Snippets system
-    if has("python")
-        NeoBundle 'SirVer/ultisnips'
-        " My snippets
-        NeoBundle 'hlissner/vim-ultisnips-snippets'
-            " Ignore the default snippets so I (and others) can define their own
-            let g:UltiSnipsSnippetDirectories = ['snips']
-    endif
+    NeoBundle 'kana/vim-textobj-user'
+    NeoBundle 'osyo-manga/vim-textobj-multiblock'
 
     " Switching segments of text with predefined replacements
     NeoBundle 'AndrewRadev/switch.vim'
@@ -163,10 +162,10 @@
         let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 
     " Running code inline for testing purposes
-    NeoBundle 'notalex/vim-run-live'
+    " NeoBundle 'notalex/vim-run-live'
 
     " Previewing markdown, rdoc, textile and html files in the browser
-    NeoBundle 'spf13/vim-preview'
+    NeoBundleLazy 'spf13/vim-preview', {'autoload': {'filetypes': ['markdown', 'rdoc', 'textile', 'html', 'rst', 'ronn']}}
 " }}}
 
 " External Tools {{{
