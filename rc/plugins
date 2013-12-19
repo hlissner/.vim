@@ -162,7 +162,7 @@
         let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
 
     " Running code inline for testing purposes
-    " NeoBundle 'notalex/vim-run-live'
+    NeoBundle 'notalex/vim-run-live'
 
     " Previewing markdown, rdoc, textile and html files in the browser
     NeoBundleLazy 'spf13/vim-preview', {'autoload': {'filetypes': ['markdown', 'rdoc', 'textile', 'html', 'rst', 'ronn']}}
