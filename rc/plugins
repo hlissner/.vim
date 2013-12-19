@@ -83,8 +83,8 @@
         NeoBundle 'SirVer/ultisnips'
         " My snippets
         NeoBundle 'hlissner/vim-ultisnips-snippets'
-        " Ignore the default snippets so I (and others) can define their own
-        let g:UltiSnipsSnippetDirectories = ['snips']
+            " Ignore the default snippets so I (and others) can define their own
+            let g:UltiSnipsSnippetDirectories = ['snips']
     endif
 
     " HTML & CSS emmet goodness; Zen coding's successor
