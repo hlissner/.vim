@@ -117,7 +117,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
 " Plugins {{{
     " bufkill - reopen last closed buffer
-    nnoremap <silent> <leader>bz :BUNDO<CR>
+    nnoremap <silent> <leader>z :BUNDO<CR>
 
     " CtrlP
     let g:ctrlp_map = '<leader>.'
@@ -166,6 +166,18 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
     " vim-switch
     nnoremap - :Switch<CR>
+
+    " vim-surround
+    let g:surround_no_mappings = 1
+    nmap sd  <Plug>Dsurround
+    nmap sc  <Plug>Csurround
+    nmap s   <Plug>Ysurround
+    nmap S   <Plug>YSurround
+    nmap ss  <Plug>Yssurround
+    nmap Ss  <Plug>YSsurround
+    nmap SS  <Plug>YSsurround
+    xmap S   <Plug>VSurround
+    xmap Sg  <Plug>VgSurround
 
     " Dash.app
     map <F1> <Plug>DashSearch
