@@ -73,19 +73,19 @@
     " Extended visual mode commands, substitutes and searches
     NeoBundle 'vis'
 
+    " Snippets system
+    if has("python")
+        " My snippets
+        NeoBundle 'hlissner/vim-ultisnips-snippets'
+        NeoBundle 'SirVer/ultisnips'
+            " Ignore the default snippets so I (and others) can define their own
+            let g:UltiSnipsSnippetDirectories = ["snips"]
+    endif
+
     " Auto-closes delimiters like (),{},[],etc.
     NeoBundle 'Raimondi/delimitMate'
         let g:delimitMate_expand_cr = 1
         let g:delimitMate_expand_space = 1
-
-    " Snippets system
-    if has("python")
-        NeoBundle 'SirVer/ultisnips'
-        " My snippets
-        NeoBundle 'hlissner/vim-ultisnips-snippets'
-            " Ignore the default snippets so I (and others) can define their own
-            let g:UltiSnipsSnippetDirectories = ['snips']
-    endif
 
     " HTML & CSS emmet goodness; Zen coding's successor
     NeoBundle 'mattn/emmet-vim'
@@ -118,7 +118,7 @@
     NeoBundle 'AndrewRadev/switch.vim'
     
     "
-    NeoBundle 'dansomething/vim-eclim'
+    NeoBundleLazy 'dansomething/vim-eclim', {'autoload': {'filetypes': ['java']}}
         let g:EclimCompletionMethod = 'omnifunc'
 " }}}
 
@@ -143,9 +143,8 @@
     NeoBundle 'Valloric/YouCompleteMe', {'build': {
                 \ 'mac': './install.sh --clang-completer',
                 \ 'unix': './install.sh --clang-completer' }}
-        " let g:ycm_autoclose_preview_window_after_insertion = 1
+        let g:ycm_autoclose_preview_window_after_insertion = 1
         let g:ycm_confirm_extra_conf = 0
-        let g:ycm_filetype_blacklist = { 'html':1, 'jade':1 }
 
     " Syntax checkers for a multitude of languages
     NeoBundle 'scrooloose/syntastic'
@@ -181,7 +180,7 @@
     NeoBundle 'othree/html5.vim'
 
     " CSS/SCSS/LESS
-    NeoBundle 'cakebaker/scss-syntax.vim',  {'autoload': {'filetypes': ['scss']}}
+    NeoBundle 'cakebaker/scss-syntax.vim'
 
     " PHP
     NeoBundleLazy 'StanAngeloff/php.vim',       {'autoload': {'filetypes': ['php', 'blade']}}
