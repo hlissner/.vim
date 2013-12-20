@@ -17,7 +17,7 @@ if !filereadable(nb_path)
     let has_nb = 0
 endif
 
-" Checks for and install vim's rc files
+" Checks for and symlinks vim's rc files (if they don't exist)
 let rcfiles = [".vimrc", ".gvimrc", ".ycm_extra_conf.py"]
 for f in rcfiles
     if !filereadable(expand("~/".f))
@@ -32,10 +32,6 @@ filetype on " without this vim emits a zero exit status, later, because of :ft o
 filetype off
 set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle'))
-
 NeoBundleFetch 'Shougo/neobundle.vim'
-" NeoBundleCheck
-
-filetype indent plugin on
 
 " vim:set ft=vim fmr={,} fdl=0 fdm=marker:

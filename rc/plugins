@@ -214,4 +214,7 @@
     NeoBundle 'digitaltoad/vim-jade'
 " }}}
 
+NeoBundleCheck
+filetype indent plugin on
+
 " vim:set ft=vim:
