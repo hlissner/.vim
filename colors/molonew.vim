@@ -23,8 +23,8 @@ let g:colors_name="molokai"
 " Main colors
 hi Cursor          guifg=#000000 guibg=#e3ffff
 
-hi Normal          guifg=#F8F8F2 guibg=#1B1D1E
-hi Comment         guifg=#424545
+hi Normal          guifg=#F8F8F2 guibg=#1c1e21
+hi Comment         guifg=#464c52
 " hi Comment         guifg=#7E8E91
 hi CursorLine                    guibg=#293739
 hi CursorLineNr    guifg=#FD971F               gui=none
@@ -36,9 +36,10 @@ hi SpecialKey      guifg=#465457
 
 hi Boolean         guifg=#AE81FF
 hi Character       guifg=#E6DB74
-hi Number          guifg=#c39fff
-hi String          guifg=#ecc41c
+hi Number          guifg=#abd464
+hi String          guifg=#8cd2ef
 hi Conditional     guifg=#F92672               gui=bold
+hi Repeat          guifg=#F92672               gui=bold
 hi Constant        guifg=#AE81FF               gui=bold
 hi Debug           guifg=#BCA3A3               gui=bold
 hi Define          guifg=#66D9EF
@@ -55,7 +56,7 @@ hi Exception       guifg=#A6E22E               gui=bold
 hi Float           guifg=#AE81FF
 hi FoldColumn      guifg=#465457 guibg=#000000
 hi Folded          guifg=#6D7D80 guibg=#131313
-hi Function        guifg=#A6E22E
+hi Function        guifg=#ffb147
 hi Identifier      guifg=#fdab46
 hi Ignore          guifg=#808080 guibg=bg
 hi IncSearch       guifg=#c5d9e4 guibg=#000000
@@ -80,7 +81,6 @@ hi PmenuThumb      guifg=#66D9EF
 hi PreCondit       guifg=#A6E22E               gui=bold
 hi PreProc         guifg=#b8f10b
 hi Question        guifg=#66D9EF
-hi Repeat          guifg=#F92672               gui=bold
 hi Search          guifg=#FFFFFF guibg=#455354
 " marks
 hi SignColumn      guifg=#A6E22E guibg=#17181a
@@ -90,7 +90,7 @@ hi Special         guifg=#66D9EF guibg=bg      gui=italic
 hi Statement       guifg=#b294bb               gui=none
 hi StatusLine      guifg=#455354 guibg=fg
 hi StatusLineNC    guifg=#808080 guibg=#080808
-hi StorageClass    guifg=#ecbb61                                                            gui=italic
+hi StorageClass    guifg=#ecbb61               gui=italic
 hi Structure       guifg=#66D9EF
 hi Tag             guifg=#F92672               gui=italic
 hi Title           guifg=#ef5939
