@@ -10,6 +10,7 @@ source $HOME/.vim/rc/plugins
 " Preferences {{{
     syntax on
 
+    set t_Co=256
     set background=dark
     colorscheme molonew
     let g:airline_theme = "badwolf"
@@ -56,10 +57,6 @@ source $HOME/.vim/rc/plugins
     " Rebalance windows when resizing vim
     autocmd VimResized * :wincmd =
 
-    " Shell {{{
-        " 256bit terminals
-        set t_Co=256
-    " }}}
     " Search {{{
         set incsearch            " find as you type
         set hlsearch             " Highlight search terms
