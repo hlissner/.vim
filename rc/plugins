@@ -74,15 +74,6 @@
     " Extended visual mode commands, substitutes and searches
     NeoBundle 'vis'
 
-    " Snippets system
-    if has("python")
-        " My snippets
-        NeoBundle 'hlissner/vim-ultisnips-snippets'
-        NeoBundle 'SirVer/ultisnips'
-            " Ignore the default snippets so I (and others) can define their own
-            let g:UltiSnipsSnippetDirectories = ["snips"]
-    endif
-
     " Auto-closes delimiters like (),{},[],etc.
     NeoBundle 'Raimondi/delimitMate'
         let g:delimitMate_expand_cr = 1
@@ -112,8 +103,6 @@
     " Easy changing and insertion of surrounding delimiters (e.g. quotes,
     " parenthesis, etc.)
     NeoBundle 'tpope/vim-surround'
-    NeoBundle 'kana/vim-textobj-user'
-    NeoBundle 'osyo-manga/vim-textobj-multiblock'
 
     " Switching segments of text with predefined replacements
     NeoBundle 'AndrewRadev/switch.vim'
@@ -121,6 +110,19 @@
     "
     NeoBundleLazy 'dansomething/vim-eclim', {'autoload': {'filetypes': ['java']}}
         let g:EclimCompletionMethod = 'omnifunc'
+
+    " Snippets system
+    if has("python")
+        NeoBundle 'SirVer/ultisnips'
+            " Ignore the default snippets so I (and others) can define their own
+            let g:UltiSnipsSnippetDirectories = ["snips"]
+
+        " My snippets
+        NeoBundle 'hlissner/vim-ultisnips-snippets'
+    endif
+
+    NeoBundle 'guns/vim-sexp'
+    NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
 " }}}
 
 " Remote resources {{{
