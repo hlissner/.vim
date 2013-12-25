@@ -120,7 +120,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> <leader>z :BUNDO<CR>
 
     " CtrlP
-    let g:ctrlp_map = '<leader>.'
+    let g:ctrlp_map = ''
+    " Only open CtrlP if the cwd ISN'T $HOME
+    nnoremap <silent><expr> <leader>. match(expand("%:p:h"), $HOME) == -1 ? ":<C-u>CtrlP<CR>" : ""
     nnoremap <silent> <leader>, :CtrlPBuffer<CR>
     nnoremap <silent> <leader>; :CtrlPFunky<CR>
     nnoremap <silent> <leader>m :CtrlPMRU<CR>
