@@ -1,1 +1,1 @@
-noremap <F12> :TernDef<CR>
+noremap g] :TernDef<CR>

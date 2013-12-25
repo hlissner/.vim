@@ -162,13 +162,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     imap <expr> <C-CR> emmet#expandAbbrIntelligent("\<tab>")
 
     " YCM
-    map <F12> :YcmCompleter GoToDefinitionElseDeclaration<CR>
-    map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    map g] :YcmCompleter GoToDefinitionElseDeclaration<CR>
     let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-
-    " vim-switch
-    nnoremap - :Switch<CR>
 
     " vim-surround
     let g:surround_no_mappings = 1
@@ -182,8 +178,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
     xmap S   <Plug>VSurround
     xmap Sg  <Plug>VgSurround
 
-    " Dash.app
-    map <F1> <Plug>DashSearch
+    " vim-switch
+    nnoremap - :Switch<CR>
 " }}}
 
 " Shortcut to vimrc and gvimrc
