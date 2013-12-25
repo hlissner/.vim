@@ -23,7 +23,7 @@ if has('gui_macvim')
     " mmyes, quite
     " set guifont=Ubuntu\ Mono:h14
     " set guifont=Monaco:h12
-    set guifont=Inconsolata:h16
+    set guifont=Inconsolata:h14
 
     " Replace some CMD shortcuts
     macmenu &File.Open\.\.\. key=<nop>
@@ -44,9 +44,11 @@ if has('gui_macvim')
     " Commenting using CMD+/"
     map <D-/> <leader>/
 
+    map <D-r> <leader>r
     " Replace :make
     map <D-b> :Dispatch<CR>
-    map <D-d> :NERDTreeToggle<CR>
+    map <D-d> <Plug>DashSearch
+    " map <D-d> :NERDTreeToggle<CR>
 
     " Shortcuts to outside apps {{{
         " Open in finder
