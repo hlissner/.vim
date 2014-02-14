@@ -18,8 +18,6 @@ if has('gui_macvim')
     " j doesn't seem to work from terminal
     set formatoptions+=j
 
-    set transparency=2
-
     " mmyes, quite
     " set guifont=Ubuntu\ Mono:h14
     " set guifont=Monaco:h12
