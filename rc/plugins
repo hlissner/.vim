@@ -35,36 +35,38 @@
     NeoBundle 'EasyGrep'
 
     " A filetree navigator replacement for netrw
-    NeoBundle 'tpope/vim-vinegar'
-    " NeoBundle 'scrooloose/nerdtree'
-    "     let NERDTreeMinimalUI = 1
-    "     let NERDTreeChDirMode = 1
-    "     let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
-    "     let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
-    "     let NERDTreeShowHidden = 1
-    "     let NERDTreeAutoDeleteBuffer = 1
+    NeoBundle 'scrooloose/nerdtree'
+        let NERDTreeHijackNetrw=1
+        let NERDTreeMinimalUI = 1
+        let NERDTreeChDirMode = 1
+        let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
+        let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
+        let NERDTreeShowHidden = 1
+        let NERDTreeAutoDeleteBuffer = 1
 
-    " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
-    NeoBundle 'kien/ctrlp.vim'
-    " Ctrlp extension for jumping to functions
-    NeoBundle 'tacahiroy/ctrlp-funky'
-    " Ctrlp extension for listing git modified files
-    NeoBundle 'jasoncodes/ctrlp-modified.vim'
-        let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'funky', 'tag']
-        let g:ctrlp_max_height = 15
-        let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
-        let g:ctrlp_working_path_mode = 0
-        let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\.(git|hg|svn|settings)$|tmp$',
-            \ 'file': '\.(exe|so|dll|sass-cache|classpaths|project|cache|jpg|png|gif|swf)$'
-        \ }
-        let g:ctrlp_user_command = {
-            \ 'types': [
-            \   ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-            \   ['.hg', 'hg --cwd %s locate -I']
-            \ ],
-            \ 'fallback': 'ag %s -l --nocolor -g ""'
-        \ }
+    if !g:is_ssh
+        " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
+        NeoBundle 'kien/ctrlp.vim'
+        " Ctrlp extension for jumping to functions
+        NeoBundle 'tacahiroy/ctrlp-funky'
+        " Ctrlp extension for listing git modified files
+        NeoBundle 'jasoncodes/ctrlp-modified.vim'
+            let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'funky', 'tag']
+            let g:ctrlp_max_height = 15
+            let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
+            let g:ctrlp_working_path_mode = 0
+            let g:ctrlp_custom_ignore = {
+                \ 'dir':  '\.(git|hg|svn|settings)$|tmp$',
+                \ 'file': '\.(exe|so|dll|sass-cache|classpaths|project|cache|jpg|png|gif|swf)$'
+            \ }
+            let g:ctrlp_user_command = {
+                \ 'types': [
+                \   ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                \   ['.hg', 'hg --cwd %s locate -I']
+                \ ],
+                \ 'fallback': 'ag %s -l --nocolor -g ""'
+            \ }
+    endif
 " }}}
 
 " Editing {{{
@@ -104,9 +106,6 @@
     " parenthesis, etc.)
     NeoBundle 'tpope/vim-surround'
 
-    " Switching segments of text with predefined replacements
-    NeoBundle 'AndrewRadev/switch.vim'
-    
     "
     NeoBundleLazy 'dansomething/vim-eclim', {'autoload': {'filetypes': ['java']}}
         let g:EclimCompletionMethod = 'omnifunc'
@@ -120,6 +119,9 @@
         " My snippets
         NeoBundle 'hlissner/vim-ultisnips-snippets'
     endif
+
+    NeoBundle 'AndrewRadev/switch.vim'
+    NeoBundle 'AndrewRadev/sideways.vim'
 
     NeoBundle 'guns/vim-sexp'
     NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
@@ -142,26 +144,33 @@
 " }
 
 " Programming {{{
-    " Awesome autocompletion
-    NeoBundle 'Valloric/YouCompleteMe', {'build': {
-                \ 'mac': './install.sh --clang-completer',
-                \ 'unix': './install.sh --clang-completer' }}
-        let g:ycm_autoclose_preview_window_after_insertion = 1
-        let g:ycm_confirm_extra_conf = 0
+    if !g:is_ssh
+        " Awesome autocompletion
+        NeoBundle 'Valloric/YouCompleteMe', {'build': {
+                    \ 'mac': './install.sh --clang-completer',
+                    \ 'unix': './install.sh --clang-completer' }}
+            let g:ycm_autoclose_preview_window_after_insertion = 1
+            let g:ycm_confirm_extra_conf = 1
+            let g:ycm_register_as_syntastic_checker = 0
+            let g:ycm_seed_identifiers_with_syntax = 1
+            let g:ycm_add_preview_to_completeopt = 1
+            let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+            let g:ycm_filepath_completion_use_working_dir = 1
 
-    " Syntax checkers for a multitude of languages
-    NeoBundle 'scrooloose/syntastic'
-        let g:syntastic_auto_loc_list=1
-        let g:syntastic_quiet_warnings=1
-        let g:syntastic_phpcs_disable=1
-        let g:syntastic_echo_current_error=0
-        let g:syntastic_enable_balloons = 0
+        " Syntax checkers for a multitude of languages
+        NeoBundle 'scrooloose/syntastic'
+            let g:syntastic_auto_loc_list=1
+            let g:syntastic_quiet_messages={'level': 'warnings'}
+            let g:syntastic_phpcs_disable=1
+            let g:syntastic_echo_current_error=0
+            let g:syntastic_enable_balloons = 0
 
-        let g:syntastic_error_symbol = '►'
-        let g:syntastic_warning_symbol = '►'
+            let g:syntastic_error_symbol = '►'
+            let g:syntastic_warning_symbol = '►'
 
-        let g:syntastic_loc_list_height = 5
-        let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html'] }
+            let g:syntastic_loc_list_height = 5
+            let g:syntastic_mode_map = {'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['html']}
+    endif
 
     " Running code inline for testing purposes
     NeoBundle 'notalex/vim-run-live'
@@ -201,12 +210,10 @@
     NeoBundleLazy 'moll/vim-node',                {'autoload': {'filetypes': ['javascript']}}
     NeoBundleLazy 'marijnh/tern_for_vim',         {'autoload': {'filetypes': ['javascript']}, 'build': {'mac' : 'npm install'}}
 
-    " Ruby
-    NeoBundleLazy 'vim-ruby/vim-ruby',          {'autoload': {'filetypes': ['ruby']}}
-    NeoBundleLazy 'tpope/vim-rails',            {'autoload': {'filetypes': ['ruby']}}
-
     " C/C++
     NeoBundle 'octol/vim-cpp-enhanced-highlight'
+    NeoBundle 'kana/vim-altr'
+        call altr#define('scss/%.scss', 'css/%.css')
 
     " Haxe
     NeoBundle 'jdonaldson/vaxe'
