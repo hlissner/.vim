@@ -1,5 +1,7 @@
 ﻿set nocompatible
 
+let g:is_ssh = ($SSH_TTY != "")
+
 " Check to see if neobundle is installed, install it if not. Init
 " plugins and what not afterwards.
 source $HOME/.vim/rc/init
@@ -15,9 +17,7 @@ source $HOME/.vim/rc/plugins
     colorscheme molonew
     let g:airline_theme = "badwolf"
 
-    set autowrite                " Auto-write files
     set autoread                 " Auto-update a file that's been edited externally
-
     set number                   " Line numbers
     set laststatus=2             " Show statusbar
     set nolist                   " Don't show whitespace chars (indentLine does it nicer)
@@ -32,18 +32,10 @@ source $HOME/.vim/rc/plugins
     set shortmess+=filmnrxoOtTs
     set scrolloff=8
     set scrolljump=5             " Scroll 5 lines at a time at bottom/top
-    set ttyfast
 
     set mouse=a
     if exists('$TMUX')  " Support resizing in tmux
         set ttymouse=xterm2
-    endif
-
-    " Share a clipboard with OS and vim terminal sessions
-    if has('unnamedplus')
-        set clipboard=unnamedplus
-    else
-        set clipboard=unnamed
     endif
 
     if has('cmdline_info')
@@ -53,9 +45,6 @@ source $HOME/.vim/rc/plugins
 
     set textwidth=88
     set fillchars=vert:¦
-
-    " Rebalance windows when resizing vim
-    autocmd VimResized * :wincmd =
 
     " Search {{{
         set incsearch            " find as you type
@@ -74,12 +63,12 @@ source $HOME/.vim/rc/plugins
     " Omnicomplete {{{
         set tags=./.tags;/,~/.tags,~/tags
 
-        set completeopt=longest,menu
+        set completeopt=menu
         set wildmenu                    " Show menu instead of auto-complete
         set wildmode=list:longest,full  " command <Tab> completion: list
                                         " matches -> longest common -> then
                                         " all.
-        set wildignore+=*.swp,*.log,.sass-cache
+        set wildignore+=*.swp,*.log,.sass-cache,.codekit-cache,config.codekit
         set wildignore+=*.class,*.o,*.pyc,*.obj,*DS_Store*
 
         " Automatically close the popup menu / preview window

@@ -12,6 +12,15 @@ set go-=R
 " Don't show dialogues, use text prompts
 set go+=c
 
+set ttyfast
+
+" Share a clipboard with OS and vim terminal sessions
+if has('unnamedplus')
+    set clipboard=unnamedplus
+else
+    set clipboard=unnamed
+endif
+
 " For macvim
 if has('gui_macvim')
 
@@ -71,7 +80,7 @@ else
     " For gvim
     set guifont=Monospace\ 10
     
-    " Commenting using CMD+/"
+    " Commenting using CMD+/
     map <C-/> <leader>/
 
     " Textmate-like CMD+Enter
