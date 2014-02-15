@@ -20,16 +20,21 @@ flags = [
     '-Wno-variadic-macros',
     '-fexceptions',
     '-DNDEBUG',
-    '-std=c++11',
-    '-stdlib=libc++',
-    '-x', 'c++',
     '-I', '.',
-    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/c++/v1',
-    '-isystem', '/usr/include/c++/4.2.1',
+    '-x', 'objective-c++',
+
+    '-std=gnu99', 
+    '-isysroot', '/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk',
+    '-isystem', '/Volumes/Storage/Dropbox/dev/include',
     '-isystem', '/usr/local/include',
     '-isystem', '/usr/include',
     '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.0/include',
-    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include'
+    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+
+    # For Obj-C
+    '-framework', 'Foundation',
+    '-framework', 'UIKit',
+    '-l', 'obj'
 ]
 
 if compilation_database_folder:
@@ -76,15 +81,17 @@ def FlagsForFile(filename):
         # Bear in mind that compilation_info.compiler_flags_ does NOT return a
         # python list, but a "list-like" StringVec object
         compilation_info = database.GetCompilationInfoForFile(filename)
+
         final_flags = PrepareClangFlags(
             MakeRelativePathsInFlagsAbsolute(
                 compilation_info.compiler_flags_,
                 compilation_info.compiler_working_dir_),
             filename)
+
     else:
         relative_to = DirectoryOfThisScript()
         final_flags = MakeRelativePathsInFlagsAbsolute(flags, relative_to)
- 
+
     return {
         'flags': final_flags,
         'do_cache': True}
