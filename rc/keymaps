@@ -5,7 +5,7 @@ let maplocalleader = '\'
 noremap ; :
 
 " Trigger to preserve indentation on pastes
-set pastetoggle=<localleader><localleader>
+set pastetoggle=<F12>
 
 " Easier than escape. Pinnacle of laziness.
 imap jj <ESC>
@@ -42,8 +42,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> T :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>T
 
     " Uses normal-mode C-Space to jump to delimiters
-    nmap <C-Space>   /[([{]<CR>:nohlsearch<CR>
-    nmap <C-S-Space> ?[([{]<CR>:nohlsearch<CR>
+    imap <C-z> <Esc>/[(\[{,\])}]<CR>:nohlsearch<CR>a
+    imap <C-S-z> <Esc>?[(\[{,\])}]<CR>:nohlsearch<CR>a
 " }}}
 
 " Editing {{{
@@ -69,15 +69,12 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Enabling repeat in visual mode
     vmap . :normal .<CR>
 
-    " Reselect pasted text
-    nnoremap <leader>v V`]
-
     " Uses A-Space for generic omnicomplete
     imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
     imap <expr> <A-S-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
 
     " Append semicolon at end of the line
-    inoremap \; <C-o>A;
+    au FileType c,cpp,php,javascript,haxe,scss,css inoremap ;; <C-o>A
 " }}}
 
 " Buffers {{{
@@ -122,7 +119,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " CtrlP
     let g:ctrlp_map = ''
     " Only open CtrlP if the cwd ISN'T $HOME
-    nnoremap <silent><expr> <leader>. match(expand("%:p:h"), $HOME) == -1 ? ":<C-u>CtrlP<CR>" : ""
+    nnoremap <silent><expr> <leader>. getcwd() != $HOME ? ":<C-u>CtrlP<CR>" : ":<C-u>echoe 'Cannot open CtrlP in HOME'<CR>"
     nnoremap <silent> <leader>, :CtrlPBuffer<CR>
     nnoremap <silent> <leader>; :CtrlPFunky<CR>
     nnoremap <silent> <leader>m :CtrlPMRU<CR>
@@ -180,6 +177,16 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
     " vim-switch
     nnoremap - :Switch<CR>
+    nnoremap [p :SidewaysLeft<CR>
+    nnoremap ]p :SidewaysRight<CR>
+    onoremap aa <Plug>SidewaysArgumentTextobjA
+    xnoremap aa <Plug>SidewaysArgumentTextobjA
+    onoremap ia <Plug>SidewaysArgumentTextobjI
+    xnoremap ia <Plug>SidewaysArgumentTextobjI
+
+    " altr: switching between like files (like %.h and %.c)
+    nnoremap ]a <Plug>(altr-forward)
+    nnoremap [a <Plug>(altr-back)
 " }}}
 
 " Shortcut to vimrc and gvimrc
