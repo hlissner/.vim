@@ -45,8 +45,11 @@ if has('gui_macvim')
     inoremap <S-D-CR> <C-O>O
 
     " Fast scrolling
-    nmap <D-j> 5j
-    nmap <D-k> 5k
+    map <D-j> 5j
+    map <D-k> 5k
+
+    " Open NERDTree
+    map <D-\> :<C-u>NERDTreeToggle<CR>
 
     " Commenting using CMD+/"
     map <D-/> <leader>/
