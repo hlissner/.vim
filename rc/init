@@ -17,16 +17,6 @@ if !filereadable(nb_path)
     let has_nb = 0
 endif
 
-" Checks for and symlinks vim's rc files (if they don't exist)
-let rcfiles = [".vimrc", ".gvimrc", ".ycm_extra_conf.py"]
-for f in rcfiles
-    if !filereadable(expand("~/".f))
-        echo "Linking ".f
-
-        call system("ln -s ~/.vim/".f." ~/".f)
-    endif
-endfor
-
 " Initialize NeoBundle
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 filetype off
