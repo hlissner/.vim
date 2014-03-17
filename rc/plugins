@@ -2,23 +2,7 @@
 " Appearance {{{
     " Pretty indent indicators
     NeoBundle 'Yggdroot/indentLine'
-        let g:indentLine_color_gui = '#2c3234'
-
-    " A status line that lighter than powerline
-    NeoBundle 'bling/vim-airline'
-        let g:airline#extensions#hunks#enabled = 0
-        let g:airline#extensions#whitespace#enabled = 0
-
-        let g:airline_left_sep=""
-        let g:airline_right_sep=""
-        let g:airline_enable_branch=1
-        let g:airline_enable_prefix=1
-        let g:airline_paste_symbol = 'ρ'
-        let g:airline_exclude_preview = 1
-
-        let g:airline_mode_map = {'n':'N', 'i':'I', 'R':'R', 'v':'V', 'V':'V-', 'c':'CMD', '':'V¤'}
-        let g:airline_section_x = "%{strlen(&fenc)>0?&fenc:''}"
-        let g:airline_section_y = "%{strlen(&filetype)>0?&filetype:''}"
+        let g:indentLine_color_gui = '#4a514f'
 " }}}
 
 " File search {{{
@@ -121,7 +105,7 @@
     endif
 
     NeoBundle 'AndrewRadev/switch.vim'
-    NeoBundle 'AndrewRadev/sideways.vim'
+    " NeoBundle 'AndrewRadev/sideways.vim'
 
     NeoBundle 'guns/vim-sexp'
     NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
@@ -145,24 +129,28 @@
 
 " Programming {{{
     if !g:is_ssh
-        " Awesome autocompletion
-        NeoBundle 'Valloric/YouCompleteMe', {'build': {
-                    \ 'mac': './install.sh --clang-completer',
-                    \ 'unix': './install.sh --clang-completer' }}
-            let g:ycm_autoclose_preview_window_after_insertion = 1
-            let g:ycm_confirm_extra_conf = 1
-            let g:ycm_register_as_syntastic_checker = 0
-            let g:ycm_seed_identifiers_with_syntax = 1
-            let g:ycm_add_preview_to_completeopt = 1
-            let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
-            let g:ycm_filepath_completion_use_working_dir = 1
+        " YCM's trouble to get working across systems, so let's
+        " just leave it to the systems running macvim.
+        if has("gui_running")
+            " Awesome autocompletion
+            NeoBundle 'Valloric/YouCompleteMe', {'build': {
+                        \ 'mac': './install.sh --clang-completer',
+                        \ 'unix': './install.sh --clang-completer' }}
+                let g:ycm_autoclose_preview_window_after_insertion = 1
+                let g:ycm_confirm_extra_conf = 1
+                let g:ycm_register_as_syntastic_checker = 0
+                let g:ycm_seed_identifiers_with_syntax = 1
+                let g:ycm_add_preview_to_completeopt = 1
+                let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+                let g:ycm_filepath_completion_use_working_dir = 1
+        endif
 
         " Syntax checkers for a multitude of languages
         NeoBundle 'scrooloose/syntastic'
-            let g:syntastic_auto_loc_list=1
-            let g:syntastic_quiet_messages={'level': 'warnings'}
+            let g:syntastic_auto_loc_list=0
+            " let g:syntastic_quiet_messages={'level': 'warnings'}
             let g:syntastic_phpcs_disable=1
-            let g:syntastic_echo_current_error=0
+            let g:syntastic_echo_current_error=1
             let g:syntastic_enable_balloons = 0
 
             let g:syntastic_error_symbol = '►'
@@ -199,7 +187,6 @@
     NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload': {'filetypes': ['php']}}
     NeoBundleLazy 'shawncplus/phpcomplete.vim', {'autoload': {'filetypes': ['php', 'blade']}}
     NeoBundleLazy 'stephpy/vim-phpdoc',         {'autoload': {'filetypes': ['php']}}
-    NeoBundleLazy 'xsbeats/vim-blade',          {'autoload': {'filetypes': ['php', 'blade']}}
 
     " Python
     NeoBundleLazy 'indentpython.vim--nianyang', {'autoload': {'filetypes': ['python']}}
@@ -221,6 +208,7 @@
     " Other
     NeoBundle 'spf13/vim-markdown'
     NeoBundle 'digitaltoad/vim-jade'
+    NeoBundle 'rodjek/vim-puppet'
 " }}}
 
 NeoBundleCheck

@@ -14,25 +14,13 @@ imap jj <ESC>
 noremap <silent> <leader>? :nohlsearch<CR>
 
 " Navigation {{{
-    " Normalize all the navigation keys to move by row/col despite any
-    " wrapped text
+    " Normalize all the navigation keys to move by row/col despite any wrapped text
     noremap j gj
     noremap k gk
     " % matchit shortcut, but only in normal mode!
     nmap <Tab> %
     " Easier fold toggle
     noremap <Space> za
-    " Faster scrolling
-    map <C-h> zH
-    map <C-j> 5j
-    map <C-k> 5k
-    map <C-l> zL
-
-    " Get used to hjkl!
-    noremap <Left> <Nop>
-    noremap <Right> <Nop>
-    noremap <Down> <Nop>
-    noremap <Up> <Nop>
 
     " f: Find. Also support repeating with .
     nnoremap <Plug>OriginalSemicolon ;
@@ -40,10 +28,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> t :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>t
     nnoremap <silent> F :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>F
     nnoremap <silent> T :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>T
-
-    " Uses normal-mode C-Space to jump to delimiters
-    imap <C-z> <Esc>/[(\[{,\])}]<CR>:nohlsearch<CR>a
-    imap <C-S-z> <Esc>?[(\[{,\])}]<CR>:nohlsearch<CR>a
 " }}}
 
 " Editing {{{
@@ -72,9 +56,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Uses A-Space for generic omnicomplete
     imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
     imap <expr> <A-S-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
-
-    " Append semicolon at end of the line
-    au FileType c,cpp,php,javascript,haxe,scss,css inoremap ;; <C-o>A
 " }}}
 
 " Buffers {{{
