@@ -51,10 +51,14 @@ source $HOME/.vim/rc/plugins
 
         set statusline=%t                              " tail of the filename
         set statusline+=%w%h%m%r                       " Options
-        set statusline+=\ %{SyntasticStatuslineFlag()}
+        if g:loaded_syntastic_plugin
+            set statusline+=\ %{SyntasticStatuslineFlag()}
+        endif
         set statusline+=%=                             " left/right separator
         set statusline+=%y                             " filetype
-        set statusline+=\ %{fugitive#statusline()}     " Git Hotness
+        if g:loaded_fugitive
+            set statusline+=\ %{fugitive#statusline()}     " Git Hotness
+        endif
         set statusline+=\ •\ 
         set statusline+=%c                             " cursor column
         set statusline+=\ %l/%L                        " cursor line/total lines
