@@ -209,6 +209,7 @@
     NeoBundle 'spf13/vim-markdown'
     NeoBundle 'digitaltoad/vim-jade'
     NeoBundle 'rodjek/vim-puppet'
+        let g:syntastic_puppet_puppetlint_args = "--error-level error"
 " }}}
 
 NeoBundleCheck
