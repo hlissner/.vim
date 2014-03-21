@@ -51,12 +51,12 @@ source $HOME/.vim/rc/plugins
 
         set statusline=%t                              " tail of the filename
         set statusline+=%w%h%m%r                       " Options
-        if g:loaded_syntastic_plugin
+        if exists('g:loaded_syntastic_plugin')
             set statusline+=\ %{SyntasticStatuslineFlag()}
         endif
         set statusline+=%=                             " left/right separator
         set statusline+=%y                             " filetype
-        if g:loaded_fugitive
+        if exists('g:loaded_fugitive')
             set statusline+=\ %{fugitive#statusline()}     " Git Hotness
         endif
         set statusline+=\ •\ 
