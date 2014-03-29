@@ -21,15 +21,6 @@
         let g:easytree_ignore_files = ['*.swp', '.project', '.DS_Store']
         let g:easytree_ignore_dirs = ['.git', '.sass-cache']
     
-    " NeoBundle 'scrooloose/nerdtree'
-    "     let NERDTreeHijackNetrw=1
-    "     let NERDTreeMinimalUI = 1
-    "     let NERDTreeChDirMode = 1
-    "     let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
-" ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
-    "     let NERDTreeShowHidden = 1
-    "     let NERDTreeAutoDeleteBuffer = 1
-    "
     if !g:is_ssh
         " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
         NeoBundle 'kien/ctrlp.vim'
