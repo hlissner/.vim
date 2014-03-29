@@ -449,6 +449,11 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>X("snipKeyword", s:purple, "", "")
     call <SID>X("snipStart", s:yellow, "", "")
 
+    " Shell highlighting
+    call <SID>X("zshVariableDef", s:orange, "", "")
+    call <SID>X("zshCommands", s:blue, "", "")
+
+
 	" Delete Functions
 	delf <SID>X
 	delf <SID>rgb
