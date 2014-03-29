@@ -14,6 +14,9 @@ set go+=c
 
 set ttyfast
 
+" Sets File>Open to start in current file's path
+set browsedir=buffer
+
 " Share a clipboard with OS and vim terminal sessions
 if has('unnamedplus')
     set clipboard=unnamedplus
@@ -27,7 +30,6 @@ if has('gui_macvim')
     " j doesn't seem to work from terminal
     set formatoptions+=j
 
-    " mmyes, quite
     " set guifont=Ubuntu\ Mono:h14
     " set guifont=Monaco:h12
     set guifont=Inconsolata:h16
@@ -47,12 +49,14 @@ if has('gui_macvim')
     " Fast scrolling
     map <D-j> 5j
     map <D-k> 5k
+    imap <D-j> <C-o>5j
+    imap <D-k> <C-o>5k
 
     " Open NERDTree
     map <D-\> :<C-u>NERDTreeToggle<CR>
 
     " Commenting using CMD+/"
-    map <D-/> <leader>/
+    map <D-/> gcc
 
     map <D-r> <leader>r
     " Replace :make
@@ -83,8 +87,8 @@ else
     " For gvim
     set guifont=Monospace\ 10
     
-    " Commenting using CMD+/
-    map <C-/> <leader>/
+    " Commenting using Ctrl+/
+    map <C-/> gcc
 
     " Textmate-like CMD+Enter
     inoremap <C-CR> <C-O>o

@@ -6,8 +6,6 @@
 " }}}
 
 " File search {{{
-    NeoBundle 'majutsushi/tagbar'
-
     " More powerful file searching
     if executable('ag')
         NeoBundle 'rking/ag.vim'
@@ -16,18 +14,22 @@
     endif
 
     " Project-wide search and replace
-    NeoBundle 'EasyGrep'
+    NeoBundle 'skwp/greplace.vim'
 
     " A filetree navigator replacement for netrw
-    NeoBundle 'scrooloose/nerdtree'
-        let NERDTreeHijackNetrw=1
-        let NERDTreeMinimalUI = 1
-        let NERDTreeChDirMode = 1
-        let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
-        let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
-        let NERDTreeShowHidden = 1
-        let NERDTreeAutoDeleteBuffer = 1
-
+    NeoBundle 'troydm/easytree.vim'
+        let g:easytree_ignore_files = ['*.swp', '.project', '.DS_Store']
+        let g:easytree_ignore_dirs = ['.git', '.sass-cache']
+    
+    " NeoBundle 'scrooloose/nerdtree'
+    "     let NERDTreeHijackNetrw=1
+    "     let NERDTreeMinimalUI = 1
+    "     let NERDTreeChDirMode = 1
+    "     let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
+" ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
+    "     let NERDTreeShowHidden = 1
+    "     let NERDTreeAutoDeleteBuffer = 1
+    "
     if !g:is_ssh
         " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
         NeoBundle 'kien/ctrlp.vim'
@@ -36,9 +38,8 @@
         " Ctrlp extension for listing git modified files
         NeoBundle 'jasoncodes/ctrlp-modified.vim'
             let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'funky', 'tag']
-            let g:ctrlp_max_height = 15
+            let g:ctrlp_max_height = 12
             let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
-            let g:ctrlp_working_path_mode = 0
             let g:ctrlp_custom_ignore = {
                 \ 'dir':  '\.(git|hg|svn|settings)$|tmp$',
                 \ 'file': '\.(exe|so|dll|sass-cache|classpaths|project|cache|jpg|png|gif|swf)$'
@@ -46,10 +47,11 @@
             let g:ctrlp_user_command = {
                 \ 'types': [
                 \   ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                \   ['.hg', 'hg --cwd %s locate -I']
                 \ ],
                 \ 'fallback': 'ag %s -l --nocolor -g ""'
             \ }
+            " ag and git ls-files are fast enough. Don't cache!
+            let g:ctrlp_use_caching = 0
     endif
 " }}}
 
@@ -58,7 +60,7 @@
     NeoBundle 'matchit.zip'
 
     " Extended visual mode commands, substitutes and searches
-    NeoBundle 'vis'
+    " NeoBundle 'vis'
 
     " Auto-closes delimiters like (),{},[],etc.
     NeoBundle 'Raimondi/delimitMate'
@@ -90,10 +92,6 @@
     " parenthesis, etc.)
     NeoBundle 'tpope/vim-surround'
 
-    "
-    NeoBundleLazy 'dansomething/vim-eclim', {'autoload': {'filetypes': ['java']}}
-        let g:EclimCompletionMethod = 'omnifunc'
-
     " Snippets system
     if has("python")
         NeoBundle 'SirVer/ultisnips'
@@ -105,10 +103,6 @@
     endif
 
     NeoBundle 'AndrewRadev/switch.vim'
-    " NeoBundle 'AndrewRadev/sideways.vim'
-
-    NeoBundle 'guns/vim-sexp'
-    NeoBundle 'tpope/vim-sexp-mappings-for-regular-people'
 " }}}
 
 " Remote resources {{{
@@ -130,7 +124,7 @@
 " Programming {{{
     if !g:is_ssh
         " YCM's trouble to get working across systems, so let's
-        " just leave it to the systems running macvim.
+        " just leave it to the systems running (mac|g)vim
         if has("gui_running")
             " Awesome autocompletion
             NeoBundle 'Valloric/YouCompleteMe', {'build': {
@@ -140,9 +134,10 @@
                 let g:ycm_confirm_extra_conf = 1
                 let g:ycm_register_as_syntastic_checker = 0
                 let g:ycm_seed_identifiers_with_syntax = 1
-                let g:ycm_add_preview_to_completeopt = 1
+                " let g:ycm_add_preview_to_completeopt = 1
                 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
                 let g:ycm_filepath_completion_use_working_dir = 1
+                " let g:ycm_auto_trigger = 0
         endif
 
         " Syntax checkers for a multitude of languages
@@ -207,7 +202,7 @@
 
     " Other
     NeoBundle 'spf13/vim-markdown'
-    NeoBundle 'digitaltoad/vim-jade'
+    " NeoBundle 'digitaltoad/vim-jade'
     NeoBundle 'rodjek/vim-puppet'
         let g:syntastic_puppet_puppetlint_args = "--error-level error"
 " }}}

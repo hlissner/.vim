@@ -1,4 +1,7 @@
 
+" Shortcut to vimrc and gvimrc
+nnoremap <localleader>ev :CtrlP ~/.vim<CR>
+
 " Comma get some... sorry.
 let mapleader = ','
 let maplocalleader = '\'
@@ -6,10 +9,8 @@ noremap ; :
 
 " Trigger to preserve indentation on pastes
 set pastetoggle=<F12>
-
 " Easier than escape. Pinnacle of laziness.
 imap jj <ESC>
-
 " Turn off search highlighting
 noremap <silent> <leader>? :nohlsearch<CR>
 
@@ -47,21 +48,12 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Textmate-like CMD+Enter (O in insert mode)
     inoremap <S-CR> <C-O>o
     inoremap <C-S-CR> <C-O>O
-    nnoremap <S-CR> o<Esc>
-    nnoremap <C-S-CR> O<Esc>
 
     " Enabling repeat in visual mode
     vmap . :normal .<CR>
-
-    " Uses A-Space for generic omnicomplete
-    imap <expr> <A-Space>   pumvisible() ? "\<C-n>" : "\<C-x><C-n>"
-    imap <expr> <A-S-Space> pumvisible() ? "\<C-p>" : "\<C-x><C-p>"
 " }}}
 
 " Buffers {{{
-    " Go to last buffer
-    nnoremap <C-b> <C-^>
-
     " Change CWD to current file's directory
     nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>    
 
@@ -86,7 +78,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
     " Shortcuts
     cnoremap ;; <C-R>=expand('%:p:h').'/'<CR>
-    cnoremap ;. <C-R>=expand("%:t")<CR>
+    cnoremap ;/ <C-R>=expand("%:t")<CR>
+    cnoremap ;. <C-R>=expand("%:p:r")<CR>
     
     " Mimic shortcuts in the terminal
     cnoremap <C-a> <Home>
@@ -109,9 +102,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> <leader>om :CtrlPModified<CR>
     nnoremap <silent> <leader>ob :CtrlPBranch<CR>
 
-    " NERDTree
-    nnoremap <leader>n :NERDTreeToggle<CR>
-    nnoremap <leader>N :NERDTreeFind<CR>
+    " EasyTree
+    nnoremap <C-e> :EasyTree<CR>
 
     " Tabularize
     nmap <leader>a= :Tabularize /=<CR>
@@ -127,10 +119,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nmap <leader>a<Bar> :Tabularize /<Bar><CR>
     vmap <leader>a<Bar> :Tabularize /<Bar><CR>
 
-    " TComment
-    map <silent> <leader>/ gcc
-    vmap <silent> <leader>/ gc
-
     " UltiSnips
     let g:UltiSnipsExpandTrigger = "<Tab>"
     let g:UltiSnipsJumpForwardTrigger = "<Tab>"
@@ -145,6 +133,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 
     " vim-surround
+    " I turned the keymappings around to restore the 'feedback'
+    " I get from operator mode after common vim commands, like d
+    " and c.
     let g:surround_no_mappings = 1
     nmap sd  <Plug>Dsurround
     nmap sc  <Plug>Csurround
@@ -158,22 +149,10 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
     " vim-switch
     nnoremap - :Switch<CR>
-    nnoremap [p :SidewaysLeft<CR>
-    nnoremap ]p :SidewaysRight<CR>
-    onoremap aa <Plug>SidewaysArgumentTextobjA
-    xnoremap aa <Plug>SidewaysArgumentTextobjA
-    onoremap ia <Plug>SidewaysArgumentTextobjI
-    xnoremap ia <Plug>SidewaysArgumentTextobjI
 
     " altr: switching between like files (like %.h and %.c)
     nnoremap ]a <Plug>(altr-forward)
     nnoremap [a <Plug>(altr-back)
 " }}}
-
-" Shortcut to vimrc and gvimrc
-nnoremap <localleader>ev :e $HOME/.vimrc<CR>
-nnoremap <localleader>el :e $HOME/.vimrc.local<CR>
-nnoremap <localleader>eg :e $HOME/.gvimrc<CR>
-nnoremap <localleader>e. :CtrlP $HOME/.vim/rc<CR>
 
 " vim:set ft=vim:
