@@ -32,6 +32,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
 " }}}
 
 " Editing {{{
+    nnoremap <C-b> <C-^>
     " Insert-mode navigation
     " Go to end of line
     inoremap <C-e> <Esc>A
@@ -77,8 +78,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
     com! WW w !sudo tree % >/dev/null
 
     " Shortcuts
-    cnoremap ;; <C-R>=expand('%:p:h').'/'<CR>
-    cnoremap ;/ <C-R>=expand("%:t")<CR>
+    cnoremap ;/ <C-R>=expand('%:p:h').'/'<CR>
+    cnoremap ;; <C-R>=expand("%:t")<CR>
     cnoremap ;. <C-R>=expand("%:p:r")<CR>
     
     " Mimic shortcuts in the terminal
@@ -86,25 +87,32 @@ noremap <silent> <leader>? :nohlsearch<CR>
     cnoremap <C-e> <End>
 " }}}
 
+" External Tools {{{
+    " Send cwd to tmux
+    nnoremap <localleader>x :Tmux cd <C-r>=expand("%:p:h")<CR><CR>
+    nnoremap <localleader>X :Tmux cd <C-r>=expand("%:p:r")<CR><CR>
+
+    vnoremap <localleader>\ <Plug>SendSelectionToTmux 
+" }}}
+
 " Plugins {{{
     " bufkill - reopen last closed buffer
-    nnoremap <silent> <leader>z :BUNDO<CR>
+    nnoremap <silent> zz :Bdelete<CR>
 
     " CtrlP
     let g:ctrlp_map = ''
     " Only open CtrlP if the cwd ISN'T $HOME
-    nnoremap <silent><expr> <leader>. getcwd() != $HOME ? ":<C-u>CtrlP<CR>" : ":<C-u>echoe 'Cannot open CtrlP in HOME'<CR>"
+    nnoremap <silent><expr> <leader>/ getcwd() != $HOME ? ":<C-u>CtrlPCurWD<CR>" : ":<C-u>echoe 'Cannot open CtrlP in HOME'<CR>"
+    nnoremap <silent> <leader>. :CtrlPCurFile<CR>
     nnoremap <silent> <leader>, :CtrlPBuffer<CR>
     nnoremap <silent> <leader>; :CtrlPFunky<CR>
     nnoremap <silent> <leader>m :CtrlPMRU<CR>
+    nnoremap <silent> <leader>M :CtrlPModified<CR>
     nnoremap <silent> <leader>t :CtrlPBufTag<CR>
     nnoremap <silent> <leader>T :CtrlPBufTagAll<CR>
-    nnoremap <silent> <leader>om :CtrlPModified<CR>
-    nnoremap <silent> <leader>ob :CtrlPBranch<CR>
 
     " NERDTree
-    map <silent> <C-\> :call ToggleVExplorer()<CR>
-    map <silent> <C-Bar> :<C-u>vs.<CR>
+    map <localleader>/ :call ToggleVExplorer()<CR>
 
     " Tabularize
     nmap <leader>a= :Tabularize /=<CR>

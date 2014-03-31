@@ -3,3 +3,4 @@ snippets/
 bundle/*
 .DS_Store
 tags
+.netrwhist

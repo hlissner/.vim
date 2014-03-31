@@ -13,8 +13,6 @@ set go-=e
 " Don't show dialogues, use text prompts
 set go+=c
 
-set ttyfast
-
 " Sets File>Open to start in current file's path
 set browsedir=buffer
 
@@ -53,10 +51,6 @@ if has('gui_macvim')
     imap <D-j> <C-o>5j
     imap <D-k> <C-o>5k
 
-    " Open NERDTree
-    map <silent> <D-\> :call ToggleVExplorer()<CR>
-    map <silent> <D-Bar> :<C-u>vs.<CR>
-
     " Commenting using CMD+/"
     nmap <D-/> gcc
     vmap <D-/> gcc
@@ -75,8 +69,6 @@ if has('gui_macvim')
     map <D-r> <leader>r
     " Replace :make
     map <D-b> :Dispatch<CR>
-    map <D-d> <Plug>DashSearch
-    " map <D-d> :NERDTreeToggle<CR>
 
     " Shortcuts to outside apps {{{
         " Open in finder
