@@ -60,7 +60,6 @@ source $HOME/.vim/rc/plugins
     let g:netrw_liststyle=3
     let g:netrw_banner = 0
     let g:netrw_winsize = 20
-    au VimLeave * if filereadable("[path here]/.netrwhist")|call delete("[path here]/.netrwhist")|endif
 
     " Toggle Vexplore with Ctrl-E
     function! ToggleVExplorer()
