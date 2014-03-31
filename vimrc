@@ -4,8 +4,6 @@ set nocompatible
 let g:is_ssh = ($SSH_TTY != "")
 
 " Initialize NeoBundle
-filetype on " without this vim emits a zero exit status, later, because of :ft off
-filetype off
 set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -60,6 +58,29 @@ source $HOME/.vim/rc/plugins
     let g:netrw_browse_split = 4
     let g:netrw_altv = 1
     let g:netrw_liststyle=3
+    let g:netrw_banner = 0
+    let g:netrw_winsize = 20
+    au VimLeave * if filereadable("[path here]/.netrwhist")|call delete("[path here]/.netrwhist")|endif
+
+    " Toggle Vexplore with Ctrl-E
+    function! ToggleVExplorer()
+        if exists("t:expl_buf_num")
+            let expl_win_num = bufwinnr(t:expl_buf_num)
+            if expl_win_num != -1
+                let cur_win_nr = winnr()
+                exec expl_win_num . 'wincmd w'
+                close
+                exec cur_win_nr . 'wincmd w'
+                unlet t:expl_buf_num
+            else
+                unlet t:expl_buf_num
+            endif
+        else
+            exec '1wincmd w'
+            Vexplore
+            let t:expl_buf_num = bufnr("%")
+        endif
+    endfunction
 
     " StatusBar {{{
         if has('statusline')
@@ -110,7 +131,7 @@ source $HOME/.vim/rc/plugins
         " see :h fo-table
         set formatoptions=qrn1lr
     " }}}
-    
+
     " Folding {{{
     set foldlevel=1
     " Cleaner, readable fold headers

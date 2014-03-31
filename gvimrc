@@ -8,7 +8,8 @@ set go-=l
 set go-=L
 set go-=r
 set go-=R
-
+" No GUI tabs!
+set go-=e
 " Don't show dialogues, use text prompts
 set go+=c
 
@@ -53,10 +54,23 @@ if has('gui_macvim')
     imap <D-k> <C-o>5k
 
     " Open NERDTree
-    map <D-\> :<C-u>NERDTreeToggle<CR>
+    map <silent> <D-\> :call ToggleVExplorer()<CR>
+    map <silent> <D-Bar> :<C-u>vs.<CR>
 
     " Commenting using CMD+/"
-    map <D-/> gcc
+    nmap <D-/> gcc
+    vmap <D-/> gcc
+
+    " Tab navigation
+    nmap <D-1> 1gt
+    nmap <D-2> 2gt
+    nmap <D-3> 3gt
+    nmap <D-4> 4gt
+    nmap <D-5> 5gt
+    nmap <D-6> 6gt
+    nmap <D-7> 7gt
+    nmap <D-8> 8gt
+    nmap <D-9> 9gt
 
     map <D-r> <leader>r
     " Replace :make

@@ -102,8 +102,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> <leader>om :CtrlPModified<CR>
     nnoremap <silent> <leader>ob :CtrlPBranch<CR>
 
-    " EasyTree
-    nnoremap <C-e> :EasyTree<CR>
+    " NERDTree
+    map <silent> <C-\> :call ToggleVExplorer()<CR>
+    map <silent> <C-Bar> :<C-u>vs.<CR>
 
     " Tabularize
     nmap <leader>a= :Tabularize /=<CR>
@@ -131,6 +132,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     map g] :YcmCompleter GoToDefinitionElseDeclaration<CR>
     let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+
+    " Tcomment
+    map <leader>/ gcc
 
     " vim-surround
     " I turned the keymappings around to restore the 'feedback'

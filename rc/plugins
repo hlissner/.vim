@@ -17,33 +17,38 @@
     NeoBundle 'skwp/greplace.vim'
 
     " A filetree navigator replacement for netrw
-    NeoBundle 'troydm/easytree.vim'
-        let g:easytree_ignore_files = ['*.swp', '.project', '.DS_Store']
-        let g:easytree_ignore_dirs = ['.git', '.sass-cache']
-    
-    if !g:is_ssh
-        " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
-        NeoBundle 'kien/ctrlp.vim'
-        " Ctrlp extension for jumping to functions
-        NeoBundle 'tacahiroy/ctrlp-funky'
-        " Ctrlp extension for listing git modified files
-        NeoBundle 'jasoncodes/ctrlp-modified.vim'
-            let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'funky', 'tag']
-            let g:ctrlp_max_height = 12
-            let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
-            let g:ctrlp_custom_ignore = {
-                \ 'dir':  '\.(git|hg|svn|settings)$|tmp$',
-                \ 'file': '\.(exe|so|dll|sass-cache|classpaths|project|cache|jpg|png|gif|swf)$'
-            \ }
-            let g:ctrlp_user_command = {
-                \ 'types': {
-                \   1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
-                \ },
-                \ 'fallback': 'ag %s -l --nocolor -g ""'
-            \ }
-            " ag and git ls-files are fast enough. Don't cache!
-            let g:ctrlp_use_caching = 0
-    endif
+    " NeoBundle 'scrooloose/nerdtree'
+    "     let NERDTreeMinimalUI = 1
+    "     let NERDTreeChDirMode = 1
+    "     let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
+    "     let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
+    "     let NERDTreeShowHidden = 1
+    "     let NERDTreeAutoDeleteBuffer = 1
+
+    NeoBundle "szw/vim-ctrlspace"
+        let g:ctrlspace_use_tabline = 1
+
+    " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
+    NeoBundle 'kien/ctrlp.vim'
+    " Ctrlp extension for jumping to functions
+    NeoBundle 'tacahiroy/ctrlp-funky'
+    " Ctrlp extension for listing git modified files
+    " NeoBundle 'jasoncodes/ctrlp-modified.vim'
+        let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'funky', 'tag']
+        let g:ctrlp_max_height = 12
+        let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
+        let g:ctrlp_custom_ignore = {
+            \ 'dir':  '\.(git|hg|svn|settings)$|tmp$',
+            \ 'file': '\.(exe|so|dll|sass-cache|classpaths|project|cache|jpg|png|gif|swf)$'
+        \ }
+        let g:ctrlp_user_command = {
+            \ 'types': {
+            \   1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others']
+            \ },
+            \ 'fallback': 'ag %s -l --nocolor -g ""'
+        \ }
+        " ag and git ls-files are fast enough. Don't cache!
+        " let g:ctrlp_use_caching = 0
 " }}}
 
 " Editing {{{
