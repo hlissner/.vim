@@ -17,7 +17,8 @@
     NeoBundle 'skwp/greplace.vim'
 
     " Netrw improvements
-    NeoBundle 'tpope/vim-vinegar'
+    NeoBundle 'troydm/easytree.vim'
+        let g:easytree_ignore_dirs = ['.git', '.sass-cache']
 
     " Smarter buffer/tab navigation
     NeoBundle "szw/vim-ctrlspace"

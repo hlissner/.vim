@@ -54,32 +54,6 @@ source $HOME/.vim/rc/plugins
         set ttymouse=xterm2
     endif
 
-    " Netrw settings
-    let g:netrw_browse_split = 4
-    let g:netrw_altv = 1
-    let g:netrw_banner = 0
-    let g:netrw_winsize = 20
-
-    " Toggle Vexplore with Ctrl-E
-    function! ToggleVExplorer()
-        if exists("t:expl_buf_num")
-            let expl_win_num = bufwinnr(t:expl_buf_num)
-            if expl_win_num != -1
-                let cur_win_nr = winnr()
-                exec expl_win_num . 'wincmd w'
-                close
-                exec cur_win_nr . 'wincmd w'
-                unlet t:expl_buf_num
-            else
-                unlet t:expl_buf_num
-            endif
-        else
-            exec '1wincmd w'
-            vsplit .
-            let t:expl_buf_num = bufnr("%")
-        endif
-    endfunction
-
     " StatusBar {{{
         if has('statusline')
             set laststatus=2
