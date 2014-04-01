@@ -41,9 +41,6 @@
 " }}}
 
 " Editing {{{
-    " Improved % and hopping delimiters (can now be 1+ character)
-    " NeoBundle 'matchit.zip'
-
     " Extended visual mode commands, substitutes and searches
     NeoBundle 'vis'
 

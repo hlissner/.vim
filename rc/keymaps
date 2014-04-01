@@ -91,8 +91,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " Send cwd to tmux
     nnoremap <localleader>x :Tmux cd <C-r>=expand("%:p:h")<CR><CR>
     nnoremap <localleader>X :Tmux cd <C-r>=expand("%:p:r")<CR><CR>
-
-    vnoremap <localleader>\ <Plug>SendSelectionToTmux 
 " }}}
 
 " Plugins {{{
@@ -111,10 +109,11 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> <leader>t :CtrlPBufTag<CR>
     nnoremap <silent> <leader>T :CtrlPBufTagAll<CR>
 
-    " NERDTree
-    " map <localleader>/ :call ToggleVExplorer()<CR>
-    map <localleader>/ :EasyTree<CR>
+    " EasyTree
+    map <localleader>\ :EasyTree<CR>
     map <localleader>. :EasyTreeHere<CR>
+    au FileType easytree nmap <buffer> . :<C-U> <C-R><C-W><Home>
+    au FileType easytree imap <buffer> > :<C-U> <C-R><C-W><Home>!
 
     " Tabularize
     nmap <leader>a= :Tabularize /=<CR>
