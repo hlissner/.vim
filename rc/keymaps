@@ -110,10 +110,10 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> <leader>T :CtrlPBufTagAll<CR>
 
     " EasyTree
-    map <localleader>\ :EasyTree<CR>
-    map <localleader>. :EasyTreeHere<CR>
-    au FileType easytree nmap <buffer> . :<C-U> <C-R><C-W><Home>
-    au FileType easytree imap <buffer> > :<C-U> <C-R><C-W><Home>!
+    map <localleader>\ :NERDTreeCWD<CR>
+    map <localleader>. :NERDTreeFind<CR>
+    au FileType nerdtree nmap <buffer> . :<C-U> <C-R>=fnamemodify('<C-R>=getline('.', '.')<CR>', ':p')<CR><Home>
+    au FileType nerdtree nmap <buffer> > :<C-U> <C-R>=fnamemodify('<C-R><C-W>', ':p')<CR><Home>!
 
     " Tabularize
     nmap <leader>a= :Tabularize /=<CR>

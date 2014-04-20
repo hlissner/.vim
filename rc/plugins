@@ -17,8 +17,12 @@
     NeoBundle 'skwp/greplace.vim'
 
     " Netrw improvements
-    NeoBundle 'troydm/easytree.vim'
-        let g:easytree_ignore_dirs = ['.git', '.sass-cache']
+    NeoBundle 'scrooloose/nerdtree'
+        let NERDTreeMinimalUI = 1
+        let NERDTreeChDirMode = 1
+        " let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
+        let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
+        let NERDTreeShowHidden = 1
 
     " Smarter buffer/tab navigation
     NeoBundle "szw/vim-ctrlspace"
@@ -31,13 +35,14 @@
     " Ctrlp extension for listing git modified files
     NeoBundle 'jasoncodes/ctrlp-modified.vim'
         let g:ctrlp_extensions = ['tag', 'buffertag', 'funky']
-        let g:ctrlp_max_height = 10
+        " let g:ctrlp_max_height = 10
         let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
         let g:ctrlp_custom_ignore = {
             \ 'dir':  '\.(git|hg|svn|settings)$|tmp$',
             \ 'file': '\.(exe|so|dll|sass-cache|classpaths|project|cache|jpg|png|gif|swf)$'
         \ }
         let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+        let g:ctrlp_match_window = 'bottom,order:btt,min:10,max:10,results:10'
 " }}}
 
 " Editing {{{
@@ -111,7 +116,7 @@
                 " let g:ycm_autoclose_preview_window_after_insertion = 1
                 let g:ycm_confirm_extra_conf = 1
                 let g:ycm_register_as_syntastic_checker = 0
-                let g:ycm_seed_identifiers_with_syntax = 1
+                " let g:ycm_seed_identifiers_with_syntax = 0
                 " let g:ycm_add_preview_to_completeopt = 1
                 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
                 " let g:ycm_auto_trigger = 0

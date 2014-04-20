@@ -8,9 +8,6 @@ set rtp+=~/.vim/bundle/neobundle.vim/
 call neobundle#rc(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Bundles and their settings are specified externally.
-source $HOME/.vim/rc/plugins
-
 " Preferences {{{
     syntax on
 
@@ -25,38 +22,36 @@ source $HOME/.vim/rc/plugins
         endif
         set background=dark
         colorscheme Tomorrow-Night-Eighties
+
+        set number                   " Line numbers
+        set showcmd                  " Show command issued
+        set fillchars=vert:¦
+        set list
+        set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+        set textwidth=88
     " }}}
 
-    set number                   " Line numbers
-    set ruler                    " Show line/col no in statusline
-    set showcmd                  " Show command issued
-    set textwidth=88
-    set fillchars=vert:¦
-    set list
-    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+    " Behavior {{{
+        set autoread                 " Auto-update a file that's been edited externally
+        set nospell                  " No spell check, please
+        set visualbell               " No sounds!
+        set backspace=indent,eol,start
+        set lazyredraw               " Don't update screen while running macros
+        set hidden                   " Hide abandoned buffers
+        set shortmess+=filmnrxoOtTs
+        set nrformats-=octal
+        set fileformats+=mac
 
-    set autoread                 " Auto-update a file that's been edited externally
-    set laststatus=2             " Show statusbar
-    set nospell                  " No spell check, please
-    set visualbell               " No sounds!
-    set backspace=indent,eol,start
-    set lazyredraw               " Don't update screen while running macros
-    set hidden                   " Hide abandoned buffers
-    set nostartofline
-    set shortmess+=filmnrxoOtTs
-    set scrolloff=8
-    set sidescrolloff=5
-    set nrformats-=octal
-    set fileformats+=mac
-
-    set mouse=a
-    if exists('$TMUX')  " Support resizing in tmux
-        set ttymouse=xterm2
-    endif
+        set mouse=a
+        if exists('$TMUX')  " Support resizing in tmux
+            set ttymouse=xterm2
+        endif
+    " }}}
 
     " StatusBar {{{
         if has('statusline')
             set laststatus=2
+            set ruler                                      " Show line/col no in statusline
             set statusline=%t                              " tail of the filename
             set statusline+=%w%h%m%r                       " Options
             if exists('g:loaded_syntastic_plugin')
@@ -74,7 +69,10 @@ source $HOME/.vim/rc/plugins
         endif
     " }}}
 
-    " Search {{{
+    " Movement & search {{{
+        set nostartofline
+        set sidescrolloff=5
+
         set incsearch            " find as you type
         set hlsearch             " Highlight search terms
         set ignorecase           " case insensitive search
@@ -89,7 +87,7 @@ source $HOME/.vim/rc/plugins
         endif
     " }}}
 
-    " Formatting {{{
+    " Text formatting {{{
         set autoindent
         set shiftround
         set expandtab
@@ -105,23 +103,23 @@ source $HOME/.vim/rc/plugins
     " }}}
 
     " Folding {{{
-    set foldlevel=1
-    " Cleaner, readable fold headers
-    set foldtext=MyFoldText()
-    fu! MyFoldText()
-        let line = getline(v:foldstart)
-        " Lines that have been folded
-        let nl = v:foldend - v:foldstart + 1
+        set foldlevel=1
+        " Cleaner, readable fold headers
+        set foldtext=MyFoldText()
+        fu! MyFoldText()
+            let line = getline(v:foldstart)
+            " Lines that have been folded
+            let nl = v:foldend - v:foldstart + 1
 
-        let indent = repeat(' ', indent(v:foldstart))
-        let endcol = &colorcolumn ? &colorcolumn : &textwidth
-        let startcol = &columns < endcol ? &columns-4 : endcol
+            let indent = repeat(' ', indent(v:foldstart))
+            let endcol = &colorcolumn ? &colorcolumn : &textwidth
+            let startcol = &columns < endcol ? &columns-4 : endcol
 
-        return indent . substitute(line,"^ *","",1)
-    endf
+            return indent . substitute(line,"^ *","",1)
+        endf
     " }}}
 
-    " Backup {{{
+    " Swap files, history & persistence {{{
         " No backup (that's what git is for!) and swapfiles are annoying
         set nobackup
         set nowritebackup
@@ -165,6 +163,9 @@ source $HOME/.vim/rc/plugins
     " For some reason vaxe's ftdetect isn't always on the ball
     au BufRead,BufNewFile *.hx set filetype=haxe
 " }}}
+
+" Bundles and their settings are specified externally.
+source $HOME/.vim/rc/plugins
 
 " rcfiles
 source $HOME/.vim/rc/keymaps
