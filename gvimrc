@@ -53,7 +53,7 @@ if has('gui_macvim')
 
     " Commenting using CMD+/"
     nmap <D-/> gcc
-    vmap <D-/> gcc
+    vmap <D-/> gc
 
     " Tab navigation
     nmap <D-1> 1gt
