@@ -19,7 +19,7 @@
     " Netrw improvements
     NeoBundle 'scrooloose/nerdtree'
         let NERDTreeMinimalUI = 1
-        let NERDTreeChDirMode = 1
+        let NERDTreeChDirMode = 2
         " let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
         let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
         let NERDTreeShowHidden = 1
@@ -81,8 +81,6 @@
     " Snippets system
     if has("python")
         NeoBundle 'SirVer/ultisnips'
-            " Ignore the default snippets so I (and others) can define their own
-            let g:UltiSnipsSnippetDirectories = ["snips"]
 
         " My snippets
         NeoBundle 'hlissner/vim-ultisnips-snippets'
@@ -111,15 +109,16 @@
         if has("gui_running")
             " Awesome autocompletion
             NeoBundle 'Valloric/YouCompleteMe', {'build': {
-                        \ 'mac': './install.sh --clang-completer',
+                        \ 'mac': './install.sh --clang-completer --system-libclang',
                         \ 'unix': './install.sh --clang-completer' }}
                 " let g:ycm_autoclose_preview_window_after_insertion = 1
                 let g:ycm_confirm_extra_conf = 1
-                let g:ycm_register_as_syntastic_checker = 0
+                " let g:ycm_register_as_syntastic_checker = 1
                 " let g:ycm_seed_identifiers_with_syntax = 0
                 " let g:ycm_add_preview_to_completeopt = 1
                 let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
                 " let g:ycm_auto_trigger = 0
+                let g:ycm_confirm_extra_conf = 0
         endif
 
         " Syntax checkers for a multitude of languages
@@ -163,7 +162,7 @@
     NeoBundleLazy 'StanAngeloff/php.vim',       {'autoload': {'filetypes': ['php', 'blade']}}
     NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload': {'filetypes': ['php']}}
     NeoBundleLazy 'shawncplus/phpcomplete.vim', {'autoload': {'filetypes': ['php', 'blade']}}
-    NeoBundleLazy 'stephpy/vim-phpdoc',         {'autoload': {'filetypes': ['php']}}
+    " NeoBundleLazy 'stephpy/vim-phpdoc',         {'autoload': {'filetypes': ['php']}}
 
     " Python
     NeoBundleLazy 'indentpython.vim--nianyang', {'autoload': {'filetypes': ['python']}}
@@ -176,8 +175,6 @@
 
     " C/C++
     NeoBundle 'octol/vim-cpp-enhanced-highlight'
-    NeoBundle 'kana/vim-altr'
-        call altr#define('scss/%.scss', 'css/%.css')
 
     " Haxe
     NeoBundle 'jdonaldson/vaxe'

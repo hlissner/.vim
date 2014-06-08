@@ -1,6 +1,6 @@
 
 " Shortcut to vimrc and gvimrc
-nnoremap <localleader>ev :CtrlP ~/.vim<CR>
+nnoremap <localleader>v :CtrlP ~/.vim<CR>
 
 " Comma get some... sorry.
 let mapleader = ','
@@ -133,6 +133,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
     let g:UltiSnipsExpandTrigger = "<Tab>"
     let g:UltiSnipsJumpForwardTrigger = "<Tab>"
     let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+    " Ignore the default snippets so I (and others) can define their own
+    let g:UltiSnipsSnippetDirectories = ["snips"]
     
     " Emmet
     imap <expr> <C-CR> emmet#expandAbbrIntelligent("\<tab>")
@@ -141,9 +143,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
     map g] :YcmCompleter GoToDefinitionElseDeclaration<CR>
     let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-
-    " Tcomment
-    " map <leader>/ gcc
 
     " vim-surround
     " I turned the keymappings around to restore the 'feedback'
@@ -162,10 +161,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
     " vim-switch
     nnoremap - :Switch<CR>
-
-    " altr: switching between like files (like %.h and %.c)
-    nnoremap ]a <Plug>(altr-forward)
-    nnoremap [a <Plug>(altr-back)
 " }}}
 
 " vim:set ft=vim:

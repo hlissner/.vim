@@ -24,7 +24,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         colorscheme Tomorrow-Night-Eighties
 
         set number                   " Line numbers
-        set showcmd                  " Show command issued
+        " set showcmd                  " Show command issued
         set fillchars=vert:¦
         set list
         set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
