@@ -26,15 +26,16 @@ flags = [
     '-x', 'c++',
     '-std=c++11', 
     '-stdlib=libc++',
-    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/c++/v1', 
     '-isystem', '/usr/include/c++/4.2.1',
+    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/c++/v1', 
+
 
     # For C
-    '-isystem', '/Volumes/Storage/Dropbox/dev/include',
     '-isystem', '/usr/local/include',
-    '-isystem', '/usr/include',
-    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.0/include',
-    '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+    # '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/include',
+    # '-isystem', '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
+    # '-isystem', '/Volumes/Storage/Dropbox/dev/include',
+    # '-isystem', '/usr/include',
 
     # For Obj-C
     # '-framework', 'Foundation',
