@@ -176,9 +176,6 @@
     " C/C++
     NeoBundle 'octol/vim-cpp-enhanced-highlight'
 
-    " Haxe
-    NeoBundle 'jdonaldson/vaxe'
-
     " Other
     NeoBundle 'tpope/vim-markdown'
     " NeoBundle 'digitaltoad/vim-jade'
