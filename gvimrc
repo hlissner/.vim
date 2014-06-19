@@ -74,12 +74,15 @@ if has('gui_macvim')
         " Open in finder
         nnoremap <localleader>f :silent !open "%:p:h"<CR>
         nnoremap <localleader>F :silent !open .<CR>
+
         " Open in terminal
         nnoremap <localleader>t :silent !open -a iTerm "%:p:h"<CR>
         nnoremap <localleader>T :silent !open -a iTerm .<CR>
+
         " Send to transmit
         nnoremap <localleader>u :silent !open -a Transmit "%"<CR>
 
+        " Send to launchbar (project and file, respectively)
         nnoremap <silent> <localleader>[ :call LaunchBarSelect(expand("%:p:h"))<CR>
         nnoremap <silent> <localleader>] :call LaunchBarSelect(expand("%:p"))<CR>
 
