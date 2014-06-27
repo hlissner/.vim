@@ -109,11 +109,9 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> <leader>t :CtrlPBufTag<CR>
     nnoremap <silent> <leader>T :CtrlPBufTagAll<CR>
 
-    " EasyTree
+    " NERDTree
     map <localleader>\ :NERDTreeCWD<CR>
     map <localleader>. :NERDTreeFind<CR>
-    au FileType nerdtree nmap <buffer> . :<C-U> <C-R>=fnamemodify('<C-R>=getline('.', '.')<CR>', ':p')<CR><Home>
-    au FileType nerdtree nmap <buffer> > :<C-U> <C-R>=fnamemodify('<C-R><C-W>', ':p')<CR><Home>!
 
     " Tabularize
     nmap <leader>a= :Tabularize /=<CR>
