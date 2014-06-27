@@ -169,8 +169,8 @@
     NeoBundleLazy 'python_match.vim',           {'autoload': {'filetypes': ['python']}}
 
     " Javascript/Node
-    NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload': {'filetypes': ['javascript']}}
-    NeoBundleLazy 'moll/vim-node',                {'autoload': {'filetypes': ['javascript']}}
+    NeoBundleLazy 'pangloss/vim-javascript',      {'autoload': {'filetypes': ['javascript']}}
+    " NeoBundleLazy 'moll/vim-node',                {'autoload': {'filetypes': ['javascript']}}
     NeoBundleLazy 'marijnh/tern_for_vim',         {'autoload': {'filetypes': ['javascript']}, 'build': {'mac' : 'npm install'}}
 
     " C/C++
@@ -178,7 +178,6 @@
 
     " Other
     NeoBundle 'tpope/vim-markdown'
-    " NeoBundle 'digitaltoad/vim-jade'
 " }}}
 
 " NeoBundleCheck
