@@ -94,7 +94,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
 " }}}
 
 " Plugins {{{
-    " bufkill - reopen last closed buffer
+    " bufkill
     nnoremap <silent> zz :Bdelete<CR>
 
     " CtrlP
