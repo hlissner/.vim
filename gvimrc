@@ -38,8 +38,8 @@ if has('gui_macvim')
     macmenu &Tools.Make key=<nop>
 
     " Switching buffers
-    nmap <D-Right> ]b
-    nmap <D-Left> [b
+    nmap <D-]> ]b
+    nmap <D-[> [b
 
     " Textmate-like CMD+Enter
     inoremap <D-CR> <C-O>o
