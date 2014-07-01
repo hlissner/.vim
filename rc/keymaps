@@ -10,7 +10,7 @@ noremap ; :
 " Trigger to preserve indentation on pastes
 set pastetoggle=<F12>
 " Easier than escape. Pinnacle of laziness.
-imap jj <ESC>
+imap jk <ESC>
 " Turn off search highlighting
 noremap <silent> <leader>? :nohlsearch<CR>
 
@@ -21,7 +21,10 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " % matchit shortcut, but only in normal mode!
     nmap <Tab> %
     " Easier fold toggle
-    noremap <Space> za
+    nnoremap <Space> 5j 
+    vnoremap <Space> 5j 
+    nnoremap <Backspace> 5k
+    vnoremap <Backspace> 5k
 
     " f: Find. Also support repeating with .
     nnoremap <Plug>OriginalSemicolon ;
@@ -95,7 +98,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
 " Plugins {{{
     " bufkill
-    nnoremap <silent> zz :Bdelete<CR>
+    nnoremap zx :Bdelete<CR>
 
     " CtrlP
     let g:ctrlp_map = ''
@@ -158,7 +161,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
     xmap Sg  <Plug>VgSurround
 
     " vim-switch
-    nnoremap - :Switch<CR>
+    nnoremap <CR> :Switch<CR>
 " }}}
 
 " vim:set ft=vim:
