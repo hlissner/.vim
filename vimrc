@@ -29,6 +29,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         set list
         set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
         set textwidth=88
+
+        set synmaxcol=1500
     " }}}
 
     " Behavior {{{
