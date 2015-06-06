@@ -1,11 +1,11 @@
 
-" Shortcut to vimrc and gvimrc
-nnoremap <leader>E :CtrlP ~/.vim<CR>
-
 " Comma get some... sorry.
 let mapleader = ','
 let maplocalleader = '\'
 noremap ; :
+
+" Shortcut to vimrc and gvimrc
+nnoremap <leader>E :CtrlP ~/.vim<CR>
 
 " Trigger to preserve indentation on pastes
 set pastetoggle=<F12>
