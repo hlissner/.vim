@@ -55,17 +55,6 @@ if has('gui_macvim')
     nmap <D-/> gcc
     vmap <D-/> gc
 
-    " Tab navigation
-    nmap <D-1> 1gt
-    nmap <D-2> 2gt
-    nmap <D-3> 3gt
-    nmap <D-4> 4gt
-    nmap <D-5> 5gt
-    nmap <D-6> 6gt
-    nmap <D-7> 7gt
-    nmap <D-8> 8gt
-    nmap <D-9> 9gt
-
     map <D-r> <leader>r
     " Replace :make
     map <D-b> :Dispatch<CR>
@@ -106,7 +95,7 @@ else
 
     " For gvim
     set guifont=Monospace\ 10
-    
+
     " Commenting using Ctrl+/
     map <C-/> gcc
 

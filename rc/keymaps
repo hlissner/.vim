@@ -1,6 +1,6 @@
 
 " Shortcut to vimrc and gvimrc
-nnoremap <localleader>v :CtrlP ~/.vim<CR>
+nnoremap <leader>E :CtrlP ~/.vim<CR>
 
 " Comma get some... sorry.
 let mapleader = ','
@@ -21,8 +21,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
     " % matchit shortcut, but only in normal mode!
     nmap <Tab> %
     " Easier fold toggle
-    nnoremap <Space> 5j 
-    vnoremap <Space> 5j 
+    nnoremap <Space> 5j
+    vnoremap <Space> 5j
     nnoremap <Backspace> 5k
     vnoremap <Backspace> 5k
 
@@ -59,7 +59,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
 " Buffers {{{
     " Change CWD to current file's directory
-    nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>    
+    nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
     " Next/prev buffer
     nnoremap ]b :<C-u>bnext<CR>
@@ -84,7 +84,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
     cnoremap ;/ <C-R>=expand('%:p:h').'/'<CR>
     cnoremap ;; <C-R>=expand("%:t")<CR>
     cnoremap ;. <C-R>=expand("%:p:r")<CR>
-    
+
     " Mimic shortcuts in the terminal
     cnoremap <C-a> <Home>
     cnoremap <C-e> <End>
@@ -117,18 +117,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
     map <localleader>. :NERDTreeFind<CR>
 
     " Tabularize
-    nmap <leader>a= :Tabularize /=<CR>
-    vmap <leader>a= :Tabularize /=<CR>
-    nmap <leader>a> :Tabularize /=><CR>
-    vmap <leader>a> :Tabularize /=><CR>
-    nmap <leader>a: :Tabularize /:<CR>
-    vmap <leader>a: :Tabularize /:<CR>
-    nmap <leader>a:: :Tabularize /:\zs<CR>
-    vmap <leader>a:: :Tabularize /:\zs<CR>
-    nmap <leader>a, :Tabularize /,<CR>
-    vmap <leader>a, :Tabularize /,<CR>
-    nmap <leader>a<Bar> :Tabularize /<Bar><CR>
-    vmap <leader>a<Bar> :Tabularize /<Bar><CR>
+    nmap <leader>= :Tabularize /
+    vmap <leader>= :Tabularize /
 
     " UltiSnips
     let g:UltiSnipsExpandTrigger = "<Tab>"
@@ -136,7 +126,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
     let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
     " Ignore the default snippets so I (and others) can define their own
     let g:UltiSnipsSnippetDirectories = ["snips"]
-    
+
     " Emmet
     imap <expr> <C-CR> emmet#expandAbbrIntelligent("\<tab>")
 
@@ -161,7 +151,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
     xmap Sg  <Plug>VgSurround
 
     " vim-switch
-    nnoremap <CR> :Switch<CR>
+    " nnoremap ! :Switch<CR>
 " }}}
 
 " vim:set ft=vim:

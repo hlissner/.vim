@@ -1,10 +1,4 @@
 
-" Appearance {{{
-    " Pretty indent indicators
-    NeoBundle 'Yggdroot/indentLine'
-        let g:indentLine_color_gui = '#4a514f'
-" }}}
-
 " File search {{{
     " More powerful file searching
     if executable('ag')
@@ -14,7 +8,7 @@
     endif
 
     " Project-wide search and replace
-    NeoBundle 'skwp/greplace.vim'
+    " NeoBundle 'skwp/greplace.vim'
 
     " Netrw improvements
     NeoBundle 'scrooloose/nerdtree'
@@ -24,10 +18,6 @@
         let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
         let NERDTreeShowHidden = 1
 
-    " Smarter buffer/tab navigation
-    NeoBundle "szw/vim-ctrlspace"
-        let g:ctrlspace_use_tabline = 1
- 
     " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
     NeoBundle 'kien/ctrlp.vim'
     " Ctrlp extension for jumping to functions
@@ -43,6 +33,10 @@
         \ }
         let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
         let g:ctrlp_match_window = 'bottom,order:btt,min:10,max:10,results:10'
+
+    " Smarter buffer/tab navigation
+    NeoBundle "szw/vim-ctrlspace"
+        let g:ctrlspace_use_tabline = 1
 " }}}
 
 " Editing {{{
@@ -71,7 +65,7 @@
     " Auto-place code blocks for languages like ruby or viml
     NeoBundle 'tpope/vim-endwise'
 
-    " Offers some plugins better compatibility with repeat ('.') 
+    " Offers some plugins better compatibility with repeat ('.')
     NeoBundle 'tpope/vim-repeat'
 
     " Easy changing and insertion of surrounding delimiters (e.g. quotes,
@@ -97,9 +91,6 @@
 
     " 'a Git wrapper so awesome, it should be illegal'
     NeoBundle 'tpope/vim-fugitive'
-
-    " Async compiler plugins
-    NeoBundle 'tpope/vim-dispatch'
 " }
 
 " Programming {{{
@@ -138,17 +129,11 @@
 
     " Running code inline for testing purposes
     NeoBundle 'notalex/vim-run-live'
-
-    " Previewing markdown, rdoc, textile and html files in the browser
-    NeoBundleLazy 'spf13/vim-preview', {'autoload': {'filetypes': ['markdown', 'rdoc', 'textile', 'html', 'rst', 'ronn']}}
 " }}}
 
 " External Tools {{{
     " Color picker pop-up
     NeoBundle 'PickAColor.vim'
-
-    " Communication with tmux
-    NeoBundle 'jgdavey/tslime.vim'
 " }}}
 
 " Syntax {{{
@@ -161,11 +146,9 @@
     " PHP
     NeoBundleLazy 'StanAngeloff/php.vim',       {'autoload': {'filetypes': ['php', 'blade']}}
     NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload': {'filetypes': ['php']}}
-    NeoBundleLazy 'shawncplus/phpcomplete.vim', {'autoload': {'filetypes': ['php', 'blade']}}
     " NeoBundleLazy 'stephpy/vim-phpdoc',         {'autoload': {'filetypes': ['php']}}
 
     " Python
-    NeoBundleLazy 'indentpython.vim--nianyang', {'autoload': {'filetypes': ['python']}}
     NeoBundleLazy 'python_match.vim',           {'autoload': {'filetypes': ['python']}}
 
     " Javascript/Node
@@ -182,5 +165,6 @@
 
 " NeoBundleCheck
 filetype indent plugin on
+call neobundle#end()
 
 " vim:set ft=vim:

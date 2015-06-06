@@ -5,7 +5,7 @@ let g:is_ssh = ($SSH_TTY != "")
 
 " Initialize NeoBundle
 set rtp+=~/.vim/bundle/neobundle.vim/
-call neobundle#rc(expand('~/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Preferences {{{
@@ -34,6 +34,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
     " }}}
 
     " Behavior {{{
+        set noeol
         set autoread                 " Auto-update a file that's been edited externally
         set nospell                  " No spell check, please
         set visualbell               " No sounds!
@@ -64,7 +65,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
             if exists('g:loaded_fugitive')
                 set statusline+=\ %{fugitive#statusline()}     " Git Hotness
             endif
-            set statusline+=\ •\ 
+            set statusline+=\ •\
             set statusline+=%c                             " cursor column
             set statusline+=\ %l/%L                        " cursor line/total lines
             set statusline+=\ \:%P                         " percent through file
@@ -128,13 +129,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         set noswapfile
         if has('persistent_undo')
             set undodir=~/.vim/tmp/undo
-            set undofile
             set undolevels=500
             set undoreload=500
         endif
         set history=5000
 
-        " Preserve buffer state (cursor location, folds, etc.)
+        " preserve buffer state (cursor location, folds, etc.)
         set viewdir=~/.vim/tmp/views
         set viewoptions=cursor,folds,unix,slash
         augroup persistence
@@ -145,7 +145,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
     " }}}
 
     " Omnicomplete + wild settings {{{
-        set tags=./.tags;/,~/.tags,~/tags
+        set tags=./tags,./../tags,./../../tags,./../../../tags,tags
 
         set complete-=i
         set completeopt=menu
@@ -164,6 +164,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
     au BufRead,BufNewFile *.scss set filetype=scss
     " For some reason vaxe's ftdetect isn't always on the ball
     au BufRead,BufNewFile *.hx set filetype=haxe
+    " 2-space indentation
+    autocmd FileType ruby setl ts=2 sw=2 sts=2 et
 " }}}
 
 " Bundles and their settings are specified externally.
@@ -174,9 +176,9 @@ source $HOME/.vim/rc/keymaps
 source $HOME/.vim/rc/util
 
 " If one exists, this is where you'll want local settings
-try 
+try
     source $HOME/.vimrc.local
-catch 
+catch
 endtry
 
 " vim:set fdl=0 fdm=marker:
