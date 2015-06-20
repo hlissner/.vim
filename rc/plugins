@@ -42,6 +42,8 @@
 " }}}
 
 " Editing {{{
+    NeoBundle 'goldfeld/vim-seek'
+
     " Extended visual mode commands, substitutes and searches
     NeoBundle 'vis'
 
