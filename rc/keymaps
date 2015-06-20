@@ -135,21 +135,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
     let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 
-    " vim-surround
-    " I turned the keymappings around to restore the 'feedback'
-    " I get from operator mode after common vim commands, like d
-    " and c.
-    let g:surround_no_mappings = 1
-    nmap sd  <Plug>Dsurround
-    nmap sc  <Plug>Csurround
-    nmap s   <Plug>Ysurround
-    nmap S   <Plug>YSurround
-    nmap ss  <Plug>Yssurround
-    nmap Ss  <Plug>YSsurround
-    nmap SS  <Plug>YSsurround
-    xmap S   <Plug>VSurround
-    xmap Sg  <Plug>VgSurround
-
     " vim-switch
     " nnoremap ! :Switch<CR>
 " }}}
