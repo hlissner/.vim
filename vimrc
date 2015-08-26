@@ -169,7 +169,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " }}}
 
 " Bundles and their settings are specified externally.
-source $HOME/.vim/rc/plugins
+if isdirectory("~/.vim/bundle/neobundle.vim/")
+    source $HOME/.vim/rc/plugins
+endif
 
 " rcfiles
 source $HOME/.vim/rc/keymaps
