@@ -164,14 +164,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
     au BufRead,BufNewFile *.scss set filetype=scss
     " For some reason vaxe's ftdetect isn't always on the ball
     au BufRead,BufNewFile *.hx set filetype=haxe
+    " For emacs Caskfiles
+    au BufRead,BufNewFile Cask set filetype=lisp
     " 2-space indentation
     autocmd FileType ruby setl ts=2 sw=2 sts=2 et
 " }}}
 
 " Bundles and their settings are specified externally.
-if isdirectory("~/.vim/bundle/neobundle.vim/")
-    source $HOME/.vim/rc/plugins
-endif
+source $HOME/.vim/rc/plugins
 
 " rcfiles
 source $HOME/.vim/rc/keymaps
