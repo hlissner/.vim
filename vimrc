@@ -21,7 +21,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
             set t_Co=256
         endif
         set background=dark
-        colorscheme Tomorrow-Night-Eighties
+        let g:rehash256 = 1
+        colorscheme molokai
 
         set number                   " Line numbers
         set showcmd                  " Show command issued
