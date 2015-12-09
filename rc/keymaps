@@ -145,7 +145,7 @@ noremap <silent> <leader>? :nohlsearch<CR>
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 
     " vim-switch
-    " nnoremap ! :Switch<CR>
+    nnoremap ! :Switch<CR>
 " }}}
 
 " vim:set ft=vim:

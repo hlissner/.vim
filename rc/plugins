@@ -62,13 +62,13 @@
     " Easy changing and insertion of surrounding delimiters (e.g. quotes,
     " parenthesis, etc.)
     NeoBundle 'tpope/vim-surround'
+    " One-key switching between true/false, yes/no, etc
+    NeoBundle 'AndrewRadev/switch.vim'
     " Snippets system
     if has("python")
         NeoBundle 'SirVer/ultisnips'
         NeoBundle 'hlissner/vim-ultisnips-snippets'
     endif
-    " One-key switching between true/false, yes/no, etc
-    NeoBundle 'AndrewRadev/switch.vim'
 " }}}
 
 " Remote resources {{{
