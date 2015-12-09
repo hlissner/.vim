@@ -130,6 +130,8 @@
     NeoBundleLazy 'StanAngeloff/php.vim',       {'autoload': {'filetypes': ['php', 'blade']}}
     NeoBundleLazy '2072/PHP-Indenting-for-VIm', {'autoload': {'filetypes': ['php']}}
     " NeoBundleLazy 'stephpy/vim-phpdoc',         {'autoload': {'filetypes': ['php']}}
+    " Rust
+    NeoBundleLazy 'rust-lang/rust.vim',         {'autoload': {'filetypes': ['rust']}}
     " Python
     NeoBundleLazy 'python_match.vim',           {'autoload': {'filetypes': ['python']}}
     " Javascript/Node
