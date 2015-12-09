@@ -31,12 +31,14 @@
         let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
         let g:ctrlp_match_window = 'bottom,order:btt,min:10,max:10,results:10'
     " Smarter buffer/tab navigation
-    NeoBundle "szw/vim-ctrlspace"
+    NeoBundle 'szw/vim-ctrlspace'
         let g:ctrlspace_use_tabline = 1
 " }}}
 
 " Editing {{{
-    NeoBundle 'goldfeld/vim-seek'
+    " 2-char search motions
+    NeoBundle 'justinmk/vim-sneak'
+        let g:sneak#s_next = 1
     " Extended visual mode commands, substitutes and searches
     NeoBundle 'vis'
     " Auto-closes delimiters like (),{},[],etc.

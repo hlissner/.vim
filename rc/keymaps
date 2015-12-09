@@ -25,13 +25,6 @@ noremap <silent> <leader>? :nohlsearch<CR>
     vnoremap <Space> 5j
     nnoremap <Backspace> 5k
     vnoremap <Backspace> 5k
-
-    " f: Find. Also support repeating with .
-    nnoremap <Plug>OriginalSemicolon ;
-    nnoremap <silent> f :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>f
-    nnoremap <silent> t :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>t
-    nnoremap <silent> F :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>F
-    nnoremap <silent> T :<C-u>call repeat#set("\<lt>Plug>OriginalSemicolon")<CR>T
 " }}}
 
 " Editing {{{
@@ -129,6 +122,22 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
     " Emmet
     imap <expr> <C-CR> emmet#expandAbbrIntelligent("\<tab>")
+
+    " Sneak
+    "replace 'f' with 1-char Sneak
+    nmap f <Plug>Sneak_f
+    nmap F <Plug>Sneak_F
+    xmap f <Plug>Sneak_f
+    xmap F <Plug>Sneak_F
+    omap f <Plug>Sneak_f
+    omap F <Plug>Sneak_F
+    "replace 't' with 1-char Sneak
+    nmap t <Plug>Sneak_t
+    nmap T <Plug>Sneak_T
+    xmap t <Plug>Sneak_t
+    xmap T <Plug>Sneak_T
+    omap t <Plug>Sneak_t
+    omap T <Plug>Sneak_T
 
     " YCM
     map g] :YcmCompleter GoToDefinitionElseDeclaration<CR>
