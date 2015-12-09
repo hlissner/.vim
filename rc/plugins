@@ -12,7 +12,6 @@
     NeoBundle 'scrooloose/nerdtree'
         let NERDTreeMinimalUI = 1
         let NERDTreeChDirMode = 2
-        " let NERDTreeBookmarksFile = "$HOME/.vim/tmp/NERDtreeBookmarks"
         let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
         let NERDTreeShowHidden = 1
     " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
@@ -135,9 +134,9 @@
     " Python
     NeoBundleLazy 'python_match.vim',           {'autoload': {'filetypes': ['python']}}
     " Javascript/Node
-    NeoBundleLazy 'pangloss/vim-javascript',      {'autoload': {'filetypes': ['javascript']}}
+    NeoBundleLazy 'pangloss/vim-javascript',    {'autoload': {'filetypes': ['javascript']}}
     " NeoBundleLazy 'moll/vim-node',                {'autoload': {'filetypes': ['javascript']}}
-    NeoBundleLazy 'marijnh/tern_for_vim',         {'autoload': {'filetypes': ['javascript']}, 'build': {'mac' : 'npm install'}}
+    NeoBundleLazy 'marijnh/tern_for_vim',       {'autoload': {'filetypes': ['javascript']}, 'build': {'mac' : 'npm install'}}
     " C/C++
     NeoBundle 'octol/vim-cpp-enhanced-highlight'
     " Other

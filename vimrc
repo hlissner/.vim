@@ -47,9 +47,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         set fileformats+=mac
 
         set mouse=a
-        if exists('$TMUX')  " Support resizing in tmux
-            set ttymouse=xterm2
-        endif
     " }}}
 
     " StatusBar {{{
