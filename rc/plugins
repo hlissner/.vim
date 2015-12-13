@@ -6,8 +6,6 @@
     elseif executable('ack')
         NeoBundle 'mileszs/ack.vim'
     endif
-    " Keybindings for navigating between vim & tmux
-    NeoBundle 'christoomey/vim-tmux-navigator'
     " Netrw improvements
     NeoBundle 'scrooloose/nerdtree'
         let NERDTreeMinimalUI = 1
@@ -76,6 +74,9 @@
         let g:gitgutter_eager = 0
     " 'a Git wrapper so awesome, it should be illegal'
     NeoBundle 'tpope/vim-fugitive'
+    " Keybindings for navigating between vim & tmux
+    NeoBundle 'christoomey/vim-tmux-navigator'
+    NeoBundle 'benmills/vimux'
 " }
 
 " Programming {{{
