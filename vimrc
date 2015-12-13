@@ -11,6 +11,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Preferences {{{
     syntax on
 
+    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
     " Editor looks {{{
         " Disable matchit, I find it distracting
         let loaded_matchparen = 1
@@ -47,6 +49,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         set fileformats+=mac
 
         set mouse=a
+
+        set clipboard+=unnamedplus
     " }}}
 
     " StatusBar {{{
