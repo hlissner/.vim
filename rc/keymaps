@@ -6,6 +6,7 @@ noremap ; :
 
 " Shortcut to vimrc and gvimrc
 nnoremap <leader>E :CtrlP ~/.vim<CR>
+nnoremap <leader>\ :CtrlP ~/.dotfiles<CR>
 
 " Trigger to preserve indentation on pastes
 set pastetoggle=<F12>
@@ -13,6 +14,8 @@ set pastetoggle=<F12>
 imap jk <ESC>
 " Turn off search highlighting
 noremap <silent> <leader>? :nohlsearch<CR>
+
+nnoremap <leader>h :<C-u>h 
 
 " Navigation {{{
     " Normalize all the navigation keys to move by row/col despite any wrapped text
@@ -85,8 +88,14 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
 " External Tools {{{
     " Send cwd to tmux
-    nnoremap <localleader>x :Tmux cd <C-r>=expand("%:p:h")<CR><CR>
-    nnoremap <localleader>X :Tmux cd <C-r>=expand("%:p:r")<CR><CR>
+    nnoremap <leader>t. :<C-u>call VimuxRunCommand("cd <C-r>=expand("%:p:h")<CR>")<CR>
+    nnoremap <leader>t/ :<C-u>call VimuxRunCommand("cd <C-r>=getcwd()<CR>")<CR>
+    nnoremap <leader>ts :<C-u>call VimuxRunCommand("tmux split-window")<CR>
+    nnoremap <leader>tv :<C-u>call VimuxRunCommand("tmux split-window -h")<CR>
+    nnoremap <leader>tc :<C-u>call VimuxRunCommand("tmux new-window")<CR>
+
+    com! -nargs=* T call VimuxRunCommand(<q-args>)
+    cabbrev t :<C-u>T
 " }}}
 
 " Plugins {{{
@@ -102,8 +111,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
     nnoremap <silent> <leader>; :CtrlPFunky<CR>
     nnoremap <silent> <leader>m :CtrlPMRU<CR>
     nnoremap <silent> <leader>M :CtrlPModified<CR>
-    nnoremap <silent> <leader>t :CtrlPBufTag<CR>
-    nnoremap <silent> <leader>T :CtrlPBufTagAll<CR>
+    nnoremap <silent> <leader>] :CtrlPBufTag<CR>
+    nnoremap <silent> <leader>} :CtrlPBufTagAll<CR>
 
     " NERDTree
     map <localleader>\ :NERDTreeCWD<CR>
