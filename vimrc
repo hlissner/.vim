@@ -3,11 +3,6 @@ set nocompatible
 
 let g:is_ssh = ($SSH_TTY != "")
 
-" Initialize NeoBundle
-set rtp+=~/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/.vim/bundle'))
-NeoBundleFetch 'Shougo/neobundle.vim'
-
 " Preferences {{{
     syntax on
 
@@ -49,8 +44,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         set fileformats+=mac
 
         set mouse=a
-
-        set clipboard+=unnamedplus
+        set iskeyword-=_             " Regard _ as a word boundary
     " }}}
 
     " StatusBar {{{
@@ -105,6 +99,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         set whichwrap=b,s,h,l,<,>,[,]
         " see :h fo-table
         set formatoptions=qrn1lr
+
+        function! <SID>StripTrailingWhitespaces()
+            let l = line(".")
+            let c = col(".")
+            %s/\s\+$//e
+            call cursor(l, c)
+        endfun
+        autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
     " }}}
 
     " Folding {{{
@@ -159,6 +161,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         set wildignore+=*.class,*.o,*.pyc,*.obj,*DS_Store*
     " }}}
 
+    " Show buffer name in tmux window name
+    " au BufEnter * let &titlestring = expand("%")
+    set titlestring=%f%m
+    set title
+
     " Automatically close the popup menu / preview window
     au InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
@@ -169,7 +176,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
     " For emacs Caskfiles
     au BufRead,BufNewFile Cask set filetype=lisp
     " 2-space indentation
-    autocmd FileType ruby setl ts=2 sw=2 sts=2 et
+    au FileType ruby setl ts=2 sw=2 sts=2 et
 " }}}
 
 " Bundles and their settings are specified externally.

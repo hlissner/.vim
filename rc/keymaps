@@ -11,11 +11,14 @@ nnoremap <leader>\ :CtrlP ~/.dotfiles<CR>
 " Trigger to preserve indentation on pastes
 set pastetoggle=<F12>
 " Easier than escape. Pinnacle of laziness.
-imap jk <ESC>
+inoremap jk <ESC>
+inoremap Jk <ESC>
+inoremap JK <ESC>
+inoremap jK <ESC>
 " Turn off search highlighting
 noremap <silent> <leader>? :nohlsearch<CR>
 
-nnoremap <leader>h :<C-u>h 
+nnoremap <leader>h :<C-u>h
 
 " Navigation {{{
     " Normalize all the navigation keys to move by row/col despite any wrapped text
@@ -54,9 +57,6 @@ nnoremap <leader>h :<C-u>h
 " }}}
 
 " Buffers {{{
-    " Change CWD to current file's directory
-    nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
-
     " Next/prev buffer
     nnoremap ]b :<C-u>bnext<CR>
     nnoremap [b :<C-u>bprevious<CR>
@@ -95,7 +95,6 @@ nnoremap <leader>h :<C-u>h
     nnoremap <leader>tc :<C-u>call VimuxRunCommand("tmux new-window")<CR>
 
     com! -nargs=* T call VimuxRunCommand(<q-args>)
-    cabbrev t :<C-u>T
 " }}}
 
 " Plugins {{{
@@ -123,9 +122,9 @@ nnoremap <leader>h :<C-u>h
     vmap <leader>= :Tabularize /
 
     " UltiSnips
-    let g:UltiSnipsExpandTrigger = "<Tab>"
-    let g:UltiSnipsJumpForwardTrigger = "<Tab>"
-    let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+    let g:UltiSnipsExpandTrigger = "<tab>"
+    let g:UltiSnipsJumpForwardTrigger = "<tab>"
+    let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
     " Ignore the default snippets so I (and others) can define their own
     let g:UltiSnipsSnippetDirectories = ["snips"]
 
