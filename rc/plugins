@@ -1,6 +1,8 @@
 call plug#begin('~/.vim/bundle')
 
 " Behavior {{{
+    " Let editorconfig dictate my settings
+    Plug 'editorconfig/editorconfig-vim'
     " Sane per-buffer PWD settings
     Plug 'airblade/vim-rooter'
         let g:rooter_change_directory_for_non_project_files = 1
