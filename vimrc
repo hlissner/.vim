@@ -1,22 +1,30 @@
 ﻿
 set nocompatible
 
+if has("multi_byte")
+    if &termencoding == ""
+        let &termencoding = &encoding
+    endif
+    set encoding=utf-8
+    setglobal fileencoding=utf-8
+    set fileencodings=ucs-bom,utf-8,latin1
+endif
+
 let g:is_ssh = ($SSH_TTY != "")
+
+" Bundles and their settings are specified externally.
+source $HOME/.vim/rc/plugins
 
 " Preferences {{{
     syntax on
 
     let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
     " Editor looks {{{
         " Disable matchit, I find it distracting
         let loaded_matchparen = 1
 
-        if &t_Co == 8 && $TERM !~# '^linux'
-            set t_Co=16
-        else
-            set t_Co=256
-        endif
         set background=dark
         let g:rehash256 = 1
         colorscheme molokai
@@ -27,6 +35,7 @@ let g:is_ssh = ($SSH_TTY != "")
         set list
         set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
         set textwidth=88
+        set cursorline               " Line highlight
 
         set synmaxcol=1500
     " }}}
@@ -38,31 +47,52 @@ let g:is_ssh = ($SSH_TTY != "")
         set visualbell               " No sounds!
         set backspace=indent,eol,start
         set lazyredraw               " Don't update screen while running macros
-        set hidden                   " Hide abandoned buffers
+        set hidden                   " Allow buffer switching without saving
         set shortmess+=filmnrxoOtTs
         set nrformats-=octal
         set fileformats+=mac
 
         set mouse=a
         set iskeyword-=_             " Regard _ as a word boundary
+        set iskeyword-=#             " Regard # as a word boundary
+
+        set ttyfast                  " Faster terminal
+
+        if has('clipboard')
+            if has('unnamedplus')  " When possible use + register for copy-paste
+                set clipboard=unnamed,unnamedplus
+            else " On mac and Windows, use * register for copy-paste
+                set clipboard=unnamed
+            endif
+        endif
+
+        " Restore cursor to file position in previous editing session
+        function! ResCur()
+            if line("'\"") <= line("$")
+                silent! normal! g`"
+                return 1
+            endif
+        endfunction
+
+        augroup resCur
+            autocmd!
+            autocmd BufWinEnter * call ResCur()
+        augroup END
     " }}}
 
     " StatusBar {{{
+        set ruler                                      " Show line/col no in statusline
+        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+
         if has('statusline')
             set laststatus=2
-            set ruler                                      " Show line/col no in statusline
             set statusline=%t                              " tail of the filename
             set statusline+=%w%h%m%r                       " Options
-            if exists('g:loaded_syntastic_plugin')
-                set statusline+=\ %{SyntasticStatuslineFlag()}
-            endif
+            set statusline+=\ %{SyntasticStatuslineFlag()}
             set statusline+=%=                             " left/right separator
-            set statusline+=%y                             " filetype
-            if exists('g:loaded_fugitive')
-                set statusline+=\ %{fugitive#statusline()}     " Git Hotness
-            endif
-            set statusline+=\ •\
-            set statusline+=%c                             " cursor column
+            set statusline+=\ %{fugitive#statusline()}     " Git Hotness
+            set statusline+=<\ %y                           " filetype
+            set statusline+=\ %c                             " cursor column
             set statusline+=\ %l/%L                        " cursor line/total lines
             set statusline+=\ \:%P                         " percent through file
         endif
@@ -101,6 +131,9 @@ let g:is_ssh = ($SSH_TTY != "")
         set formatoptions=qrn1lr
 
         function! <SID>StripTrailingWhitespaces()
+            if &ft =~ 'vim'
+                return
+            endif
             let l = line(".")
             let c = col(".")
             %s/\s\+$//e
@@ -162,7 +195,6 @@ let g:is_ssh = ($SSH_TTY != "")
     " }}}
 
     " Show buffer name in tmux window name
-    " au BufEnter * let &titlestring = expand("%")
     set titlestring=%f%m
     set title
 
@@ -177,10 +209,15 @@ let g:is_ssh = ($SSH_TTY != "")
     au BufRead,BufNewFile Cask set filetype=lisp
     " 2-space indentation
     au FileType ruby setl ts=2 sw=2 sts=2 et
-" }}}
 
-" Bundles and their settings are specified externally.
-source $HOME/.vim/rc/plugins
+    " No cursorline in inactive buffers
+    au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * setlocal cursorline
+    au WinLeave,FocusLost,CmdwinLeave * setlocal nocursorline
+
+    " Instead of reverting the cursor to the last position in the buffer, we
+    " set it to the first line when editing a git commit message
+    au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+" }}}
 
 " rcfiles
 source $HOME/.vim/rc/keymaps
