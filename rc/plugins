@@ -65,6 +65,7 @@ call plug#begin('~/.vim/bundle')
         let g:delimitMate_expand_space = 1
     " HTML & CSS emmet goodness; Zen coding's successor
     Plug 'mattn/emmet-vim'
+         imap <D-e> <Plug>(emmet-expand-abbr)
     " For aligning text
     Plug 'godlygeek/tabular'
     " Comment out code with native comment syntax
