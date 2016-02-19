@@ -93,6 +93,8 @@ call plug#begin('~/.vim/bundle')
     Plug 'tpope/vim-fugitive'
     " Color picker pop-up
     Plug 'PickAColor.vim'
+    " Dash.app documentation
+    Plug 'rizzatti/dash.vim'
 " }
 
 " Programming {{{
