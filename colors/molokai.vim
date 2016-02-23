@@ -26,7 +26,6 @@ else
     let s:molokai_original = 0
 endif
 
-
 hi Boolean         guifg=#AE81FF
 hi Character       guifg=#E6DB74
 hi Number          guifg=#AE81FF
@@ -206,7 +205,7 @@ if &t_Co > 255
        hi SpellRare  ctermfg=none ctermbg=none  cterm=reverse
    endif
    hi Statement       ctermfg=161               cterm=bold
-   hi StatusLine      ctermfg=236 ctermbg=253
+   hi StatusLine      ctermfg=238 ctermbg=253
    hi StatusLineNC    ctermfg=235 ctermbg=240
    hi StorageClass    ctermfg=208
    hi Structure       ctermfg=81
@@ -270,6 +269,7 @@ if &t_Co > 255
        hi SpecialKey      ctermfg=239
    endif
 end
+
 
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ

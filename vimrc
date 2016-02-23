@@ -38,6 +38,10 @@ source $HOME/.vim/rc/plugins
         set cursorline               " Line highlight
 
         set synmaxcol=1500
+
+        " Change color of status line when unfocused (in tmux)
+        au FocusLost * hi StatusLine ctermfg=235 ctermbg=240
+        au FocusGained * hi StatusLine ctermfg=238 ctermbg=253
     " }}}
 
     " Behavior {{{
