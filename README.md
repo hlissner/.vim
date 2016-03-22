@@ -1,10 +1,11 @@
 # Vim
+[![MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 
 My weapon of choice.
 
 ![mlvim](https://dl.dropboxusercontent.com/u/2908279/public/vimrc.png)
 
-For everything from web and gamedev, to arduino and UML. 
+For everything from web and gamedev, to arduino and UML.
 
 ## Will this work on Windo—
 
