@@ -1,4 +1,4 @@
-﻿
+
 set nocompatible
 
 if has("multi_byte")
@@ -56,11 +56,14 @@ source $HOME/.vim/rc/plugins
         set nrformats-=octal
         set fileformats+=mac
 
-        set mouse=a
+        set iskeyword-=.             " Regard . as a word boundary
         set iskeyword-=_             " Regard _ as a word boundary
         set iskeyword-=#             " Regard # as a word boundary
 
         set ttyfast                  " Faster terminal
+
+        " Switch to current file directory
+        autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
         if has('clipboard')
             if has('unnamedplus')  " When possible use + register for copy-paste
@@ -82,6 +85,10 @@ source $HOME/.vim/rc/plugins
             autocmd!
             autocmd BufWinEnter * call ResCur()
         augroup END
+
+        " Instead of reverting the cursor to the last position in the buffer, we
+        " set it to the first line when editing a git commit message
+        au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
     " }}}
 
     " StatusBar {{{
