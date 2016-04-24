@@ -215,8 +215,6 @@ source $HOME/.vim/rc/plugins
     au BufRead,BufNewFile *.hx set filetype=haxe
     " For emacs Caskfiles
     au BufRead,BufNewFile Cask set filetype=lisp
-    " 2-space indentation
-    au FileType ruby setl ts=2 sw=2 sts=2 et
 
     " No cursorline in inactive buffers
     au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * setlocal cursorline
