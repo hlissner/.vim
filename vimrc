@@ -18,9 +18,6 @@ source $HOME/.vim/rc/plugins
 " Preferences {{{
     syntax on
 
-    let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
     " Editor looks {{{
         " Disable matchit, I find it distracting
         let loaded_matchparen = 1
