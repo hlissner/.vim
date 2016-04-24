@@ -1,1 +1,1 @@
-vimrc
+nvimrc
