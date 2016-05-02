@@ -153,12 +153,14 @@ nnoremap <leader>h :<C-u>h
     nmap <leader>= :Tabularize /
     vmap <leader>= :Tabularize /
 
-    " UltiSnips
-    let g:UltiSnipsExpandTrigger = "<tab>"
-    let g:UltiSnipsJumpForwardTrigger = "<tab>"
-    let g:UltiSnipsJumpBackwardTrigger = "<S-tab>"
-    " Ignore the default snippets so I (and others) can define their own
-    let g:UltiSnipsSnippetDirectories = ["snips"]
+    " Neosnippet
+    " SuperTab like snippets behavior.
+    imap <expr><TAB>
+                \ pumvisible() ? "\<C-n>" :
+                \ neosnippet#expandable_or_jumpable() ?
+                \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+                \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
     " Emmet
     imap <expr> <C-CR> emmet#expandAbbrIntelligent("\<tab>")

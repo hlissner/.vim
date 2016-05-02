@@ -100,10 +100,10 @@ call plug#begin('~/.vim/bundle')
     " One-key switching between true/false, yes/no, etc
     Plug 'AndrewRadev/switch.vim'
     " Snippets system
-    if has("python")
-        Plug 'SirVer/ultisnips'
-        Plug 'hlissner/vim-ultisnips-snippets'
-    endif
+    Plug 'Shougo/neosnippet.vim'
+        let g:neosnippet#snippets_directory='~/.vim/bundle/vim-neosnippets'
+
+    Plug 'hlissner/vim-neosnippets'
     " Colored delimiters
     Plug 'luochen1990/rainbow'
 " }}}
