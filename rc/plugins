@@ -100,12 +100,20 @@ call plug#begin('~/.vim/bundle')
     " One-key switching between true/false, yes/no, etc
     Plug 'AndrewRadev/switch.vim'
     " Snippets system
+    let g:neosnippet#snippets_directory=['~/.vim/bundle/vim-neosnippets']
     Plug 'Shougo/neosnippet.vim'
-        let g:neosnippet#snippets_directory='~/.vim/bundle/vim-neosnippets'
 
     Plug 'hlissner/vim-neosnippets'
     " Colored delimiters
     Plug 'luochen1990/rainbow'
+    " Smarter omnicompletion
+    Plug 'vim-scripts/SyntaxComplete'
+    if has("autocmd") && exists("+omnifunc")
+        autocmd Filetype *
+                    \ if &omnifunc == "" |
+                    \     setlocal omnifunc=syntaxcomplete#Complete |
+                    \ endif
+    endif
 " }}}
 
 " Remote/external resources {{{
@@ -121,28 +129,10 @@ call plug#begin('~/.vim/bundle')
 " }
 
 " Programming {{{
-    if !g:is_ssh
-        if has("python")
-            " let g:ycm_autoclose_preview_window_after_insertion = 1
-            let g:ycm_confirm_extra_conf = 1
-            " let g:ycm_register_as_syntastic_checker = 1
-            " let g:ycm_seed_identifiers_with_syntax = 0
-            " let g:ycm_add_preview_to_completeopt = 1
-            let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
-            let g:ycm_auto_trigger = 0
-            let g:ycm_confirm_extra_conf = 0
-            let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-            Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
-
-            " Enable omni completion.
-            autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-            autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-            autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-            autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-            autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-            autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-            autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-        endif
+    if has('nvim')
+        Plug 'benekastah/neomake'
+        autocmd! BufWritePost * Neomake
+    else
         " Syntax checkers for a multitude of languages
         Plug 'scrooloose/syntastic'
             let g:syntastic_auto_loc_list=0

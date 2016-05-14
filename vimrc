@@ -96,7 +96,6 @@ source $HOME/.vim/rc/plugins
             set laststatus=2
             set statusline=%t                              " tail of the filename
             set statusline+=%w%h%m%r                       " Options
-            set statusline+=\ %{SyntasticStatuslineFlag()}
             set statusline+=%=                             " left/right separator
             set statusline+=\ %{fugitive#statusline()}     " Git Hotness
             set statusline+=<\ %y                           " filetype
