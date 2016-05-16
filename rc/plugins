@@ -156,6 +156,7 @@ call plug#begin('~/.vim/bundle')
     " HTML
     Plug 'othree/html5.vim'
     Plug 'valloric/MatchTagAlways', {'for': 'html'}
+    Plug 'digitaltoad/vim-pug', {'for': 'pug'}
     " CSS/SCSS/LESS
     Plug 'hail2u/vim-css3-syntax', {'for': 'css'}
     Plug 'cakebaker/scss-syntax.vim', {'for': 'scss'}
