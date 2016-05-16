@@ -130,7 +130,6 @@ source $HOME/.vim/rc/plugins
         set shiftwidth=4
         set tabstop=4
         set softtabstop=4
-        " Wrapping
         set nowrap
         " Backspace and cursor keys to wrap
         set whichwrap=b,s,h,l,<,>,[,]
@@ -145,7 +144,7 @@ source $HOME/.vim/rc/plugins
             let c = col(".")
             %s/\s\+$//e
             call cursor(l, c)
-        endfun
+        endfunction
         autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
     " }}}
 
@@ -153,7 +152,7 @@ source $HOME/.vim/rc/plugins
         set foldlevel=1
         " Cleaner, readable fold headers
         set foldtext=MyFoldText()
-        fu! MyFoldText()
+        function! MyFoldText()
             let line = getline(v:foldstart)
             " Lines that have been folded
             let nl = v:foldend - v:foldstart + 1
@@ -163,7 +162,7 @@ source $HOME/.vim/rc/plugins
             let startcol = &columns < endcol ? &columns-4 : endcol
 
             return indent . substitute(line,"^ *","",1)
-        endf
+        endfunction
     " }}}
 
     " Swap files, history & persistence {{{
@@ -208,8 +207,6 @@ source $HOME/.vim/rc/plugins
     " Automatically close the popup menu / preview window
     au InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
-    " Set *.scss to ft=scss instead of css.scss
-    au BufRead,BufNewFile *.scss set filetype=scss
     " For some reason vaxe's ftdetect isn't always on the ball
     au BufRead,BufNewFile *.hx set filetype=haxe
     " For emacs Caskfiles
