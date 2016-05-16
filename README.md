@@ -1,7 +1,7 @@
 # Vim
 [![MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 
-My weapon of choice.
+My weapon of choice. Best for Neovim.
 
 ![mlvim](https://dl.dropboxusercontent.com/u/2908279/public/vimrc.png)
 
