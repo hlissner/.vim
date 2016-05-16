@@ -62,11 +62,13 @@ source $HOME/.vim/rc/plugins
         " Switch to current file directory
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
-        if has('clipboard')
-            if has('unnamedplus')  " When possible use + register for copy-paste
-                set clipboard=unnamed,unnamedplus
-            else " On mac and Windows, use * register for copy-paste
-                set clipboard=unnamed
+        if !has('nvim')
+            if has('clipboard')
+                if has('unnamedplus')  " When possible use + register for copy-paste
+                    set clipboard=unnamed,unnamedplus
+                else " On mac and Windows, use * register for copy-paste
+                    set clipboard=unnamed
+                endif
             endif
         endif
 
