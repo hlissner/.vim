@@ -1,6 +1,5 @@
 
 set nocompatible
-
 if has("multi_byte")
     if &termencoding == ""
         let &termencoding = &encoding
@@ -42,22 +41,21 @@ source $HOME/.vim/rc/plugins
     " }}}
 
     " Behavior {{{
-        set noeol
         set autoread                 " Auto-update a file that's been edited externally
-        set nospell                  " No spell check, please
-        set visualbell               " No sounds!
         set backspace=indent,eol,start
-        set lazyredraw               " Don't update screen while running macros
-        set hidden                   " Allow buffer switching without saving
-        set shortmess+=filmnrxoOtTs
-        set nrformats-=octal
         set fileformats+=mac
+        set hidden                   " Allow buffer switching without saving
+        set lazyredraw               " Don't update screen while running macros
+        set noeol
+        set nospell                  " No spell check, please
+        set nrformats-=octal
+        set shortmess+=filmnrxoOtTs
+        set ttyfast                  " Faster terminal
+        set visualbell               " No sounds!
 
         set iskeyword-=.             " Regard . as a word boundary
         set iskeyword-=_             " Regard _ as a word boundary
         set iskeyword-=#             " Regard # as a word boundary
-
-        set ttyfast                  " Faster terminal
 
         " Switch to current file directory
         autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
@@ -110,7 +108,6 @@ source $HOME/.vim/rc/plugins
     " Movement & search {{{
         set nostartofline
         set sidescrolloff=5
-
         set incsearch            " find as you type
         set hlsearch             " Highlight search terms
         set ignorecase           " case insensitive search
@@ -127,11 +124,9 @@ source $HOME/.vim/rc/plugins
 
     " Text formatting {{{
         set autoindent
-        set shiftround
         set expandtab
-        set shiftwidth=4
-        set tabstop=4
-        set softtabstop=4
+        set shiftround
+        set shiftwidth=4 tabstop=4 softtabstop=4
         set nowrap
         " Backspace and cursor keys to wrap
         set whichwrap=b,s,h,l,<,>,[,]
@@ -158,11 +153,9 @@ source $HOME/.vim/rc/plugins
             let line = getline(v:foldstart)
             " Lines that have been folded
             let nl = v:foldend - v:foldstart + 1
-
             let indent = repeat(' ', indent(v:foldstart))
             let endcol = &colorcolumn ? &colorcolumn : &textwidth
             let startcol = &columns < endcol ? &columns-4 : endcol
-
             return indent . substitute(line,"^ *","",1)
         endfunction
     " }}}
@@ -208,25 +201,20 @@ source $HOME/.vim/rc/plugins
 
     " Automatically close the popup menu / preview window
     au InsertLeave * if pumvisible() == 0|silent! pclose|endif
-
     " For some reason vaxe's ftdetect isn't always on the ball
     au BufRead,BufNewFile *.hx set filetype=haxe
     " For emacs Caskfiles
     au BufRead,BufNewFile Cask set filetype=lisp
-
     " No cursorline in inactive buffers
     au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * setlocal cursorline
     au WinLeave,FocusLost,CmdwinLeave * setlocal nocursorline
-
-    " Instead of reverting the cursor to the last position in the buffer, we
-    " set it to the first line when editing a git commit message
+    " In a git commit message buffer revert the cursor to the first line
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 " }}}
 
 " rcfiles
 source $HOME/.vim/rc/keymaps
 source $HOME/.vim/rc/util
-
 " If one exists, this is where you'll want local settings
 try
     source $HOME/.vimrc.local
