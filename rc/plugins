@@ -36,7 +36,7 @@ call plug#begin('~/.vim/bundle')
         let NERDTreeChDirMode = 2
         let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
         let NERDTreeShowHidden = 1
-    Plug 'jistr/vim-nerdtree-tab'
+    Plug 'jistr/vim-nerdtree-tabs'
     " Command-T, Peepopen or Goto-anything, but for vim, written in VimL
     Plug 'kien/ctrlp.vim'
     " Ctrlp extension for jumping to functions
