@@ -183,6 +183,8 @@ call plug#begin('~/.vim/bundle')
     Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
     " Go
     Plug 'fatih/vim-go', {'for': 'go'}
+    " Scala
+    Plug 'derekwyatt/vim-scala', {'for': 'scala'}
     " Other
     Plug 'tpope/vim-markdown'
 " }}}
