@@ -18,7 +18,7 @@ source $HOME/.vim/rc/plugins
     syntax on
 
     " Editor looks {{{
-        " Disable matchit, I find it distracting
+        " Disable matchit highlighting, I find it distracting
         let loaded_matchparen = 1
 
         set background=dark
@@ -32,9 +32,6 @@ source $HOME/.vim/rc/plugins
         set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
         set textwidth=88
         set cursorline               " Line highlight
-
-        set synmaxcol=1500
-
         " Change color of status line when unfocused (in tmux)
         au FocusLost * hi StatusLine ctermfg=235 ctermbg=240
         au FocusGained * hi StatusLine ctermfg=238 ctermbg=253
