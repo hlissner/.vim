@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/bundle')
 
 " Behavior {{{
+    Plug 'Shougo/vimproc.vim', { 'do': 'make' }
     " Let editorconfig dictate my settings
     Plug 'editorconfig/editorconfig-vim'
     " Sane per-buffer PWD settings
@@ -175,6 +176,9 @@ call plug#begin('~/.vim/bundle')
     Plug '1995eaton/vim-better-javascript-completion', {'for': 'javascript'}
     Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
     Plug 'burnettk/vim-angular'
+    " Typescript
+    Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
+    Plug 'Quramy/tsuquyomi', {'for': 'typescript'}
     " C/C++
     Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
     " Go
