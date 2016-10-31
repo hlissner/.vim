@@ -20,10 +20,7 @@ source $HOME/.vim/rc/plugins
     " Editor looks {{{
         " Disable matchit highlighting, I find it distracting
         let loaded_matchparen = 1
-
-        set background=dark
-        let g:rehash256 = 1
-        colorscheme molokai
+        colorscheme arch
 
         set number                   " Line numbers
         set showcmd                  " Show command issued
@@ -32,9 +29,6 @@ source $HOME/.vim/rc/plugins
         set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
         set textwidth=88
         set cursorline               " Line highlight
-        " Change color of status line when unfocused (in tmux)
-        au FocusLost * hi StatusLine ctermfg=235 ctermbg=240
-        au FocusGained * hi StatusLine ctermfg=238 ctermbg=253
     " }}}
 
     " Behavior {{{
