@@ -221,6 +221,10 @@ if &t_Co > 255
     hi SpecialKey      ctermfg=239
 end
 
+" Change color of status line when unfocused (in tmux)
+au FocusLost   * hi StatusLine ctermfg=8 ctermbg=242
+au FocusGained * hi StatusLine ctermfg=4 ctermbg=0
+
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
