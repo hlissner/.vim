@@ -81,13 +81,17 @@ if has("spell")
     hi SpellRare   guisp=#FFFFFF gui=undercurl
 endif
 hi Statement       guifg=#F92672               gui=bold
-hi StatusLine      guifg=#455354 guibg=fg
-hi StatusLineNC    guifg=#808080 guibg=#080808
 hi StorageClass    guifg=#FD971F               gui=italic
 hi Structure       guifg=#66D9EF
 hi Tag             guifg=#F92672               gui=italic
 hi Title           guifg=#ef5939
 hi Todo            guifg=#FFFFFF guibg=bg      gui=bold
+
+hi StatusLine                    guibg=none    gui=none         ctermfg=4    ctermbg=237 cterm=none
+hi StatusLineNC    guifg=#808080 guibg=none    gui=none         ctermfg=8    ctermbg=234 cterm=none
+" Change color of status line when unfocused (in tmux)
+au FocusGained * hi StatusLine ctermfg=4    ctermbg=237
+au FocusLost   * hi StatusLine ctermfg=8    ctermbg=234
 
 hi Typedef         guifg=#66D9EF
 hi Type            guifg=#66D9EF               gui=none
@@ -102,13 +106,13 @@ hi WildMenu        guifg=#66D9EF guibg=#000000
 hi TabLineFill     guifg=#1B1D1E guibg=#1B1D1E
 hi TabLine         guibg=#1B1D1E guifg=#808080 gui=none
 
-hi Normal          guifg=#F8F8F2 guibg=#1B1D1E
+hi Normal          guifg=#F8F8F2                                ctermfg=252  ctermbg=none
 hi Comment         guifg=#7E8E91
-hi CursorLine                    guibg=#293739
-hi CursorLineNr    guifg=#FD971F guibg=#293739 gui=none
+hi CursorLine                    guibg=#293739                               ctermbg=234  cterm=none
+hi CursorLineNr    guifg=#FD971F guibg=#293739 gui=none         ctermfg=4    ctermbg=234  cterm=none
 hi CursorColumn                  guibg=#293739
 hi ColorColumn                   guibg=#232526
-hi LineNr          guifg=#445255 guibg=#1B1D1E
+hi LineNr          guifg=#445255                                ctermfg=8
 hi NonText         guifg=#465457
 hi SpecialKey      guifg=#465457
 
@@ -116,11 +120,6 @@ hi SpecialKey      guifg=#465457
 " Support for 256-color terminal
 "
 if &t_Co > 255
-    hi Normal          ctermfg=252 ctermbg=none
-    hi LineNr          ctermfg=8
-    hi CursorLine                  ctermbg=8     cterm=none
-    hi CursorLineNr    ctermfg=4   ctermbg=8     cterm=none
-
     hi Boolean         ctermfg=141
     hi Character       ctermfg=222
     hi Number          ctermfg=141
@@ -190,8 +189,8 @@ if &t_Co > 255
         hi SpellRare  ctermfg=none ctermbg=none  cterm=reverse
     endif
     hi Statement       ctermfg=161               cterm=bold
-    hi StatusLine      ctermfg=4  ctermbg=0
-    hi StatusLineNC    ctermfg=8   ctermbg=242
+    " hi StatusLine      ctermfg=0  ctermbg=4
+    " hi StatusLineNC    ctermfg=8  ctermbg=242
     hi StorageClass    ctermfg=208
     hi Structure       ctermfg=81
     hi Tag             ctermfg=161
@@ -202,7 +201,7 @@ if &t_Co > 255
     hi Type            ctermfg=81                cterm=none
     hi Underlined      ctermfg=244               cterm=underline
 
-    hi VertSplit       ctermfg=244 ctermbg=232   cterm=bold
+    hi VertSplit       ctermfg=239   ctermbg=none  cterm=none
     hi VisualNOS                   ctermbg=238
     hi Visual                      ctermbg=235
     hi WarningMsg      ctermfg=231 ctermbg=238   cterm=bold
@@ -220,10 +219,6 @@ if &t_Co > 255
     hi NonText         ctermfg=239
     hi SpecialKey      ctermfg=239
 end
-
-" Change color of status line when unfocused (in tmux)
-au FocusLost   * hi StatusLine ctermfg=8 ctermbg=242
-au FocusGained * hi StatusLine ctermfg=4 ctermbg=0
 
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
