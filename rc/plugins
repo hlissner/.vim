@@ -102,7 +102,8 @@ call plug#begin('~/.vim/bundle')
     " One-key switching between true/false, yes/no, etc
     Plug 'AndrewRadev/switch.vim'
     " Snippets system
-    let g:neosnippet#snippets_directory=['~/.vim/bundle/vim-neosnippets']
+        let g:neosnippet#snippets_directory=['~/.vim/bundle/vim-neosnippets']
+        let g:neosnippet#disable_runtime_snippets = { '_' : 1 }
     Plug 'Shougo/neosnippet.vim'
     Plug 'hlissner/vim-neosnippets'
     " Colored delimiters
