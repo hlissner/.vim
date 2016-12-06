@@ -102,8 +102,6 @@ call plug#begin('~/.vim/bundle')
         let g:neosnippet#disable_runtime_snippets = { '_' : 1 }
     Plug 'Shougo/neosnippet.vim'
     Plug 'hlissner/vim-neosnippets'
-    " Colored delimiters
-    Plug 'luochen1990/rainbow'
     " Smarter omnicompletion
     Plug 'vim-scripts/SyntaxComplete'
     if has("autocmd") && exists("+omnifunc")
@@ -181,8 +179,6 @@ call plug#begin('~/.vim/bundle')
     Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
     " Go
     Plug 'fatih/vim-go', {'for': 'go'}
-    " Scala
-    Plug 'derekwyatt/vim-scala', {'for': 'scala'}
     " Other
     Plug 'tpope/vim-markdown'
 " }}}
