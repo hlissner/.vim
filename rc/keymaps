@@ -136,7 +136,7 @@ nnoremap <leader>h :<C-u>h
     " CtrlP
     let g:ctrlp_map = ''
     " Only open CtrlP if the cwd ISN'T $HOME
-    nnoremap <silent><expr> <leader>/ getcwd() != $HOME ? ":<C-u>CtrlPCurWD<CR>" : ":<C-u>echoe 'Cannot open CtrlP in HOME'<CR>"
+    nnoremap <silent><expr> <leader>/ getcwd() != $HOME ? ":<C-u>CtrlP<CR>" : ":<C-u>echoe 'Cannot open CtrlP in HOME'<CR>"
     nnoremap <silent> <leader>. :CtrlPCurFile<CR>
     nnoremap <silent> <leader>, :CtrlPBuffer<CR>
     nnoremap <silent> <leader>; :CtrlPFunky<CR>

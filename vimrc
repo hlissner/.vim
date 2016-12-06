@@ -49,7 +49,7 @@ source $HOME/.vim/rc/plugins
         set iskeyword-=#             " Regard # as a word boundary
 
         " Switch to current file directory
-        autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+        autocmd BufEnter * silent! lcd %:p:h
 
         if has('clipboard')
             if has('unnamedplus')  " When possible use + register for copy-paste
