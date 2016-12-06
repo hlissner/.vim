@@ -167,9 +167,10 @@ call plug#begin('~/.vim/bundle')
     " Python
     Plug 'python_match.vim', {'for': 'python'}
     " Javascript/Node/Coffee
-    Plug 'othree/yajs.vim', {'for': 'javascript'}
-    Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
+    Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+    " Plug 'othree/yajs.vim', {'for': 'javascript'}
     Plug 'othree/javascript-libraries-syntax.vim', {'for': 'javascript'}
+    Plug 'ternjs/tern_for_vim', {'for': 'javascript'}
     Plug '1995eaton/vim-better-javascript-completion', {'for': 'javascript'}
     Plug 'kchmck/vim-coffee-script', {'for': 'coffee'}
     Plug 'burnettk/vim-angular'
