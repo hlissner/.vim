@@ -79,18 +79,20 @@ source $HOME/.vim/rc/plugins
 
     " StatusBar {{{
         set ruler                                      " Show line/col no in statusline
-        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
+        " set rulerformat=%30(%=%{fugitive#statusline()}\ %Y%m%r\ %l,%c%V\ %P%)
+        " set rulerformat+=%{fugitive#statusline()}
+        set rulerformat=%30(%=%y%m%r%w\ %l,%c%V\ %P%)
 
         if has('statusline')
-            set laststatus=2
-            set statusline=%t                              " tail of the filename
-            set statusline+=%w%h%m%r                       " Options
+            set laststatus=1
+            set statusline=\ %F
+            set statusline+=\ %W%H%M%R                     " Options
             set statusline+=%=                             " left/right separator
             set statusline+=\ %{fugitive#statusline()}     " Git Hotness
-            set statusline+=<\ %y                           " filetype
-            set statusline+=\ %c                             " cursor column
+            set statusline+=\ %c                           " cursor column
             set statusline+=\ %l/%L                        " cursor line/total lines
             set statusline+=\ \:%P                         " percent through file
+            set statusline+=\ %Y                           " filetype
         endif
     " }}}
 
