@@ -24,11 +24,12 @@ source $HOME/.vim/rc/plugins
 
         set number                   " Line numbers
         set showcmd                  " Show command issued
-        set fillchars=vert:¦
+        " set fillchars=vert:¦
+        set fillchars=vert:│
         set list
         set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-        set textwidth=88
-        set cursorline               " Line highlight
+        set textwidth=80
+        " set cursorline               " Line highlight
     " }}}
 
     " Behavior {{{
@@ -197,8 +198,8 @@ source $HOME/.vim/rc/plugins
     " For emacs Caskfiles
     au BufRead,BufNewFile Cask set filetype=lisp
     " No cursorline in inactive buffers
-    au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * setlocal cursorline
-    au WinLeave,FocusLost,CmdwinLeave * setlocal nocursorline
+    " au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * setlocal cursorline
+    " au WinLeave,FocusLost,CmdwinLeave * setlocal nocursorline
     " In a git commit message buffer revert the cursor to the first line
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 " }}}
