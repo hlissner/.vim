@@ -10,6 +10,7 @@ install:
 
 neovim:
 	@[ -e "$(HOME)/.config/nvim" ] || { mkdir -p $(HOME)/.config; ln -svf $(DIR) $(HOME)/.config/nvim; }
+	@[ -e "$(DIR)/init.vim" ] || ln -svf $(DIR)/nvimrc $(DIR)/init.vim
 
 update:
 	@vim +PlugUpdate +qall
