@@ -1,4 +1,3 @@
-
 " Comma get some... sorry.
 let mapleader = ','
 let maplocalleader = '\'
@@ -146,7 +145,7 @@ nnoremap <leader>h :<C-u>h
     nnoremap <silent> <leader>} :CtrlPBufTagAll<CR>
 
     " NERDTree
-    map <localleader>\ :NERDTreeCWD<CR>
+    map <localleader>\ :NERDTree <C-r>=FindRootDirectory()<CR><CR>
     map <localleader>. :NERDTreeFind<CR>
 
     " Tabularize
@@ -189,5 +188,3 @@ nnoremap <leader>h :<C-u>h
     " vim-switch
     nnoremap ! :Switch<CR>
 " }}}
-
-" vim:set ft=vim:

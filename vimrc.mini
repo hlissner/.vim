@@ -1,3 +1,5 @@
+" For systems where I have less control; a minimalistic vimrc.
+
 set nocompatible
 
 " Preferences {{{

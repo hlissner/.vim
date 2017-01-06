@@ -1,4 +1,3 @@
-
 " Commands {{{
     " Strip whitespace
     com! Trim %s/\s\+$//
@@ -16,5 +15,3 @@
                 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
                 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " }}}
-
-" vim:set ft=vim:
