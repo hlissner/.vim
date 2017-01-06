@@ -1,6 +1,7 @@
+autoload/plug.vim
+plugged
 tmp/*
-snippets/
 bundle/*
-.DS_Store
 tags
+.DS_Store
 .netrwhist
