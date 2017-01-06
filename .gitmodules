@@ -1,6 +1,0 @@
-[submodule "bundle/neobundle.vim"]
-	path = bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim
-[submodule "plugged"]
-	path = plugged
-	url = https://github.com/junegunn/vim-plug.git
