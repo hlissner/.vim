@@ -14,3 +14,8 @@ neovim:
 
 update:
 	@vim +PlugUpdate +qall
+
+root:
+	@[ -e "$(HOME)/.config/nvim" ] && { sudo mkdir -p /root/.config && sudo ln -sfv $(DIR) /root/.config/nvim; }
+	@sudo ln -sfv $(DIR) /root/.vim
+	@sudo ln -sfv $(DIR)/vimrc /root/.vimrc
