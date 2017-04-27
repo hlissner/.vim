@@ -87,8 +87,8 @@ hi Tag             guifg=#F92672               gui=italic
 hi Title           guifg=#ef5939
 hi Todo            guifg=#FFFFFF guibg=bg      gui=bold
 
-hi StatusLine                    guibg=none    gui=none         ctermfg=4    ctermbg=237 cterm=none
-hi StatusLineNC    guifg=#808080 guibg=none    gui=none         ctermfg=8    ctermbg=234 cterm=none
+hi StatusLine                                  gui=none         ctermfg=4    ctermbg=237 cterm=none
+hi StatusLineNC    guifg=#808080               gui=none         ctermfg=8    ctermbg=234 cterm=none
 " Change color of status line when unfocused (in tmux)
 au FocusGained * hi StatusLine ctermfg=4    ctermbg=237
 au FocusLost   * hi StatusLine ctermfg=8    ctermbg=234
