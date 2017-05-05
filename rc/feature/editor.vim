@@ -6,19 +6,19 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'szw/vim-maximizer'      " toggling maximizing of a buffer
-Plug 'justinmk/vim-sneak'     " 2-character search motions
-Plug 'Raimondi/delimitMate'   " autoclose delimiters
+Plug 'szw/vim-maximizer'          " toggling maximizing of a buffer
+Plug 'justinmk/vim-sneak'         " 2-character search motions
+Plug 'Raimondi/delimitMate'       " autoclose delimiters
 
-Plug 'godlygeek/tabular'      " for aligning text
-Plug 'tomtom/tcomment_vim'    " comment out code with native comment syntax
-Plug 'tpope/vim-endwise'      " auto-end code blocks (e.g. for ruby or viml)
-Plug 'tpope/vim-surround'     " manipulation of surrounding delimiters
-Plug 'AndrewRadev/switch.vim' " switching between true/false, yes/no, etc
+Plug 'godlygeek/tabular'          " for aligning text
+Plug 'tomtom/tcomment_vim'        " comment out code with native comment syntax
+Plug 'tpope/vim-endwise'          " auto-end code blocks (e.g. for ruby or viml)
+Plug 'tpope/vim-surround'         " manipulation of surrounding delimiters
+Plug 'AndrewRadev/switch.vim'     " switching between true/false, yes/no, etc
 
-Plug 'airblade/vim-gitgutter' " Visual git diffs in the gutter
+Plug 'airblade/vim-gitgutter'     " Visual git diffs in the gutter
 
-Plug 'PickAColor.vim'         " Color picker pop-up
+Plug 'vim-scripts/PickAColor.vim' " Color picker pop-up
 
 " Dash.app documentation (mac only)
 if has('macunix')

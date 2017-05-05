@@ -11,7 +11,7 @@ set nocompatible
     Plug 'sheerun/vim-polyglot'  " support for a variety of languages
     " Vim functionality fixes/enhancements
     Plug 'tpope/vim-repeat'      " better repeat compatibility ('.')
-    Plug 'vis'                   " improved visual commands
+    Plug 'vim-scripts/vis'       " improved visual commands
     Plug 'moll/vim-bbye'         " kill buffers without affecting window layout
     " Communicating with Tmux
     Plug 'christoomey/vim-tmux-navigator'

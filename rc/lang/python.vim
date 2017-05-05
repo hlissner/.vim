@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'python_match.vim',     { 'for': 'python' }
+Plug 'vim-scripts/python_match.vim', { 'for': 'python' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 
