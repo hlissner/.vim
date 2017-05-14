@@ -16,7 +16,8 @@ Plug 'tpope/vim-endwise'          " auto-end code blocks (e.g. for ruby or viml)
 Plug 'tpope/vim-surround'         " manipulation of surrounding delimiters
 Plug 'AndrewRadev/switch.vim'     " switching between true/false, yes/no, etc
 
-Plug 'airblade/vim-gitgutter'     " Visual git diffs in the gutter
+Plug 'airblade/vim-gitgutter'     " visual git diffs in the gutter
+Plug 'thinca/vim-visualstar'      " smarter * and #
 
 Plug 'vim-scripts/PickAColor.vim' " Color picker pop-up
 
