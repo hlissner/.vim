@@ -2,8 +2,8 @@
 
 # Vim
 
-In the terminal, remotely--wherever GUI [emacs] isn't an option, vim is my lean,
-mean weapon of choice.
+In the terminal, remotely--wherever GUI emacs isn't an option, vim is my weapon
+of choice.
 
 Tailored for Neovim, but will still work in vanilla Vim.
 
@@ -14,6 +14,8 @@ git clone https://github.com/hlissner/.vim ~/.vim
 cd ~/.vim
 make install    # installs vim-plug + sets up symlinks + installs plugins
 ```
+
+Run `make update` to update plugins.
 
 ## Will this work on Windo—
 
