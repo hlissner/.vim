@@ -1,21 +1,22 @@
 DIR=`pwd -P`
+VIMRC_SRC := "$(DIR)/init.vim"
+VIMRET := $(shell nvim --version 1>&2 >/dev/null; echo $$?)
+ifeq ($(VIMRET), 0)
+	VIMRC := "~"
+	VIMDIR := "$(HOME)/.config/nvim"
+else
+	VIMRC := "$(HOME)/.vimrc"
+	VIMDIR := "$(HOME)/.vim"
+endif
 
+#
 all: install
 
 install:
 	@[ -f "$(HOME)/.vim/autoload/plug.vim" ] || curl -fLo $(HOME)/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	@[ -f "$(HOME)/.vimrc" ]  || ln -svf $(DIR)/vimrc ~/.vimrc
-	@[ -f "$(HOME)/.gvimrc" ] || ln -svf $(DIR)/gvimrc ~/.gvimrc
+	@[ -e "$(VIMRC)" ] || ln -svf "$(VIMRC_SRC)" "$(VIMRC)"
+	@[ -d "$(VIMDIR)" ] || { mkdir -p "$(VIMDIR)"; ln -svf "$(DIR)" "$(VIMDIR)"; }
 	@vim +PlugInstall +qall
-
-neovim:
-	@[ -e "$(HOME)/.config/nvim" ] || { mkdir -p $(HOME)/.config; ln -svf $(DIR) $(HOME)/.config/nvim; }
-	@[ -e "$(DIR)/init.vim" ] || ln -svf $(DIR)/nvimrc $(DIR)/init.vim
 
 update:
 	@vim +PlugUpdate +qall
-
-root:
-	@[ -e "$(HOME)/.config/nvim" ] && { sudo mkdir -p /root/.config && sudo ln -sfv $(DIR) /root/.config/nvim; }
-	@sudo ln -sfv $(DIR) /root/.vim
-	@sudo ln -sfv $(DIR)/vimrc /root/.vimrc
