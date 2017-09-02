@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-call plug#begin('~/.vim/bundle')
+call plug#begin(has('nvim') ? '~/.config/nvim/bundle' : '~/.vim/bundle')
 " Plugins {{{
     " Essentials
     Plug 'Shougo/vimproc', { 'do': 'make' }
