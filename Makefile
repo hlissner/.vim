@@ -15,9 +15,10 @@ endif
 all: install
 
 install:
+	@mkdir -p "$(HOME)/.config"
 	@[ -e "$(VIMRC)" ] || ln -svf "$(VIMRC_SRC)" "$(VIMRC)"
-	@[ -d "$(VIMDIR)" ] || { mkdir -p "$(VIMDIR)"; ln -svf "$(DIR)" "$(VIMDIR)"; }
-	@[ -f "$(DIR)/autoload/plug.vim" ] || curl -fLo $(HOME)/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	@[ -d "$(VIMDIR)" ] || ln -svf "$(DIR)" "$(VIMDIR)"
+	@[ -f "$(DIR)/autoload/plug.vim" ] || curl -fLo $(DIR)/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	@$(VIM) +PlugInstall +qall
 
 update:
