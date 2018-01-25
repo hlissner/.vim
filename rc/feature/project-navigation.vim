@@ -43,7 +43,7 @@ if exists("g:ctrlp_user_command")
     unlet g:ctrlp_user_command
 endif
 let g:ctrlp_extensions = ['tag', 'buffertag', 'funky']
-let g:ctrlp_cache_dir = "~/.vim/tmp/ctrlp"
+let g:ctrlp_cache_dir = $XDG_CACHE_HOME."/vim/ctrlp"
 let g:ctrlp_match_window = 'bottom,order:btt,min:10,max:10,results:10'
 let g:ctrlp_custom_ignore = {
             \   'dir':  '\.(git|hg|svn|settings)$|tmp$',

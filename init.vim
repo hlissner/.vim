@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-call plug#begin(has('nvim') ? '~/.config/nvim/bundle' : '~/.vim/bundle')
+call plug#begin($XDG_DATA_HOME.'/vim/bundle')
 " Plugins {{{
     " Essentials
     Plug 'Shougo/vimproc', { 'do': 'make' }
@@ -54,14 +54,14 @@ endif
     set nowritebackup
     set noswapfile
     if has('persistent_undo')
-        set undodir=~/.vim/tmp/undo
+        set undodir=$XDG_DATA_HOME/vim/undo
         set undolevels=500
         set undoreload=500
     endif
     set history=5000
 
     " preserve buffer state (cursor location, folds, etc.)
-    set viewdir=~/.vim/tmp/views
+    set viewdir=$XDG_DATA_HOME/vim/views
     set viewoptions=cursor,folds,unix,slash
     augroup vimrc-persistence
         au!
