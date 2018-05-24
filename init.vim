@@ -7,22 +7,22 @@ call plug#begin($XDG_DATA_HOME.'/vim/bundle')
     Plug 'Shougo/vimproc', { 'do': 'make' }
     Plug 'editorconfig/editorconfig-vim'
     Plug 'tpope/vim-fugitive'    " git in vim
-    Plug 'notalex/vim-run-live'  " Running code inline
     Plug 'sheerun/vim-polyglot'  " support for a variety of languages
     " Vim functionality fixes/enhancements
     Plug 'tpope/vim-repeat'      " better repeat compatibility ('.')
     Plug 'vim-scripts/vis'       " improved visual commands
-    Plug 'moll/vim-bbye'         " kill buffers without affecting window layout
+    " kill buffers without affecting window layout
+    Plug 'moll/vim-bbye', { 'on': ['Bdelete', 'Bclose'] }
     " Communicating with Tmux
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'benmills/vimux'
+    Plug 'christoomey/vim-tmux-navigator', { 'on': ['TmuxNavigateLeft', 'TmuxNavigateDown', 'TmuxNavigateRight', 'TmuxNavigateUp', 'TmuxNavigatePrevious'] }
     " Theme
     Plug 'joshdick/onedark.vim'
 " }}}
 
 " Custom code & extra configuration
-runtime! rc/*/*.vim
-runtime! rc/*.vim
+runtime! core/*.vim
+runtime! lang/*.vim
+runtime! tools/*.vim
 
 call plug#end()
 syntax on

@@ -117,17 +117,6 @@ nnoremap <leader>h :<C-u>h
     cnoremap <C-e> <End>
 " }}}
 
-" External Tools {{{
-    " Send cwd to tmux
-    nnoremap <leader>t. :<C-u>call VimuxRunCommand("cd <C-r>=expand("%:p:h")<CR>")<CR>
-    nnoremap <leader>t/ :<C-u>call VimuxRunCommand("cd <C-r>=getcwd()<CR>")<CR>
-    nnoremap <leader>ts :<C-u>call VimuxRunCommand("tmux split-window")<CR>
-    nnoremap <leader>tv :<C-u>call VimuxRunCommand("tmux split-window -h")<CR>
-    nnoremap <leader>tc :<C-u>call VimuxRunCommand("tmux new-window")<CR>
-
-    com! -nargs=* T call VimuxRunCommand(<q-args>)
-" }}}
-
 " Plugins {{{
     " bufkill
     nnoremap zx :Bdelete<CR>
@@ -184,6 +173,9 @@ nnoremap <leader>h :<C-u>h
     map g] :YcmCompleter GoToDefinitionElseDeclaration<CR>
     let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
     let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+
+    " vim-maximizer
+    nnoremap <silent> <C-w>o :<C-u>MaximizerToggle!<CR>
 
     " vim-switch
     nnoremap ! :Switch<CR>

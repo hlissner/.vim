@@ -6,25 +6,20 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'szw/vim-maximizer'          " toggling maximizing of a buffer
+" toggle maximizing of a buffer
+Plug 'szw/vim-maximizer', { 'on': 'MaximizerToggle' }
 Plug 'justinmk/vim-sneak'         " 2-character search motions
 Plug 'Raimondi/delimitMate'       " autoclose delimiters
-
-Plug 'godlygeek/tabular'          " for aligning text
+" for aligning text
+Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 Plug 'tomtom/tcomment_vim'        " comment out code with native comment syntax
 Plug 'tpope/vim-endwise'          " auto-end code blocks (e.g. for ruby or viml)
 Plug 'tpope/vim-surround'         " manipulation of surrounding delimiters
-Plug 'AndrewRadev/switch.vim'     " switching between true/false, yes/no, etc
+" switching between true/false, yes/no, etc
+Plug 'AndrewRadev/switch.vim', { 'on': ['Switch', 'SwitchReverse'] }
 
 Plug 'airblade/vim-gitgutter'     " visual git diffs in the gutter
 Plug 'thinca/vim-visualstar'      " smarter * and #
-
-Plug 'vim-scripts/PickAColor.vim' " Color picker pop-up
-
-" Dash.app documentation (mac only)
-if has('macunix')
-    Plug 'rizzatti/dash.vim'
-endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -33,7 +28,6 @@ endif
 
 " vim-maximizer
 let g:maximizer_set_default_mapping = 0
-nnoremap <silent> <C-w>o :<C-u>MaximizerToggle!<CR>
 
 " vim-sneak
 let g:sneak#s_next = 1
@@ -44,6 +38,8 @@ let g:delimitMate_expand_space = 1
 
 " tcomment_vim
 let g:tcomment_types = {'blade': '{-- %s --}', 'twig': '{# %s #}'}
+
+" switch
 
 " gitgutter
 let g:gitgutter_eager = 0
