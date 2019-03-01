@@ -40,9 +40,6 @@ set fileencodings=utf-8
 
 set bomb
 set binary
-if has('termguicolors')
-    set termguicolors
-endif
 if has('ttimeout')
     set ttimeout
     set ttimeoutlen=0
