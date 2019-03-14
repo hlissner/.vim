@@ -20,9 +20,9 @@ call plug#begin($XDG_DATA_HOME.'/vim/bundle')
 " }}}
 
 " Custom code & extra configuration
-runtime! core/*.vim
-runtime! lang/*.vim
-runtime! tools/*.vim
+runtime core/*.vim
+runtime lang/*.vim
+runtime tools/*.vim
 
 call plug#end()
 syntax on
