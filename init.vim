@@ -117,7 +117,6 @@ augroup vimrc-remember-cursor-position
 augroup END
 
 " UI/Appearance {{{
-    set background=dark
     set number           " Line numbers
     set showcmd          " Show command issued
     set fillchars=vert:│
