@@ -2,10 +2,12 @@
 
 # Vim
 
-In the terminal, remotely--wherever GUI emacs isn't an option, vim is my weapon
-of choice.
+I love vim, but it's [no longer my weapon of choice][doom].
 
-Tailored for Neovim, but will still work in vanilla Vim.
+This config exists for emergencies on the battlefield, where Emacs is
+unavailable.
+
+> Tailored for Neovim, but will still work in vanilla Vim.
 
 ## Installation
 
@@ -21,3 +23,5 @@ Run `make update` to update plugins.
 
 ![Windows, you say...](http://i3.kym-cdn.com/photos/images/newsfeed/000/549/293/504.gif)
 
+
+[doom]: https://github.com/hlissner/doom-emacs
