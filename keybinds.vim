@@ -1,11 +1,23 @@
 " Comma get some... sorry.
-let mapleader = ','
-let maplocalleader = '\'
-noremap ; :
+let mapleader = ' '
+let maplocalleader = ' m'
 
-" Shortcut to vimrc and gvimrc
-nnoremap <leader>E :CtrlP ~/.vim<CR>
-nnoremap <leader>\ :CtrlP ~/.dotfiles<CR>
+" Leader keys (mirrors Doom Emacs)
+nnoremap <leader><leader> :CtrlP<CR>
+nnoremap <leader>bb :CtrlPBuffer<CR>
+nnoremap <leader>fe :CtrlP ~/.emacs.d<CR>
+nnoremap <leader>fv :CtrlP ~/.config/nvim<CR>
+nnoremap <leader>ff :CtrlP .<CR>
+nnoremap <leader>ft :CtrlP ~/.dotfiles<CR>
+nnoremap <leader>fp :CtrlP ~/.config/doom<CR>
+nnoremap <leader>fr :CtrlPMRU<CR>
+nnoremap <leader>pf :CtrlP<CR>
+nnoremap <leader>si :CtrlPFunky<CR>
+nnoremap <leader>sp :<C-u>RgRoot
+nnoremap <leader>sd :<C-u>Rg
+nnoremap <leader>qq :wqa!<CR>
+nnoremap <leader>qQ :qa!<CR>
+nnoremap <leader>h :<C-u>h
 
 " Trigger to preserve indentation on pastes
 set pastetoggle=<F12>
@@ -17,19 +29,12 @@ inoremap jK <ESC>
 " Turn off search highlighting
 noremap <silent> <leader>? :nohlsearch<CR>
 
-nnoremap <leader>h :<C-u>h
-
 " Navigation {{{
     " Normalize all the navigation keys to move by row/col despite any wrapped text
     noremap j gj
     noremap k gk
     " % matchit shortcut, but only in normal mode!
     nmap <Tab> %
-    " Easier fold toggle
-    nnoremap <Space> 5j
-    vnoremap <Space> 5j
-    nnoremap <Backspace> 5k
-    vnoremap <Backspace> 5k
 
     " Make motions sensitive to wrapped lines
     " Same for 0, home, end, etc
@@ -128,10 +133,6 @@ nnoremap <leader>h :<C-u>h
     nnoremap <silent> <leader>. :CtrlPCurFile<CR>
     nnoremap <silent> <leader>, :CtrlPBuffer<CR>
     nnoremap <silent> <leader>; :CtrlPFunky<CR>
-    nnoremap <silent> <leader>m :CtrlPMRU<CR>
-    nnoremap <silent> <leader>M :CtrlPModified<CR>
-    nnoremap <silent> <leader>] :CtrlPBufTag<CR>
-    nnoremap <silent> <leader>} :CtrlPBufTagAll<CR>
 
     " NERDTree
     map <localleader>\ :NERDTree <C-r>=FindRootDirectory()<CR><CR>
@@ -168,11 +169,6 @@ nnoremap <leader>h :<C-u>h
     xmap T <Plug>Sneak_T
     omap t <Plug>Sneak_t
     omap T <Plug>Sneak_T
-
-    " YCM
-    map g] :YcmCompleter GoToDefinitionElseDeclaration<CR>
-    let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-    let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 
     " vim-maximizer
     nnoremap <silent> <C-w>o :<C-u>MaximizerToggle!<CR>
